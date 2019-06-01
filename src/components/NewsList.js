@@ -13,9 +13,10 @@ class NewsList extends Component {
     }
     
     const apiCall = () => {
-        // fetch("").then(resp => {});
-        this.setState({
-            newsFeed: Response.hits
+        fetch("https://hn.algolia.com/api/v1/search?tags=front_page").then(resp => {
+            this.setState({
+                newsFeed: resp.hits
+            });
         });
     }
     const handleUpvote = (objectID) => {
@@ -42,6 +43,9 @@ class NewsList extends Component {
 
     render(){
         const { newsFeed }= this.state;
+        if(newsFeed.length <= 0){
+            apiCall();
+        }
         return(
             <div>
                 {newsFeed.length > 0 ? 
