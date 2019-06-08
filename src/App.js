@@ -1,25 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import GridTest from './Grid/grid'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Publicis Sapient - XT hiring challenge!!</h1>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-and save to reload. Refactor at will, but please do not
-          modify the entry point
-          {' '}
-          <code>index.js</code>
-.
-        </p>
-      </header>
+
+
+      <div className="container">
+        <div className="row app__header--layout">
+          <div className="col">
+            
+          <div >
+            <span className="pagetop">
+              <b className="hnname"><a className="app__headerAnchor--white" href="news">Hacker News</a></b>
+              <a className="app__headerAnchor--black" href="newest">new</a>
+            </span>
+          </div>
+
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col">
+            
+            <GridTest />
+
+            {/* <ReactDataGrid
+              columns={columns}
+              rowGetter={i => rowData[i]}
+              rowsCount={rows.length}
+              minHeight={650}
+              // rowRenderer={RowRenderer}
+              // rowHeight={ROW_HEIGHT}
+              headerRowHeight={50}
+              enableCellAutoFocus={false}
+            /> */}
+
+          </div>
+        </div>
+      </div>
+
+
     </div>
   );
 }
