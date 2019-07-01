@@ -1,0 +1,39 @@
+body {
+  background: #F6F6F0;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 10pt;
+}
+.hn-header {
+  background: rgb(255, 102, 0);
+}
+
+.hn-logo {
+  border: #fff solid 1px;
+}
+
+.hn-feed-row:nth-child(even) {
+  background: #F6F6F0;
+}
+
+.hn-feed-row:nth-child(odd) {
+  background: #E6E6E0;
+}
+
+.hn-link, .hn-time {
+  color: #828282;
+  font-size: 8pt;
+}
+
+.hn-author{
+  font-size: 8pt;
+  font-weight: bold;
+}
+
+.hn-feed-hide {
+  color: black;
+  font-size: 8pt;
+}
+
+.hn-more-link {
+  color: rgb(255, 102, 0);
+}
