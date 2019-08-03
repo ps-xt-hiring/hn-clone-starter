@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component header should not change b/w renders 1`] = `
+<header
+  className="header-container"
+>
+  <span
+    className="header-items logo"
+  >
+    Y
+  </span>
+  <span
+    className="header-items top active"
+  >
+    top
+  </span>
+  <span
+    className="header-items new"
+  >
+    new
+  </span>
+</header>
+`;

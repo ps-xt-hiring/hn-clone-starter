@@ -1,0 +1,23 @@
+.list-item-container {
+    padding: 15px;
+
+    span {
+        margin: 0 10px;
+        font-size: 14px;
+
+        &.comments,
+        &.points {
+            text-align: right;
+        }
+
+        &.title{
+            font-weight: 600;
+            font-size: 16px;
+        }
+        &.url,
+        &.time,
+        &.hide {
+            color: gray;
+        }
+    }
+}

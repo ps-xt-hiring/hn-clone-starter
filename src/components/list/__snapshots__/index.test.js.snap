@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List component list should not change b/w renders 1`] = `
+<main
+  className="list-container"
+/>
+`;
