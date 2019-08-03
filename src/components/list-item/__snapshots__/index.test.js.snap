@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem component item should not change b/w renders 1`] = `
+<div
+  className="list-item-container"
+>
+  <div>
+    <span
+      className="comments"
+    >
+      0
+    </span>
+    <span
+      className="points"
+    >
+      0
+    </span>
+    <span
+      onClick={[Function]}
+    >
+      ^
+    </span>
+    <span
+      className="title"
+    >
+      
+    </span>
+    <span
+      className="url"
+    >
+      (
+      -
+      )
+    </span>
+    <span>
+      by 
+    </span>
+    <span
+      className="time"
+    >
+      00 Hours ago
+    </span>
+    <span
+      className="hide"
+      onClick={[Function]}
+    >
+      [hide]
+    </span>
+  </div>
+</div>
+`;

@@ -1,0 +1,27 @@
+.header-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: orange;
+    padding: 10px;
+    text-align: left;
+
+    .header-items {
+        color: white;
+        margin: 0 5px;
+
+        &.logo {
+            padding: 3px;
+            border: 1px solid white;
+        }
+
+        &.top{
+            border-right: 1px solid black;
+            padding-right: 5px
+        }
+
+        &.new{
+            color: black
+        }
+    }
+}
