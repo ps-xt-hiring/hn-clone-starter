@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import InfoTable from './components/InfoTable';
@@ -10,7 +9,6 @@ function App() {
       <header className="App-header">
       </header>
       <InfoTable className="App-Table"></InfoTable>
-      
     </div>
   );
 }

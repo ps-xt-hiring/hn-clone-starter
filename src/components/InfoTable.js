@@ -15,7 +15,6 @@ export default class InfoTable extends React.Component {
     }
 
     loadData = async () => {
-
         let apiUrl = `${API_URL}?page=${this.state.pageNo}`;
         const [err, rslt] = await new ApiService().get(apiUrl);
         if (!err) {
