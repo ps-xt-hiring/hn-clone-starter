@@ -1,0 +1,32 @@
+header {
+    background-color: rgb(255, 102, 0);
+}
+header nav {
+    height: 35px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: black!important;
+    font-weight: 400;
+}
+.navbar-dark .navbar-nav .active > .nav-link {
+    color: white!important;
+}
+
+.vline {
+    border-right: .1em solid #333;
+    height: 16px;
+    margin-top: 13px;
+    border-radius: 5px;
+}
+
+.navbar-brand {
+    margin-left: -13px;
+}
+
+.navbar-brand strong {
+    border: 1px white solid;
+    padding: 0px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: normal;
+}

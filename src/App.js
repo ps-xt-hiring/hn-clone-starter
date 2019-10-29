@@ -1,21 +1,16 @@
 import React from 'react';
-// import logo from '../public/logo.gif';
+import Layout from './components/layout/Layout';
+import NewsList from './components/newsList/NewsList';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-
-function App() {
+function App(props) {
   return (
-    <div className="container">
-      <header>
-        <nav className="navbar navbar-default"> 
-        <div className="container-fluid">
-          <a class="navbar-brand" href="#">Logo</a>
-        </div>
-        </nav>
-      </header>
-      
-    </div>
+    <main>
+    <Layout>
+        <NewsList {...props} />
+      </Layout>
+    </main>
   );
 }
 
