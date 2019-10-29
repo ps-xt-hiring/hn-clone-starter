@@ -1,5 +1,5 @@
-const SET_ENV = "local";
+const SET_ENV = 'local';
 
 export default {
-    SET_ENV
+  SET_ENV,
 };

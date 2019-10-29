@@ -6,5 +6,10 @@
   },
   "rules": {
     "react/jsx-filename-extension": "off"
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
   }
 }

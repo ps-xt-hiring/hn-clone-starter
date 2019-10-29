@@ -40,32 +40,39 @@
         flex-wrap: wrap;
         margin: 0 5px;
 
-        .title {
-            color: #000000;
-            font-size: 14px;
-            text-decoration: none;
-            cursor: pointer;
-        }
+        .feed-content-1 {
+            margin-right: 4px;
 
-        .host-name {
-            margin: 0 4px;
+            .title {
+                color: #000000;
+                font-size: 14px;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .host-name {
+                margin: 0 4px;
+            }
         }
 
         .author {
             margin-right: 4px;
 
             .name {
+                margin-left: 4px;
                 color: $black_color;
             }
         }
 
         .hide-item {
-            margin: 0 4px;
+            margin-left: 4px;
             cursor: pointer;
             display: inline-block;
-
+            outline: none;
+        
             .text {
                 color: $black_color;
+                margin: 0 2px;
             }
         }
 
