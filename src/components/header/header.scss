@@ -9,6 +9,7 @@ header {
         padding: 15px 10px;
         background: $theme_color;
         color: $white_color;
+        box-sizing: border-box;
     }
 
     .header-icon {
@@ -25,6 +26,7 @@ header {
     .header-name {
         display: flex;
         padding: 0 20px;
+        color: $black_color;
 
         .name-black {
             padding: 0 10px;

@@ -35,16 +35,18 @@ const FeedItem = (props) => {
 
   return (
     <div className="feed-item">
-      <span className="item-count comment-count">{data.num_comments ? data.num_comments : 0}</span>
-      <span className={`item-count vote-count ${utils.getColorByRange(points)}`}>{points}</span>
-      <img
-        className={`vote-icon ${downvote ? 'hide-icon' : ''}`}
-        role="presentation"
-        src={iconUp}
-        alt="upvote"
-        onClick={manageVote}
-        onKeyDown={manageVote}
-      />
+      <div className="feed-info">
+        <span className="item-count comment-count">{data.num_comments ? data.num_comments : 0}</span>
+        <span className={`item-count vote-count ${utils.getColorByRange(points)}`}>{points}</span>
+        <img
+          className={`vote-icon ${downvote ? 'hide-icon' : ''}`}
+          role="presentation"
+          src={iconUp}
+          alt="upvote"
+          onClick={manageVote}
+          onKeyDown={manageVote}
+        />
+      </div>
       <div className="feed-content">
         <div className="feed-content-1">
           <a className="title" href={url} target="_blank" rel="noopener noreferrer">{title}</a>
