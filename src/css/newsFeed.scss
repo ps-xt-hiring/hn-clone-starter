@@ -1,0 +1,48 @@
+@import 'index';
+
+.header {
+	background-color: $burnt-orange;
+	.logo {
+		border: 1px #ffffff solid;
+		display: grid;
+	}
+	.white {
+		color: $white
+	}
+}
+
+
+
+.newsList {
+	caption {
+		color: $burnt-orange !important;
+		background: $white-smoke;
+	}
+	tr:nth-child(odd) {
+		background: $light-grey;
+	}
+	tr:nth-child(even) {
+		background: $white-smoke;
+	}
+	.noPadding {
+		padding: 0px !important;
+	}
+	.emptyTableRow {
+		height: 10px;
+	}
+	.grey {
+		color: $shady-grey;
+	}
+	.title {
+		text-decoration: none;
+		font-weight: 600;
+		color: $black;
+	}
+	.fs10px {
+		font-size: 10px;
+	}
+	.material-icons {
+		vertical-align: bottom;
+	}
+}
+

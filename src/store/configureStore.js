@@ -5,7 +5,7 @@ import {
 import ReduxThunk from 'redux-thunk';
 // import axios from 'axios';
 
-import appReducer from './appReducer';
+import newsFeedReducer from './newsFeedReducer';
 
 /**
  * Logs all actions and states after they are dispatched.
@@ -25,7 +25,7 @@ const createStoreWithMiddleware = compose(applyMiddleware(ReduxThunk, logger))(
 );
 
 const rootReducer = combineReducers({
-  app: appReducer,
+  newsFeed: newsFeedReducer,
 });
 
 function configureStore(initialState = {}) {

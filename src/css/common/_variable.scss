@@ -1,0 +1,100 @@
+/*=============
+@media variable
+=============*/
+$break-xs: 320px; /*	@meida (max-width:320px) {};	*/
+$break-sm: 767px; /*	@meida (max-width:767px) {};	*/
+$break-md: 991px; /*	@meida (max-width:991px) {};	*/
+$break-lg: 1100px; /*	@meida (min-width:1200px)	{};	*/
+
+/*=============
+Theme Layout
+=============*/
+$layout-lg: 70px; /*	Left Menu should be overlay on body, set value 70px and for offset menu set 315px */
+$layout-sm: 70px; /*	Left Menu Close width is 70px */
+
+$layout-fluid: 180px; /*	Layout full width - default value is 180px,
+																						for remove right space $layout-fluid variable value should be  30px */
+
+$layout-body-fluid: 50px; /* 	Workarea body with left and right space - default value is 50px
+																						you can set left and right space by value like 0px or 10px */
+
+/*====== Colors=========*/
+
+/*====== White Colors=========*/
+$white: #ffffff;
+$cosmic-latte: #f9fef9;
+$light-white: #fafafa;
+$white-smoke: #f5f5f5;
+
+/*====== Black/Grey Colors=========*/
+$charcoal: #4a4a4a;
+$black: #000000;
+$light-grey: #d8d8d8;
+$nero: #282828;
+$nobile-grey: #9b9b9b;
+$dim-grey: #696969;
+$dark-grey: #a5a5a5;
+$zumthor-grey: #cad2d3;
+$shady-grey: #979797;
+$jumbo-grey: #878786;
+
+/*====== Green Colors=========*/
+$apple-green: #4bc04e;
+$granny-apple-green: #95e5b3;
+$mountain-meadow: #1bcb7b;
+$green-teal: #09b466;
+$pigment-green: #01a053;
+$mint-green: #8ee6be;
+$ocean-green: #4cb567;
+$kelley-green: #009d3d;
+
+/*====== Yellow Colors=========*/
+$light-yellow: #f5a623;
+
+/*====== Orange Colors=========*/
+$burnt-orange: #ff6600;
+
+/*====== Blue Colors=========*/
+$blue: #007fff;
+$dodger-blue: #2f88ef;
+$egyptian-blue: #174f93;
+
+/*====== Red Colors=========*/
+$radical-red: #ff495a;
+$coral-red: #ff3041;
+
+/*=============
+	Media Queries
+===============*/
+
+@mixin respond-to($media) {
+  @if ($media == break-xs) {
+    @media (max-width: $break-xs) {
+      @content;
+    }
+  } @else if($media == break-xs-landscape) {
+    @media (max-width: $break-xs + 160px) {
+      @content;
+    } /* Now $break-xs + 160px variable value is  @media (max-width: 480px){}; */
+  } @else if($media == break-sm) {
+    @media (max-width: $break-sm) {
+      @content;
+    }
+  } @else if($media == break-md) {
+    @media (max-width: $break-md) {
+      @content;
+    }
+  } @else if($media == break-md-landscape) {
+    @media (max-width: $break-md + 33px) {
+      @content;
+    } /* Now $break-md + 991px variable value is  @media (max-width: 1024px){}; */
+  } @else if($media == break-md-to-lg) {
+    @media (min-width: $break-md) and (max-width: $break-lg) {
+      @content;
+    }
+  } @else if($media == break-lg) {
+    @media (min-width: $break-lg) {
+      @content;
+    }
+  }
+}

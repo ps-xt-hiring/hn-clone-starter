@@ -1,0 +1,62 @@
+@import 'common/normalize';
+@import 'common/mixin';
+@import 'common/variable';
+* {
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 8px;
+}
+:root {
+  font-size: 14px;
+}
+html {
+  width: 100% !important;
+}
+.commonPadding {
+  @include paddingController(0px, 15px, 0px, 15px);
+}
+.commonBorder {
+  @include border(bottom, 2px, solid, $black);
+}
+.blackBorder {
+  @include border(bottom, 1px, solid, #979797);
+}
+.imgResponsive {
+  width: 100%;
+}
+.floatLeft {
+  float: left;
+}
+.floatRight {
+  float: right;
+}
+.fullHeight {
+  height: 98.5vh;
+}
+.textCenter {
+  text-align: center;
+}
+.styles_modal__gNwvD {
+  padding: 0;
+  border-radius: 8px;
+  max-width: 1000px;
+}
+.errorMsg {
+  color: #ff0000;
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  float: left;
+  width: 100%;
+  text-align: right;
+}
+@media (max-width: 600px) {
+  body {
+    overflow: scroll;
+  }
+}
