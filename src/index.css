@@ -1,11 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: Monaco, Consolas, 'Courier New', monospace;
+  font-family: Verdana, Geneva, sans-serif;
+  background: #f6f6f0;
 }
