@@ -1,5 +1,6 @@
 const initialState = {
   newsList: [],
+  currentPage: 1,
   error: ""
 };
 
@@ -9,11 +10,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         newsList: [...action.payload],
+        currentPage: action.currentPage
       };
     case 'NEWS_FEED_FAILURE':
       return {
         ...state,
         newsList: [],
+        currentPage: 1
       };
     default:
       return state;

@@ -2,6 +2,10 @@
 
 .header {
 	background-color: $burnt-orange;
+	padding: 6px;
+	.headerChild {
+		margin-right: 4px;
+	}
 	.logo {
 		border: 1px #ffffff solid;
 		display: grid;
