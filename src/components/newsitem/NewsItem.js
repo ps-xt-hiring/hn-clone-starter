@@ -5,7 +5,7 @@ const newsitem = function () {
         <article>
             <span>36</span>
             <span>96</span>
-            <img src="" />
+            <img src="https://news.ycombinator.com/grayarrow.gif" alt="Arrow Icon"/>
             <span>Seemingly impossible Swift Programs</span>
             (<a href="#">fewbutripe.com</a>)
             <span> by </span>
