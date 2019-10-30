@@ -1,11 +1,39 @@
 import React from 'react';
+import fetch from 'isomorphic-unfetch';
+import PropTypes from 'prop-types';
+import Loader from '../components/loader/Loader';
 import App from '../App';
-// import avatar from '../public/logo.gif';
-import { useRouter } from 'next/router';    
 
-function ServerApp() {
-  const router = useRouter();
-  return <App page={router.query.p} />;
+function NewsApp(props) {
+  const { page, data } = props;
+  return (
+    <div>
+      <Loader />
+      <App page={page} total={data.length} lists={data} />
+    </div>
+  );
 }
 
-export default ServerApp;
+// eslint-disable-next-line func-names
+NewsApp.getInitialProps = async function ({ query: { page = 0 } }) {
+  const res = await fetch(`https://hn.algolia.com/api/v1/search?tags=front_page&page=${page}`);
+  const data = await res.json();
+
+  return {
+    data: data.hits,
+    page: parseInt(page, 10),
+  };
+};
+
+NewsApp.defaultProps = {
+  data: [],
+  page: 0,
+};
+
+NewsApp.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.array,
+  page: PropTypes.number,
+};
+
+export default NewsApp;

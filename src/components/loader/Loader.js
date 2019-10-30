@@ -1,10 +1,11 @@
 import React from 'react';
 import NProgress from 'nprogress';
-import Router from "next/router";
+import Router from 'next/router';
 import PropTypes from 'prop-types';
 
-/* eslint-disable react/prefer-stateless-function */
 class Loader extends React.Component {
+  timer = null;
+
   static defaultProps = {
     color: '#D65',
     startPosition: 0.3,
@@ -12,25 +13,38 @@ class Loader extends React.Component {
     height: 3,
   };
 
-  timer = null;
+  componentDidMount() {
+    const { options } = this.props;
+
+    if (options) {
+      NProgress.configure(options);
+    }
+
+    Router.events.on('routeChangeStart', this.routeChangeStart);
+    Router.events.on('routeChangeComplete', this.routeChangeEnd);
+    Router.events.on('routeChangeError', this.routeChangeEnd);
+  }
 
   routeChangeStart = () => {
-    NProgress.set(this.props.startPosition);
+    const { startPosition } = this.props;
+    NProgress.set(startPosition);
     NProgress.start();
   };
 
   routeChangeEnd = () => {
     clearTimeout(this.timer);
+    const { stopDelayMs } = this.props;
     this.timer = setTimeout(() => {
       NProgress.done(true);
-    }, this.props.stopDelayMs);
+    }, stopDelayMs);
   };
 
   render() {
     const { color, height } = this.props;
 
     return (
-      <style jsx global>{`
+      <style jsx global>
+        {`
         #nprogress {
           pointer-events: none;
         }
@@ -97,19 +111,9 @@ class Loader extends React.Component {
             transform: rotate(360deg);
           }
         }
-      `}</style>);
-  }
-
-  componentDidMount() {
-    const { options } = this.props;
-
-    if (options) {
-      NProgress.configure(options);
-    }
-
-    Router.events.on('routeChangeStart', this.routeChangeStart);
-    Router.events.on('routeChangeComplete', this.routeChangeEnd);
-    Router.events.on('routeChangeError', this.routeChangeEnd);
+      `}
+      </style>
+    );
   }
 }
 
@@ -117,7 +121,9 @@ Loader.propTypes = {
   color: PropTypes.string,
   startPosition: PropTypes.number,
   stopDelayMs: PropTypes.number,
-  options: PropTypes.object,
+  // eslint-disable-next-line react/require-default-props
+  options: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  height: PropTypes.number,
 };
 
 export default Loader;

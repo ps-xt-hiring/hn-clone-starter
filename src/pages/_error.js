@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import '../assets/error.css';
 
 function Error({ statusCode }) {
@@ -11,12 +12,22 @@ function Error({ statusCode }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 Error.getInitialProps = ({ res, err }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404
-  return { statusCode }
-}
+  // eslint-disable-next-line no-nested-ternary
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+  return { statusCode };
+};
 
-export default Error
+Error.defaultProps = {
+  statusCode: 200,
+};
+
+Error.propTypes = {
+  statusCode: PropTypes.number,
+};
+
+
+export default Error;

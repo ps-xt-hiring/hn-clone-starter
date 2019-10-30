@@ -7,7 +7,7 @@ import './App.css';
 function App(props) {
   return (
     <main>
-    <Layout>
+      <Layout>
         <NewsList {...props} />
       </Layout>
     </main>
