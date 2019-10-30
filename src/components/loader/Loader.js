@@ -1,3 +1,4 @@
+/* eslint-disable react/sort-comp */
 /* eslint-disable react/default-props-match-prop-types */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/no-named-as-default */
@@ -8,7 +9,11 @@ import Router from 'next/router';
 import { PropTypes } from 'prop-types';
 
 class Loader extends React.Component {
-  timer = null;
+
+  constructor(props) {
+    super(props);
+    this.timer = null;
+  }
 
   static defaultProps = {
     color: '#D65',
