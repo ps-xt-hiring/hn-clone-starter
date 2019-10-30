@@ -1,22 +1,3 @@
-/*=============
-@media variable
-=============*/
-$break-xs: 320px; /*	@meida (max-width:320px) {};	*/
-$break-sm: 767px; /*	@meida (max-width:767px) {};	*/
-$break-md: 991px; /*	@meida (max-width:991px) {};	*/
-$break-lg: 1100px; /*	@meida (min-width:1200px)	{};	*/
-
-/*=============
-Theme Layout
-=============*/
-$layout-lg: 70px; /*	Left Menu should be overlay on body, set value 70px and for offset menu set 315px */
-$layout-sm: 70px; /*	Left Menu Close width is 70px */
-
-$layout-fluid: 180px; /*	Layout full width - default value is 180px,
-																						for remove right space $layout-fluid variable value should be  30px */
-
-$layout-body-fluid: 50px; /* 	Workarea body with left and right space - default value is 50px
-																						you can set left and right space by value like 0px or 10px */
 
 /*====== Colors=========*/
 
@@ -63,38 +44,3 @@ $egyptian-blue: #174f93;
 $radical-red: #ff495a;
 $coral-red: #ff3041;
 
-/*=============
-	Media Queries
-===============*/
-
-@mixin respond-to($media) {
-  @if ($media == break-xs) {
-    @media (max-width: $break-xs) {
-      @content;
-    }
-  } @else if($media == break-xs-landscape) {
-    @media (max-width: $break-xs + 160px) {
-      @content;
-    } /* Now $break-xs + 160px variable value is  @media (max-width: 480px){}; */
-  } @else if($media == break-sm) {
-    @media (max-width: $break-sm) {
-      @content;
-    }
-  } @else if($media == break-md) {
-    @media (max-width: $break-md) {
-      @content;
-    }
-  } @else if($media == break-md-landscape) {
-    @media (max-width: $break-md + 33px) {
-      @content;
-    } /* Now $break-md + 991px variable value is  @media (max-width: 1024px){}; */
-  } @else if($media == break-md-to-lg) {
-    @media (min-width: $break-md) and (max-width: $break-lg) {
-      @content;
-    }
-  } @else if($media == break-lg) {
-    @media (min-width: $break-lg) {
-      @content;
-    }
-  }
-}

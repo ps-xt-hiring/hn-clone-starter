@@ -1,5 +1,4 @@
 @import 'common/normalize';
-@import 'common/mixin';
 @import 'common/variable';
 * {
   margin: 0 auto;
@@ -17,15 +16,7 @@ body {
 html {
   width: 100% !important;
 }
-.commonPadding {
-  @include paddingController(0px, 15px, 0px, 15px);
-}
-.commonBorder {
-  @include border(bottom, 2px, solid, $black);
-}
-.blackBorder {
-  @include border(bottom, 1px, solid, #979797);
-}
+
 .imgResponsive {
   width: 100%;
 }
@@ -41,11 +32,7 @@ html {
 .textCenter {
   text-align: center;
 }
-.styles_modal__gNwvD {
-  padding: 0;
-  border-radius: 8px;
-  max-width: 1000px;
-}
+
 .errorMsg {
   color: #ff0000;
   margin-top: 5px;
@@ -55,8 +42,8 @@ html {
   width: 100%;
   text-align: right;
 }
-@media (max-width: 600px) {
-  body {
-    overflow: scroll;
-  }
+
+.pointer {
+  cursor: pointer;
 }
+

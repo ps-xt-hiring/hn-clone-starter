@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import * as moment from 'moment';
-import { getNewsFeed } from '../actions/newsAction';
-import { Container, Grid, Link, Table, TableBody, TableCell, TableRow } from '@material-ui/core/';
+import { Container } from '@material-ui/core/';
 import queryString from 'query-string'
+import { getNewsFeed, toggleVote } from '../actions/newsAction';
+import Header from './header'
+import NewsTable from './newsTable'
 
 class NewsFeed extends React.Component {
 	constructor(props) {
@@ -23,23 +24,19 @@ class NewsFeed extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { newsList, currentPage, history } = this.props;
-    debugger
-    if(newsList !== prevProps.newsList && newsList.length) {
-    	let newsListCopy = []
-    	let currentPageFromLocalStorage = localStorage.getItem(currentPage);
+      if(newsList !== prevProps.newsList && newsList.length) {
+      let newsListCopy = this._checkUpvotedFromLocalStorage(newsList)
+      let currentPageFromLocalStorage = localStorage.getItem(currentPage);
     	if (currentPageFromLocalStorage) {
     		let currentPageArrayFromLocalStorage = JSON.parse(currentPageFromLocalStorage)
-    		newsListCopy = newsList.filter((item) => {
+    		newsListCopy = newsListCopy.filter((item) => {
 	    		if (currentPageArrayFromLocalStorage.indexOf(item.objectID) === -1) {
 	    			return item
 	    		} else {
 	    			return false;
 	    		}
 	    	})
-    	} else {
-    		newsListCopy = newsList
-    	}
-    	
+    	} 
       this.setState({
         newsList: newsListCopy, 
         currentPage
@@ -51,19 +48,25 @@ class NewsFeed extends React.Component {
     }
   }
 
+  _checkUpvotedFromLocalStorage(newsList) {
+    let upVotedId = localStorage.getItem('upVotedId')
+    if(upVotedId) {
+      upVotedId = JSON.parse(upVotedId)
+      return newsList.map((item) => {
+        if(upVotedId.indexOf(item.objectID) !== -1) {
+          item.isVoted = true
+        }
+        return item
+      })
+    } else {
+      return newsList
+    }
+  }
+
   _onBackButtonEvent = (ev) => {
   	ev.preventDefault();
   	this.queryString = queryString.parse(this.props.location.search)
   	this._getNewsFeed();
-  }
-
-  _getDomain = (url) => {
-    if(url) {
-      const urlName = new URL(url);
-      return  urlName.host 
-    } else {
-      return "Unknown"
-    }
   }
 
   _handlePagination = () => {
@@ -105,47 +108,17 @@ class NewsFeed extends React.Component {
   	})
   }
 
+  _handleVote = (item) => {
+    const { toggleVote } = this.props;
+    toggleVote(item);
+  }
+
   render() {
     const { newsList } = this.state
     return (
-     <Container maxWidth="lg">
-        <Grid container xs={12} item className='header' direction="row" alignItems="center">
-          <Grid item className='headerChild'>
-            <Link href="/">
-              <img className='logo' src="https://news.ycombinator.com/y18.gif"  alt="logo"/> 
-            </Link>
-          </Grid>
-          <Grid item className='headerChild'>
-            <b className="white">Top</b>
-          </Grid>
-          <Grid item className='headerChild'>
-            |
-          </Grid>
-          <Grid item className='headerChild'>
-            <b>New</b>
-          </Grid>
-        </Grid>
-        <Table aria-label="news list table" className="newsList">
-        <caption onClick={this._handlePagination}>More</caption>
-        <TableBody>
-          <TableRow className="emptyTableRow"></TableRow>
-          {newsList.map(row => (
-            <TableRow key={row.objectID}>
-              <TableCell size='small' align="center"><b>{row.num_comments ? row.num_comments : 0}</b></TableCell>
-              <TableCell size='small' className='noPadding' width={1}><b>{row.points}</b></TableCell>
-              <TableCell size='small' className='noPadding' width={1}><i className="material-icons grey">arrow_drop_up</i></TableCell>
-              <TableCell size='small' className='noPadding'>
-                <Link href={row.url ? row.url : '/' } className="title">{row.title ? row.title+" " : 'No Title Available '}</Link>
-                <Link href="/" className="grey fs10px">({this._getDomain(row.url)})</Link>
-                <span className="grey fs10px"> by</span>
-                <b className="fs10px"> {row.author} </b>
-                <span className="grey fs10px">{moment(row.created_at).fromNow()}</span>
-                <span className="fs10px"> [ <b onClick={() => this._hideCurrentNews(row)}>hide</b> ]</span>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <Container maxWidth="lg">
+        <Header/>
+        <NewsTable newsList={newsList} handlePagination={this._handlePagination} handleVote={(row) => this._handleVote(row)} hideCurrentNews={(row) => this._hideCurrentNews(row)}/>
       </Container>
     );
   }
@@ -159,6 +132,7 @@ export default withRouter(
     }),
     dispatch => ({
       getNewsFeed: (currentPage) => dispatch(getNewsFeed(currentPage)),
+      toggleVote: (item) => dispatch(toggleVote(item))
     }),
   )(NewsFeed)
 );
