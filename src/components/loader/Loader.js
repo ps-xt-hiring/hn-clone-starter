@@ -11,13 +11,6 @@ import { PropTypes } from 'prop-types';
 
 class Loader extends React.Component {
 
-  static defaultProps = {
-    color: '#D65',
-    startPosition: 0.3,
-    stopDelayMs: 200,
-    height: 3,
-  };
-
   constructor(props) {
     super(props);
     this.timer = null;
@@ -126,6 +119,13 @@ class Loader extends React.Component {
     );
   }
 }
+
+Loader.defaultProps = {
+  color: '#D65',
+  startPosition: 0.3,
+  stopDelayMs: 200,
+  height: 3,
+};
 
 Loader.propTypes = {
   color: PropTypes.string,
