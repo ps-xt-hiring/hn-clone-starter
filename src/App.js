@@ -1,13 +1,17 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import './App.scss';
 import Header from './containers/header/Header';
+import Newsfeed from './containers/newsfeed/Newsfeed';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <p>Body</p>
+      <Switch>
+        <Route path='/' component={Newsfeed} />
+      </Switch>
       <p>pagination</p>
     </div>
   );
