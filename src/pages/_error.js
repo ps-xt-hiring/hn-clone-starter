@@ -1,0 +1,22 @@
+import React from 'react'
+import '../assets/error.css';
+
+function Error({ statusCode }) {
+  return (
+    <div className="main-error">
+      <div>
+        <h1 className="status-code">{statusCode}</h1>
+        <div className="status-code-msg">
+          <h2>This page could not be found.</h2>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+Error.getInitialProps = ({ res, err }) => {
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404
+  return { statusCode }
+}
+
+export default Error

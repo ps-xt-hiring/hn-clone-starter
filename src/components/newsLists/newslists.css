@@ -11,7 +11,7 @@
   }
   .up-arrow {
     position: absolute;
-    right: 42px;
+    right: 22px;
     top: 9px;
     width: 0; 
     height: 0; 
@@ -69,14 +69,19 @@
     font-weight: unset;
   }
 
+  .list-loader .title:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
   .list-container a, .list-container a:hover {
     color: black;
     text-decoration: none;
   }
   @media (max-width: 767px) {
     .up-arrow {
-      right: -8px;
-      top: -2px;
+      right: 26px;
+      top: 51px;
     }
 
     header nav {
@@ -87,6 +92,13 @@
       padding: 10px;
     }
 
+    .no-padding {
+      padding-left: 0px!important;
+      padding-right: 0px!important;
+    }
 
+    .list-container .list {
+      min-height: 88px;
+    }
   }
   
