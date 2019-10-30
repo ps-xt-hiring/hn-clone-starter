@@ -1,7 +1,7 @@
 import React from 'react';
 import NProgress from 'nprogress';
 import Router from 'next/router';
-import PropTypes from 'prop-types';
+import { PropTypes } from 'prop-types';
 
 class Loader extends React.Component {
   timer = null;
