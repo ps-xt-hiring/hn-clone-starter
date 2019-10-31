@@ -1,0 +1,11 @@
+@import "../../../sass/abstract/variables";
+.Button {
+    background-color: transparent;
+    border: none;
+    color: $header-bg-color;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: .1rem 15%;
+    font-size: 1.1rem;
+}

@@ -12,7 +12,6 @@ function App() {
       <Switch>
         <Route path='/' component={Newsfeed} />
       </Switch>
-      <p>pagination</p>
     </div>
   );
 }
