@@ -11,13 +11,12 @@ const getColor = (comments) => {
     return 'burntOrange';
   }
   if (comments >= 500 && comments < 1000) {
-  	return 'grey';
-  } if (comments >= 1000) {
+    return 'grey';
+  }
+  if (comments >= 1000) {
     return 'radicalRed';
   }
+  return 'grey';
 };
 
-export {
-  getDomain,
-  getColor,
-};
+export { getDomain, getColor };

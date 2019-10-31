@@ -1,3 +1,5 @@
+/* eslint no-param-reassign: ["error", { "props": false }] */
+
 const initialState = {
   newsList: [],
   currentPage: 1,
@@ -20,10 +22,12 @@ export default (state = initialState, action) => {
         currentPage: 1,
       };
 
-    case 'Toggle_Vote':
+    case 'Toggle_Vote': {
       let upVotedIdArray = [];
       const upVotedId = localStorage.getItem('upVotedId');
-      if (upVotedId) { upVotedIdArray = JSON.parse(upVotedId); }
+      if (upVotedId) {
+        upVotedIdArray = JSON.parse(upVotedId);
+      }
       const newsList = state.newsList.map((item) => {
         if (item.objectID === action.payload.objectID) {
           if (item.isVoted) {
@@ -37,13 +41,12 @@ export default (state = initialState, action) => {
         return item;
       });
 
-
       localStorage.setItem('upVotedId', JSON.stringify(upVotedIdArray));
       return {
         ...state,
         newsList: [...newsList],
       };
-
+    }
     default:
       return state;
   }

@@ -32,11 +32,8 @@ export default (function () {
     options.baseURL = 'http://hn.algolia.com/api/v1';
 
     return axios(options)
-      .then(
-        (response) => response,
-        (error) => error.response,
-      )
-      .catch((error) => error.response);
+      .then(response => response, error => error.response)
+      .catch(error => error.response);
   };
 
   ['get', 'put', 'post', 'delete'].forEach((method) => {
