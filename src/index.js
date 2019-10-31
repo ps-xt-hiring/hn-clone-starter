@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Loadable from 'react-loadable';
 import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import './index.scss';
@@ -7,14 +8,29 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { store } from './store/configureStore';
 
-ReactDOM.render(
-  <BrowserRouter>
+function AppBundle() {
+  React.useEffect(() => {
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentNode.removeChild(jssStyles);
+    }
+  }, []);
+
+  return (
     <ReduxProvider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ReduxProvider>
-  </BrowserRouter>,
-  document.getElementById('root'),
-);
+  );
+}
+
+window.onload = () => {
+  Loadable.preloadReady().then(() => {
+    const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+    renderMethod(<AppBundle />, document.getElementById('root'));
+  });
+};
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

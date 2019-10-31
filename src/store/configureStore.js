@@ -32,6 +32,8 @@ function configureStore(initialState = {}) {
   return createStoreWithMiddleware(rootReducer, initialState);
 }
 
-const store = configureStore({});
+const store = module.hot
+  ? configureStore(window.__REDUX_STATE__ || {})
+  : configureStore({});
 
 export { configureStore, store };
