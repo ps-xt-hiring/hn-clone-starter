@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import './css/newsFeed.scss';
 import NewsFeed from './components/newsFeed';
 import NotFound from './components/notFound';
-// import ErrorBoundary from './errorBoundary';
 
 const App = () => (
   <Switch>
