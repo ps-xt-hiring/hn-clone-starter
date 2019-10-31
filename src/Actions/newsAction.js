@@ -1,7 +1,7 @@
-import ajax from '../functions/ajax';
+import axios from 'axios';
 
-export const getNewsFeedAction = currentPage => dispatch => ajax
-  .get(`/search?page=${currentPage}`)
+export const getNewsFeedAction = currentPage => dispatch => axios
+  .get(`http://hn.algolia.com/api/v1/search?page=${currentPage}`)
   .then((response) => {
     if (
       response.status === 200
