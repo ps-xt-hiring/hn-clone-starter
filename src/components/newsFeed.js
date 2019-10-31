@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import { Container } from '@material-ui/core/';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
-import { getNewsFeedAction, toggleVoteAction } from '../actions/newsAction';
+import { getNewsFeedAction, toggleVoteAction } from '../Actions/newsAction';
 import Header from './header';
 import NewsTable from './newsTable';
 

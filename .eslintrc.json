@@ -11,5 +11,12 @@
   },
   "parserOptions": {
     "allowImportExportEverywhere": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
   }
 }
