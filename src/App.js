@@ -5,7 +5,7 @@ import NewsFeed from './components/newsFeed';
 import NotFound from './components/notFound';
 import ErrorBoundary from './errorBoundary';
 
-const App = () =>
+const App = () => (
 	<ErrorBoundary>
 	  <Switch>
 	    <Route path="/" exact component={NewsFeed} />
@@ -13,6 +13,8 @@ const App = () =>
 	    <Route path="*" render={NotFound} />
 	  </Switch>
   </ErrorBoundary>
+)
+	
 
 
 export default App

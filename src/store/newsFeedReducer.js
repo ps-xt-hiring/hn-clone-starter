@@ -1,7 +1,7 @@
 const initialState = {
   newsList: [],
   currentPage: 1,
-  error: ""
+  error: '',
 };
 
 export default (state = initialState, action) => {
@@ -10,39 +10,38 @@ export default (state = initialState, action) => {
       return {
         ...state,
         newsList: [...action.payload],
-        currentPage: action.currentPage
+        currentPage: action.currentPage,
       };
 
     case 'NEWS_FEED_FAILURE':
       return {
         ...state,
         newsList: [],
-        currentPage: 1
+        currentPage: 1,
       };
 
-    case 'Toggle_Vote': 
-      let upVotedIdArray = []
-      let upVotedId = localStorage.getItem('upVotedId')
-      if(upVotedId)
-        upVotedIdArray = JSON.parse(upVotedId)
-      let newsList = state.newsList.map((item) => {
+    case 'Toggle_Vote':
+      let upVotedIdArray = [];
+      const upVotedId = localStorage.getItem('upVotedId');
+      if (upVotedId) { upVotedIdArray = JSON.parse(upVotedId); }
+      const newsList = state.newsList.map((item) => {
         if (item.objectID === action.payload.objectID) {
-          if(item.isVoted) {
+          if (item.isVoted) {
             upVotedIdArray.splice(upVotedIdArray.indexOf(item.objectID), 1);
-            delete item.isVoted
+            delete item.isVoted;
           } else {
-            upVotedIdArray.push(action.payload.objectID) 
+            upVotedIdArray.push(action.payload.objectID);
             item.isVoted = true;
           }
         }
         return item;
-      }) 
-      
-       
-      localStorage.setItem('upVotedId', JSON.stringify(upVotedIdArray))
+      });
+
+
+      localStorage.setItem('upVotedId', JSON.stringify(upVotedIdArray));
       return {
         ...state,
-        newsList: [...newsList]
+        newsList: [...newsList],
       };
 
     default:

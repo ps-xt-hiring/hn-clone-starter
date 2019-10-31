@@ -10,7 +10,7 @@ import newsFeedReducer from './newsFeedReducer';
 /**
  * Logs all actions and states after they are dispatched.
  */
-const logger = store => next => (action) => {
+const logger = (store) => (next) => (action) => {
   console.group(action.type);
   console.info('dispatching', action);
   const result = next(action);
@@ -36,4 +36,4 @@ const store = module.hot
   ? configureStore(window.__REDUX_STATE__ || {})
   : configureStore({});
 
-export { configureStore, store }
+export { configureStore, store };

@@ -33,16 +33,10 @@ export default (function () {
 
     return axios(options)
       .then(
-        (response) => {
-          return response;
-        },
-        (error) => {
-          return error.response;
-        },
+        (response) => response,
+        (error) => error.response,
       )
-      .catch((error) => {
-        return error.response;
-      });
+      .catch((error) => error.response);
   };
 
   ['get', 'put', 'post', 'delete'].forEach((method) => {
