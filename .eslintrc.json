@@ -9,6 +9,6 @@
     "react/jsx-filename-extension": "off"
   },
   "parserOptions": {
-    "allowImportExportEverywhere": false
+    "allowImportExportEverywhere": true
   }
 }
