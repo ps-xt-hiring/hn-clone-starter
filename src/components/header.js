@@ -6,7 +6,7 @@ const Header = () => {
   	<Grid container xs={12} item className='header' direction="row" alignItems="center">
 	    <Grid item className='headerChild'>
 	      <Link href="/">
-	        <img className='logo' src="https://news.ycombinator.com/y18.gif"  alt="logo"/> 
+	        <img className='logo' src="https://news.ycombinator.com/y18.gif"  alt="hacker news logo"/> 
 	      </Link>
 	    </Grid>
 	    <Grid item className='headerChild'>
