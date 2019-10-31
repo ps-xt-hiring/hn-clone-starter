@@ -4,7 +4,8 @@ const button = (props) => {
     return (
         <button className={[Classes.Button, Classes[props.buttonType]].join(' ')}
             onClick={props.clicked}
-            disabled={props.disabled}>
+            disabled={props.disabled}
+            hidden={props.show}>
             {props.children}
         </button >
     )
