@@ -29,7 +29,7 @@ export default (function () {
     options.method = method;
     options.timeout = 300000;
     options.url = url;
-    options.baseURL = 'http://hn.algolia.com/api/v1';
+    options.baseURL = 'https://hn.algolia.com/api/v1';
 
     return axios(options)
       .then(response => response, error => error.response)
