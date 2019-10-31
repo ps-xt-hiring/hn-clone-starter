@@ -7,5 +7,8 @@
   },
   "rules": {
     "react/jsx-filename-extension": "off"
+  },
+  "parserOptions": {
+    "allowImportExportEverywhere": false
   }
 }
