@@ -14,21 +14,24 @@ class App extends React.Component {
   }
 
   incrementPageNumber = () => {
-    let temp = this.state.pageNo;
-    temp++;
+    const { pageNo } = this.state;
+    let temp = pageNo;
+    temp += 1;
     this.setState({ pageNo: temp });
   }
 
   changeTag = () => {
-    const temp = (this.state.tag === 'story' ? 'front_page' : 'story');
+    const { tag } = this.state;
+    const temp = (tag === 'story' ? 'front_page' : 'story');
     this.setState({ tag: temp, pageNo: 0 });
   }
 
   render() {
+    const { tag, pageNo } = this.state;
     return (
       <div className="App">
         <Header changeTag={this.changeTag} />
-        <ContentTable tab={this.state.tag} pageNumber={this.state.pageNo} />
+        <ContentTable tab={tag} pageNumber={pageNo} />
         <Footer changePage={this.incrementPageNumber} />
       </div>
     );

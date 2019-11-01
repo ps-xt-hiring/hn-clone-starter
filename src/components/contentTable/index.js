@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ContentTable.css';
 import CommentCount from './commentCount';
 import UpvotesCount from './upvotesCount';
@@ -24,14 +25,16 @@ class ContentTable extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.pageNumber !== prevProps.pageNumber || this.props.tab !== prevProps.tab) {
-      this.setState({ waitingText: 'Loading...' });
+    const { pageNumber, tab } = this.props;
+    if (pageNumber !== prevProps.pageNumber || tab !== prevProps.tab) {
       this.dataFetch();
     }
   }
 
   dataFetch = () => {
-    fetch(`https://hn.algolia.com/api/v1/search?tags=${this.props.tab}&page=${this.props.pageNumber}&hitsPerPage=30`, {
+    this.setState({ waitingText: 'Loading...' });
+    const { pageNumber, tab } = this.props;
+    fetch(`https://hn.algolia.com/api/v1/search?tags=${tab}&page=${pageNumber}&hitsPerPage=30`, {
       method: 'get',
     })
       .then(
@@ -51,10 +54,11 @@ class ContentTable extends React.Component {
   };
 
   voteup = (objectID) => {
-    for (const i in this.state.data) {
-      if (objectID === this.state.data[i].objectID) {
-        const temp = [...this.state.data];
-        temp[i].points++;
+    const { data } = this.state;
+    for (let i = 0; i < data.length; i += 1) {
+      if (objectID === data[i].objectID) {
+        const temp = [...data];
+        temp[i].points += 1;
         this.setState({ data: temp });
         break;
       }
@@ -62,9 +66,10 @@ class ContentTable extends React.Component {
   }
 
   hideRow = (objectID) => {
-    for (const i in this.state.data) {
-      if (objectID === this.state.data[i].objectID) {
-        const temp = [...this.state.data];
+    const { data } = this.state;
+    for (let i = 0; i < data.length; i += 1) {
+      if (objectID === data[i].objectID) {
+        const temp = [...data];
         temp.splice(i, 1);
         this.setState({ data: temp });
         break;
@@ -73,9 +78,10 @@ class ContentTable extends React.Component {
   }
 
   render() {
-    const rowData = (this.state.data.length === 0
-      ? <h2>{this.state.waitingText}</h2>
-      : this.state.data.map(val => (
+    const { waitingText, data } = this.state;
+    const rowData = (data.length === 0
+      ? <h2>{waitingText}</h2>
+      : data.map(val => (
         <div className="row-layout" key={val.objectID}>
           <CommentCount count={val.num_comments} />
           <UpvotesCount upvotesCount={val.points} />
@@ -92,5 +98,10 @@ class ContentTable extends React.Component {
     );
   }
 }
+
+ContentTable.propTypes = {
+  pageNumber: PropTypes.number.isRequired,
+  tab: PropTypes.string.isRequired,
+};
 
 export default ContentTable;

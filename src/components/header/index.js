@@ -1,23 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Header.css';
 import logo from '../../logo.gif';
 
-const NavContent = (props) => {
-  const navContent = props.data.map((content, index) => {
-    if (content !== ' | ') {
+const NavContent = ({ hasSelected, changePage, data }) => {
+  const navContent = data.map((item) => {
+    if (item.content !== ' | ') {
       return (
         <span
-          key={index}
+          key={item.id}
           role="button"
           tabIndex={0}
-          className={(props.hasSelected === content ? 'selected' : '')}
-          onClick={props.changePage}
-          onKeyPress={props.changePage}
+          className={(hasSelected === item.content ? 'selected' : '')}
+          onClick={changePage}
+          onKeyPress={changePage}
         >
-          {content}
+          {item.content}
         </span>);
     }
-    return content;
+    return item.content;
   });
   return (
     navContent
@@ -33,24 +34,30 @@ class Header extends React.Component {
   }
 
   changePage = (e) => {
+    const { changeTag } = this.props;
     this.setState({ hasSelected: e.target.innerText });
-    this.props.changeTag();
+    changeTag();
   };
 
   render() {
+    const { hasSelected } = this.state;
     return (
       <header className="header-layout">
         <img src={logo} alt="logo" className="logo" />
         <nav>
           <NavContent
-            data={['top', ' | ', 'new']}
+            data={[{ id: 1, content: 'top' }, { id: 2, content: ' | ' }, { id: 3, content: 'new' }]}
             changePage={this.changePage}
-            hasSelected={this.state.hasSelected}
+            hasSelected={hasSelected}
           />
         </nav>
       </header>
     );
   }
 }
+
+Header.propTypes = {
+  changeTag: PropTypes.func.isRequired,
+};
 
 export default Header;
