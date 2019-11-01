@@ -68,7 +68,8 @@ const newsitem = (props) => {
           </span>
           <span className={Classes.newsfeed__article_box3}>
             <span className={Classes.newsfeed__article_box3_title}>
-              {item.title}&nbsp;
+              {item.title}
+              &nbsp;
             </span>
             (
             <a href={item.url}>{getHostName(item.url)}</a>
