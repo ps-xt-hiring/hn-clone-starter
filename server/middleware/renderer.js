@@ -8,8 +8,14 @@ import { ServerStyleSheets } from '@material-ui/styles';
 // import our main App component
 import App from '../../src/App';
 
+const path = require('path');
+const fs = require('fs');
+
 // import the manifest generated with the create-react-app build
-import manifest from '../../build/asset-manifest.json';
+// import manifest from '../../build/asset-manifest.json';
+const manifestFile = path.resolve(__dirname, '..', '..', 'build', 'asset-manifest.json');
+var manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+
 // function to extract js assets from the manifest
 const extractAssets = (assets, chunks) => Object.keys(assets)
   .filter(asset => chunks.indexOf(asset.replace('.js', '')) > -1)
@@ -18,9 +24,6 @@ const extractAssets = (assets, chunks) => Object.keys(assets)
 const extractAssetsCss = (assets, chunks) => Object.keys(assets)
   .filter(asset => chunks.indexOf(asset.replace('.css', '')) > -1)
   .map(k => assets[k]);
-
-const path = require('path');
-const fs = require('fs');
 
 export default store => (req, res) => {
   // get the html file created with the create-react-app build
