@@ -1,0 +1,21 @@
+.row-layout .upvotes-count {
+    width: 5%;
+    text-align: right;
+}
+.color-50-lesser{
+    color: rgb(0, 0, 0);
+}
+.color-50 {
+    color: rgb(91, 30, 0);
+}
+.color-75 {
+    color: rgb(182, 60, 0);
+}
+.color-100-plus {
+    color: rgb(255, 89, 0);
+}
+@media only screen and (max-width: 600px) {
+  .row-layout .upvotes-count {
+    width: 10%;
+  }
+}

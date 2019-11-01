@@ -1,0 +1,9 @@
+.row-layout .comments-count {
+    width: 5%;
+    text-align: right;
+}
+@media only screen and (max-width: 600px) {
+  .row-layout .comments-count {
+    width: 10%;
+  }
+}
