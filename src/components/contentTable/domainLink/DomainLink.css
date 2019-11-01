@@ -4,11 +4,11 @@
   white-space: pre;
 }
 
-.row-layout .link-domain::before{
+.row-layout .link-domain::before {
   content: ' ';
 }
 
-.row-layout .link-domain::after{
+.row-layout .link-domain::after {
   content: ' by ';
   color: rgb(176, 180, 184);
 }
