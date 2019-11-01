@@ -45,7 +45,10 @@ const newsitem = (props) => {
         styleCls.push(Classes.grey_bg_color);
       }
       return (
-        <article className={styleCls.join(' ')} key={item.objectID}>
+        <article
+          className={styleCls.join(' ')}
+          key={item.objectID}
+        >
           <span className={Classes.newsfeed__article_box1}>
             {item.num_comments || '-'}
           </span>
