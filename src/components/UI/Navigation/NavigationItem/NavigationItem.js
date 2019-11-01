@@ -6,6 +6,7 @@ import Classes from './NavigationItem.module.scss';
 
 const navigationItem = (props) => {
   const { link, exact, children } = props;
+
   return (
     <li className={Classes.header__NavigationItem}>
       <NavLink
@@ -20,9 +21,9 @@ const navigationItem = (props) => {
 };
 
 navigationItem.propTypes = {
-  link: PropTypes.string,
+  link: PropTypes.string.isRequired,
   exact: PropTypes.bool,
-  children: PropTypes.string,
+  children: PropTypes.string.isRequired,
 };
 
 export default navigationItem;
