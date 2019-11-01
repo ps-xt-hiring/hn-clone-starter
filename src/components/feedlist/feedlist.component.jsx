@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './feedlist.styles.scss';
 import { Row, Col } from 'reactstrap';
 import Feed from '../feed/feed.component';
+import './feedlist.styles.scss';
 
 const FeedList = () => {
   const [data, setData] = useState({ hits: [] });
@@ -13,7 +13,7 @@ const FeedList = () => {
     const fetchData = async () => {
       setIsLoading(true);
       const result = await axios(
-        `https://hn.algolia.com/api/v1/search?tags=front_page&page=${pageNum}`,
+        `https://hn.algolia.com/api/v1/search?tags=front_page&page=${pageNum}`
       );
 
       setData(result.data);
@@ -30,19 +30,13 @@ const FeedList = () => {
             <div>...Loading </div>
           ) : (
             data.hits.length > 0 &&
-            data.hits.map(feed => (
-              <Feed key={feed.objectID} {...feed} />
-            ))
+            data.hits.map(feed => <Feed key={feed.objectID} {...feed} />)
           )}
         </Col>
       </Row>
       <Row>
         <Col xs={12} className="more">
-          <a
-            href="#"
-            onClick={() => setPageNum(pageNum + 1)}
-            title="load more"
-          >
+          <a href="#" onClick={() => setPageNum(pageNum + 1)} title="load more">
             Load More
           </a>
         </Col>

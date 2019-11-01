@@ -1,8 +1,7 @@
 import React from 'react';
-import './header.styles.scss';
-import { ReactComponent as Logo } from '../../assets/logo.svg';
-
 import { Row, Col } from 'reactstrap';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
+import './header.styles.scss';
 
 const HeaderComponent = () => (
   <Row className="header-comp p-1">

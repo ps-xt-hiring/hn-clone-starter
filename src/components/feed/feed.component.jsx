@@ -3,14 +3,7 @@ import { Row, Col } from 'reactstrap';
 import { ReactComponent as Arrowup } from '../../assets/arrow.svg';
 import './feed.styles.scss';
 
-const Feed = ({
-  title,
-  points,
-  author,
-  created_at,
-  url,
-  objectID,
-}) => {
+const Feed = ({ title, points, author, created_at, url, objectID }) => {
   const [count, setCount] = useState(0);
   const [hide, setHide] = useState(false);
 
@@ -18,14 +11,13 @@ const Feed = ({
     let storedValue = sessionStorage.getItem(`count-${objectID}`);
     let setValifNotDefined = storedValue === null ? 0 : storedValue;
     setCount(parseInt(setValifNotDefined));
-  }, [count]);
+  }, [count, objectID]);
 
   useEffect(() => {
-    let checkIfHidden =
-      sessionStorage.getItem('objectID') === objectID;
+    let checkIfHidden = sessionStorage.getItem('objectID') === objectID;
     let parseHidden = checkIfHidden === null ? false : checkIfHidden;
     setHide(parseHidden);
-  });
+  }, [objectID]);
 
   const hideLine = () => {
     setHide(true);
@@ -53,8 +45,7 @@ const Feed = ({
             </span>
           </Col>
           <Col xs={9}>
-            {title} (<a href={url}>{url}</a>) by {author} {created_at}{' '}
-            hours ago{' '}
+            {title} (<a href={url}>{url}</a>) by {author} {created_at} hours ago{' '}
             <span className="hideline" onClick={hideLine}>
               [hide]
             </span>
