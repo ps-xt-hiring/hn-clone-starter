@@ -10,9 +10,9 @@ import { store } from './store/configureStore';
 
 function AppBundle() {
   React.useEffect(() => {
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles) {
-      jssStyles.parentNode.removeChild(jssStyles);
+    const cssStyles = document.querySelector('#css-server-side');
+    if (cssStyles) {
+      cssStyles.parentNode.removeChild(cssStyles);
     }
   }, []);
 

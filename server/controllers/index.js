@@ -2,17 +2,20 @@ import express from "express";
 
 import serverRenderer from "../middleware/renderer";
 import { configureStore } from "../../src/store/configureStore";
-//import { setAsyncMessage } from '../../src/Actions/appAction';
+import { getNewsFeedAction } from "../../src/Actions/newsAction";
 
 const router = express.Router();
 const path = require("path");
 
 const actionIndex = (req, res, next) => {
+  let currentPage = 1;
+  if (Object.keys(req.query).length && req.query.p) {
+    currentPage = Number.isNaN(Number(req.query.p)) ? 1 : Number(req.query.p);
+  }
   const store = configureStore();
-
-  serverRenderer(store)(req, res, next);
-  // store.dispatch(setAsyncMessage("Hi, I'm from server!")).then(() => {
-  // });
+  store.dispatch(getNewsFeedAction(currentPage)).then(() => {
+    serverRenderer(store)(req, res, next);
+  });
 };
 
 // root (/) should always serve our server rendered page

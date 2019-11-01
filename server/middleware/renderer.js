@@ -73,8 +73,8 @@ export default store => (req, res, next) => {
         // write the React app
         .replace('<div id="root"></div>', `<div id="root">${html}</div>`)
         .replace(
-          '<style id="jss-server-side"></style>',
-          `<style id="jss-server-side">${css}</style>`
+          '<style id="css-server-side"></style>',
+          `<style id="css-server-side">${css}</style>`
         )
         // write the string version of our state
         .replace("__REDUX_STATE__={}", `__REDUX_STATE__=${reduxState}`)
