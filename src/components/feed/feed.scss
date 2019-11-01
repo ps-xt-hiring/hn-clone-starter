@@ -1,0 +1,15 @@
+@import '../../styles/theme.scss';
+
+.feed {
+    padding-block: 2rem;
+    font-size: 120%;
+    line-height: 145%;
+
+    &__more {
+        width: 88%;
+        float: right;
+        text-align: left;
+        padding: 1rem;
+        color: $orangeColor;
+    }
+}

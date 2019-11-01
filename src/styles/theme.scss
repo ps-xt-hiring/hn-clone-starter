@@ -1,0 +1,73 @@
+$orangeColor : #ff6a00;
+$logoBorderColor: #ffffff;
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+*:focus {
+    outline: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #ffffff;
+    color: #555555;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+.clearfix {zoom: 1}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.row {
+    max-width: 102.4rem;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn-empty {
+    border: none;
+    background-color: transparent;
+}
+
+/* shades */
+
+.lightest {
+    color: darken($color: $orangeColor, $amount: 0);
+}
+
+.lighter {
+    color: darken($color: $orangeColor , $amount: 10%);
+}
+
+.light {
+    color: darken($color: $orangeColor , $amount: 20%);
+}
+
+.normal {
+    color: darken($color: $orangeColor , $amount: 30%);
+}
+
+.dark {
+    color: darken($color: $orangeColor , $amount: 100%);
+}
