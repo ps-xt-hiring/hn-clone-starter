@@ -8,11 +8,11 @@ import { store } from './store/configureStore';
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
-    <BrowserRouter>
-      <ReduxProvider store={store}>
+    <ReduxProvider store={store}>
+      <BrowserRouter>
         <App />
-      </ReduxProvider>
-    </BrowserRouter>,
+      </BrowserRouter>
+    </ReduxProvider>,
     div,
   );
   ReactDOM.unmountComponentAtNode(div);
