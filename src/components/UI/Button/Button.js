@@ -8,7 +8,7 @@ const button = (props) => {
     clicked,
     disabled,
     show,
-    children
+    children,
   } = props;
 
   return (

@@ -68,7 +68,7 @@ const newsitem = (props) => {
           </span>
           <span className={Classes.newsfeed__article_box3}>
             <span className={Classes.newsfeed__article_box3_title}>
-              {item.title + ' '}
+              {item.title}&nbsp;
             </span>
             (
             <a href={item.url}>{getHostName(item.url)}</a>
@@ -81,7 +81,8 @@ const newsitem = (props) => {
               </a>
               &nbsp;
             </span>
-            {getTimeDifference(item.created_at) + ' '}
+            {getTimeDifference(item.created_at)}
+            &nbsp;
             [
             <span className={Classes.newsfeed__article_box3_hide}>
               <a
