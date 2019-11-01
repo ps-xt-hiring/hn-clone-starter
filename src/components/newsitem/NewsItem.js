@@ -71,7 +71,7 @@ const newsitem = (props) => {
               {item.title + ' '}
             </span>
             (
-              <a href={item.url}>{getHostName(item.url)}</a>
+            <a href={item.url}>{getHostName(item.url)}</a>
             ) by&nbsp;
             <span className={Classes.newsfeed__article_box3_author}>
               <a
@@ -83,7 +83,7 @@ const newsitem = (props) => {
             </span>
             {getTimeDifference(item.created_at) + ' '}
             [
-              <span className={Classes.newsfeed__article_box3_hide}>
+            <span className={Classes.newsfeed__article_box3_hide}>
               <a
                 hidden={!item.num_comments}
                 href="#/"

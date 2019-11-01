@@ -14,4 +14,4 @@ export const NORMAL_THRESHOLD = 75;
 export const LIGHT_THRESHOLD = 100;
 export const LIGHTER_THRESHOLD = 150;
 
-export const GET_HOUR_STRING = (difference) => (difference > 1) ? HOURS_STRING : HOUR_STRING;
+export const GET_HOUR_STRING = difference => ((difference > 1) ? HOURS_STRING : HOUR_STRING);

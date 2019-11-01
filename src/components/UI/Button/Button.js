@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import Classes from './Button.module.scss';
 
 const button = (props) => {
-  const { clicked, disabled, show, children } = props;
+  const {
+    clicked,
+    disabled,
+    show,
+    children
+  } = props;
 
   return (
     <button
@@ -19,10 +24,15 @@ const button = (props) => {
   );
 };
 
+button.defaultProps = {
+  disabled: false,
+  show: false,
+};
+
 button.propTypes = {
   clicked: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
-  hidden: PropTypes.bool,
+  show: PropTypes.bool,
   children: PropTypes.string.isRequired,
 };
 

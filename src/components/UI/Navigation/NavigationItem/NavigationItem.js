@@ -17,7 +17,11 @@ const navigationItem = (props) => {
         {children}
       </NavLink>
     </li>
-  )
+  );
+};
+
+navigationItem.defaultProps = {
+  exact: undefined,
 };
 
 navigationItem.propTypes = {
