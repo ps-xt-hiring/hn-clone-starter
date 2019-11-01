@@ -1,0 +1,18 @@
+.footer-layout {
+  width: 15%;
+  text-align: right;
+}
+
+.footer-btn {
+  border: none;
+  margin: 10px;
+  color: rgb(255, 89, 0);
+  background-color: transparent;
+  font-size: 0.8em;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.footer-btn:focus {
+  outline: none;
+}

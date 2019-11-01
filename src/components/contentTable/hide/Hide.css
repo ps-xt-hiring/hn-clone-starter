@@ -1,0 +1,15 @@
+.hide-button {
+  white-space: pre;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.hide-button::before {
+  content: ' [ ';
+  color: rgb(125, 122, 123);
+}
+
+.hide-button::after {
+  content: ' ] ';
+  color: rgb(125, 122, 123);
+}
