@@ -9,14 +9,17 @@ import Button from '../../components/UI/Button/Button';
 import { localeData, defaultLanguage } from '../../utils/Locale-Data';
 
 class Newsfeed extends Component {
-  state = {
-    newsType: this.props.history.location.pathname,
-    hits: null,
-    totalPages: 0,
-    totalCount: 0,
-    page: 0,
-    error: false,
-    btnHidden: true
+  constructor(props) {
+    super(props);
+    this.state = {
+      newsType: this.props.history.location.pathname,
+      hits: null,
+      totalPages: 0,
+      totalCount: 0,
+      page: 0,
+      error: false,
+      btnHidden: true
+    }
   }
 
   componentDidMount() {

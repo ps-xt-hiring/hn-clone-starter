@@ -6,9 +6,10 @@ const button = props => (
     className={[Classes.Button].join(' ')}
     onClick={props.clicked}
     disabled={props.disabled}
-    hidden={props.show}>
+    hidden={props.show}
+  >
     {props.children}
-  </button >
-  );
+  </button>
+);
 
 export default button;

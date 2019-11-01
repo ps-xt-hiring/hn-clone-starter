@@ -4,7 +4,7 @@ import * as CONSTANTS from '../../utils/Constants';
 import { localeData, defaultLanguage } from '../../utils/Locale-Data';
 import Classes from './NewsItem.module.scss';
 
-const getColorForText = function (points) {
+const getColorForText = (points) => {
   const styleClsBox2 = [Classes.newsfeed__article_box2];
   if (points > CONSTANTS.DARKER_THRESHOLD && points < CONSTANTS.DARK_THRESHOLD) {
     styleClsBox2.push(Classes.points_color_darker);
@@ -18,24 +18,24 @@ const getColorForText = function (points) {
     styleClsBox2.push(Classes.points_color_lighter);
   }
   return styleClsBox2;
-}
+};
 
-const getTimeDifference = function (date) {
+const getTimeDifference = (date) => {
   const timeDifference = Math.abs(new Date() - new Date(date));
   let finalTime = Math.round(timeDifference / 36e5);
   finalTime += CONSTANTS.GET_HOUR_STRING(finalTime);
   return finalTime;
-}
+};
 
-const getHostName = function (urlStr) {
+const getHostName = (urlStr) => {
   let hostName = '-';
   if (urlStr) {
     hostName = new URL(urlStr).host;
   }
   return hostName;
-}
+};
 
-const newsitem = function (props) {
+const newsitem = (props) => {
   let newsElement = (<div>{localeData[defaultLanguage].LOADING_TEXT}</div>);
   const newsArr = props.newsItems;
   if (newsArr) {
@@ -50,15 +50,20 @@ const newsitem = function (props) {
             {item.num_comments || '-'}
           </span>
           <span
-            className={getColorForText(item.points).join(' ')}>
+            className={getColorForText(item.points).join(' ')}
+          >
             <span className={Classes.newsfeed__article_box2_C1}>{item.points}</span>
-            <span className={Classes.newsfeed__article_box2_C2}><a href='#/'
-              hidden={!item.num_comments}
-              onClick={() => props.onClickedUpvote(item.objectID)}>
-              <img
-                src={CONSTANTS.ARROW_IMAGE_SRC}
-                alt={localeData[defaultLanguage].ARROR_ALT_TEXT} />
-            </a></span>
+            <span className={Classes.newsfeed__article_box2_C2}>
+              <a
+                href="#/"
+                hidden={!item.num_comments}
+                onClick={() => props.onClickedUpvote(item.objectID)}
+              >
+                <img
+                  src={CONSTANTS.ARROW_IMAGE_SRC}
+                  alt={localeData[defaultLanguage].ARROR_ALT_TEXT}
+                />
+              </a></span>
           </span>
           <span className={Classes.newsfeed__article_box3}>
             <span className={Classes.newsfeed__article_box3_title}>
@@ -75,11 +80,11 @@ const newsitem = function (props) {
               </a>
 
             </span>]
-                </span>
+          </span>
         </article>);
     });
   }
   return newsElement;
-}
+};
 
 export default newsitem;

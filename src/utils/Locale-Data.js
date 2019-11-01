@@ -6,8 +6,8 @@ export const localeData = {
     HIDE_BUTTON_TEXT: 'hide',
     LOADING_TEXT: 'Loading...',
     TOP_NAVIGATION_TEXT: 'top',
-    NEW_NAVIGATION_TEXT: 'new'
-  }
-}
+    NEW_NAVIGATION_TEXT: 'new',
+  },
+};
 
 export const defaultLanguage = 'en';
