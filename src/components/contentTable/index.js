@@ -41,13 +41,13 @@ class ContentTable extends React.Component {
   componentDidMount() {
     this.dataFetch();
   }
-  
+
   componentDidUpdate(prevProps) {
-    if(this.props.pageNumber !== prevProps.pageNumber || this.props.tab !== prevProps.tab){
-      this.setState({waitingText: 'Loading...'});
+    if (this.props.pageNumber !== prevProps.pageNumber || this.props.tab !== prevProps.tab) {
+      this.setState({ waitingText: 'Loading...' });
       this.dataFetch();
     }
-    
+
   }
   voteup = objectID => {
     for (let i in this.state.data) {
@@ -70,23 +70,23 @@ class ContentTable extends React.Component {
     }
   }
   render() {
-    const rowData = (this.state.data.length ===0 ? 
+    const rowData = (this.state.data.length === 0 ?
       <h2>{this.state.waitingText}</h2>
       :
       this.state.data.map((val, index) => {
-      return (
-        <div className="row-layout" key={index}>
-          <CommentCount count={val.num_comments} />
-          <UpvotesCount upvotesCount={val.points} />
-          <UpvoteAction voteUp={this.voteup} objectID={val.objectID} />
-          <Title label={val.title} />
-          <DomainLink url={val.url} />
-          <Username author={val.author} />
-          <PostTime postTime={val.created_at} />
-          <Hide hideAction={this.hideRow} objectID={val.objectID} />
-        </div>
-      )
-    }))
+        return (
+          <div className="row-layout" key={index}>
+            <CommentCount count={val.num_comments} />
+            <UpvotesCount upvotesCount={val.points} />
+            <UpvoteAction voteUp={this.voteup} objectID={val.objectID} />
+            <Title label={val.title} />
+            <DomainLink url={val.url} />
+            <Username author={val.author} />
+            <PostTime postTime={val.created_at} />
+            <Hide hideAction={this.hideRow} objectID={val.objectID} />
+          </div>
+        )
+      }))
     return (
       rowData
     )
