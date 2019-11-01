@@ -17,16 +17,16 @@ const newsitem = function (props) {
                 <span className={Classes.newsfeed__article_box1}>{item.num_comments || '-'}</span>
                 <span
                     className={getColorForText(item.points).join(' ')}>{item.points}
-                    <img
+                    <a href='#' onClick={() => props.onClickedUpvote(item.objectID)}><img
                         src={CONSTANTS.ARROW_IMAGE_SRC}
-                        alt={locale_Data[defaultLanguage].ARROR_ALT_TEXT} />
+                        alt={locale_Data[defaultLanguage].ARROR_ALT_TEXT} /></a>
                 </span>
                 <span className={Classes.newsfeed__article_box3}>
                     <span className={Classes.newsfeed__article_box3_title}>{item.title + ' '}</span>
                     (<a href={item.url}>{getHostName(item.url)}</a>) by&nbsp;
                     <span className={Classes.newsfeed__article_box3_author}><a href="#">{item.author}</a>&nbsp;</span>
                     {getTimeDifference(item.created_at) + ' '}
-                    [<span className={Classes.newsfeed__article_box3_hide}><a href="#">hide</a></span>]</span>
+                    [<span className={Classes.newsfeed__article_box3_hide}><a href="#" onClick={() => props.onHideClicked(item.objectID)}>hide</a></span>]</span>
             </article>);
         });
     }

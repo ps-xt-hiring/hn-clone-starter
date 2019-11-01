@@ -18,6 +18,7 @@ class Newsfeed extends Component {
         error: false,
         btnHidden: false
     }
+
     componentDidMount() {
         this.getHackerNews(this.getPageNumber());
     }
@@ -75,10 +76,40 @@ class Newsfeed extends Component {
         });
     }
 
+    onClickUpVoteHandler = (objectID) => {
+        let newState = [...this.state.hits];
+        newState.forEach(function (item) {
+            if (item.objectID === objectID) {
+                item.points += 1;
+                return;
+            }
+        });
+        this.setState({
+            hits: newState
+        });
+    }
+
+    onHideButtonHandler = (objectID) => {
+        let newState = [...this.state.hits];
+        let position = -1;
+        newState.forEach(function (item, index) {
+            if (item.objectID === objectID) {
+                position = index;
+                return;
+            }
+        });
+        newState.splice(position, 1);
+        this.setState({
+            hits: newState
+        });
+    }
     render() {
         return (
             <Aux>
-                <Newsitem newsItems={this.state.hits} />
+                <Newsitem
+                    newsItems={this.state.hits}
+                    onClickedUpvote={(objectID) => this.onClickUpVoteHandler(objectID)} 
+                    onHideClicked={(objectID) => this.onHideButtonHandler(objectID)}/>
                 <Button clicked={this.onMoreBtnClicked} show={this.state.btnHidden}>
                     {locale_Data[defaultLanguage].BUTTON_TEXT}
                 </Button>
