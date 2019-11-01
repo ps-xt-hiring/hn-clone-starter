@@ -99,7 +99,8 @@ const newsitem = (props) => {
             </span>
             ]
           </span>
-        </article>);
+        </article>
+      );
     });
   }
   return newsElement;
