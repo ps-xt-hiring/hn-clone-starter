@@ -75,10 +75,12 @@ export default function Feed(props) {
             />
           ))
         }
-        {isMore &&
-          (<button type="button" className="btn-empty feed__more" onClick={loadMore}>
-            {MORE_LABEL}
-          </button>)
+        {isMore
+          && (
+            <button type="button" className="btn-empty feed__more" onClick={loadMore}>
+              {MORE_LABEL}
+            </button>
+          )
         }
       </main>
     );
