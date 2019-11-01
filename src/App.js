@@ -10,33 +10,33 @@ function App() {
   const [isMore, setIsMore] = useState(true);
 
   const sortFeed = (type, list) => {
-    let sortedFeed = [...list];
+    const sortedFeed = [...list];
 
     if (type === HEADER_TOP_LABEL) {
-      sortedFeed.sort((a, b) => parseInt(b.points, 10) - parseInt(a.points, 10))
+      sortedFeed.sort((a, b) => parseInt(b.points, 10) - parseInt(a.points, 10));
     } else {
-      sortedFeed.sort((a, b) => parseInt(b.created_at_i, 10) - parseInt(a.created_at_i, 10))
+      sortedFeed.sort((a, b) => parseInt(b.created_at_i, 10) - parseInt(a.created_at_i, 10));
     }
     setFeed(sortedFeed);
-  }
+  };
 
   const getNews = () => {
-    let url = GET_NEWS_FEED + '&page=' + page;
+    const url = `${GET_NEWS_FEED}&page=${page}`;
     fetch(url)
       .then(res => res.json())
-      .then(res => {
+      .then((res) => {
         let result = res.hits;
         result = result.filter(item => item.title);
         sortFeed(sortType, [...result, ...feed]);
         if (page + 1 === res.nbPages) {
           setIsMore(false);
         }
-      })
-  }
+      });
+  };
 
   const loadMore = () => {
     setPage(page + 1);
-  }
+  };
 
   useEffect(() => {
     sortFeed(sortType, feed);

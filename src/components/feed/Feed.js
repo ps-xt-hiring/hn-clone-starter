@@ -5,19 +5,20 @@ import './feed.scss';
 export default function Feed(props) {
   const [upvotedList, setUpvotedList] = useState([]);
   const [hiddenList, setHiddenList] = useState([]);
+  const { feed, loadMore, isMore } = props;
 
   useEffect(() => {
     localStorage.clear();
-    const upvotedList = JSON.parse(localStorage.getItem('upvotedNewsItems')) || [];
-    const hiddenList = JSON.parse(localStorage.getItem('hiddenNewsItems')) || [];
-    setUpvotedList(upvotedList);
-    setHiddenList(hiddenList);
+    const upvotedListFromLS = JSON.parse(localStorage.getItem('upvotedNewsItems')) || [];
+    const hiddenListFromLS = JSON.parse(localStorage.getItem('hiddenNewsItems')) || [];
+    setUpvotedList(upvotedListFromLS);
+    setHiddenList(hiddenListFromLS);
   }, []);
 
 
   const upvoteNewsItem = (newsItem) => {
-    const newList = [...upvotedList]
-    let index = newList.findIndex(item => item.objectID === newsItem.objectID);
+    const newList = [...upvotedList];
+    const index = newList.findIndex(item => item.objectID === newsItem.objectID);
     if (index >= 0) {
       newList.splice(index, 1);
     } else {
@@ -26,11 +27,11 @@ export default function Feed(props) {
 
     localStorage.setItem('upvotedNewsItems', JSON.stringify(newList));
     setUpvotedList(newList);
-  }
+  };
 
   const hideNewsItem = (newsItem) => {
-    const newList = [...hiddenList]
-    let index = newList.findIndex(item => item.objectID === newsItem.objectID);
+    const newList = [...hiddenList];
+    const index = newList.findIndex(item => item.objectID === newsItem.objectID);
     if (index >= 0) {
       newList.splice(index, 1);
     } else {
@@ -39,31 +40,29 @@ export default function Feed(props) {
 
     localStorage.setItem('hiddenNewsItems', JSON.stringify(newList));
     setHiddenList(newList);
-  }
+  };
 
-  const getType = (newsItem) => {
-    let index = upvotedList ? upvotedList.findIndex(item => item.objectID === newsItem.objectID) : -1;
+  const getType = (post) => {
+    const index = upvotedList ? upvotedList.findIndex(item => item.objectID === post.objectID) : -1;
     if (index >= 0) {
       return '\u25BC';
-    } else {
-      return '\u25B2';
-    }
-  }
+    }      
+    return '\u25B2';
+  };
 
-  const isHidden = (newsItem) => {
-    let index = hiddenList ? hiddenList.findIndex(item => item.objectID === newsItem.objectID) : -1;
+  const isHidden = (post) => {
+    const index = hiddenList ? hiddenList.findIndex(item => item.objectID === post.objectID) : -1;
     if (index >= 0) {
       return false;
-    } else {
-      return true;
     }
-  }
+    return true;
+  };
 
-  if (props.feed.length) {
+  if (feed.length) {
     return (
       <main className="row feed">
-        {props.feed.map((item, index) => {
-          if (isHidden(item)) {
+        {feed.filter(post => isHidden(post))
+          .map((item, index) => {
             return (
               <NewsItem
                 key={item.objectID}
@@ -71,20 +70,18 @@ export default function Feed(props) {
                 order={index}
                 hideNewsItem={hideNewsItem}
                 upvoteNewsItem={upvoteNewsItem}
-                isUpvoted={getType(item)} />
-            )
-          }
-        })}
-        {props.isMore && <button className='btn-empty feed__more' onClick={props.loadMore}>more</button>}
+                isUpvoted={getType(item)} 
+              />
+            );
+          })
+        }
+        {isMore && <button className='btn-empty feed__more' onClick={loadMore}>more</button>}
       </main>
-    )
-  } else {
-    return (
-      <main className="row">
-        <p>Loading...</p>
-      </main>
-    )
+    );
   }
-
-
+  return (
+    <main className="row">
+      <p>Loading...</p>
+    </main>
+  );
 }
