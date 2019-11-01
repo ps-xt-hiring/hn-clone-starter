@@ -1,12 +1,14 @@
 .row-layout .link-domain {
-    color: rgb(125, 122, 123);
-    font-size: .9em;
-    white-space: pre;
+  color: rgb(125, 122, 123);
+  font-size: 0.9em;
+  white-space: pre;
 }
+
 .row-layout .link-domain::before{
-    content: ' ';
+  content: ' ';
 }
+
 .row-layout .link-domain::after{
-    content: ' by ';
-    color: rgb(176, 180, 184);
+  content: ' by ';
+  color: rgb(176, 180, 184);
 }

@@ -2,13 +2,15 @@
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  font-size: .8rem;
+  font-size: 0.8rem;
   padding: 5px;
   align-items: center;
 }
+
 .row-layout:nth-child(odd) {
   background-color: rgb(230, 231, 223);
 }
+
 h2 {
   text-align: center;
 }

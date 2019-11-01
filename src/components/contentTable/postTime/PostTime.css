@@ -1,8 +1,9 @@
 .row-layout .post-time {
-    color: rgb(125, 122, 123);
-    font-size: .9em;
+  color: rgb(125, 122, 123);
+  font-size: 0.9em;
 }
+
 .row-layout .post-time::before {
-    content: " ";
-    white-space: pre;
+  content: " ";
+  white-space: pre;
 }

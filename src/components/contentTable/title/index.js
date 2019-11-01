@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Title.css';
 
-const Title = ({ label }) => <div className="title">{label}</div>
+const Title = ({ label }) => <div>{label}</div>
 
 Title.propTypes = {
   label: PropTypes.string
