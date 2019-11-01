@@ -34,7 +34,7 @@ export default function Feed(props) {
   const hideNewsItem = (newsItem) => {
     const newList = [...hiddenList];
     const itemIndex = newList.findIndex(item => item.objectID === newsItem.objectID);
-    if (index >= 0) {
+    if (itemIndex >= 0) {
       newList.splice(itemIndex, 1);
     } else {
       newList.push(newsItem);
