@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "reactstrap";
 import { ReactComponent as Arrowup } from "../../assets/arrow.svg";
+import "./feed.styles.scss";
 
 const Feed = ({ title, points, author, created_at, url, objectID }) => {
   const [count, setCount] = useState(0);
