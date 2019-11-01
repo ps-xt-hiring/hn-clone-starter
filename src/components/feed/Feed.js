@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import NewsItem from '../newsItem/NewsItem';
+import { MORE_LABEL, LOADING_TEXT } from '../../constants';
 import './feed.scss';
 
 export default function Feed(props) {
@@ -74,13 +75,17 @@ export default function Feed(props) {
             />
           ))
         }
-        {isMore && <button type="button" className="btn-empty feed__more" onClick={loadMore}>more</button>}
+        {isMore && <button type="button" className="btn-empty feed__more" onClick={loadMore}>
+          {MORE_LABEL}
+        </button>}
       </main>
     );
   }
   return (
     <main className="row">
-      <p>Loading...</p>
+      <p>
+        {LOADING_TEXT}
+      </p>
     </main>
   );
 }
