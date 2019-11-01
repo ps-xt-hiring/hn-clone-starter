@@ -1,36 +1,34 @@
-import React from "react";
-import ReactDOMServer from "react-dom/server";
-import Loadable from "react-loadable";
-import { Provider as ReduxProvider } from "react-redux";
-import { StaticRouter } from "react-router";
-import { Helmet } from "react-helmet";
-import { ServerStyleSheets } from "@material-ui/styles";
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import Loadable from 'react-loadable';
+import { Provider as ReduxProvider } from 'react-redux';
+import { StaticRouter } from 'react-router';
+import { Helmet } from 'react-helmet';
+import { ServerStyleSheets } from '@material-ui/styles';
 // import our main App component
-import App from "../../src/App";
+import App from '../../src/App';
 
 // import the manifest generated with the create-react-app build
-import manifest from "../../build/asset-manifest.json";
+import manifest from '../../build/asset-manifest.json';
 // function to extract js assets from the manifest
-const extractAssets = (assets, chunks) =>
-  Object.keys(assets)
-    .filter(asset => chunks.indexOf(asset.replace(".js", "")) > -1)
-    .map(k => assets[k]);
+const extractAssets = (assets, chunks) => Object.keys(assets)
+  .filter(asset => chunks.indexOf(asset.replace('.js', '')) > -1)
+  .map(k => assets[k]);
 
-const extractAssetsCss = (assets, chunks) =>
-  Object.keys(assets)
-    .filter(asset => chunks.indexOf(asset.replace(".css", "")) > -1)
-    .map(k => assets[k]);
+const extractAssetsCss = (assets, chunks) => Object.keys(assets)
+  .filter(asset => chunks.indexOf(asset.replace('.css', '')) > -1)
+  .map(k => assets[k]);
 
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 
-export default store => (req, res, next) => {
+export default store => (req, res) => {
   // get the html file created with the create-react-app build
-  const filePath = path.resolve(__dirname, "..", "..", "build", "index.html");
+  const filePath = path.resolve(__dirname, '..', '..', 'build', 'index.html');
   const sheets = new ServerStyleSheets();
-  fs.readFile(filePath, "utf8", (err, htmlData) => {
+  fs.readFile(filePath, 'utf8', (err, htmlData) => {
     if (err) {
-      console.error("err", err);
+      console.error('err', err);
       return res.status(404).end();
     }
 
@@ -46,8 +44,8 @@ export default store => (req, res, next) => {
               <App />
             </StaticRouter>
           </ReduxProvider>
-        </Loadable.Capture>
-      )
+        </Loadable.Capture>,
+      ),
     );
 
     // get the stringified state
@@ -55,11 +53,11 @@ export default store => (req, res, next) => {
 
     // map required assets to script tags
     const extraChunks = extractAssets(manifest, modules).map(
-      c => `<script type="text/javascript" src="${c}"></script>`
+      c => `<script type="text/javascript" src="${c}"></script>`,
     );
 
     const extraChunksCss = extractAssetsCss(manifest, modules).map(
-      c => `<link rel="stylesheet" href="${c}" />`
+      c => `<link rel="stylesheet" href="${c}" />`,
     );
 
     const css = sheets.toString();
@@ -74,19 +72,19 @@ export default store => (req, res, next) => {
         .replace('<div id="root"></div>', `<div id="root">${html}</div>`)
         .replace(
           '<style id="css-server-side"></style>',
-          `<style id="css-server-side">${css}</style>`
+          `<style id="css-server-side">${css}</style>`,
         )
         // write the string version of our state
-        .replace("__REDUX_STATE__={}", `__REDUX_STATE__=${reduxState}`)
+        .replace('__REDUX_STATE__={}', `__REDUX_STATE__=${reduxState}`)
         // append the extra js assets
-        .replace("</body>", extraChunks.join("") + "</body>")
+        .replace('</body>', `${extraChunks.join('')}</body>`)
 
-        .replace("</head>", extraChunksCss.join("") + "</head>")
+        .replace('</head>', `${extraChunksCss.join('')}</head>`)
         // write the HTML header tags
         .replace(
-          "<title></title>",
-          helmet.title.toString() + helmet.meta.toString()
-        )
+          '<title></title>',
+          helmet.title.toString() + helmet.meta.toString(),
+        ),
     );
   });
 };
