@@ -3,10 +3,15 @@ import { NavLink } from 'react-router-dom';
 
 import Classes from './NavigationItem.module.scss';
 
-const navigationItem = (props) => (
+const navigationItem = props => (
   <li className={Classes.header__NavigationItem}>
-    <NavLink to={props.link} activeClassName={Classes.active} exact={props.exact}>{props.children}</NavLink>
+    <NavLink
+      to={props.link}
+      activeClassName={Classes.active}
+      exact={props.exact}>
+      {props.children}
+    </NavLink>
   </li>
-)
+);
 
 export default navigationItem;

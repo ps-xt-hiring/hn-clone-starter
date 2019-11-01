@@ -6,7 +6,7 @@ import { FRONT_PAGE_NEWS, LATEST_NEWS } from '../../utils/ServiceURL';
 import { LATEST_NEWS_ROUTE, SUCCESS_STATUS, PAGE_SEARCH_PARAM, PAGE_SEARCH_PARAM_REMOTE } from '../../utils/Constants';
 import Aux from '../../hoc/Auxillary';
 import Button from '../../components/UI/Button/Button';
-import { locale_Data, defaultLanguage } from '../../utils/Locale-Data';
+import { localeData, defaultLanguage } from '../../utils/Locale-Data';
 
 class Newsfeed extends Component {
   state = {
@@ -111,7 +111,7 @@ class Newsfeed extends Component {
           onClickedUpvote={(objectID) => this.onClickUpVoteHandler(objectID)}
           onHideClicked={(objectID) => this.onHideButtonHandler(objectID)} />
         <Button clicked={this.onMoreBtnClicked} show={this.state.btnHidden}>
-          {locale_Data[defaultLanguage].BUTTON_TEXT}
+          {localeData[defaultLanguage].BUTTON_TEXT}
         </Button>
       </Aux>
 

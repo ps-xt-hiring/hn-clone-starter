@@ -16,4 +16,4 @@ export const LIGHTER_THRESHOLD = 150;
 
 export const GET_HOUR_STRING = function (difference) {
   return (difference > 1) ? ' ' + HOURS_STRING : ' ' + HOUR_STRING;
-}
+};
