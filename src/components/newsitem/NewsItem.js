@@ -5,7 +5,7 @@ import { locale_Data, defaultLanguage } from '../../utils/Locale-Data';
 import Classes from './NewsItem.module.scss';
 
 const newsitem = function (props) {
-    let newsElement = (<div>Loading...</div>);
+    let newsElement = (<div>{locale_Data[defaultLanguage].LOADING_TEXT}</div>);
     let newsArr = props.newsItems;
     if (newsArr) {
         newsElement = newsArr.map((item, index) => {
@@ -14,19 +14,36 @@ const newsitem = function (props) {
                 styleCls.push(Classes.grey_bg_color)
             }
             return (<article className={styleCls.join(' ')} key={item.created_at_i + index}>
-                <span className={Classes.newsfeed__article_box1}>{item.num_comments || '-'}</span>
+                <span className={Classes.newsfeed__article_box1}>
+                    {item.num_comments || '-'}
+                </span>
                 <span
-                    className={getColorForText(item.points).join(' ')}>{item.points}
-                    <a href='#' onClick={() => props.onClickedUpvote(item.objectID)}><img
-                        src={CONSTANTS.ARROW_IMAGE_SRC}
-                        alt={locale_Data[defaultLanguage].ARROR_ALT_TEXT} /></a>
+                    className={getColorForText(item.points).join(' ')}>
+                    <span className={Classes.newsfeed__article_box2_C1}>{item.points}</span>
+                    <span className={Classes.newsfeed__article_box2_C2}><a href='#/'
+                        hidden={!item.num_comments}
+                        onClick={() => props.onClickedUpvote(item.objectID)}>
+                        <img
+                            src={CONSTANTS.ARROW_IMAGE_SRC}
+                            alt={locale_Data[defaultLanguage].ARROR_ALT_TEXT} />
+                    </a></span>
                 </span>
                 <span className={Classes.newsfeed__article_box3}>
-                    <span className={Classes.newsfeed__article_box3_title}>{item.title + ' '}</span>
+                    <span className={Classes.newsfeed__article_box3_title}>
+                        {item.title + ' '}
+                    </span>
                     (<a href={item.url}>{getHostName(item.url)}</a>) by&nbsp;
-                    <span className={Classes.newsfeed__article_box3_author}><a href="#">{item.author}</a>&nbsp;</span>
+                    <span className={Classes.newsfeed__article_box3_author}>
+                        <a href="#/">{item.author}</a>&nbsp;
+                    </span>
                     {getTimeDifference(item.created_at) + ' '}
-                    [<span className={Classes.newsfeed__article_box3_hide}><a href="#" onClick={() => props.onHideClicked(item.objectID)}>hide</a></span>]</span>
+                    [<span className={Classes.newsfeed__article_box3_hide}>
+                        <a hidden={!item.num_comments} href="#/" onClick={() => props.onHideClicked(item.objectID)}>
+                            {locale_Data[defaultLanguage].HIDE_BUTTON_TEXT}
+                        </a>
+
+                    </span>]
+                </span>
             </article>);
         });
     }

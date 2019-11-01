@@ -10,9 +10,19 @@
     text-align: right;
   }
   &_box2 {
+    @include display-flex(row);
+    justify-content: space-between;
     width: 7%;
-    text-align: right;
     margin-right: 0.8rem;
+    &_C1 {
+      margin-right: 0.4rem;
+      text-align: right;
+      width: 70%;
+    }
+    &_C2 {
+      width: 30%;
+      text-align: right;
+    }
   }
   &_box3 {
     width: 85%;

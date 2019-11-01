@@ -16,7 +16,7 @@ class Newsfeed extends Component {
         totalCount: 0,
         page: 0,
         error: false,
-        btnHidden: false
+        btnHidden: true
     }
 
     componentDidMount() {
