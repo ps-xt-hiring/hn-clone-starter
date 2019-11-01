@@ -5,7 +5,9 @@ import { HIDE_LABEL } from '../../constants';
 import './newsItem.scss';
 
 export default function NewsItem(props) {
-  const { key, newsItem, order, hideNewsItem, upvoteNewsItem, isUpvoted } = props;
+  const { 
+    key, newsItem, order, hideNewsItem, upvoteNewsItem, isUpvoted 
+  } = props;
   const getShade = () => {
     if (newsItem.points > 150) {
       return 'lightest';
@@ -44,10 +46,33 @@ export default function NewsItem(props) {
 }
 
 NewsItem.propTypes = {
-  key: PropTypes.any,
-  newsItem: PropTypes.object,
+  key: PropTypes.string,
+  newsItem: PropTypes.shape({
+    num_comments: PropTypes.number,
+    title: PropTypes.string,
+    points: PropTypes.number,
+    url: PropTypes.string,
+    author: PropTypes.string,
+    created_at: PropTypes.number
+  }),
   order: PropTypes.number,
   hideNewsItem: PropTypes.func,
   upvoteNewsItem: PropTypes.func,
-  isUpvoted: PropTypes.string
-}
+  isUpvoted: PropTypes.string,
+};
+
+NewsItem.defaultProps = {
+  key: '',
+  newsItem: {
+    num_comments: 0,
+    title: '',
+    points: 0,
+    url: '',
+    author: '',
+    created_at: 0
+  },
+  order: 0,
+  hideNewsItem: () => { },
+  upvoteNewsItem: () => { },
+  isUpvoted: '',
+};

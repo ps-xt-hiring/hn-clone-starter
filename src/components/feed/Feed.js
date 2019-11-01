@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import NewsItem from '../newsItem/NewsItem';
 import './feed.scss';
 
@@ -46,7 +47,7 @@ export default function Feed(props) {
     const index = upvotedList ? upvotedList.findIndex(item => item.objectID === post.objectID) : -1;
     if (index >= 0) {
       return '\u25BC';
-    }      
+    }
     return '\u25B2';
   };
 
@@ -62,20 +63,21 @@ export default function Feed(props) {
     return (
       <main className="row feed">
         {feed.filter(post => isHidden(post))
-          .map((item, index) => {
-            return (
-              <NewsItem
-                key={item.objectID}
-                newsItem={item}
-                order={index}
-                hideNewsItem={hideNewsItem}
-                upvoteNewsItem={upvoteNewsItem}
-                isUpvoted={getType(item)} 
-              />
-            );
-          })
+          .map((item, index) => (
+            <NewsItem
+              key={item.objectID}
+              newsItem={{
+
+              }}
+              order={index}
+              hideNewsItem={hideNewsItem}
+              upvoteNewsItem={upvoteNewsItem}
+              isUpvoted={getType(item)}
+            />
+          )
+          )
         }
-        {isMore && <button className='btn-empty feed__more' onClick={loadMore}>more</button>}
+        {isMore && <button type="button" className="btn-empty feed__more" onClick={loadMore}>more</button>}
       </main>
     );
   }
@@ -85,3 +87,22 @@ export default function Feed(props) {
     </main>
   );
 }
+
+Feed.propTypes = {
+  feed: PropTypes.arrayOf(PropTypes.shape({
+    num_comments: PropTypes.number,
+    title: PropTypes.string,
+    points: PropTypes.number,
+    url: PropTypes.string,
+    author: PropTypes.string,
+    created_at: PropTypes.number
+  })),
+  loadMore: PropTypes.func,
+  isMore: PropTypes.bool,
+};
+
+Feed.defaultProps = {
+  feed: [],
+  loadMore: () => { },
+  isMore: true,
+};

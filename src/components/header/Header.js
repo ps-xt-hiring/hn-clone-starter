@@ -5,7 +5,7 @@ import { HEADER_TITLE, HEADER_NEW_LABEL, HEADER_TOP_LABEL } from '../../constant
 import './header.scss';
 
 export default function Header(props) {
-  const {sortType, setSortType} = props;
+  const { sortType, setSortType } = props;
 
   return (
     <header className="header row">
@@ -14,17 +14,18 @@ export default function Header(props) {
       <nav className="header__navigation">
         <ul className="header__navigation__list">
           <li>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className={`btn-empty header__navigation__list--${(sortType === HEADER_TOP_LABEL ? 'active' : 'deactive')}`}
-              onClick={() => setSortType(HEADER_TOP_LABEL)}>
+              onClick={() => setSortType(HEADER_TOP_LABEL)}
+            >
               {HEADER_TOP_LABEL}
             </button>
           </li>
           <li> | </li>
           <li>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className={`btn-empty header__navigation__list--${(sortType === HEADER_NEW_LABEL ? 'active' : 'deactive')}`}
               onClick={() => setSortType(HEADER_NEW_LABEL)}>
               {HEADER_NEW_LABEL}
@@ -38,5 +39,10 @@ export default function Header(props) {
 
 Header.propTypes = {
   sortType: PropTypes.string,
-  setSortType: PropTypes.func
-}
+  setSortType: PropTypes.func,
+};
+
+Header.defaultProps = {
+  sortType: '',
+  setSortType: () => { },
+};
