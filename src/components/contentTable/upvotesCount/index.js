@@ -12,10 +12,10 @@ const UpvotesCount = ({ upvotesCount }) => {
   return (
     <div className={`${color(upvotesCount)} upvotes-count`}>{upvotesCount}</div>
   );
-}
+};
 
 UpvotesCount.propTypes = {
-  upvotesCount: PropTypes.number
+  upvotesCount: PropTypes.number.isRequired,
 };
 
 export default UpvotesCount;

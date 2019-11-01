@@ -4,30 +4,34 @@ import logo from '../../logo.gif';
 
 const NavContent = (props) => {
   const navContent = props.data.map((content, index) => {
-    if (content !== " | ") {
+    if (content !== ' | ') {
       return (
-        <span key={index}
-          className={(props.hasSelected === content ? "selected" : "")}
-          onClick={props.changePage}>
+        <span
+          key={index}
+          role="button"
+          tabIndex={0}
+          className={(props.hasSelected === content ? 'selected' : '')}
+          onClick={props.changePage}
+          onKeyPress={props.changePage}
+        >
           {content}
-        </span>)
+        </span>);
     }
-    else
-      return content
-  }
-  );
+    return content;
+  });
   return (
     navContent
-  )
-}
+  );
+};
 
 class Header extends React.Component {
   constructor() {
     super();
     this.state = {
-      hasSelected: 'top'
+      hasSelected: 'top',
     };
   }
+
   changePage = (e) => {
     this.setState({ hasSelected: e.target.innerText });
     this.props.changeTag();
@@ -41,10 +45,11 @@ class Header extends React.Component {
           <NavContent
             data={['top', ' | ', 'new']}
             changePage={this.changePage}
-            hasSelected={this.state.hasSelected} />
+            hasSelected={this.state.hasSelected}
+          />
         </nav>
       </header>
-    )
+    );
   }
 }
 

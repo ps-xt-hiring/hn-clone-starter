@@ -13,7 +13,10 @@ const findDomain = (url) => {
 const DomainLink = ({ url }) => <div className="link-domain">{findDomain(url)}</div>;
 
 DomainLink.propTypes = {
-  url: PropTypes.string
+  url: PropTypes.string,
+};
+DomainLink.defaultProps = {
+  url: '-',
 };
 
 export default DomainLink;

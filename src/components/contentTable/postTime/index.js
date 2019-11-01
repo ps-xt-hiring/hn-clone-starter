@@ -11,10 +11,10 @@ const getPostTime = (createTime) => {
   return (diffDays <= 24 ? `${diffDays} hour${diffDays === 1 ? '' : 's'} ago` : `${Math.ceil(diffDays / 24)} day${diffDays <= 24 ? '' : 's'} ago`);
 };
 
-const PostTime = ({ postTime }) => <div className="post-time">{getPostTime(postTime)}</div>
+const PostTime = ({ postTime }) => <div className="post-time">{getPostTime(postTime)}</div>;
 
 PostTime.propTypes = {
-  postTime: PropTypes.string
+  postTime: PropTypes.string.isRequired,
 };
 
 export default PostTime;

@@ -5,7 +5,7 @@ import './Username.css';
 const Username = ({ author }) => <div className="username">{author}</div>;
 
 Username.propTypes = {
-  author: PropTypes.string
+  author: PropTypes.string.isRequired,
 };
 
 export default Username;

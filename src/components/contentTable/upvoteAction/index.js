@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './UpvoteAction.css';
 
-const UpvoteAction = (props) => <div className="upvote-arrow" onClick={() => props.voteUp(props.objectID)}></div>
+const UpvoteAction = ({ voteUp, objectID }) => <div role="button" tabIndex={0} className="upvote-arrow" onClick={() => voteUp(objectID)} onKeyPress={() => voteUp(objectID)} />;
 
 UpvoteAction.propTypes = {
-  voteUp: PropTypes.func,
-  objectID: PropTypes.string
+  voteUp: PropTypes.func.isRequired,
+  objectID: PropTypes.string.isRequired,
 };
 
 export default UpvoteAction;

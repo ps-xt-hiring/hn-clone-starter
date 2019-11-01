@@ -5,7 +5,7 @@ import './CommentCount.css';
 const CommentCount = ({ count }) => <div className="comments-count">{count === null ? '-' : count}</div>;
 
 CommentCount.propTypes = {
-  count: PropTypes.number
+  count: PropTypes.number.isRequired,
 };
 
 export default CommentCount;
