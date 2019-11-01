@@ -1,5 +1,7 @@
 export const FRONT_PAGE_ROUTE = '/';
 export const LATEST_NEWS_ROUTE = '/new';
+export const PAGE_SEARCH_PARAM = '?p=';
+export const PAGE_SEARCH_PARAM_REMOTE = '&page=';
 export const SUCCESS_STATUS = 200;
 export const HOUR_STRING = 'hour ago';
 export const HOURS_STRING = 'hours ago';

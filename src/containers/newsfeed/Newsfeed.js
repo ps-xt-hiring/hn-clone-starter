@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Newsitem from '../../components/newsitem/NewsItem';
 import Axios from '../../utils/axios/Axios-Config';
 import { FRONT_PAGE_NEWS, LATEST_NEWS } from '../../utils/ServiceURL';
-import { LATEST_NEWS_ROUTE, SUCCESS_STATUS } from '../../utils/Constants';
+import { LATEST_NEWS_ROUTE, SUCCESS_STATUS, PAGE_SEARCH_PARAM, PAGE_SEARCH_PARAM_REMOTE } from '../../utils/Constants';
 import Aux from '../../hoc/Auxillary';
 import Button from '../../components/UI/Button/Button';
 import { locale_Data, defaultLanguage } from '../../utils/Locale-Data';
@@ -40,7 +40,7 @@ class Newsfeed extends Component {
         let newsType = FRONT_PAGE_NEWS,
             currentPath = this.props.history.location.pathname;
         if (currentPath === LATEST_NEWS_ROUTE) { newsType = LATEST_NEWS; }
-        Axios.get(newsType + '&page=' + pNo)
+        Axios.get(newsType + PAGE_SEARCH_PARAM_REMOTE + pNo)
             .then((res) => {
                 if (res.status === SUCCESS_STATUS) {
                     this.parseNewsData(res.data, currentPath, pNo);
@@ -54,10 +54,9 @@ class Newsfeed extends Component {
     parseNewsData = (data, currentPath, pNo) => {
         if (data.hits.length > 0) {
             let btnHidden = false;
-            if ((data.hits.length * (data.page + 1)) < (data.nbHits - (data.hitsPerPage * data.page))) {
+            if (data.nbHits <= (data.hits.length + data.hitsPerPage * data.page)) {
                 btnHidden = true;
             }
-            debugger
             this.setState({
                 hits: data.hits,
                 totalPages: data.nbPages,
@@ -72,8 +71,7 @@ class Newsfeed extends Component {
     onMoreBtnClicked = () => {
         let pNo = this.state.page + 1;
         this.props.history.push({
-            // pathname: '/page',
-            search: '?p=' + pNo
+            search: PAGE_SEARCH_PARAM + pNo
         });
     }
 
