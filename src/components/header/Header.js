@@ -27,7 +27,8 @@ export default function Header(props) {
             <button
               type="button"
               className={`btn-empty header__navigation__list--${(sortType === HEADER_NEW_LABEL ? 'active' : 'deactive')}`}
-              onClick={() => setSortType(HEADER_NEW_LABEL)}>
+              onClick={() => setSortType(HEADER_NEW_LABEL)}
+            >
               {HEADER_NEW_LABEL}
             </button>
           </li>

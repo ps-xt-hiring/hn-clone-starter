@@ -5,17 +5,20 @@ import { HIDE_LABEL } from '../../constants';
 import './newsItem.scss';
 
 export default function NewsItem(props) {
-  const { 
-    key, newsItem, order, hideNewsItem, upvoteNewsItem, isUpvoted 
+  const {
+    newsItem, order, hideNewsItem, upvoteNewsItem, isUpvoted,
   } = props;
   const getShade = () => {
     if (newsItem.points > 150) {
       return 'lightest';
-    } else if (newsItem.points > 100) {
+    }
+    if (newsItem.points > 100) {
       return 'lighter';
-    } else if (newsItem.points > 75) {
+    }
+    if (newsItem.points > 75) {
       return 'light';
-    } else if (newsItem.points > 50) {
+    }
+    if (newsItem.points > 50) {
       return 'normal';
     }
     return 'dark';
@@ -30,9 +33,10 @@ export default function NewsItem(props) {
         {newsItem.title}
         <span>
           (
-            <a target="_blank" rel="noopener noreferrer" href={newsItem.url}>{newsItem.url}</a>
+          <a target="_blank" rel="noopener noreferrer" href={newsItem.url}>{newsItem.url}</a>
           ) by&nbsp;
-          <b>{newsItem.author}</b>&nbsp;
+          <b>{newsItem.author}</b>
+          &nbsp;
           <Moment fromNow>{newsItem.created_at}</Moment>
         </span>
         &nbsp;[
@@ -46,14 +50,13 @@ export default function NewsItem(props) {
 }
 
 NewsItem.propTypes = {
-  key: PropTypes.string,
   newsItem: PropTypes.shape({
     num_comments: PropTypes.number,
     title: PropTypes.string,
     points: PropTypes.number,
     url: PropTypes.string,
     author: PropTypes.string,
-    created_at: PropTypes.number
+    created_at: PropTypes.number,
   }),
   order: PropTypes.number,
   hideNewsItem: PropTypes.func,
@@ -62,14 +65,13 @@ NewsItem.propTypes = {
 };
 
 NewsItem.defaultProps = {
-  key: '',
   newsItem: {
     num_comments: 0,
     title: '',
     points: 0,
     url: '',
     author: '',
-    created_at: 0
+    created_at: 0,
   },
   order: 0,
   hideNewsItem: () => { },

@@ -66,16 +66,13 @@ export default function Feed(props) {
           .map((item, index) => (
             <NewsItem
               key={item.objectID}
-              newsItem={{
-
-              }}
+              newsItem={item}
               order={index}
               hideNewsItem={hideNewsItem}
               upvoteNewsItem={upvoteNewsItem}
               isUpvoted={getType(item)}
             />
-          )
-          )
+          ))
         }
         {isMore && <button type="button" className="btn-empty feed__more" onClick={loadMore}>more</button>}
       </main>
@@ -95,7 +92,7 @@ Feed.propTypes = {
     points: PropTypes.number,
     url: PropTypes.string,
     author: PropTypes.string,
-    created_at: PropTypes.number
+    created_at: PropTypes.number,
   })),
   loadMore: PropTypes.func,
   isMore: PropTypes.bool,
