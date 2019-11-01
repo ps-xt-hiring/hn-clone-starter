@@ -14,7 +14,7 @@ const fs = require('fs');
 // import the manifest generated with the create-react-app build
 // import manifest from '../../build/asset-manifest.json';
 const manifestFile = path.resolve(__dirname, '..', '..', 'build', 'asset-manifest.json');
-var manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
 
 // function to extract js assets from the manifest
 const extractAssets = (assets, chunks) => Object.keys(assets)
