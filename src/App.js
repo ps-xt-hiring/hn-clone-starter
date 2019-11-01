@@ -1,7 +1,7 @@
-import React from "react";
-import { Container } from "reactstrap";
-import "./App.scss";
-import HomePage from "./pages/homepage";
+import React from 'react';
+import { Container } from 'reactstrap';
+import './App.scss';
+import HomePage from './pages/homepage';
 
 function App() {
   return (
