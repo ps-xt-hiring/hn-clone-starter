@@ -63,23 +63,36 @@ const newsitem = (props) => {
                   src={CONSTANTS.ARROW_IMAGE_SRC}
                   alt={localeData[defaultLanguage].ARROR_ALT_TEXT}
                 />
-              </a></span>
+              </a>
+            </span>
           </span>
           <span className={Classes.newsfeed__article_box3}>
             <span className={Classes.newsfeed__article_box3_title}>
               {item.title + ' '}
             </span>
-            (<a href={item.url}>{getHostName(item.url)}</a>) by&nbsp;
-                    <span className={Classes.newsfeed__article_box3_author}>
-              <a href="#/">{item.author}</a>&nbsp;
-                    </span>
+            (
+              <a href={item.url}>{getHostName(item.url)}</a>
+            ) by&nbsp;
+            <span className={Classes.newsfeed__article_box3_author}>
+              <a
+                href="#/"
+              >
+                {item.author}
+              </a>
+              &nbsp;
+            </span>
             {getTimeDifference(item.created_at) + ' '}
-            [<span className={Classes.newsfeed__article_box3_hide}>
-              <a hidden={!item.num_comments} href="#/" onClick={() => props.onHideClicked(item.objectID)}>
+            [
+              <span className={Classes.newsfeed__article_box3_hide}>
+              <a
+                hidden={!item.num_comments}
+                href="#/"
+                onClick={() => props.onHideClicked(item.objectID)}
+              >
                 {localeData[defaultLanguage].HIDE_BUTTON_TEXT}
               </a>
-
-            </span>]
+            </span>
+            ]
           </span>
         </article>);
     });
