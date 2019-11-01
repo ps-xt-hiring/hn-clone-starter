@@ -1,0 +1,12 @@
+.header-comp {
+  background: #ff6600;
+
+  a {
+    color: #000;
+    text-decoration: none;
+
+    &.highlight {
+      color: #fff;
+    }
+  }
+}
