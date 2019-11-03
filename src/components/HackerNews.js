@@ -194,7 +194,7 @@ export default class HackerNews extends React.Component {
             })}
         </div>
         <div className="App-footer">
-          {isLoaded && <span className="Load-more" role="button" onClick={this.loadMoreNews}>More</span>}
+          {isLoaded && <span tabIndex="0" className="Load-more" role="button" onClick={this.loadMoreNews}>More</span>}
         </div>
       </div>
     );
