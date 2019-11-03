@@ -9,7 +9,7 @@ export default class HackerNews extends React.Component {
       isLoaded: false,
       filter: 'top',
       pageNumber: 1,
-      items: []
+      items: [],
     };
     this.updateFilter = this.updateFilter.bind(this);
     this.handleUpvote = this.handleUpvote.bind(this);
@@ -23,28 +23,28 @@ export default class HackerNews extends React.Component {
     const { pageNumber } = this.state;
     const query = `page=${pageNumber}`;
     this.getApiData(query);
-
   }
 
   getApiData(query) {
+    const { pageNumber } = this.state;
     this.setState({
       isLoaded: false,
     });
 
-    fetchData(query).then(news => {
-      news = this.updateDataWithLS(news);
+    fetchData(query).then((news) => {
+      const updatedNews = this.updateDataWithLS(news);
       this.setState({
         isLoaded: true,
-        items: news,
-        pageNumber: this.state.pageNumber + 1,
+        items: updatedNews,
+        pageNumber: pageNumber + 1,
       });
     },
-      error => {
+      (error) => {
         this.setState({
           isLoaded: true,
           error,
         });
-      })
+      });
   }
 
   getTimeDiff(createdAt) {
@@ -57,13 +57,13 @@ export default class HackerNews extends React.Component {
     if (daysDifference && daysDifference > 0) {
       if (daysDifference >= 365) {
         return `${Math.floor(daysDifference / (30 * 12))} years ago`;
-      } else {
-        if (daysDifference >= 30) {
-          return `${Math.floor(daysDifference / 30)} months ago`;
-        } else {
-          return `${daysDifference} days ago`;
-        }
       }
+      if (daysDifference >= 30) {
+        return `${Math.floor(daysDifference / 30)} months ago`;
+      } else {
+        return `${daysDifference} days ago`;
+      }
+
     }
     difference -= daysDifference * 1000 * 60 * 60 * 24;
 
@@ -105,7 +105,7 @@ export default class HackerNews extends React.Component {
     items[index].hidden = true;
     this.setState({
       items: items,
-    })
+    });
     localStorage.setItem(`${items[index].objectID}_hidden`, true);
   }
 
@@ -136,8 +136,7 @@ export default class HackerNews extends React.Component {
     }, () => {
       const query = `page=${this.state.pageNumber}`;
       this.getApiData(query);
-    })
-
+    });
   }
 
   render() {
@@ -145,7 +144,7 @@ export default class HackerNews extends React.Component {
     if (error) {
       return <div>Error:
          {error.message}
-         </div>;
+      </div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
