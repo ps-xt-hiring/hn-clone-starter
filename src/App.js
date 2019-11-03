@@ -1,16 +1,16 @@
-import * as React from "react";
-import { render } from "react-dom";
-import HackerNews from "./components/HackerNews";
+import * as React from 'react';
+import { render } from 'react-dom';
+import HackerNews from './components/HackerNews';
 
-import "./App.css";
+import './App.css';
 
 export default function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <HackerNews />
     </div>
   );
 }
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 render(<App />, rootElement);

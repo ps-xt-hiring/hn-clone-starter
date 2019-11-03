@@ -1,7 +1,7 @@
 
 function fetchData(qry) {
     return new Promise((resolve, reject) => {
-        fetch("https://hn.algolia.com/api/v1/search?"+ qry)
+        fetch('https://hn.algolia.com/api/v1/search?'+ qry)
             .then(res => res.json())
             .then(
                 result => {
