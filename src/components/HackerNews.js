@@ -91,7 +91,7 @@ export default class HackerNews extends React.Component {
     const items = [...this.state.items];
     items[index].points = Number(items[index].points) + 1;
     this.setState({
-      items: items,
+      items
     });
     // set updated points in local storage
     localStorage.setItem(`${items[index].objectID}_points`, items[index].points);
@@ -115,7 +115,8 @@ export default class HackerNews extends React.Component {
   }
 
   updateDataWithLS(data) {
-    return data.map(item => {
+    return data.map((news) => {
+      const item = news;
       const objID = item.objectID;
       if (localStorage.getItem(`${objID}_points`)) {
         item.points = localStorage.getItem(`${item.objectID}_points`);
@@ -141,8 +142,7 @@ export default class HackerNews extends React.Component {
     if (error) {
       return (<div>
         Error: 
-        {error.message}
-      </div>);
+        {error.message}</div>);
     } if (!isLoaded) {
       return <div>Loading...</div>;
     }
@@ -151,11 +151,11 @@ export default class HackerNews extends React.Component {
         <div className="App-header">
           <div className="App-header-y" onClick={this.gotoHomePage}>Y</div>
           <div className="App-header-links">
-            <span id="top" className={this.state.filter === "top" ? "active" : ""} onClick={this.updateFilter}>
+            <span id="top" className={this.state.filter === 'top' ? 'active' : ''} onClick={this.updateFilter}>
             top
             </span>
             <span>|</span>
-            <span id="new" className={this.state.filter === "new" ? "active" : ""} onClick={this.updateFilter}>
+            <span id="new" className={this.state.filter === 'new' ? 'active' : ''} onClick={this.updateFilter}>
             new
             </span>
           </div>
@@ -166,7 +166,7 @@ export default class HackerNews extends React.Component {
               const { title, url, author, points, num_comments: nComments, created_at: createdAt, objectID } = news;
               const publishedTime = this.getTimeDiff(createdAt);
               return (
-                <div style={{ display: news.hidden ? "none" : "flex" }} key={objectID} className="News">
+                <div style={{ display: news.hidden ? 'none' : 'flex' }} key={objectID} className="News">
                   <div className="Comments-count">{nComments === null ? 0 : nComments}</div>
                   <div className="Upvotes">
                     <div className="Upvotes-count">{points === null ? 0 : points}</div>
