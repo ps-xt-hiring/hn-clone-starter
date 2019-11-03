@@ -3,27 +3,32 @@
   font-size: 14px;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
+
 .App-header {
   background-color: #f5a142;
   padding: 5px;
 }
+
 .App-header .App-header-y {
   cursor: pointer;
-  color: #ffffff;
+  color: #fff;
   display: inline-block;
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   padding: 2px 5px;
   margin-right: 10px;
 }
+
 .App-header .App-header-links {
   display: inline-block;
 }
+
 .App-header .App-header-links span {
   margin: 0px 2px;
   cursor: pointer;
 }
+
 .App-header .App-header-links span.active {
-  color: #ffffff;
+  color: #fff;
 }
 
 .News {
@@ -35,13 +40,16 @@
 .App-content-area .News:nth-child(even) {
   background: #ccc;
 }
+
 .App-content-area .News:nth-child(odd) {
   background: #fff;
 }
+
 .News .Comments-count {
   text-align: right;
   min-width: 50px;
 }
+
 .News .Upvotes {
   min-width: 28px;
   min-width: 50px;
@@ -50,44 +58,53 @@
   flex-direction: row;
   align-items: center;
 }
+
 .News .Upvotes .Upvotes-count {
   display: inline-block;
 }
+
 .News .Upvotes .arrow-up {
   display: inline-block;
   cursor: pointer;
   margin-left: 4px;
-  width: 0;
-  height: 0;
+  width: 0px;
+  height: 0px;
   border-left: 3px solid transparent;
   border-right: 3px solid transparent;
   border-bottom: 10px solid #868282;
 }
+
 .News-content a {
   color: #828282;
   word-break: break-all;
   margin: 0px 5px;
 }
+
 .News-content .News-username {
   font-weight: bold;
 }
+
 .News-content .News-hide {
   margin-left: 5px;
   cursor: pointer;
 }
-.News-content .News-hide:hover{
+
+.News-content .News-hide:hover {
   text-decoration: underline;
 }
-.App-footer{
+
+.App-footer {
   height: 40px;
   display: flex;
   align-items: center;
   color: #f38305;
 }
-.App-footer span{
+
+.App-footer span {
   margin-left: 120px;
   cursor: pointer;
 }
-.App-footer span:hover{
+
+.App-footer span:hover {
   text-decoration: underline;
 }
