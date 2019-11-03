@@ -89,7 +89,7 @@ export default class HackerNews extends React.Component {
   handleUpvote(evt) {
     evt.persist();
     const index = evt.target.dataset.idx;
-    const items = [...this.state.items];
+    const { items } = [...this.state];
     items[index].points = Number(items[index].points) + 1;
     this.setState({
       items,
@@ -101,7 +101,7 @@ export default class HackerNews extends React.Component {
   hideNews(evt) {
     evt.persist();
     const index = evt.target.dataset.idx;
-    const items = [...this.state.items];
+    const { items } = [...this.state];
     items[index].hidden = true;
     this.setState({
       items,
@@ -144,8 +144,7 @@ export default class HackerNews extends React.Component {
       return (
         <div>
           Error: 
-          {error.message}
-        </div>
+          {error.message}</div>
       );
     } if (!isLoaded) {
       return <div>Loading...</div>;
@@ -168,8 +167,8 @@ export default class HackerNews extends React.Component {
           {
             items.map((news, index) => {
               const { title, url, author, points,
-              num_comments: nComments,
-              created_at: createdAt, objectID } = news;
+                num_comments: nComments,
+                created_at: createdAt, objectID } = news;
               const publishedTime = this.getTimeDiff(createdAt);
               return (
                 <div style={{ display: news.hidden ? 'none' : 'flex' }} key={objectID} className="News">
@@ -180,7 +179,7 @@ export default class HackerNews extends React.Component {
                   </div>
                   <div className="News-content">
                     <span className="News-title">{title}</span>
-                    <a href={url} className="News-domain">${url}></a>
+                    <a href={url} className="News-domain">{url}</a>
                     <span>by</span>
                     <a href="/">
                       <span className="News-username">{author}</span>
