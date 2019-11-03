@@ -167,20 +167,20 @@ export default class HackerNews extends React.Component {
         <div className="App-content-area">
           {
             items.map((news, index) => {
-              const { title, url, author, points, num_comments: nComments, created_at: createdAt, objectID } = news;
+              const { title, url, author, points,
+              num_comments: nComments,
+              created_at: createdAt, objectID } = news;
               const publishedTime = this.getTimeDiff(createdAt);
               return (
                 <div style={{ display: news.hidden ? 'none' : 'flex' }} key={objectID} className="News">
                   <div className="Comments-count">{nComments === null ? 0 : nComments}</div>
                   <div className="Upvotes">
                     <div className="Upvotes-count">{points === null ? 0 : points}</div>
-                    <div data-idx={index} tabIndex="0" role="button" className="Upvotes-action arrow-up" onClick={this.handleUpvote} onKeyDown={this.handleUpvote}/>
+                    <div data-idx={index} tabIndex="0" role="button" className="Upvotes-action arrow-up" onClick={this.handleUpvote} onKeyDown={this.handleUpvote} />
                   </div>
                   <div className="News-content">
                     <span className="News-title">{title}</span>
-                    <a href={url} className="News-domain">
-                    ${url}
-                    </a>
+                    <a href={url} className="News-domain">${url}></a>
                     <span>by</span>
                     <a href="/">
                       <span className="News-username">{author}</span>
