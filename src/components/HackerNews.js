@@ -139,34 +139,35 @@ export default class HackerNews extends React.Component {
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
-      return <div>
-        Error: {error.message}
-      </div>;
+      return (<div>
+        Error: 
+        {error.message}
+      </div>);
     } if (!isLoaded) {
       return <div>Loading...</div>;
     }
     return (
-      <div className='News-feeds'>
-        <div className='App-header'>
-          <div className='App-header-y' onClick={this.gotoHomePage}>Y</div>
-          <div className='App-header-links'>
-            <span id='top' className={this.state.filter === "top" ? "active" : ""} onClick={this.updateFilter}>
-              top
-              </span>
+      <div className="News-feeds">
+        <div className="App-header">
+          <div className="App-header-y" onClick={this.gotoHomePage}>Y</div>
+          <div className="App-header-links">
+            <span id="top" className={this.state.filter === "top" ? "active" : ""} onClick={this.updateFilter}>
+            top
+            </span>
             <span>|</span>
-            <span id='new' className={this.state.filter === "new" ? "active" : ""} onClick={this.updateFilter}>
-              new
-              </span>
+            <span id="new" className={this.state.filter === "new" ? "active" : ""} onClick={this.updateFilter}>
+            new
+            </span>
           </div>
         </div>
-        <div className='App-content-area'>
+        <div className="App-content-area">
           {items.length &&
             items.map((news, index) => {
               const { title, url, author, points, num_comments: nComments, created_at: createdAt, objectID } = news;
               const publishedTime = this.getTimeDiff(createdAt);
               return (
-                <div style={{ display: news.hidden ? 'none' : 'flex' }} key={objectID} className='News'>
-                  <div className='Comments-count'>{nComments === null ? 0 : nComments}</div>
+                <div style={{ display: news.hidden ? "none" : "flex" }} key={objectID} className="News">
+                  <div className="Comments-count">{nComments === null ? 0 : nComments}</div>
                   <div className="Upvotes">
                     <div className="Upvotes-count">{points === null ? 0 : points}</div>
                     <div data-idx={index} className="Upvotes-action arrow-up" onClick={this.handleUpvote} />
@@ -174,16 +175,16 @@ export default class HackerNews extends React.Component {
                   <div className="News-content">
                     <span className="News-title">{title}</span>
                     <a href={url} className="News-domain">
-                      (${url})
-                      </a>
+                    (${url})
+                    </a>
                     <span>by</span>
                     <a href="/">
                       <span className="News-username">{author}</span>
                     </a>
                     <span className="News-time">{publishedTime}</span>
                     <span data-idx={index} className="News-hide" onClick={this.hideNews}>
-                      [ hide ]
-                      </span>
+                    [ hide ]
+                    </span>
                   </div>
                 </div>
               );
