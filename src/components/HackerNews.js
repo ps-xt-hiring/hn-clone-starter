@@ -41,12 +41,12 @@ export default class HackerNews extends React.Component {
         pageNumber: pageNumber + 1,
       });
     },
-      (error) => {
-        this.setState({
-          isLoaded: true,
-          error,
-        });
+    (error) => {
+      this.setState({
+        isLoaded: true,
+        error,
       });
+    });
   }
 
   getTimeDiff(createdAt) {
