@@ -16,7 +16,6 @@ export default class HackerNews extends React.Component {
     this.loadMoreNews = this.loadMoreNews.bind(this);
     this.getApiData = this.getApiData.bind(this);
     this.gotoHomePage = this.gotoHomePage.bind(this);
-    this.getTimeDiff = this.getTimeDiff.bind(this);
     this.hideNews = this.hideNews.bind(this);
   }
 
@@ -48,7 +47,7 @@ export default class HackerNews extends React.Component {
     });
   }
 
-  getTimeDiff(createdAt) {
+  getTimeDiff = (createdAt) => {
     const timestamp = new Date(createdAt).getTime();
     const currentTimestamp = new Date().getTime();
 
@@ -114,7 +113,7 @@ export default class HackerNews extends React.Component {
     this.getApiData(query);
   }
 
-  updateDataWithLS(data) {
+  updateDataWithLS = (data) => {
     return data.map((news) => {
       const item = news;
       const objID = item.objectID;
@@ -164,7 +163,7 @@ export default class HackerNews extends React.Component {
           </div>
         </div>
         <div className="App-content-area">
-          {items.length &&
+          {
             items.map((news, index) => {
               const { title, url, author, points, num_comments: nComments, created_at: createdAt, objectID } = news;
               const publishedTime = this.getTimeDiff(createdAt);
@@ -178,7 +177,7 @@ export default class HackerNews extends React.Component {
                   <div className="News-content">
                     <span className="News-title">{title}</span>
                     <a href={url} className="News-domain">
-                    (${url})
+                    ${url}
                     </a>
                     <span>by</span>
                     <a href="/">
