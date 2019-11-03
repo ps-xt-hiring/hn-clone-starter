@@ -130,16 +130,17 @@ export default class HackerNews extends React.Component {
   }
 
   gotoHomePage() {
+    const { pageNumber } = this.state;
     this.setState({
       pageNumber: 1,
     }, () => {
-      const query = `page=${this.state.pageNumber}`;
+      const query = `page=${pageNumber}`;
       this.getApiData(query);
     });
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;
+    const { error, isLoaded, items, filter } = this.state;
     if (error) {
       return (
         <div>
@@ -154,11 +155,11 @@ export default class HackerNews extends React.Component {
         <div className="App-header">
           <div className="App-header-y" role="button" tabIndex="0" onClick={this.gotoHomePage} onKeyDown={this.gotoHomePage}>Y</div>
           <div className="App-header-links">
-            <span id="top" role="button" tabIndex="0" className={this.state.filter === 'top' ? 'active' : ''} onClick={this.updateFilter} onKeyDown={this.updateFilter}>
+            <span id="top" role="button" tabIndex="0" className={filter === 'top' ? 'active' : ''} onClick={this.updateFilter} onKeyDown={this.updateFilter}>
             top
             </span>
             <span>|</span>
-            <span id="new" tabIndex="0" role="button" className={this.state.filter === 'new' ? 'active' : ''} onClick={this.updateFilter} onKeyDown={this.updateFilter}>
+            <span id="new" tabIndex="0" role="button" className={filter === 'new' ? 'active' : ''} onClick={this.updateFilter} onKeyDown={this.updateFilter}>
             new
             </span>
           </div>
