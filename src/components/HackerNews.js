@@ -16,6 +16,7 @@ export default class HackerNews extends React.Component {
     this.loadMoreNews = this.loadMoreNews.bind(this);
     this.getApiData = this.getApiData.bind(this);
     this.gotoHomePage = this.gotoHomePage.bind(this);
+    this.getTimeDiff = this.getTimeDiff.bind(this);
     this.hideNews = this.hideNews.bind(this);
   }
 
@@ -39,12 +40,12 @@ export default class HackerNews extends React.Component {
         pageNumber: pageNumber + 1,
       });
     },
-      (error) => {
-        this.setState({
-          isLoaded: true,
-          error,
-        });
+    (error) => {
+      this.setState({
+        isLoaded: true,
+        error,
       });
+    });
   }
 
   getTimeDiff(createdAt) {
@@ -88,11 +89,11 @@ export default class HackerNews extends React.Component {
     evt.persist();
     const index = evt.target.dataset.idx;
     const items = [...this.state.items];
-    items[index].points = Number(items[index].points) + 1
+    items[index].points = Number(items[index].points) + 1;
     this.setState({
       items: items,
     });
-    //set updated points in local storage
+    // set updated points in local storage
     localStorage.setItem(`${items[index].objectID}_points`, items[index].points);
   }
 
@@ -102,7 +103,7 @@ export default class HackerNews extends React.Component {
     const items = [...this.state.items];
     items[index].hidden = true;
     this.setState({
-      items: items,
+      items,
     });
     localStorage.setItem(`${items[index].objectID}_hidden`, true);
   }
