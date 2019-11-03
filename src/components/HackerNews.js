@@ -152,13 +152,13 @@ export default class HackerNews extends React.Component {
     return (
       <div className="News-feeds">
         <div className="App-header">
-          <div className="App-header-y" onClick={this.gotoHomePage}>Y</div>
+          <div className="App-header-y" role="button" tabIndex="0" onClick={this.gotoHomePage} onKeyDown={this.gotoHomePage}>Y</div>
           <div className="App-header-links">
-            <span id="top" role="button" className={this.state.filter === 'top' ? 'active' : ''} onClick={this.updateFilter}>
+            <span id="top" role="button" tabIndex="0" className={this.state.filter === 'top' ? 'active' : ''} onClick={this.updateFilter} onKeyDown={this.updateFilter}>
             top
             </span>
             <span>|</span>
-            <span id="new" role="button" className={this.state.filter === 'new' ? 'active' : ''} onClick={this.updateFilter}>
+            <span id="new" tabIndex="0" role="button" className={this.state.filter === 'new' ? 'active' : ''} onClick={this.updateFilter} onKeyDown={this.updateFilter}>
             new
             </span>
           </div>
@@ -173,7 +173,7 @@ export default class HackerNews extends React.Component {
                   <div className="Comments-count">{nComments === null ? 0 : nComments}</div>
                   <div className="Upvotes">
                     <div className="Upvotes-count">{points === null ? 0 : points}</div>
-                    <div data-idx={index} role="button" className="Upvotes-action arrow-up" onClick={this.handleUpvote} />
+                    <div data-idx={index} tabIndex="0" role="button" className="Upvotes-action arrow-up" onClick={this.handleUpvote} onKeyDown={this.handleUpvote}/>
                   </div>
                   <div className="News-content">
                     <span className="News-title">{title}</span>
@@ -185,7 +185,7 @@ export default class HackerNews extends React.Component {
                       <span className="News-username">{author}</span>
                     </a>
                     <span className="News-time">{publishedTime}</span>
-                    <span data-idx={index} role="button" className="News-hide" onClick={this.hideNews}>
+                    <span data-idx={index} tabIndex="0" role="button" className="News-hide" onClick={this.hideNews} onKeyDown={this.hideNews}>
                     [ hide ]
                     </span>
                   </div>
@@ -194,7 +194,7 @@ export default class HackerNews extends React.Component {
             })}
         </div>
         <div className="App-footer">
-          {isLoaded && <span tabIndex="0" className="Load-more" role="button" onClick={this.loadMoreNews}>More</span>}
+          {isLoaded && <span tabIndex="0" className="Load-more" role="button" onClick={this.loadMoreNews} onKeyDown={this.loadMoreNews}>More</span>}
         </div>
       </div>
     );
