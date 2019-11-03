@@ -144,7 +144,9 @@ export default class HackerNews extends React.Component {
     const { error, isLoaded, items, filter } = this.state;
 
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return <div>
+        Error: 
+        {error.message}</div>;
     } if (!isLoaded) {
       return <div>Loading...</div>;
     }
@@ -165,8 +167,10 @@ export default class HackerNews extends React.Component {
         <div className="App-content-area">
           {
             items.map((news, index) => {
+
               const { title, url, author, points,
                 num_comments: nComments,
+
                 created_at: createdAt, objectID } = news;
 
               const publishedTime = this.getTimeDiff(createdAt);
