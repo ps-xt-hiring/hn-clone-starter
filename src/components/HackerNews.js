@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fetchData } from '../api';
+import fetchData from '../api';
 
 export default class HackerNews extends React.Component {
   constructor(props) {
@@ -39,12 +39,12 @@ export default class HackerNews extends React.Component {
         pageNumber: pageNumber + 1,
       });
     },
-    (error) => {
-      this.setState({
-        sLoaded: true,
-        error,
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error,
+        });
       });
-    });
   }
 
   getTimeDiff(createdAt) {
@@ -60,10 +60,8 @@ export default class HackerNews extends React.Component {
       }
       if (daysDifference >= 30) {
         return `${Math.floor(daysDifference / 30)} months ago`;
-      } else {
-        return `${daysDifference} days ago`;
       }
-
+      return `${daysDifference} days ago`;
     }
     difference -= daysDifference * 1000 * 60 * 60 * 24;
 
@@ -121,13 +119,11 @@ export default class HackerNews extends React.Component {
       if (localStorage.getItem(`${objID}_points`)) {
         item.points = localStorage.getItem(`${item.objectID}_points`);
       }
-
       if (localStorage.getItem(`${objID}_hidden`)) {
         item.hidden = true;
       }
       return item;
-    })
-
+    });
   }
 
   gotoHomePage() {
@@ -142,61 +138,60 @@ export default class HackerNews extends React.Component {
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
-      return <div>Error:
-         {error.message}
+      return <div>
+        Error: {error.message}
       </div>;
-    } else if (!isLoaded) {
+    } if (!isLoaded) {
       return <div>Loading...</div>;
-    } else {
-      return (
-        <div className='News-feeds'>
-          <div className='App-header'>
-            <div className='App-header-y' onClick={this.gotoHomePage}>Y</div>
-            <div className='App-header-links'>
-              <span id='top' className={this.state.filter === 'top' ? 'active' : ''} onClick={this.updateFilter}>
-                top
+    }
+    return (
+      <div className='News-feeds'>
+        <div className='App-header'>
+          <div className='App-header-y' onClick={this.gotoHomePage}>Y</div>
+          <div className='App-header-links'>
+            <span id='top' className={this.state.filter === "top" ? "active" : ""} onClick={this.updateFilter}>
+              top
               </span>
-              <span>|</span>
-              <span id='new' className={this.state.filter === 'new' ? 'active' : ''} onClick={this.updateFilter}>
-                new
+            <span>|</span>
+            <span id='new' className={this.state.filter === "new" ? "active" : ""} onClick={this.updateFilter}>
+              new
               </span>
-            </div>
-          </div>
-          <div className='App-content-area'>
-            {items.length &&
-              items.map((news, index) => {
-                const { title, url, author, points, num_comments: nComments, created_at: createdAt, objectID } = news;
-                const publishedTime = this.getTimeDiff(createdAt);
-                return (
-                  <div style={{ display: news.hidden ? 'none' : 'flex' }} key={objectID} className='News'>
-                    <div className='Comments-count'>{nComments === null ? 0 : nComments}</div>
-                    <div className="Upvotes">
-                      <div className="Upvotes-count">{points === null ? 0 : points}</div>
-                      <div data-idx={index} className="Upvotes-action arrow-up" onClick={this.handleUpvote} />
-                    </div>
-                    <div className="News-content">
-                      <span className="News-title">{title}</span>
-                      <a href={url} className="News-domain">
-                        (${url})
-                      </a>
-                      <span>by</span>
-                      <a href="/">
-                        <span className="News-username">{author}</span>
-                      </a>
-                      <span className="News-time">{publishedTime}</span>
-                      <span data-idx={index} className="News-hide" onClick={this.hideNews}>
-                        [ hide ]
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
-          <div className="App-footer">
-            {isLoaded && <span className="Load-more" onClick={this.loadMoreNews}>More</span>}
           </div>
         </div>
-      );
-    }
+        <div className='App-content-area'>
+          {items.length &&
+            items.map((news, index) => {
+              const { title, url, author, points, num_comments: nComments, created_at: createdAt, objectID } = news;
+              const publishedTime = this.getTimeDiff(createdAt);
+              return (
+                <div style={{ display: news.hidden ? 'none' : 'flex' }} key={objectID} className='News'>
+                  <div className='Comments-count'>{nComments === null ? 0 : nComments}</div>
+                  <div className="Upvotes">
+                    <div className="Upvotes-count">{points === null ? 0 : points}</div>
+                    <div data-idx={index} className="Upvotes-action arrow-up" onClick={this.handleUpvote} />
+                  </div>
+                  <div className="News-content">
+                    <span className="News-title">{title}</span>
+                    <a href={url} className="News-domain">
+                      (${url})
+                      </a>
+                    <span>by</span>
+                    <a href="/">
+                      <span className="News-username">{author}</span>
+                    </a>
+                    <span className="News-time">{publishedTime}</span>
+                    <span data-idx={index} className="News-hide" onClick={this.hideNews}>
+                      [ hide ]
+                      </span>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
+        <div className="App-footer">
+          {isLoaded && <span className="Load-more" onClick={this.loadMoreNews}>More</span>}
+        </div>
+      </div>
+    );
   }
 }
