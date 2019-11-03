@@ -91,7 +91,7 @@ export default class HackerNews extends React.Component {
     const items = [...this.state.items];
     items[index].points = Number(items[index].points) + 1;
     this.setState({
-      items
+      items,
     });
     // set updated points in local storage
     localStorage.setItem(`${items[index].objectID}_points`, items[index].points);
@@ -140,9 +140,12 @@ export default class HackerNews extends React.Component {
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
-      return (<div>
-        Error: 
-        {error.message}</div>);
+      return (
+        <div>
+          Error: 
+          {error.message}
+        </div>
+      );
     } if (!isLoaded) {
       return <div>Loading...</div>;
     }
@@ -151,11 +154,11 @@ export default class HackerNews extends React.Component {
         <div className="App-header">
           <div className="App-header-y" onClick={this.gotoHomePage}>Y</div>
           <div className="App-header-links">
-            <span id="top" className={this.state.filter === 'top' ? 'active' : ''} onClick={this.updateFilter}>
+            <span id="top" role="button" className={this.state.filter === 'top' ? 'active' : ''} onClick={this.updateFilter}>
             top
             </span>
             <span>|</span>
-            <span id="new" className={this.state.filter === 'new' ? 'active' : ''} onClick={this.updateFilter}>
+            <span id="new" role="button" className={this.state.filter === 'new' ? 'active' : ''} onClick={this.updateFilter}>
             new
             </span>
           </div>
@@ -170,7 +173,7 @@ export default class HackerNews extends React.Component {
                   <div className="Comments-count">{nComments === null ? 0 : nComments}</div>
                   <div className="Upvotes">
                     <div className="Upvotes-count">{points === null ? 0 : points}</div>
-                    <div data-idx={index} className="Upvotes-action arrow-up" onClick={this.handleUpvote} />
+                    <div data-idx={index} role="button" className="Upvotes-action arrow-up" onClick={this.handleUpvote} />
                   </div>
                   <div className="News-content">
                     <span className="News-title">{title}</span>
@@ -182,7 +185,7 @@ export default class HackerNews extends React.Component {
                       <span className="News-username">{author}</span>
                     </a>
                     <span className="News-time">{publishedTime}</span>
-                    <span data-idx={index} className="News-hide" onClick={this.hideNews}>
+                    <span data-idx={index} role="button" className="News-hide" onClick={this.hideNews}>
                     [ hide ]
                     </span>
                   </div>
@@ -191,7 +194,7 @@ export default class HackerNews extends React.Component {
             })}
         </div>
         <div className="App-footer">
-          {isLoaded && <span className="Load-more" onClick={this.loadMoreNews}>More</span>}
+          {isLoaded && <span className="Load-more" role="button" onClick={this.loadMoreNews}>More</span>}
         </div>
       </div>
     );
