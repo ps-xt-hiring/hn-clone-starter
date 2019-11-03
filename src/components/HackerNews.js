@@ -144,9 +144,7 @@ export default class HackerNews extends React.Component {
     const { error, isLoaded, items, filter } = this.state;
 
     if (error) {
-      return <div>
-        Error: 
-        {error.message}</div>;
+      return <div>Error</div>;
     } if (!isLoaded) {
       return <div>Loading...</div>;
     }
