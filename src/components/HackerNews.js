@@ -140,13 +140,11 @@ export default class HackerNews extends React.Component {
   }
 
   render() {
+
     const { error, isLoaded, items, filter } = this.state;
+
     if (error) {
-      return (
-        <div>
-          Error: 
-          {error.message}</div>
-      );
+      return <div>Error: {error.message}</div>);
     } if (!isLoaded) {
       return <div>Loading...</div>;
     }
@@ -170,6 +168,7 @@ export default class HackerNews extends React.Component {
               const { title, url, author, points,
                 num_comments: nComments,
                 created_at: createdAt, objectID } = news;
+
               const publishedTime = this.getTimeDiff(createdAt);
               return (
                 <div style={{ display: news.hidden ? 'none' : 'flex' }} key={objectID} className="News">
