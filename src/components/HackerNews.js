@@ -41,12 +41,12 @@ export default class HackerNews extends React.Component {
         pageNumber: pageNumber + 1,
       });
     },
-    (error) => {
-      this.setState({
-        isLoaded: true,
-        error,
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error,
+        });
       });
-    });
   }
 
   getTimeDiff(createdAt) {
@@ -140,7 +140,6 @@ export default class HackerNews extends React.Component {
   }
 
   render() {
-
     const { error, isLoaded, items, filter } = this.state;
 
     if (error) {
@@ -154,23 +153,20 @@ export default class HackerNews extends React.Component {
           <div className="App-header-y" role="button" tabIndex="0" onClick={this.gotoHomePage} onKeyDown={this.gotoHomePage}>Y</div>
           <div className="App-header-links">
             <span id="top" role="button" tabIndex="0" className={filter === 'top' ? 'active' : ''} onClick={this.updateFilter} onKeyDown={this.updateFilter}>
-            top
+              top
             </span>
             <span>|</span>
             <span id="new" tabIndex="0" role="button" className={filter === 'new' ? 'active' : ''} onClick={this.updateFilter} onKeyDown={this.updateFilter}>
-            new
+              new
             </span>
           </div>
         </div>
         <div className="App-content-area">
           {
             items.map((news, index) => {
-
               const { title, url, author, points,
                 num_comments: nComments,
-
                 created_at: createdAt, objectID } = news;
-
               const publishedTime = this.getTimeDiff(createdAt);
               return (
                 <div style={{ display: news.hidden ? 'none' : 'flex' }} key={objectID} className="News">
@@ -188,7 +184,7 @@ export default class HackerNews extends React.Component {
                     </a>
                     <span className="News-time">{publishedTime}</span>
                     <span data-idx={index} tabIndex="0" role="button" className="News-hide" onClick={this.hideNews} onKeyDown={this.hideNews}>
-                    [ hide ]
+                      [ hide ]
                     </span>
                   </div>
                 </div>
