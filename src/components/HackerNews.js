@@ -101,7 +101,7 @@ export default class HackerNews extends React.Component {
   handleUpvote(evt) {
     evt.persist();
     const index = evt.target.dataset.idx;
-    const { items } = [...this.state];
+    const { items } = this.state;
     items[index].points = Number(items[index].points) + 1;
     this.setState({
       items,
@@ -113,7 +113,7 @@ export default class HackerNews extends React.Component {
   hideNews(evt) {
     evt.persist();
     const index = evt.target.dataset.idx;
-    const { items } = [...this.state];
+    const { items } = this.state;
     items[index].hidden = true;
     this.setState({
       items,

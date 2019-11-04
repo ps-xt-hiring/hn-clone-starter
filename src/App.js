@@ -4,14 +4,12 @@ import HackerNews from './components/HackerNews';
 
 import './App.css';
 
-export default class App extends React.PureComponent {
-  render() {
-    return (
-      <div className="App">
-        <HackerNews />
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div className='App'>
+      <HackerNews />
+    </div>
+  );
 }
 
 const rootElement = document.getElementById('root');
