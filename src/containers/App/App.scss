@@ -1,0 +1,62 @@
+@import '../../common/colors.scss';
+
+.app {
+}
+
+.app-header {
+  background-color: $orange;
+  min-height: 5vh;
+}
+
+.app-section {
+  margin: 0;
+  min-height: 95vh;
+  font-size: 10pt;
+  line-height: 14pt;
+  background-color: #f6f6ef;
+
+  &-more {
+    margin: 10px 0;
+    cursor: pointer;
+    color: $orange;
+  }
+
+  &-id {
+    margin-right: 20px;
+  }
+
+  &-points {
+    
+  }
+
+  &-url, a:link {
+    margin: 0 2px;
+    font-size: 8pt;
+    color: #828282;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  &-author {
+    font-size: 8pt;
+    font-weight: 500;
+    margin: 0 2px;
+  }
+
+  &-action {
+    font-size: 8pt;
+    font-weight: 500;
+    cursor: pointer;
+  }
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid black;
+}
