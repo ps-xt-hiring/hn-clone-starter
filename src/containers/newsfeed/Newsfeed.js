@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+// // Newsfeed.propTypes = {
+// //   history: PropTypes.object.isRequired,
+// // };
 
 import Newsitem from '../../components/newsitem/NewsItem';
 import Axios from '../../utils/axios/Axios-Config';
@@ -92,13 +95,13 @@ class Newsfeed extends Component {
   onClickUpVoteHandler = (objectID) => {
     const { hits } = this.state;
     const newState = [...hits];
-    newState.forEach((item) => {
+    for (let item of newState) {
       if (item.objectID === objectID) {
         const matchedItem = item;
         matchedItem.points += 1;
-        return null;
+        break;
       }
-    });
+    }
     this.setState({
       hits: newState,
     });
@@ -108,12 +111,12 @@ class Newsfeed extends Component {
     const { hits } = this.state;
     const newState = [...hits];
     let position = -1;
-    newState.forEach((item, index) => {
+    for (let [item, index] of newState.entries()) {
       if (item.objectID === objectID) {
         position = index;
-        return null;
+        break;
       }
-    });
+    }
     newState.splice(position, 1);
     this.setState({
       hits: newState,
@@ -140,9 +143,5 @@ class Newsfeed extends Component {
     );
   }
 }
-
-Newsfeed.propTypes = {
-  history: PropTypes.object.isRequired,
-};
 
 export default Newsfeed;
