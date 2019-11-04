@@ -4,3 +4,5 @@ export const GET_NEWS_API_CALL_FAILURE = 'GET_NEWS_API_CALL_FAILURE';
 
 
 export const HIDE_NEWS = 'HIDE_NEWS';
+
+export const UP_VOTE = 'UP_VOTE';
