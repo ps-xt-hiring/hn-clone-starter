@@ -1,16 +1,6 @@
 import axios from 'axios';
 import _ from 'lodash';
 
-axios.interceptors.request.use((request) => {
-  console.log('Starting Request', request);
-  return request;
-});
-
-axios.interceptors.response.use((response) => {
-  console.log('Response:', response);
-  return response;
-});
-
 export default (function () {
   const ajax = (method, url, option) => {
     const options = _.isUndefined(option) ? {} : option;
