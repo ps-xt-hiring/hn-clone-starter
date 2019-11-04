@@ -46,4 +46,6 @@ const hideNews = (objectID, dispatch) => {
 const handleMore = (activePage, dispatch) => {
   dispatch({ type: types.GET_NEWS_API_CALL_REQUEST, page: activePage + 1});
 }
+
+
 export default App;
