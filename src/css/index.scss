@@ -1,9 +1,10 @@
-@import 'common/normalize';
-@import 'common/variable';
+@import "common/normalize";
+@import "common/variable";
+@import "common/icon";
 * {
   margin: 0 auto;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 body {
   overflow-y: scroll;
@@ -46,4 +47,3 @@ html {
 .pointer {
   cursor: pointer;
 }
-

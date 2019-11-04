@@ -2,11 +2,7 @@ import React from 'react';
 import * as moment from 'moment';
 import PropTypes from 'prop-types';
 import {
-  Link,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
+  Table, TableBody, TableCell, TableRow,
 } from '@material-ui/core/';
 import { getDomain, getColor } from '../functions/helper';
 
@@ -53,9 +49,9 @@ const NewsTable = ({
               </i>
             </TableCell>
             <TableCell size="small" className="noPadding">
-              <Link href={row.url ? row.url : '/'} className="title">
+              <b className="title">
                 {row.title ? `${row.title} ` : 'No Title Available '}
-              </Link>
+              </b>
               <span className="grey fs10px">
 (
                 {getDomain(row.url)}
