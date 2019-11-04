@@ -32,20 +32,20 @@ const renderItems = (items, dispatch) => items.map((item, index) => (
     <span>{item.title}</span>
     <span className="app-section-url">
       <a href={item.url}>
-(
+        (
         {toBaseURL(item.url)}
-)
+        )
       </a>
       {' '}
-by
+      by
     </span>
     <span className="app-section-author">{item.author}</span>
     <span className="app-section-date">{getFormattedDate(item.created_at)}</span>
     <span className="app-section-action">
-[
+    [
       <span onClick={() => hideNews(item.objectID, dispatch)} role="button" onKeyUp={() => {}} tabIndex="0">hide</span>
       {' '}
-]
+    ]
     </span>
   </div>
 ));
@@ -66,7 +66,7 @@ const App = () => {
         {' '}
         <span className="app-header-heading">top</span>
         {' '}
-| new
+        | new
       </header>
       <section className="app-section">
         {renderItems(state.data, dispatch)}
