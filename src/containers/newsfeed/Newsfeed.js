@@ -25,9 +25,6 @@ class Newsfeed extends Component {
       btnHidden: true,
     };
   }
-  static propTypes = {
-    history: ReactRouterPropTypes.history,
-  };
 
   componentDidMount() {
     this.getHackerNews(this.getPageNumber());
@@ -143,5 +140,9 @@ class Newsfeed extends Component {
     );
   }
 }
+
+Newsfeed.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
 export default Newsfeed;
