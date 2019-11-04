@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { render } from 'react-dom';
 import HackerNews from './components/HackerNews';
 
 import './App.css';
@@ -11,4 +10,3 @@ export default function App() {
     </div>
   );
 }
-
