@@ -1,0 +1,47 @@
+.App-header {
+    float: left;
+    width: 100%;
+    background-color: #ff6600;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.App-header .App-logo {
+    float: left;
+}
+
+.App-header .App-logo img {
+    float: left;
+    border: 1px solid #ffffff;
+}
+
+.App-header .App-filter {
+    float: left;
+}
+  
+.App-header .App-filter button {
+    float: left;
+    padding: 0 10px;
+    margin: 3px 0;
+    border: 1px solid #000000;
+    border-width: 0 1px 0 0;
+    line-height: 14px;
+    font-size: 12px;
+}
+  
+.App-header .App-filter button:hover,
+.App-header .App-filter button.active {
+    color: #ffffff;
+}
+  
+.App-header .App-filter button:last-child {
+    border-width: 0;
+}
+
+@media (min-width: 768px) {
+    .App-header {
+        margin-top: 10px;
+    }
+}
