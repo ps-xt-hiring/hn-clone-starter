@@ -4,12 +4,18 @@ import HackerNews from './components/HackerNews';
 
 import './App.css';
 
-export default function App() {
-  return (
-    <div className="App">
-      <HackerNews />
-    </div>
-  );
+export default class App extends React.Component {
+  constructor(){
+    super();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <HackerNews />
+      </div>
+    );
+  }
 }
 
 const rootElement = document.getElementById('root');
