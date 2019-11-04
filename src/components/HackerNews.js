@@ -2,6 +2,20 @@ import * as React from 'react';
 import fetchData from '../api';
 
 export default class HackerNews extends React.Component {
+  static updateDataWithLS(data) {
+    return data.map((news) => {
+      const item = news;
+      const objID = item.objectID;
+      if (localStorage.getItem(`${objID}_points`)) {
+        item.points = localStorage.getItem(`${item.objectID}_points`);
+      }
+      if (localStorage.getItem(`${objID}_hidden`)) {
+        item.hidden = true;
+      }
+      return item;
+    });
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -16,8 +30,6 @@ export default class HackerNews extends React.Component {
     this.loadMoreNews = this.loadMoreNews.bind(this);
     this.getApiData = this.getApiData.bind(this);
     this.gotoHomePage = this.gotoHomePage.bind(this);
-    // this.getTimeDiff = this.getTimeDiff.bind(this);
-    // this.updateDataWithLS = this.updateDataWithLS.bind(this);
     this.hideNews = this.hideNews.bind(this);
   }
 
@@ -115,20 +127,6 @@ export default class HackerNews extends React.Component {
     this.getApiData(query);
   }
 
-  static updateDataWithLS(data) {
-    return data.map((news) => {
-      const item = news;
-      const objID = item.objectID;
-      if (localStorage.getItem(`${objID}_points`)) {
-        item.points = localStorage.getItem(`${item.objectID}_points`);
-      }
-      if (localStorage.getItem(`${objID}_hidden`)) {
-        item.hidden = true;
-      }
-      return item;
-    });
-  }
-
   gotoHomePage() {
     const { pageNumber } = this.state;
     this.setState({
@@ -141,7 +139,7 @@ export default class HackerNews extends React.Component {
 
   render() {
     const { 
-      error, isLoaded, items, filter
+      error, isLoaded, items, filter,
     } = this.state;
     if (error) {
       return <div>Error</div>;
@@ -172,7 +170,7 @@ export default class HackerNews extends React.Component {
                 points,
                 num_comments: nComments,
                 created_at: createdAt,
-                objectID
+                objectID,
               } = news;
               const publishedTime = HackerNews.getTimeDiff(createdAt);
               return (
