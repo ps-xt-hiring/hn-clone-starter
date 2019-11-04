@@ -1,17 +1,17 @@
 .News-list-item:nth-child(even) {
-    background-color: #eeeeee;
+  background-color: #eee;
 }
 
 .News-list-item-container {
-    line-height: 20px;
-    display: flex;
-    font-size: 0.8rem;
-    padding: 8px 5px;
+  line-height: 20px;
+  display: flex;
+  font-size: 0.8rem;
+  padding: 8px 5px;
 }
 
 .News-list-item-container span {
-    display: inline-block;
-    margin-right: 5px;
+  display: inline-block;
+  margin-right: 5px;
 }
 
 .News-list-item-container .New-details {
@@ -19,52 +19,54 @@
 }
 
 .News-list-item-container .New-comments {
-    min-width: 30px;
-    text-align: center;
-    font-size: 0.75rem;
+  min-width: 30px;
+  text-align: center;
+  font-size: 0.75rem;
 }
 
 .News-list-item-container .New-title {
-    width: 100%;
+  width: 100%;
 }
 
 .News-list-item-container .New-link,
 .News-list-item-container .New-user,
 .News-list-item-container .New-time,
 .News-list-item-container .New-hide {
-   font-size: 0.7rem;
+  font-size: 0.7rem;
 }
 
 .News-list-item-container .New-link,
 .News-list-item-container .New-link a,
 .News-list-item-container .New-time {
-    color: #999999;
+  color: #999;
 }
 
 .News-list-item-container .New-hide button {
-   font-size: inherit;
+  font-size: inherit;
 }
 
 .loadmore {
   margin: 10px 0 10px 50px;
-  color: #ff6600;
+  color: #f60;
 }
 
 @media (min-width: 768px) {
-    .News-list-item-container {
-        line-height: 28px;
-        font-size: 0.85rem;
-    }
 
-    .News-list-item-container .New-title {
-        width: auto;
-    }
+  .News-list-item-container {
+    line-height: 28px;
+    font-size: 0.85rem;
+  }
 
-    .News-list-item-container .New-comments {
-        min-width: 60px;
-    }
+  .News-list-item-container .New-title {
+    width: auto;
+  }
 
-    .loadmore {
-        margin-left: 95px;
-      }
+  .News-list-item-container .New-comments {
+    min-width: 60px;
+  }
+
+  .loadmore {
+    margin-left: 95px;
+  }
+
 }
