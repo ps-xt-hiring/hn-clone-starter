@@ -1,15 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Text extends Component {
-  render () {
-    const { type, value } = this.props;
-
-    return (
-      <span className={`text-cl ${type}`}>
-        {value}
-      </span>
-    )
-  }
+export default function Text(props) {
+  const { type, value } = props;
+  return (
+    <span className={`text-cl ${type}`}>
+      {value}
+    </span>
+  )
 }
-
-export default Text;
