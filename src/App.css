@@ -1,33 +1,110 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  text-align: left;
+  font-size: 14px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #f5a142;
+  padding: 5px;
+}
+
+.App-header .App-header-y {
+  cursor: pointer;
+  color: #fff;
+  display: inline-block;
+  border: 1px solid #fff;
+  padding: 2px 5px;
+  margin-right: 10px;
+}
+
+.App-header .App-header-links {
+  display: inline-block;
+}
+
+.App-footer span {
+  margin-left: 120px;
+  cursor: pointer;
+}
+
+.App-header .App-header-links span {
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+.App-header .App-header-links span.active {
+  color: #fff;
+}
+
+.News {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.App-content-area .News:nth-child(even) {
+  background: #ccc;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.App-content-area .News:nth-child(odd) {
+  background: #fff;
+}
 
-  to {
-    transform: rotate(360deg);
-  }
+.News .Comments-count {
+  text-align: right;
+  min-width: 50px;
+}
+
+.News .Upvotes {
+  min-width: 28px;
+  min-width: 50px;
+  margin: 0 10px;
+  text-align: right;
+  flex-direction: row;
+  align-items: center;
+}
+
+.News .Upvotes .Upvotes-count {
+  display: inline-block;
+}
+
+.News .Upvotes .arrow-up {
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 4px;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 10px solid #868282;
+}
+
+.News-content a {
+  color: #828282;
+  word-break: break-all;
+  margin: 0 5px;
+}
+
+.News-content .News-username {
+  font-weight: bold;
+}
+
+.News-content .News-hide {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.News-content .News-hide:hover {
+  text-decoration: underline;
+}
+
+.App-footer {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  color: #f38305;
+}
+
+.App-footer span:hover {
+  text-decoration: underline;
 }
