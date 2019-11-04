@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// // Newsfeed.propTypes = {
-// //   history: PropTypes.object.isRequired,
-// // };
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import Newsitem from '../../components/newsitem/NewsItem';
 import Axios from '../../utils/axios/Axios-Config';
@@ -28,6 +25,9 @@ class Newsfeed extends Component {
       btnHidden: true,
     };
   }
+  static propTypes = {
+    history: ReactRouterPropTypes.history,
+  };
 
   componentDidMount() {
     this.getHackerNews(this.getPageNumber());
@@ -95,13 +95,13 @@ class Newsfeed extends Component {
   onClickUpVoteHandler = (objectID) => {
     const { hits } = this.state;
     const newState = [...hits];
-    for (let item of newState) {
+    newState.forEach((item) => {
       if (item.objectID === objectID) {
         const matchedItem = item;
         matchedItem.points += 1;
-        break;
       }
-    }
+      return true;
+    });
     this.setState({
       hits: newState,
     });
@@ -111,12 +111,12 @@ class Newsfeed extends Component {
     const { hits } = this.state;
     const newState = [...hits];
     let position = -1;
-    for (let [item, index] of newState.entries()) {
+    newState.forEach((item, index) => {
       if (item.objectID === objectID) {
         position = index;
-        break;
       }
-    }
+      return true;
+    });
     newState.splice(position, 1);
     this.setState({
       hits: newState,
