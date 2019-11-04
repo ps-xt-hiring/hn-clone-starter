@@ -16,8 +16,8 @@ export default class HackerNews extends React.Component {
     this.loadMoreNews = this.loadMoreNews.bind(this);
     this.getApiData = this.getApiData.bind(this);
     this.gotoHomePage = this.gotoHomePage.bind(this);
-    this.getTimeDiff = this.getTimeDiff.bind(this);
-    this.updateDataWithLS = this.updateDataWithLS.bind(this);
+    // this.getTimeDiff = this.getTimeDiff.bind(this);
+    // this.updateDataWithLS = this.updateDataWithLS.bind(this);
     this.hideNews = this.hideNews.bind(this);
   }
 
@@ -34,7 +34,7 @@ export default class HackerNews extends React.Component {
     });
 
     fetchData(query).then((news) => {
-      const updatedNews = this.updateDataWithLS(news);
+      const updatedNews = HackerNews.updateDataWithLS(news);
       this.setState({
         isLoaded: true,
         items: updatedNews,
@@ -49,7 +49,7 @@ export default class HackerNews extends React.Component {
     });
   }
 
-  getTimeDiff(createdAt) {
+  static getTimeDiff(createdAt) {
     const timestamp = new Date(createdAt).getTime();
     const currentTimestamp = new Date().getTime();
 
@@ -115,7 +115,7 @@ export default class HackerNews extends React.Component {
     this.getApiData(query);
   }
 
-  updateDataWithLS(data) {
+  static updateDataWithLS(data) {
     return data.map((news) => {
       const item = news;
       const objID = item.objectID;
@@ -140,8 +140,9 @@ export default class HackerNews extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, items, filter } = this.state;
-
+    const { 
+      error, isLoaded, items, filter
+    } = this.state;
     if (error) {
       return <div>Error</div>;
     } if (!isLoaded) {
@@ -164,10 +165,16 @@ export default class HackerNews extends React.Component {
         <div className="App-content-area">
           {
             items.map((news, index) => {
-              const { title, url, author, points,
+              const {
+                title,
+                url,
+                author,
+                points,
                 num_comments: nComments,
-                created_at: createdAt, objectID } = news;
-              const publishedTime = this.getTimeDiff(createdAt);
+                created_at: createdAt,
+                objectID
+              } = news;
+              const publishedTime = HackerNews.getTimeDiff(createdAt);
               return (
                 <div style={{ display: news.hidden ? 'none' : 'flex' }} key={objectID} className="News">
                   <div className="Comments-count">{nComments === null ? 0 : nComments}</div>
