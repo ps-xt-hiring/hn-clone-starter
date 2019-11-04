@@ -36,7 +36,7 @@ class Newsfeed extends Component {
     const {
       newsType,
       page,
-    } = this.state
+    } = this.state;
     if (history.location.pathname !== newsType
       || page !== pNo) {
       this.getHackerNews(pNo);
@@ -67,17 +67,17 @@ class Newsfeed extends Component {
 
   parseNewsData = (data, currentPath, pNo) => {
     if (data.hits.length > 0) {
-      let btnHidden = false;
+      let btnFlag = false;
       if (data.nbHits <= (data.hits.length + data.hitsPerPage * data.page)) {
-        btnHidden = true;
+        btnFlag = true;
       }
       this.setState({
         hits: data.hits,
         page: pNo,
         newsType: currentPath,
-        btnHidden: btnHidden,
-      })
-    };
+        btnHidden: btnFlag,
+      });
+    }
   }
 
   onMoreBtnClicked = () => {
@@ -92,11 +92,11 @@ class Newsfeed extends Component {
   onClickUpVoteHandler = (objectID) => {
     const { hits } = this.state;
     const newState = [...hits];
-    newState.forEach(function (item) {
+    newState.forEach((item) => {
       if (item.objectID === objectID) {
-        let matchedItem = item;
+        const matchedItem = item;
         matchedItem.points += 1;
-        return;
+        return null;
       }
     });
     this.setState({
@@ -108,10 +108,10 @@ class Newsfeed extends Component {
     const { hits } = this.state;
     const newState = [...hits];
     let position = -1;
-    newState.forEach(function (item, index) {
+    newState.forEach((item, index) => {
       if (item.objectID === objectID) {
         position = index;
-        return;
+        return null;
       }
     });
     newState.splice(position, 1);
@@ -126,8 +126,8 @@ class Newsfeed extends Component {
       <Aux>
         <Newsitem
           newsItems={hits}
-          onClickedUpvote={(objectID) => this.onClickUpVoteHandler(objectID)}
-          onHideClicked={(objectID) => this.onHideButtonHandler(objectID)}
+          onClickedUpvote={objectID => this.onClickUpVoteHandler(objectID)}
+          onHideClicked={objectID => this.onHideButtonHandler(objectID)}
         />
         <Button
           clicked={this.onMoreBtnClicked}
@@ -142,7 +142,7 @@ class Newsfeed extends Component {
 }
 
 Newsfeed.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
 };
 
 export default Newsfeed;
