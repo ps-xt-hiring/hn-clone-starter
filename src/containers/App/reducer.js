@@ -25,7 +25,8 @@ const reducer = (state = initialState, action) => {
       return state.updateIn(['data'], (data) => {
         const updatedPoints = data.map((newsItem) => {
           if (newsItem.objectID === action.objectID) {
-            newsItem.points++;
+            // eslint-disable-next-line no-param-reassign
+            newsItem.points += 1;
           }
           return newsItem;
         });
@@ -41,6 +42,6 @@ export const getNews = page => ({ type: types.GET_NEWS_API_CALL_REQUEST, page })
 
 export const hideNews = objectID => ({ type: types.HIDE_NEWS, objectID });
 
-export const upVote = objectID => ({ type: types.UP_VOTE });
+export const upVote = objectID => ({ type: types.UP_VOTE, objectID });
 
 export default reducer;
