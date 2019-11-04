@@ -138,7 +138,7 @@ export default class HackerNews extends React.Component {
   }
 
   render() {
-    const { 
+    const {
       error, isLoaded, items, filter,
     } = this.state;
     if (error) {
