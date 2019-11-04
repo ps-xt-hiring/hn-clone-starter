@@ -4,11 +4,7 @@ import HackerNews from './components/HackerNews';
 
 import './App.css';
 
-export default class App extends React.Component {
-  constructor(){
-    super();
-  }
-
+export default class App extends React.PureComponent {
   render() {
     return (
       <div className="App">
