@@ -32,12 +32,18 @@ export function formatDate(date) {
   if (interval > 1) {
     return `${interval} minutes ago`;
   }
- return Math.floor(seconds) + " seconds ago";
+  return `${Math.floor(seconds)} seconds ago`;
 }
 
 export function getDomainName(url) {
   const match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+  let domainName;
+
   if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
-    return match[2];
+    domainName = match[2];
+  } else {
+    domainName = null;
   }
+
+  return domainName;
 }

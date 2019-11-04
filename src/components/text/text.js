@@ -6,5 +6,5 @@ export default function Text(props) {
     <span className={`text-cl ${type}`}>
       {value}
     </span>
-  )
+  );
 }
