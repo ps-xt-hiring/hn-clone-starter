@@ -51,7 +51,6 @@
 }
 
 @media (min-width: 768px) {
-
   .News-list-item-container {
     line-height: 28px;
     font-size: 0.85rem;
@@ -68,5 +67,4 @@
   .loadmore {
     margin-left: 95px;
   }
-
 }

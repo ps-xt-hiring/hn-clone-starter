@@ -30,20 +30,18 @@
   line-height: 14px;
   font-size: 12px;
 }
-  
+
 .App-header .App-filter button:hover,
 .App-header .App-filter button.active {
   color: #fff;
 }
-  
+
 .App-header .App-filter button:last-child {
   border-width: 0;
 }
 
 @media (min-width: 768px) {
-
   .App-header {
     margin-top: 10px;
   }
-
 }
