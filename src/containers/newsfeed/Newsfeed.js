@@ -17,37 +17,42 @@ import { localeData, defaultLanguage } from '../../utils/Locale-Data';
 class Newsfeed extends Component {
   constructor(props) {
     super(props);
+    const { history } = this.props;
     this.state = {
-      newsType: this.props.history.location.pathname,
+      newsType: history.location.pathName,
       hits: null,
       page: 0,
       btnHidden: true,
-    }
-  };
+    };
+  }
 
   componentDidMount() {
     this.getHackerNews(this.getPageNumber());
   }
 
   componentDidUpdate() {
-    const pNo = this.getPageNumber(),
-      route = this.props.history;
-    if (route.location.pathname !== this.state.newsType
-      || this.state.page !== pNo) {
+    const pNo = this.getPageNumber();
+    const { history } = this.props;
+    const {
+      newsType,
+      page,
+    } = this.state
+    if (history.location.pathname !== newsType
+      || page !== pNo) {
       this.getHackerNews(pNo);
     }
   }
 
   getPageNumber() {
-    const route = this.props.history,
-      pageNumber = route.location.search.split('=');
+    const { history } = this.props;
+    const pageNumber = history.location.search.split('=');
     return pageNumber[1] || 0;
   }
 
   getHackerNews = (pNo) => {
-    const route = this.props.history;
-    let newsType = FRONT_PAGE_NEWS,
-      currentPath = route.location.pathname;
+    const { history } = this.props;
+    const currentPath = history.location.pathname;
+    let newsType = FRONT_PAGE_NEWS;
     if (currentPath === LATEST_NEWS_ROUTE) { newsType = LATEST_NEWS; }
     Axios.get(newsType + PAGE_SEARCH_PARAM_REMOTE + pNo)
       .then((res) => {
@@ -55,8 +60,8 @@ class Newsfeed extends Component {
           this.parseNewsData(res.data, currentPath, pNo);
         }
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        // console.log(err);
       });
   }
 
@@ -68,37 +73,40 @@ class Newsfeed extends Component {
       }
       this.setState({
         hits: data.hits,
-        totalPages: data.nbPages,
-        totalCount: data.nbHits,
         page: pNo,
         newsType: currentPath,
         btnHidden: btnHidden,
       })
-    }
+    };
   }
 
   onMoreBtnClicked = () => {
-    let pNo = this.state.page + 1;
-    this.props.history.push({
-      search: PAGE_SEARCH_PARAM + pNo
+    const { page } = this.state;
+    const { history } = this.props;
+    const pNo = page + 1;
+    history.push({
+      search: PAGE_SEARCH_PARAM + pNo,
     });
   }
 
   onClickUpVoteHandler = (objectID) => {
-    const newState = [...this.state.hits];
+    const { hits } = this.state;
+    const newState = [...hits];
     newState.forEach(function (item) {
       if (item.objectID === objectID) {
-        item.points += 1;
+        let matchedItem = item;
+        matchedItem.points += 1;
         return;
       }
     });
     this.setState({
-      hits: newState
+      hits: newState,
     });
   }
 
   onHideButtonHandler = (objectID) => {
-    const newState = [...this.state.hits];
+    const { hits } = this.state;
+    const newState = [...hits];
     let position = -1;
     newState.forEach(function (item, index) {
       if (item.objectID === objectID) {
@@ -108,21 +116,22 @@ class Newsfeed extends Component {
     });
     newState.splice(position, 1);
     this.setState({
-      hits: newState
+      hits: newState,
     });
   }
 
   render() {
+    const { hits, btnHidden } = this.state;
     return (
       <Aux>
         <Newsitem
-          newsItems={this.state.hits}
+          newsItems={hits}
           onClickedUpvote={(objectID) => this.onClickUpVoteHandler(objectID)}
           onHideClicked={(objectID) => this.onHideButtonHandler(objectID)}
         />
         <Button
           clicked={this.onMoreBtnClicked}
-          show={this.state.btnHidden}
+          show={btnHidden}
         >
           {localeData[defaultLanguage].BUTTON_TEXT}
         </Button>
