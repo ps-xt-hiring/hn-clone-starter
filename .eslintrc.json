@@ -9,9 +9,6 @@
     "react/jsx-filename-extension": "off",
     "import/no-unresolved": "off"
   },
-  "parserOptions": {
-    "allowImportExportEverywhere": true
-  },
   "settings": {
     "import/resolver": {
       "node": {
