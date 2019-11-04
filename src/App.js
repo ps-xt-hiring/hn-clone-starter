@@ -11,7 +11,6 @@ function App() {
 
   const sortFeed = (type, list) => {
     const sortedFeed = [...list];
-
     if (type === HEADER_TOP_LABEL) {
       sortedFeed.sort((a, b) => parseInt(b.points, 10) - parseInt(a.points, 10));
     } else {
