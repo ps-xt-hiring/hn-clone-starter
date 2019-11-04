@@ -1,0 +1,109 @@
+
+.app-header {
+  background-color: #fa6602;
+  min-height: 5vh;
+  display: flex;
+  align-items: center;
+}
+
+.app-header-logo {
+  border: 1px solid #fff;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.app-header-heading {
+  color: #fff;
+  margin-right: 6px;
+}
+
+.app-section {
+  margin: 0;
+  min-height: 95vh;
+  font-size: 10pt;
+  line-height: 14pt;
+  background-color: #f6f6ef;
+}
+
+.app-section-even {
+  background-color: #f6f6ef;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 25px;
+  align-items: center;
+}
+
+.app-section-odd {
+  background-color: #e6e6df;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 25px;
+  align-items: center;
+}
+
+.app-section-more {
+  padding: 10px 90px;
+  cursor: pointer;
+  color: #fa6602;
+}
+
+.app-section-gotofirst {
+  padding: 10px 90px;
+  cursor: pointer;
+  color: #fa6602;
+}
+
+.app-section-comments {
+  margin-right: 20px;
+  width: 30px;
+}
+
+.app-section-points {
+  width: 40px;
+  text-align: right;
+}
+
+.app-section-url,
+a:link {
+  margin: 0 2px;
+  font-size: 8pt;
+  color: #828282;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.app-section-author {
+  font-size: 8pt;
+  font-weight: 500;
+  margin: 0 2px;
+}
+
+.app-section-date {
+  font-size: 8pt;
+  color: #828282;
+  margin: 0 5px;
+}
+
+.app-section-action {
+  font-size: 8pt;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+.arrow-up {
+  margin: 0 5px;
+  top: -10px;
+  position: relative;
+  width: 0;
+  height: 10px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 5px solid #828282;
+  cursor: pointer;
+}

@@ -21,9 +21,9 @@ const reducer = (state = initialState, action) => {
         return updatedData;
       });
 
-    case types.UP_VOTE: 
+    case types.UP_VOTE:
       return state.updateIn(['data'], (data) => {
-        const updatedPoints = data.map(newsItem => {
+        const updatedPoints = data.map((newsItem) => {
           if (newsItem.objectID === action.objectID) {
             newsItem.points++;
           }
