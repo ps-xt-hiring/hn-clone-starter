@@ -1,0 +1,75 @@
+.listContainer {
+  width: 100%;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  .fetchInfo {
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: -40px;
+    .even {
+      background-color: rgb(235, 235, 235);
+    }
+
+    li {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      font-size: 14px;
+      padding: 0 20px 5px 35px;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+
+      span {
+        padding: 0 5px 5px 0;
+        min-width: 40px;
+      }
+      .tableRow {
+        word-wrap: break-word;
+        padding: 0 4px 0 4px;
+      }
+      .sub {
+        // width: 30%;
+        color: grey;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      .small {
+        min-width: auto;
+        font-size: 12px;
+        padding: 0 4px 0 4px;
+      }
+    }
+  }
+  button {
+    border: 0;
+    padding: 0;
+    color: grey;
+    background-color: white;
+    cursor: pointer;
+    min-width: 15px;
+  }
+  a {
+    min-width: 15px;
+    cursor: pointer;
+    color: grey;
+    text-decoration: none;
+  }
+  .moreButton {
+    margin: -10px 0 20px 145px;
+    text-align: initial;
+    button {
+      color: #ff6600;
+      font-size: 14px;
+    }
+  }
+}

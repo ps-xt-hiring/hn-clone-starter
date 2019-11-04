@@ -1,27 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import Header from "./components/header/Header";
+import StoryList from "./containers/story-list/StoryList";
+import { fetchStoryList } from "./actions/storylist-action";
+import { connect } from "react-redux";
+import "./App.css";
 
-function App() {
+const App = props => {
+  useEffect(() => {
+    props.fetchStoryList(1);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Publicis Sapient - XT hiring challenge!!</h1>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-and save to reload. Refactor at will, but please do not
-          modify the entry point
-          {' '}
-          <code>index.js</code>
-.
-        </p>
-      </header>
+      <Header />
+      <StoryList list={props.storyItems} />
     </div>
   );
-}
+};
 
-export default App;
+const mapStateToProps = state => ({
+  storyItems: state.storyList.list
+});
+
+const mapDispatchToProps = {
+  fetchStoryList
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

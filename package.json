@@ -5,7 +5,10 @@
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-redux": "^7.1.1",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,10 +28,13 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "css-loader": "^3.2.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
     "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0"
   }
