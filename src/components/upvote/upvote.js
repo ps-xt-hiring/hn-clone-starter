@@ -7,7 +7,7 @@ import { updateLocalStorage } from '../../services/common';
 export default class Upvote extends Component {
   constructor(props) {
     super(props);
-    const { item: {isUpvoted, points} } = this.props;
+    const { item: { isUpvoted, points } } = this.props;
     this.state = {
       isUpvoted,
       points,
@@ -18,7 +18,7 @@ export default class Upvote extends Component {
   upvoteHandler() {
     const { item: { objectID } } = this.props;
     updateLocalStorage('upvotedItemsList', objectID);
-    this.setState((state) => ({
+    this.setState(state => ({
       isUpvoted: true,
       points: state.points + 1,
     }));
@@ -34,7 +34,9 @@ export default class Upvote extends Component {
           <button
             type="button"
             className={`${isUpvoted ? 'disable' : ''}`}
-            onClick={this.upvoteHandler} disabled={isUpvoted} />
+            onClick={this.upvoteHandler}
+            disabled={isUpvoted}
+          />
         </span>
       </span>
     );
@@ -47,4 +49,8 @@ Upvote.propTypes = {
     points: PropTypes.number,
     objectID: PropTypes.string,
   }),
+};
+
+Text.defaultProps = {
+  item: {},
 };

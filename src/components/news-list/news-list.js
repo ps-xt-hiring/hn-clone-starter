@@ -19,7 +19,7 @@ export default class NewsList extends Component {
 
   componentDidMount() {
     const { pageNumber } = this.state;
-    this.fetchNewsList(apiUrl + pageNumber);
+    this.fetchNewsList(`${apiUrl}${pageNumber}`);
   }
 
   fetchNewsList(apiUrl) {
@@ -32,13 +32,13 @@ export default class NewsList extends Component {
           isLoaded: true,
           error,
         });
-      },);
+      });
   }
 
   resultsHandler(response) {
     const upvotedItemsList = JSON.parse(localStorage.getItem('upvotedItemsList'));
     const items = response.hits.map((item) => {
-      let itemData = item;
+      const itemData = item;
       if (upvotedItemsList && upvotedItemsList.lastIndexOf(itemData.objectID) > -1) {
         itemData.isUpvoted = true;
         itemData.points += 1;
@@ -54,8 +54,9 @@ export default class NewsList extends Component {
   }
 
   loadmore() {
-    const { pageNumber } = this.state;
-    this.fetchNewsList(apiUrl + (pageNumber + 1));
+    let { pageNumber } = this.state;
+    pageNumber += 1;
+    this.fetchNewsList(`${apiUrl}${pageNumber}`);
     this.setState({
       pageNumber: pageNumber + 1,
     });
@@ -63,20 +64,17 @@ export default class NewsList extends Component {
 
   renderNewsList() {
     let { newsListItems } = this.state;
-    let itemsNew;
     const hiddenItemList = JSON.parse(localStorage.getItem('hiddenItemsList'));
 
     // Filter list with hidden items
     if (hiddenItemList) {
       newsListItems = newsListItems.filter(
-        (item) => {
-          return hiddenItemList.lastIndexOf(item.objectID) === -1;
-        }
+        (item) => hiddenItemList.lastIndexOf(item.objectID) === -1
       );
     }
-    itemsNew = newsListItems.map(item => {
-      return <NewsListItem key={item.objectID} item={item} />
-    });
+    const itemsNew = newsListItems.map(
+      (item) => <NewsListItem key={item.objectID} item={item} />
+    );
 
     return itemsNew;
   }
@@ -85,7 +83,7 @@ export default class NewsList extends Component {
     const { pageNumber, totalPages } = this.state;
     let loadmoreElm;
     if (pageNumber < totalPages - 1) {
-      loadmoreElm = <button className="loadmore" onClick={this.loadmore}>more</button>;
+      loadmoreElm = <button type="button" className="loadmore" onClick={this.loadmore}>more</button>;
     }
     return loadmoreElm;
   }
@@ -95,7 +93,10 @@ export default class NewsList extends Component {
     let elm;
 
     if (error) {
-      elm = <div>Error: {error.message}</div>;
+      elm = <div>
+        Error:
+        {error.message}
+        </div>;
     } else if (!isLoaded) {
       elm = <div>Loading...</div>;
     } else {

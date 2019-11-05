@@ -31,7 +31,7 @@ export default class NewsListItem extends Component {
       <>
         {
           !isHidden
-          && <li className="News-list-item">
+          && (<li className="News-list-item">
             <div className="News-list-item-container">
               <Text value={item.num_comments} type="New-comments" />
               <Upvote item={item} />
@@ -39,11 +39,13 @@ export default class NewsListItem extends Component {
                 <Text value={item.title} type="New-title" />
                 {
                 item.url
-                && <span className="New-link">
-                  (Missing parentheses around multilines JSX  
+                && (
+                  <span className="New-link">
+                  (
                   <a href={item.url}>{getDomainName(item.url)}</a>
                   )
-                </span>
+                  </span>
+                  )
                 }
                 <Text value={`by ${item.author}`} type="New-user" />
                 <Text value={formatDate(item.created_at)} type="New-time" />
@@ -54,7 +56,7 @@ export default class NewsListItem extends Component {
                 </span>
               </span>
             </div>
-          </li>
+          </li>)
         }
       </>
     );
@@ -62,5 +64,23 @@ export default class NewsListItem extends Component {
 }
 
 NewsListItem.propTypes = {
-  item: PropTypes.object
+  item: PropTypes.shape({
+    num_comments: PropTypes.number,
+    points: PropTypes.number,
+    title: PropTypes.string,
+    url: PropTypes.string,
+    author: PropTypes.string,
+    created_at: PropTypes.string,
+  }),
+};
+
+NewsListItem.defaultProps = {
+  item: {
+    num_comments: 0,
+    points: 0,
+    title: '',
+    url: '',
+    author: '',
+    created_at: '',
+  },
 };
