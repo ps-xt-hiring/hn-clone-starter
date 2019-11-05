@@ -15,6 +15,9 @@ export default class Upvote extends Component {
     this.upvoteHandler = this.upvoteHandler.bind(this);
   }
 
+  // Function name: upvoteHandler
+  // Arguments: none
+  // It triggers on upvote button click which counts a vote and update the local storage
   upvoteHandler() {
     const { item: { objectID } } = this.props;
     updateLocalStorage('upvotedItemsList', objectID);

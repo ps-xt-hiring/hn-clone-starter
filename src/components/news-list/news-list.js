@@ -17,11 +17,16 @@ export default class NewsList extends Component {
     this.loadmore = this.loadmore.bind(this);
   }
 
+  // Lifecycle method: componentDidMount
+  // Fetch results from API on component load
   componentDidMount() {
     const { pageNumber } = this.state;
-    this.fetchNewsList(`${apiUrl}${pageNumber}`);
+    this.fetchNewsList(`${apiUrl + pageNumber}`);
   }
 
+  // Function name: fetchNewsList
+  // Arguments: apiPath (API service url)
+  // Call api and fetch response
   fetchNewsList(apiPath) {
     fetch(apiPath)
       .then(response => response.json())
@@ -35,6 +40,9 @@ export default class NewsList extends Component {
       });
   }
 
+  // Function name: resultsHandler
+  // Arguments: response (API response)
+  // Take response, check for previous upvoted items and setState with updated items
   resultsHandler(response) {
     const upvotedItemsList = JSON.parse(localStorage.getItem('upvotedItemsList'));
     const items = response.hits.map((item) => {
@@ -53,20 +61,25 @@ export default class NewsList extends Component {
     });
   }
 
+  // Function name: loadmore
+  // Arguments: none
+  // It is called on loadmore button click which fetch next set of results
   loadmore() {
     let { pageNumber } = this.state;
     pageNumber += 1;
-    this.fetchNewsList(`${apiUrl}${pageNumber}`);
+    this.fetchNewsList(`${apiUrl + pageNumber}`);
     this.setState({
       pageNumber: pageNumber + 1,
     });
   }
 
+  // Function name: renderNewsList
+  // Arguments: none
+  // Check for previously hidden items and return items list elements to be rendered
   renderNewsList() {
     let { newsListItems } = this.state;
     const hiddenItemList = JSON.parse(localStorage.getItem('hiddenItemsList'));
 
-    // Filter list with hidden items
     if (hiddenItemList) {
       newsListItems = newsListItems.filter(
         item => hiddenItemList.lastIndexOf(item.objectID) === -1,
@@ -79,6 +92,9 @@ export default class NewsList extends Component {
     return itemsNew;
   }
 
+  // Function name: renderLoadmore
+  // Arguments: none
+  // Render loadmore button on the basis of total pages and current page counts
   renderLoadmore() {
     const { pageNumber, totalPages } = this.state;
     let loadmoreElm;

@@ -15,6 +15,9 @@ export default class NewsListItem extends Component {
     this.hideNewHandler = this.hideNewHandler.bind(this);
   }
 
+  // Function name: hideNewHandler
+  // Arguments: none
+  // It triggers on hide button click which hides the current item and update the local storage
   hideNewHandler() {
     const { item } = this.props;
 
