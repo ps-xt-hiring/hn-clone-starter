@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Feeds = props => (
+const Feeds = props => (
   <table className="table table-striped">
     <tbody>
       {
@@ -28,3 +28,5 @@ export const Feeds = props => (
     </tbody>
   </table>
 );
+
+export default Feeds;

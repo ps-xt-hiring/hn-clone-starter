@@ -30,6 +30,5 @@ const getFeeds = pageNum => (dispatch) => {
     });
 };
 
-export {
-  getFeeds,
-};
+export default getFeeds;
+

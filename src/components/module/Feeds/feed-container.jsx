@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { FeedHeader } from './feed-header';
-import { FeedFooter } from './feed-footer';
-import { Feeds } from './feed';
+import FeedHeader from './feed-header';
+import FeedFooter from './feed-footer';
+import Feeds from './feed';
 
-export const FeedContainer = props => (
+const FeedContainer = props => (
   <div>
     <FeedHeader />
     <Feeds feeds={props.feeds} />
@@ -14,3 +14,5 @@ export const FeedContainer = props => (
     />
   </div>
 );
+
+export default FeedContainer;

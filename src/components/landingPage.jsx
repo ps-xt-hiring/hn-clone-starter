@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { noop } from 'loadsh/noop';
 
-import { FeedContainer } from './module/Feeds/feed-container';
-import { getFeeds } from '../actions/feed-actions';
+import FeedContainer from './module/Feeds/feed-container';
+import getFeeds from '../actions/feed-actions';
 
 const propsTypes = {
   isLoading: PropTypes.bool,
   feeds: PropTypes.array,
   onFetchFeeds: PropTypes.func,
   pageNum: PropTypes.number,
+  loadMore: PropTypes.func,
 };
 
 const defaultProps = {
@@ -18,15 +19,17 @@ const defaultProps = {
   feeds: [],
   onFetchFeeds: noop,
   pageNum: 1,
+  loadMore: noop,
 };
 
 class LandingPage extends React.Component {
   componentDidMount() {
-    this.props.onFetchFeeds(this.props.pageNum);
+    const {pageNum } = this.props;
+    this.props.onFetchFeeds(pageNum);
   }
 
   render() {
-    const { isLoading, feeds, pageNum } = this.props;
+    const { isLoading, feeds, pageNum, onFetchFeeds } = this.props;
     return (
       <div>
         {
@@ -35,7 +38,7 @@ class LandingPage extends React.Component {
             ? (
               <FeedContainer
                 feeds={feeds}
-                loadMore={this.props.onFetchFeeds}
+                loadMore={onFetchFeeds}
                 pageNum={pageNum}
               />
             )
