@@ -22,8 +22,8 @@ export default class NewsList extends Component {
     this.fetchNewsList(`${apiUrl}${pageNumber}`);
   }
 
-  fetchNewsList(apiUrl) {
-    fetch(apiUrl)
+  fetchNewsList(apiPath) {
+    fetch(apiPath)
       .then(response => response.json())
       .then((response) => {
         this.resultsHandler(response);
@@ -98,7 +98,7 @@ export default class NewsList extends Component {
           Error:
           {error.message}
         </div>
-        );
+      );
     } else if (!isLoaded) {
       elm = <div>Loading...</div>;
     } else {
@@ -109,7 +109,7 @@ export default class NewsList extends Component {
           </ul>
           {this.renderLoadmore()}
         </>
-        );
+      );
     }
 
     return elm;

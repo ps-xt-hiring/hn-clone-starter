@@ -51,7 +51,7 @@ Upvote.propTypes = {
   }),
 };
 
-Text.defaultProps = {
+Upvote.defaultProps = {
   item: {
     isUpvoted: false,
     points: 0,

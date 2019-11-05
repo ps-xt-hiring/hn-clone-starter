@@ -43,7 +43,7 @@ export default class NewsListItem extends Component {
                 && (
                 <span className="New-link">
                   (
-                    <a href={item.url}>{getDomainName(item.url)}</a>
+                  <a href={item.url}>{getDomainName(item.url)}</a>
                   )
                 </span>
                 )
