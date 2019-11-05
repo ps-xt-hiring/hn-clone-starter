@@ -2,13 +2,13 @@
   width: 98%;
   margin: auto;
   margin-top: 20px;
-  font-family: Verdana, Geneva, sans-serif
+  font-family: Verdana, Geneva, sans-serif;
 }
 
-.header{
-  background-color: #ff6600;
+.header {
+  background-color: #f60;
   height: 50px;
-  padding: 14px 9px 9px 9px;;
+  padding: 14px 9px 9px 9px;
 }
 
 .logo {
@@ -24,49 +24,60 @@
 }
 
 .comments {
-  font-size:14px;
-  padding:6px !important;
+  font-size: 14px;
+  padding: 6px !important;
 }
-.upvote-counts{
-  font-size:14px;
-  padding:6px !important;
+
+.upvote-counts {
+  font-size: 14px;
+  padding: 6px !important;
 }
+
 .all-info {
-  padding:6px !important;
+  padding: 6px !important;
 }
+
 .title {
   font-weight: bold;
 }
+
 .domain {
-  font-size:13px;
+  font-size: 13px;
   color: #828282;
 }
+
 .by {
-  font-size:13px;
+  font-size: 13px;
   color: #828282;
 }
+
 .username {
-  font-size:13px;
+  font-size: 13px;
 }
+
 .posted-when {
-  font-size:13px;
+  font-size: 13px;
   color: #828282;
 }
-.hide-post{
-  font-size:13px;
+
+.hide-post {
+  font-size: 13px;
   cursor: pointer;
   font-weight: bold;
 }
-.upvote-icon{
-  width:15px;
-  height:15px;
+
+.upvote-icon {
+  width: 15px;
+  height: 15px;
   cursor: pointer;
 }
+
 .click-more {
   cursor: pointer;
   padding-left: 138px;
-  color:#ff6600;
+  color: #f60;
 }
+
 .loader {
   text-align: center;
   padding-top: 100px;
