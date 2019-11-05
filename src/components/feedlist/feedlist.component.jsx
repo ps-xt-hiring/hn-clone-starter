@@ -28,6 +28,7 @@ const FeedList = () => {
       onClick={() => setPageNum(pageNum + 1)}
       title="load more"
       type="button"
+      aria-hidden="true"
     >
       Load More
     </button>
