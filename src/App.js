@@ -7,7 +7,7 @@ import NotFound from './components/notFound';
 const App = () => (
   <Switch>
     <Route path="/" exact component={NewsFeed} />
-    <Route path="/news" exact component={NewsFeed} />
+    <Route path="/news" component={NewsFeed} />
     <Route path="*" render={NotFound} />
   </Switch>
 );
