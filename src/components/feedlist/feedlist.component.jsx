@@ -27,7 +27,9 @@ const FeedList = () => {
     <span
       className="button"
       onClick={() => setPageNum(pageNum + 1)}
+      onKeyUp={() => {}}
       role="button"
+      tabIndex={0}
     >
       Load More
     </span>

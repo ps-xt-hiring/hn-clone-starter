@@ -62,6 +62,7 @@ const Feed = ({ title, points, author, url, objectID, ...props }) => {
               className="hideline"
               onKeyUp={() => {}}
               role="button"
+              tabIndex={0}
               onClick={hideLine}
             >
               [hide]
