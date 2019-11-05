@@ -23,6 +23,16 @@ const FeedList = () => {
     fetchData();
   }, [pageNum]);
 
+  const loadMore = (
+    <button
+      onClick={() => setPageNum(pageNum + 1)}
+      title="load more"
+      type="button"
+    >
+      Load More
+    </button>
+  );
+
   return (
     <>
       <Row className="mt-4">
@@ -37,12 +47,7 @@ const FeedList = () => {
       </Row>
       <Row>
         <Col xs={12} className="more">
-          <button
-            onClick={() => setPageNum(...(pageNum + 1))}
-            title="load more"
-          >
-            Load More
-          </button>
+          {loadMore}
         </Col>
       </Row>
     </>
