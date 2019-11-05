@@ -9,11 +9,15 @@ const HeaderComponent = () => (
       <Logo />
     </Col>
     <Col xs={11}>
-      <a className="highlight pr-2" href="#">
+      <a
+        className="highlight pr-2"
+        href="http://www.hackernews.com"
+        title="Hacker News"
+      >
         top
       </a>
       |
-      <a href="#" className="pl-2">
+      <a href="http://www.hackernews.com" title="Hacker News" className="pl-2">
         new
       </a>
     </Col>

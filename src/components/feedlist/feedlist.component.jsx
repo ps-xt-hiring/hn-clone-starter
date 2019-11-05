@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Row, Col } from 'reactstrap';
 import Feed from '../feed/feed.component';
@@ -36,13 +37,25 @@ const FeedList = () => {
       </Row>
       <Row>
         <Col xs={12} className="more">
-          <a href="#" onClick={() => setPageNum(pageNum + 1)} title="load more">
+          <button
+            onClick={() => setPageNum(...(pageNum + 1))}
+            title="load more"
+          >
             Load More
-          </a>
+          </button>
         </Col>
       </Row>
     </>
   );
+};
+
+FeedList.propTypes = {
+  title: PropTypes.string,
+  point: PropTypes.string,
+  author: PropTypes.string,
+  url: PropTypes.string,
+  objectID: PropTypes.string,
+  created_at: PropTypes.string
 };
 
 export default FeedList;

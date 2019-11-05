@@ -1,17 +1,27 @@
 .feed-container {
-  .row:nth-child(odd) {
-    background-color: #e4e4e4;
-  }
-  .row:nth-child(even) {
-    background-color: #dad9d9;
-  }
-  .arrow {
-    cursor: pointer;
-  }
-  .more {
-    a {
-      color: #f57b22;
-      text-decoration: underline;
-    }
-  }
+	.row:nth-child(odd) {
+		background-color: #e4e4e4;
+	}
+	.row:nth-child(even) {
+		background-color: #dad9d9;
+	}
+	.arrow {
+		cursor: pointer;
+	}
+	.more {
+		a {
+			color: #f57b22;
+			text-decoration: underline;
+		}
+	}
+}
+
+button {
+	border: none;
+	background-color: inherit;
+	padding: 14px 28px;
+	font-size: 16px;
+	cursor: pointer;
+	display: inline-block;
+	color: #f57b22;
 }
