@@ -1,11 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import map from 'loadsh/map';
+import noop from 'loadsh/noop';
 
-const Feeds = props => (
+const propsTypes = {
+  pageNum: PropTypes.number,
+  loadMore: PropTypes.func,
+};
+
+const defaultProps = {
+  pageNum: 1,
+  loadMore: noop,
+};
+
+const Feeds = props => {
+  const {feeds} = props;
+
+  return (
   <table className="table table-striped">
     <tbody>
       {
-       props.feeds.map((item, index) => (
-         <tr key={index}>
+       map(feeds, (item) => (
+         <tr key={item.objectID}>
            <td>{item.num_comments}</td>
            <td><span className="glyphicon glyphicon-triangle-top" /></td>
            <td>{item.title}</td>
@@ -27,6 +43,9 @@ const Feeds = props => (
       }
     </tbody>
   </table>
-);
+)};
+
+Feeds.propTypes = propsTypes;
+Feeds.defaultProps = defaultProps;
 
 export default Feeds;
