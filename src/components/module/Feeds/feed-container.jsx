@@ -7,7 +7,7 @@ import FeedFooter from './feed-footer';
 import Feeds from './feed';
 
 const propsTypes = {
-  feeds: PropTypes.array,
+  feeds: PropTypes.instanceOf(Array),
   loadMore: PropTypes.func,
   pageNum: PropTypes.number,
 };

@@ -8,7 +8,7 @@ import getFeeds from '../actions/feed-actions';
 
 const propsTypes = {
   isLoading: PropTypes.bool,
-  feeds: PropTypes.array,
+  feeds: PropTypes.instanceOf(Array),
   onFetchFeeds: PropTypes.func,
   pageNum: PropTypes.number,
 };

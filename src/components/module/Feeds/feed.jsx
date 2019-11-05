@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import map from 'loadsh/map';
 
 const propsTypes = {
-  feeds: PropTypes.array,
+  feeds: PropTypes.instanceOf(Array),
 };
 
 const defaultProps = {
