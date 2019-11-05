@@ -1,8 +1,9 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../assets/error.css';
 import Link from 'next/link';
-
 
 function Error({ statusCode }) {
   return (

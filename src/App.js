@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 import React from 'react';
 import Layout from './components/layout/Layout';
 import NewsList from './components/newsLists/NewsLists';

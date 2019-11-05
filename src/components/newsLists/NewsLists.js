@@ -6,6 +6,8 @@
 /* eslint-disable react/no-did-update-set-state */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/forbid-prop-types */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 import React, { Component } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
