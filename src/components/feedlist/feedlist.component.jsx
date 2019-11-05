@@ -24,15 +24,13 @@ const FeedList = () => {
   }, [pageNum]);
 
   const loadMore = (
-    <button
+    <span
+      className="button"
       onClick={() => setPageNum(pageNum + 1)}
-      title="load more"
-      type="button"
-      aria-hidden="true"
-      tabindex="0"
+      role="button"
     >
       Load More
-    </button>
+    </span>
   );
 
   return (
