@@ -24,12 +24,12 @@ const defaultProps = {
 
 class LandingPage extends React.Component {
   componentDidMount() {
-    const {pageNum } = this.props;
+    const {pageNum} = this.props;
     this.props.onFetchFeeds(pageNum);
   }
 
   render() {
-    const { isLoading, feeds, pageNum, onFetchFeeds } = this.props;
+    const {isLoading, feeds, pageNum, onFetchFeeds} = this.props;
     return (
       <div>
         {

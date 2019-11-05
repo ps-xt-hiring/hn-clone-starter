@@ -1,5 +1,5 @@
 import ActionTypes from '../constants/action-types';
-import { request } from '../services/axiosHelper';
+import request from '../services/axiosHelper';
 
 const getFeeds = pageNum => (dispatch) => {
   dispatch({

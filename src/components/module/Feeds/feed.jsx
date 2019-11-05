@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import map from 'loadsh/map';
-import noop from 'loadsh/noop';
 
 const propsTypes = {
-  pageNum: PropTypes.number,
-  loadMore: PropTypes.func,
+  feeds: PropTypes.array,
 };
 
 const defaultProps = {
-  pageNum: 1,
-  loadMore: noop,
+  feeds: [],
 };
 
 const Feeds = props => {

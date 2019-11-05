@@ -10,6 +10,5 @@ const request = requestObject => new Promise((resolve, reject) => {
     });
 });
 
-export {
-  request,
-};
+export default request;
+
