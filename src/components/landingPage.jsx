@@ -5,7 +5,6 @@ import { noop } from 'loadsh/noop';
 
 import { FeedContainer } from './module/Feeds/feed-container';
 import { getFeeds } from '../actions/feed-actions';
-import { stat } from 'fs';
 
 const propsTypes = {
   isLoading: PropTypes.bool,
@@ -22,10 +21,6 @@ const defaultProps = {
 };
 
 class LandingPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.onFetchFeeds(this.props.pageNum);
   }

@@ -1,7 +1,6 @@
 import ActionTypes from '../constants/action-types';
 
 import { initialState } from '../store/initialState';
-import { stat } from 'fs';
 
 export default function appReducer(state = initialState, action = '') {
   let nextState = state;

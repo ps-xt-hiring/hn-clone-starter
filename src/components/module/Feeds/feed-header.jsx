@@ -5,8 +5,8 @@ export const FeedHeader = () =>  {
         <div className="header-container">
             <div className="header-content">
                 <i className="header-logo">Y</i>
-                <a className="top">top</a> <span>|</span> 
-                <a className="new">new</a>
+                <button className="top">top</button> <span>|</span> 
+                <button className="new">new</button>
             </div>
         </div>
     );
