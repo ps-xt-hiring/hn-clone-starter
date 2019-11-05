@@ -43,8 +43,7 @@ const renderItems = (items, dispatch) => items.map((item, index) => (
     <span className="app-section-date">{getFormattedDate(item.created_at)}</span>
     <span className="app-section-action">
     [
-      <span onClick={() => hideNews(item.objectID, dispatch)} role="button" onKeyUp={() => {}} tabIndex="0">hide</span>
-      {' '}
+      <span onClick={() => hideNews(item.objectID, dispatch)} role="button" onKeyUp={() => {}} tabIndex="0" className="app-section-hide">hide</span>
     ]
     </span>
   </div>
@@ -63,13 +62,11 @@ const App = () => {
     <div className="app">
       <header className="app-header">
         <img src={logo} alt="logo" className="app-header-logo" />
-        {' '}
-        <span className="app-header-heading">top</span>
-        {' '}
+        <span className="app-header-top" onClick={() => handleGotoFirst(dispatch)} role="button" onKeyUp={() => {}} tabIndex="0">top</span>
         | new
       </header>
       <section className="app-section">
-        {renderItems(state.data, dispatch)}
+        {state.fetching ? (<div>Loading...</div>) : renderItems(state.data, dispatch)}
         {state.data.length !== 0
           ? (<div className="app-section-more" onClick={() => handleMore(state.activePage, dispatch)} role="button" onKeyUp={() => {}} tabIndex="0">More</div>)
           : (<div className="app-section-gotofirst" onClick={() => handleGotoFirst(dispatch)} role="button" onKeyUp={() => {}} tabIndex="0">Go to First</div>) }

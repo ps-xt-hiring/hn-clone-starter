@@ -11,9 +11,10 @@
   margin-right: 10px;
 }
 
-.app-header-heading {
+.app-header-top {
   color: #fff;
-  margin-right: 6px;
+  margin: 0 6px;
+  cursor: pointer;
 }
 
 .app-section {
@@ -29,7 +30,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: 25px;
+  padding: 5px 0;
   align-items: center;
 }
 
@@ -38,7 +39,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: 25px;
+  padding: 5px 0;
   align-items: center;
 }
 
@@ -92,6 +93,10 @@ a:hover {
   font-size: 8pt;
   font-weight: 500;
   cursor: pointer;
+}
+
+.app-section-hide {
+  margin: 0 4px;
 }
 
 .arrow-up {
