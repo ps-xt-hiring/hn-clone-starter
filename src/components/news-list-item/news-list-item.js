@@ -31,7 +31,8 @@ export default class NewsListItem extends Component {
       <>
         {
           !isHidden
-          && (<li className="News-list-item">
+          && (
+          <li className="News-list-item">
             <div className="News-list-item-container">
               <Text value={item.num_comments} type="New-comments" />
               <Upvote item={item} />
@@ -40,12 +41,12 @@ export default class NewsListItem extends Component {
                 {
                 item.url
                 && (
-                  <span className="New-link">
+                <span className="New-link">
                   (
-                  <a href={item.url}>{getDomainName(item.url)}</a>
+                    <a href={item.url}>{getDomainName(item.url)}</a>
                   )
-                  </span>
-                  )
+                </span>
+                )
                 }
                 <Text value={`by ${item.author}`} type="New-user" />
                 <Text value={formatDate(item.created_at)} type="New-time" />
@@ -56,7 +57,8 @@ export default class NewsListItem extends Component {
                 </span>
               </span>
             </div>
-          </li>)
+          </li>
+          )
         }
       </>
     );

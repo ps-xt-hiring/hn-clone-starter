@@ -69,11 +69,11 @@ export default class NewsList extends Component {
     // Filter list with hidden items
     if (hiddenItemList) {
       newsListItems = newsListItems.filter(
-        (item) => hiddenItemList.lastIndexOf(item.objectID) === -1
+        item => hiddenItemList.lastIndexOf(item.objectID) === -1,
       );
     }
     const itemsNew = newsListItems.map(
-      (item) => <NewsListItem key={item.objectID} item={item} />
+      item => <NewsListItem key={item.objectID} item={item} />,
     );
 
     return itemsNew;
@@ -93,10 +93,12 @@ export default class NewsList extends Component {
     let elm;
 
     if (error) {
-      elm = <div>
-        Error:
-        {error.message}
-        </div>;
+      elm = (
+        <div>
+          Error:
+          {error.message}
+        </div>
+        );
     } else if (!isLoaded) {
       elm = <div>Loading...</div>;
     } else {
@@ -107,7 +109,7 @@ export default class NewsList extends Component {
           </ul>
           {this.renderLoadmore()}
         </>
-      );
+        );
     }
 
     return elm;
