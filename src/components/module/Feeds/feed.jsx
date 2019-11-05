@@ -22,7 +22,7 @@ const Feeds = props => {
           <div className="comment">{item.num_comments}</div>
           <div className="upvote">
             <div className="upvote-count">{upVoteCount}</div>
-            <div data-idx="0" role="button" className="upvotes-action arrow-up" onClick={() => setUpVoteCount(upVoteCount + 1)}></div>
+            <div className="upvotes-action arrow-up" onClick={() => setUpVoteCount(upVoteCount + 1)}></div>
           </div>
           <div className="feed-content">
             <span className="feed-title"></span>
@@ -32,7 +32,7 @@ const Feeds = props => {
               <span className="feed-author">{item.author}</span>
             </a>
             <span className="feed-time">3 years ago</span>
-            <span data-idx="0" role="button" className="feed-hide">[ hide ]</span>
+            <span className="feed-hide">[ hide ]</span>
           </div>
         </div>
        ))
