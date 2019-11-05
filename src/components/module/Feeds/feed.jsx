@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import map from 'loadsh/map';
 
@@ -12,16 +12,17 @@ const defaultProps = {
 
 const Feeds = props => {
   const {feeds} = props;
+  const [upVoteCount, setUpVoteCount] = useState(0);
 
   return (
       <>
       {
        map(feeds, item => (
-        <div className="feeds">
+        <div className="feeds" key={item.objectID}>
           <div className="comment">{item.num_comments}</div>
           <div className="upvote">
-            <div className="upvote-count">2077</div>
-            <div data-idx="0" role="button" className="upvotes-action arrow-up"></div>
+            <div className="upvote-count">{upVoteCount}</div>
+            <div data-idx="0" role="button" className="upvotes-action arrow-up" onClick={() => setUpVoteCount(upVoteCount + 1)}></div>
           </div>
           <div className="feed-content">
             <span className="feed-title"></span>
