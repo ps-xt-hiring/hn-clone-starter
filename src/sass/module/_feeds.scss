@@ -4,6 +4,10 @@
 
 .feeds {
     display:flex;
+    
+    &:nth-child(2n) {
+        background: #ccc;
+    }
 
     .comment {
         text-align: right;
