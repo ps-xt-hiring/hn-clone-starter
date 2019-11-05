@@ -29,6 +29,7 @@ const FeedList = () => {
       title="load more"
       type="button"
       aria-hidden="true"
+      tabindex="0"
     >
       Load More
     </button>
