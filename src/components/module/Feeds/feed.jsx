@@ -22,7 +22,7 @@ const Feeds = props => {
           <div className="comment">{item.num_comments}</div>
           <div className="upvote">
             <div className="upvote-count">{upVoteCount}</div>
-            <div role="button" className="upvotes-action arrow-up" onClick={() => setUpVoteCount(upVoteCount + 1)} onKeyDown={() => setUpVoteCount(upVoteCount + 1)}></div>
+            <div role="button" tabIndex="0" className="upvotes-action arrow-up" onClick={() => setUpVoteCount(upVoteCount + 1)} onKeyDown={() => setUpVoteCount(upVoteCount + 1)}></div>
           </div>
           <div className="feed-content">
             <span className="feed-title"></span>
