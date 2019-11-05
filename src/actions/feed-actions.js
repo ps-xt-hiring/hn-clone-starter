@@ -12,7 +12,7 @@ const getFeeds = pageNum => (dispatch) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    url: `http://hn.algolia.com/api/v1/search?page=${pageNum}`,
+    url: `https://hn.algolia.com/api/v1/search?page=${pageNum}`,
   };
 
   return request(requestObject).then((response) => {
