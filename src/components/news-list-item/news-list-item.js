@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './news-list-item.css';
+import PropTypes from 'prop-types';
 import Upvote from '../upvote/upvote';
 import Text from '../text/text';
 import { updateLocalStorage, formatDate, getDomainName } from '../../services/common';
@@ -8,7 +9,7 @@ export default class NewsListItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        isHidden: false,
+      isHidden: false,
     };
 
     this.hideNewHandler = this.hideNewHandler.bind(this);
@@ -25,9 +26,11 @@ export default class NewsListItem extends Component {
 
   render() {
     const { item } = this.props;
+    const { isHidden } = this.state;
     return (
       <>
-        {!this.state.isHidden
+        {
+          !isHidden
           && <li className="News-list-item">
             <div className="News-list-item-container">
               <Text value={item.num_comments} type="New-comments" />
@@ -35,18 +38,18 @@ export default class NewsListItem extends Component {
               <span className="New-details">
                 <Text value={item.title} type="New-title" />
                 {
-                  item.url
-                  && <span className="New-link">
-                    (
-                      <a href={item.url}>{getDomainName(item.url)}</a>
-                    )
-                  </span>
+                item.url
+                && <span className="New-link">
+                  (Missing parentheses around multilines JSX  
+                  <a href={item.url}>{getDomainName(item.url)}</a>
+                  )
+                </span>
                 }
                 <Text value={`by ${item.author}`} type="New-user" />
                 <Text value={formatDate(item.created_at)} type="New-time" />
                 <span className="New-hide">
                   [
-                    <button type="button" onClick={this.hideNewHandler}>hide</button>
+                  <button type="button" onClick={this.hideNewHandler}>hide</button>
                   ]
                 </span>
               </span>
@@ -57,3 +60,7 @@ export default class NewsListItem extends Component {
     );
   }
 }
+
+NewsListItem.propTypes = {
+  item: PropTypes.object
+};
