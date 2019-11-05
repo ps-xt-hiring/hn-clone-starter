@@ -40,7 +40,7 @@ export function getDomainName(url) {
   let domainName;
 
   if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
-    [, ,domainName] = match;
+    [, , domainName] = match;
   } else {
     domainName = null;
   }

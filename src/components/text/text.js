@@ -17,3 +17,8 @@ Text.propTypes = {
     PropTypes.number,
   ]),
 };
+
+Text.defaultProps = {
+  type: '',
+  value: '',
+};
