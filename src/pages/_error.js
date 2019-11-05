@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../assets/error.css';
+import Link from 'next/link';
+
 
 function Error({ statusCode }) {
   return (
@@ -10,6 +12,9 @@ function Error({ statusCode }) {
         <div className="status-code-msg">
           <h2>This page could not be found.</h2>
         </div>
+      </div>
+      <div>
+        <Link href="/"><a href="/" className="nav-link">Go To Homepage</a></Link>
       </div>
     </div>
   );

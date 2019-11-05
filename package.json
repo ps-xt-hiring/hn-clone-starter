@@ -18,7 +18,7 @@
   },
   "scripts": {
     "dev": "next",
-    "start": "next start",
+    "start": "next build && next start",
     "build": "next build",
     "test:lint:js": "eslint --ext=js --ext=jsx .",
     "test:lint:css": "stylelint \"**/*.css\"",
