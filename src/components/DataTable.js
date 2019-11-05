@@ -3,7 +3,7 @@ import { ReactComponent as Icon} from './drop-up-arrow.svg';
 import PropTypes from 'prop-types';
 
 function DataTable(props) {
-    const url = props.data.url.split('/')[2];
+    const url = props.data.url && props.data.url.split('/')[2];
     const createdByTime = props.data['created_at'];
     const apiDate = createdByTime.slice(8,10);
     const apiHour = createdByTime.slice(11,13);
