@@ -11,7 +11,6 @@ const propsTypes = {
   feeds: PropTypes.array,
   onFetchFeeds: PropTypes.func,
   pageNum: PropTypes.number,
-  loadMore: PropTypes.func,
 };
 
 const defaultProps = {
@@ -19,13 +18,12 @@ const defaultProps = {
   feeds: [],
   onFetchFeeds: noop,
   pageNum: 1,
-  loadMore: noop,
 };
 
 class LandingPage extends React.Component {
   componentDidMount() {
-    const {pageNum} = this.props;
-    this.props.onFetchFeeds(pageNum);
+    const {pageNum, onFetchFeeds} = this.props;
+    onFetchFeeds(pageNum);
   }
 
   render() {
