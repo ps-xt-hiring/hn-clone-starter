@@ -52,5 +52,9 @@ Upvote.propTypes = {
 };
 
 Text.defaultProps = {
-  item: {},
+  item: {
+    isUpvoted: false,
+    points: 0,
+    objectID: '',
+  },
 };
