@@ -9,20 +9,18 @@ import './App.scss';
 
 const store = configureStore(initialState);
 
-const App = () => {
-  return (
-    <Provider store={ store }>
-      <div className="App">
-        <Router>
-          <div className="wrapper">
-            <Switch>
-              <Route exact path="/" component={Landing} />
-            </Switch>
-          </div>
-        </Router>
+const App = () => (
+  <Provider store={store}>
+    <div className="App">
+      <Router>
+        <div className="wrapper">
+          <Switch>
+            <Route exact path="/" component={Landing} />
+          </Switch>
+        </div>
+      </Router>
     </div>
-    </Provider>
-  );
-}
+  </Provider>
+);
 
 export default App;

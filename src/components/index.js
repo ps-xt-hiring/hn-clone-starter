@@ -5,5 +5,5 @@ import LandingPage from './landingPage';
 export default {
   block: blockComponents,
   module: moduleComponents,
-  LandingPage
+  LandingPage,
 };

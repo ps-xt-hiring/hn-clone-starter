@@ -10,14 +10,14 @@ const propsTypes = {
   isLoading: PropTypes.bool,
   feeds: PropTypes.array,
   onFetchFeeds: PropTypes.func,
-  pageNum: PropTypes.number
+  pageNum: PropTypes.number,
 };
 
 const defaultProps = {
   isLoading: false,
   feeds: [],
   onFetchFeeds: noop,
-  pageNum: 1
+  pageNum: 1,
 };
 
 class LandingPage extends React.Component {
@@ -26,19 +26,21 @@ class LandingPage extends React.Component {
   }
 
   render() {
-    let { isLoading, feeds, pageNum } = this.props;
-    return ( 
+    const { isLoading, feeds, pageNum } = this.props;
+    return (
       <div>
         {
-          !isLoading ?
+          !isLoading
 
-          <FeedContainer feeds={feeds}
-                         loadMore={this.props.onFetchFeeds}
-                         pageNum={pageNum} />
+            ? (
+              <FeedContainer
+                feeds={feeds}
+                loadMore={this.props.onFetchFeeds}
+                pageNum={pageNum}
+              />
+            )
 
-          :
-
-          <h1>Loading...</h1>
+            : <h1>Loading...</h1>
         }
       </div>
     );
@@ -52,11 +54,11 @@ LandingPage.defaultProps = defaultProps;
 const mapStateToProps = state => ({
   isLanding: state.appReducer.isLanding,
   feeds: state.appReducer.feeds,
-  pageNum: state.appReducer.pageNum
+  pageNum: state.appReducer.pageNum,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onFetchFeeds: (pageNum) => { dispatch(getFeeds(pageNum)); }
+  onFetchFeeds: (pageNum) => { dispatch(getFeeds(pageNum)); },
 });
 
 // Connect the component to gain access to state and dispatch

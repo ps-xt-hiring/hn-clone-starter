@@ -12,7 +12,7 @@ export default function appReducer(state = initialState, action = '') {
         isLoading: true,
         isLanding: true,
         pageNum: action.value + 1,
-        feeds: []
+        feeds: [],
       };
       break;
 
@@ -21,7 +21,7 @@ export default function appReducer(state = initialState, action = '') {
         ...state,
         feeds: [...state.feeds, ...action.value],
         isLoading: false,
-        isLanding: true
+        isLanding: true,
       };
       break;
 
@@ -30,7 +30,7 @@ export default function appReducer(state = initialState, action = '') {
         ...state,
         isPageError: true,
         isLoading: false,
-        isLanding: true
+        isLanding: true,
       };
       break;
 
