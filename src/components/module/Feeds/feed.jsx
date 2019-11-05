@@ -14,32 +14,29 @@ const Feeds = props => {
   const {feeds} = props;
 
   return (
-  <table className="table table-striped">
-    <tbody>
+      <>
       {
-       map(feeds, (item) => (
-         <tr key={item.objectID}>
-           <td>{item.num_comments}</td>
-           <td><span className="glyphicon glyphicon-triangle-top" /></td>
-           <td>{item.title}</td>
-           <td className="text-style">
-             <span>
-               {item.url}
-               {' '}
-               <span>by</span>
-               {' '}
-               { item.author }
-               {' '}
-               <span>at</span>
-               {' '}
-               { item.created_at }
-             </span>
-           </td>
-         </tr>
+       map(feeds, item => (
+        <div className="feeds">
+          <div className="comment">{item.num_comments}</div>
+          <div className="upvote">
+            <div className="upvote-count">2077</div>
+            <div data-idx="0" role="button" className="upvotes-action arrow-up"></div>
+          </div>
+          <div className="feed-content">
+            <span className="feed-title"></span>
+            <a href={item.url} className="feed-domain">{item.url}</a>
+            <span>by</span>
+            <a href="/">
+              <span className="feed-author">{item.author}</span>
+            </a>
+            <span className="feed-time">3 years ago</span>
+            <span data-idx="0" role="button" className="feed-hide">[ hide ]</span>
+          </div>
+        </div>
        ))
       }
-    </tbody>
-  </table>
+      </>
 )};
 
 Feeds.propTypes = propsTypes;
