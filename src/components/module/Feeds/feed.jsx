@@ -30,7 +30,7 @@ const Feeds = (props) => {
             <span className="feed-author">{feed.author}</span>
           </a>
           <span className="feed-time">3 years ago</span>
-          <span tabIndex="0" role="button" onClick={() => setFeedStatus()}>[ hide ]</span>
+          <span tabIndex="0" role="button" onClick={() => setFeedStatus()} onKeyDown={() => setFeedStatus()}>[ hide ]</span>
         </div>
       </div>
     </div>
