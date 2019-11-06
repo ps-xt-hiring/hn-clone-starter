@@ -47,7 +47,15 @@ ListItem.propTypes = {
   hideNews: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   rowBgStyle: PropTypes.string.isRequired,
-  item: PropTypes.objectOf(PropTypes.object).isRequired,
+  item: PropTypes.shape({
+    objectID: PropTypes.string.isRequired,
+    points: PropTypes.number.isRequired,
+    num_comments: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    created_at: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default ListItem;

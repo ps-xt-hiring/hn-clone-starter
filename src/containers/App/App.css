@@ -24,8 +24,10 @@
 
 .app-section-more {
   margin: 6px 140px;
+  outline: 0;
 }
 
 .app-section-top {
   font-size: 14px;
+  outline: 0;
 }

@@ -6,6 +6,7 @@
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
+  outline: 0;
 }
 
 #primary {
@@ -16,6 +17,7 @@
   display: inline-block;
   color: #fa6602;
   cursor: pointer;
+  outline: 0;
 }
 
 #other {
@@ -26,4 +28,5 @@
   display: inline-block;
   color: #fff;
   cursor: pointer;
+  outline: 0;
 }

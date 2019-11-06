@@ -1,3 +1,7 @@
+:root {
+  --light-grey-color: #828282;
+}
+
 .list-item-even {
   background-color: #f6f6ef;
 }
@@ -14,15 +18,16 @@
   height: 10px;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-bottom: 5px solid #828282;
+  border-bottom: 5px solid var(--light-grey-color);
   cursor: pointer;
+  outline: 0;
 }
 
 .list-item-link,
 .list-item-link:link {
   margin: 0 4px;
   font-size: 8pt;
-  color: #828282;
+  color: var(--light-grey-color);
   text-decoration: none;
 }
 
@@ -38,12 +43,12 @@
 
 .list-item-by {
   font-size: 8pt;
-  color: #828282;
+  color: var(--light-grey-color);
 }
 
 .list-item-date {
   font-size: 8pt;
-  color: #828282;
+  color: var(--light-grey-color);
   margin-right: 4px;
 }
 
