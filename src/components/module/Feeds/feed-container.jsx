@@ -19,22 +19,23 @@ const defaultProps = {
   pageNum: 1,
 };
 
-const FeedContainer = props => {
-  const {feeds, loadMore, pageNum} = props;
+const FeedContainer = (props) => {
+  const { feeds, loadMore, pageNum } = props;
   return (
-  <div>
-    <FeedHeader />
-    {
+    <div>
+      <FeedHeader />
+      {
        map(feeds, feed => (
-        <Feeds feed={feed} key={feed.objectID}/>
+         <Feeds feed={feed} key={feed.objectID} />
        ))
     }
-    <FeedFooter
-      loadMore={loadMore}
-      pageNum={pageNum}
-    />
-  </div>
-)};
+      <FeedFooter
+        loadMore={loadMore}
+        pageNum={pageNum}
+      />
+    </div>
+  );
+};
 
 FeedContainer.propTypes = propsTypes;
 FeedContainer.defaultProps = defaultProps;

@@ -11,4 +11,3 @@ const request = requestObject => new Promise((resolve, reject) => {
 });
 
 export default request;
-

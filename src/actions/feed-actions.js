@@ -31,4 +31,3 @@ const getFeeds = pageNum => (dispatch) => {
 };
 
 export default getFeeds;
-
