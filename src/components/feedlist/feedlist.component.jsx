@@ -8,25 +8,34 @@ import './feedlist.styles.scss';
 const Feed = lazy(() => import('../feed/feed.component'));
 
 const FeedList = () => {
-  const [data, setData] = useState({ hits: [] });
+  const [data, setData] = useState([]);
   const [pageNum, setPageNum] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
+  let currentData = data;
   useEffect(() => {
     let isSubscribed = true;
-
+    const source = axios.CancelToken.source();
     const fetchData = async () => {
       setIsLoading(true);
       const result = await axios.get(
-        `https://hn.algolia.com/api/v1/search?tags=front_page&page=${pageNum}`
+        `https://hn.algolia.com/api/v1/search?tags=front_page&page=${pageNum}`,
+        {
+          cancelToken: source.token
+        }
       );
       if (isSubscribed) {
-        setData(result.data);
+        const resultData = currentData.concat(result.data.hits);
+        setData(resultData);
       }
       setIsLoading(false);
-      return () => (isSubscribed = false);
     };
     fetchData();
+    return () => {
+      isSubscribed = false;
+      source.cancel();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNum]);
 
   const loadMore = (
@@ -49,8 +58,8 @@ const FeedList = () => {
             {isLoading ? (
               <div>...Loading </div>
             ) : (
-              data.hits.length > 0 &&
-              data.hits.map(feed => <Feed key={feed.objectID} {...feed} />)
+              data.length > 0 &&
+              data.map(feed => <Feed key={feed.objectID} {...feed} />)
             )}
           </Suspense>
           <span>{loadMore}</span>
