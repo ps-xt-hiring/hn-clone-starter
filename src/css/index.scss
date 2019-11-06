@@ -1,0 +1,58 @@
+@import "common/variable";
+@import "common/icon";
+* {
+  margin: 0 auto;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 8px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+:root {
+  font-size: 14px;
+}
+html {
+  width: 100% !important;
+}
+
+.imgResponsive {
+  width: 100%;
+}
+.floatLeft {
+  float: left;
+}
+.floatRight {
+  float: right;
+}
+.fullHeight {
+  height: 98.5vh;
+}
+.textCenter {
+  text-align: center;
+}
+
+.errorMsg {
+  color: #ff0000;
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  float: left;
+  width: 100%;
+  text-align: right;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+code {
+  font-family: Monaco, Consolas, 'Courier New', monospace;
+}
+
