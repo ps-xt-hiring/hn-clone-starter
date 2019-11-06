@@ -10,8 +10,8 @@ export default function Header() {
         <img src={logo} alt="logo" />
       </div>
       <div className="header__filter">
-        <Button type="button" value="Top" />
-        <Button type="button" value="New" />
+        <Button buttontype="button" value="Top" />
+        <Button buttontype="button" value="New" />
       </div>
     </header>
   );
