@@ -1,15 +1,24 @@
-@import 'common/normalize';
-@import 'common/variable';
+@import "common/normalize";
+@import "common/variable";
 * {
   margin: 0 auto;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 body {
   overflow-y: scroll;
   overflow-x: hidden;
   margin: 8px;
+  margin: 0;
+  padding: 0;
+  font-family: "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+code {
+  font-family: Monaco, Consolas, "Courier New", monospace;
+}
+
 :root {
   font-size: 14px;
 }
@@ -46,4 +55,3 @@ html {
 .pointer {
   cursor: pointer;
 }
-

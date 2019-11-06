@@ -1,7 +1,0 @@
-"lint-staged": {
-  "src/**/*.{js,jsx,ts,tsx,json,md}": [
-    "pretty-quick --staged",
-    "eslint src/ --fix",
-    "git add"
-  ]
-},
