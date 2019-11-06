@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import noop from 'loadsh/noop';
+import map from 'loadsh/map';
 
 import FeedHeader from './feed-header';
 import FeedFooter from './feed-footer';
@@ -10,12 +11,14 @@ const propsTypes = {
   feeds: PropTypes.instanceOf(Array),
   loadMore: PropTypes.func,
   pageNum: PropTypes.number,
+  feed: PropTypes.object,
 };
 
 const defaultProps = {
   feeds: [],
+  feed: {},
   loadMore: noop,
-  pageNum: 1
+  pageNum: 1,
 };
 
 const FeedContainer = props => {
@@ -23,7 +26,11 @@ const FeedContainer = props => {
   return (
   <div>
     <FeedHeader />
-    <Feeds feeds={feeds} />
+    {
+       map(feeds, feed => (
+        <Feeds feed={feed} key={feed.objectID}/>
+       ))
+    }
     <FeedFooter
       loadMore={loadMore}
       pageNum={pageNum}
