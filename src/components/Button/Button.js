@@ -16,5 +16,4 @@ Button.propTypes = {
   variant: PropTypes.string.isRequired,
 };
 
-
 export default Button;

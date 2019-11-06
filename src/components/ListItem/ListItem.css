@@ -1,0 +1,56 @@
+.list-item-even {
+  background-color: #f6f6ef;
+}
+
+.list-item-odd {
+  background-color: #e6e6df;
+}
+
+.arrow-up {
+  margin: 0 5px;
+  top: -10px;
+  position: relative;
+  width: 0;
+  height: 10px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 5px solid #828282;
+  cursor: pointer;
+}
+
+.list-item-link,
+.list-item-link:link {
+  margin: 0 4px;
+  font-size: 8pt;
+  color: #828282;
+  text-decoration: none;
+}
+
+.list-item-link:hover {
+  text-decoration: underline;
+}
+
+.list-item-author {
+  font-size: 8pt;
+  font-weight: 500;
+  margin: 0 4px;
+}
+
+.list-item-by {
+  font-size: 8pt;
+  color: #828282;
+}
+
+.list-item-date {
+  font-size: 8pt;
+  color: #828282;
+  margin-right: 4px;
+}
+
+.list-item-hide {
+  font-size: 10px;
+}
+
+.table td {
+  padding: 5px !important;
+}
