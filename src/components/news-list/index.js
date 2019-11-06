@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './news-list.css';
-import NewsListItem from '../news-list-item/news-list-item';
+import NewsListItem from '../news-list-item';
 
 const apiUrl = 'https://hn.algolia.com/api/v1/search_by_date?tags=front_page&page=';
 
@@ -120,7 +119,7 @@ export default class NewsList extends Component {
     } else {
       elm = (
         <>
-          <ul className="New-list">
+          <ul className="news-list">
             {this.renderNewsList()}
           </ul>
           {this.renderLoadmore()}

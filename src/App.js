@@ -1,13 +1,14 @@
 import React from 'react';
-import Header from './components/header/header';
-import Main from './components/main/main';
-import './App.css';
+import Header from './components/header';
+import Main from './components/main';
+import './App.scss';
 
 export default function App() {
   return (
-    <div className="App">
-      <Header />
-      <Main />
+    <div className="app">
+      <Main>
+        <Header />
+      </Main>
     </div>
   );
 }

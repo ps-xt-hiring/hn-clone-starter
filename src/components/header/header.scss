@@ -1,0 +1,42 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.header {
+  display: flex;
+  background-color: $header-bg-color;
+  padding: 4px;
+
+  &__logo {
+    display: flex;
+
+    img {
+      border: 1px solid $color-white;
+    }
+  }
+
+  &__filter {
+    button {
+      padding: 0 10px;
+      margin: 3px 0;
+      border: 1px solid $color-black;
+      border-width: 0 1px 0 0;
+      line-height: 14px;
+      font-size: 12px;
+
+      &:hover,
+      &.active {
+        color: $color-white;
+      }
+
+      &:last-child {
+        border-width: 0;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .header {
+    margin-top: 10px;
+  }
+}
