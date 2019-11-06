@@ -1,5 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import PropTypes from 'prop-types';
+
 import axios from 'axios';
 import { Row, Col } from 'reactstrap';
 
@@ -12,7 +12,7 @@ const FeedList = () => {
   const [pageNum, setPageNum] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  let currentData = data;
+  const currentData = data;
   useEffect(() => {
     let isSubscribed = true;
     const source = axios.CancelToken.source();
@@ -67,15 +67,6 @@ const FeedList = () => {
       </Row>
     </>
   );
-};
-
-FeedList.propTypes = {
-  title: PropTypes.string,
-  point: PropTypes.string,
-  author: PropTypes.string,
-  url: PropTypes.string,
-  objectID: PropTypes.string,
-  created_at: PropTypes.string
 };
 
 export default FeedList;

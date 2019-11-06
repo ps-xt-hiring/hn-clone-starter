@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import Moment from 'moment';
 import { ReactComponent as Arrowup } from '../../assets/arrow.svg';
@@ -35,7 +36,8 @@ const Feed = ({ title, points, author, url, objectID, ...props }) => {
     return domain.origin;
   };
 
-  const dateCreated = props.created_at;
+  // eslint-disable-next-line react/destructuring-assignment
+  const createdAt = props.created_at;
 
   return (
     <>
@@ -53,10 +55,10 @@ const Feed = ({ title, points, author, url, objectID, ...props }) => {
             </span>
           </Col>
           <Col xs={9}>
-            {title} (<a href={url}>{getDomain(url)}</a>) by
-            {author}{' '}
+            {title} {<a href={url}>{getDomain(url)}</a>} by
+                        {author}            {' '}
             <span className="font-weight-bold">
-              {Moment(dateCreated).fromNow()} hours ago{' '}
+              {Moment(createdAt).fromNow()}
             </span>
             <span
               className="hideline"
@@ -72,6 +74,24 @@ const Feed = ({ title, points, author, url, objectID, ...props }) => {
       )}
     </>
   );
+};
+
+Feed.propTypes = {
+  title: PropTypes.string,
+  points: PropTypes.string,
+  author: PropTypes.string,
+  url: PropTypes.string,
+  objectID: PropTypes.string,
+  created_at: PropTypes.string
+};
+
+Feed.defaultProps = {
+  title: 'title',
+  points: '0',
+  author: 'default',
+  url: 'www.example.com',
+  objectID: '0',
+  created_at: '0'
 };
 
 export default Feed;
