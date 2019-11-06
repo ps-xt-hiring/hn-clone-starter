@@ -4,6 +4,7 @@ import './App.css';
 import * as types from './types';
 import { toBaseURL, getFormattedDate } from '../../common/utils';
 import logo from '../../images/y18.gif';
+import Button from '../../components/Button/Button';
 
 
 const hideNews = (objectID, dispatch) => {
@@ -31,19 +32,18 @@ const renderItems = (items, dispatch) => items.map((item, index) => (
     </span>
     <span>{item.title}</span>
     <span className="app-section-url">
-      <a href={item.url}>
+      <a href={item.url} className="app-section-link">
         (
         {toBaseURL(item.url)}
         )
       </a>
-      {' '}
       by
     </span>
     <span className="app-section-author">{item.author}</span>
     <span className="app-section-date">{getFormattedDate(item.created_at)}</span>
     <span className="app-section-action">
     [
-      <span onClick={() => hideNews(item.objectID, dispatch)} role="button" onKeyUp={() => {}} tabIndex="0" className="app-section-hide">hide</span>
+      <Button variant="secondary" onClick={() => hideNews(item.objectID, dispatch)} title="hide" className="app-section-hide" />
     ]
     </span>
   </div>
@@ -62,15 +62,16 @@ const App = () => {
     <div className="app">
       <header className="app-header">
         <img src={logo} alt="logo" className="app-header-logo" />
-        <span className="app-header-top" onClick={() => handleGotoFirst(dispatch)} role="button" onKeyUp={() => {}} tabIndex="0">top</span>
-        | new
+        <Button variant="other" onClick={() => handleGotoFirst(dispatch)} title="top" />
+        <span className="app-header-new">| new </span>
       </header>
       <section className="app-section">
         {state.fetching ? (<div>Loading...</div>) : renderItems(state.data, dispatch)}
         {state.data.length !== 0
-          ? (<div className="app-section-more" onClick={() => handleMore(state.activePage, dispatch)} role="button" onKeyUp={() => {}} tabIndex="0">More</div>)
-          : (<div className="app-section-gotofirst" onClick={() => handleGotoFirst(dispatch)} role="button" onKeyUp={() => {}} tabIndex="0">Go to First</div>) }
+          ? (<Button variant="primary" onClick={() => handleMore(state.activePage, dispatch)} title="More" className="app-section-more" />)
+          : (<Button variant="primary" onClick={() => handleGotoFirst(dispatch)} title="Go to First Page" />) }
       </section>
+
     </div>
   );
 };

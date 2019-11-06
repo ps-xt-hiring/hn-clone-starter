@@ -1,0 +1,29 @@
+#secondary {
+  background-color: transparent;
+  border: none;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#primary {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  color: #fa6602;
+  cursor: pointer;
+}
+
+#other {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  color: #fff;
+  cursor: pointer;
+}

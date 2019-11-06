@@ -11,10 +11,8 @@
   margin-right: 10px;
 }
 
-.app-header-top {
-  color: #fff;
-  margin: 0 6px;
-  cursor: pointer;
+.app-header-new {
+  font-size: 12px;
 }
 
 .app-section {
@@ -44,15 +42,7 @@
 }
 
 .app-section-more {
-  padding: 10px 90px;
-  cursor: pointer;
-  color: #fa6602;
-}
-
-.app-section-gotofirst {
-  padding: 10px 90px;
-  cursor: pointer;
-  color: #fa6602;
+  margin: 10px 95px;
 }
 
 .app-section-comments {
@@ -71,6 +61,10 @@ a:link {
   font-size: 8pt;
   color: #828282;
   text-decoration: none;
+}
+
+.app-section-link {
+  margin-right: 5px;
 }
 
 a:hover {
@@ -96,7 +90,7 @@ a:hover {
 }
 
 .app-section-hide {
-  margin: 0 4px;
+  font-size: 10px;
 }
 
 .arrow-up {
