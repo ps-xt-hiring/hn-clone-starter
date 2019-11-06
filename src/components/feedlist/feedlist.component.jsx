@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Row, Col } from 'reactstrap';
-import Feed from '../feed/feed.component';
+
 import './feedlist.styles.scss';
+
+const Feed = lazy(() => import('../feed/feed.component'));
 
 const FeedList = () => {
   const [data, setData] = useState({ hits: [] });
@@ -39,17 +41,15 @@ const FeedList = () => {
     <>
       <Row className="mt-4">
         <Col xs={12} className="feed-container">
-          {isLoading ? (
-            <div>...Loading </div>
-          ) : (
-            data.hits.length > 0 &&
-            data.hits.map(feed => <Feed key={feed.objectID} {...feed} />)
-          )}
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12} className="more">
-          {loadMore}
+          <Suspense fallback={<span>...loading</span>}>
+            {isLoading ? (
+              <div>...Loading </div>
+            ) : (
+              data.hits.length > 0 &&
+              data.hits.map(feed => <Feed key={feed.objectID} {...feed} />)
+            )}
+          </Suspense>
+          <span>{loadMore}</span>
         </Col>
       </Row>
     </>
