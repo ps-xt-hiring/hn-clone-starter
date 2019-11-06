@@ -11,7 +11,7 @@ const propsTypes = {
   feeds: PropTypes.instanceOf(Array),
   loadMore: PropTypes.func,
   pageNum: PropTypes.number,
-  feed: PropTypes.object,
+  feed: PropTypes.objectOf(PropTypes.object),
 };
 
 const defaultProps = {

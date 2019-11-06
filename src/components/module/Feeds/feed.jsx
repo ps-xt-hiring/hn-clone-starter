@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const propsTypes = {
-  feed: PropTypes.object,
+  feed: PropTypes.objectOf(PropTypes.object),
 };
 
 const defaultProps = {
