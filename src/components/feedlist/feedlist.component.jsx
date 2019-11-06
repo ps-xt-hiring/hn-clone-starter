@@ -35,7 +35,6 @@ const FeedList = () => {
       isSubscribed = false;
       source.cancel();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNum]);
 
   const loadMore = (
