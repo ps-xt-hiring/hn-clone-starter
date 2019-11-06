@@ -13,14 +13,18 @@ const FeedList = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    let isSubscribed = true;
+
     const fetchData = async () => {
       setIsLoading(true);
-      const result = await axios(
+      const result = await axios.get(
         `https://hn.algolia.com/api/v1/search?tags=front_page&page=${pageNum}`
       );
-
-      setData(result.data);
+      if (isSubscribed) {
+        setData(result.data);
+      }
       setIsLoading(false);
+      return () => (isSubscribed = false);
     };
     fetchData();
   }, [pageNum]);
