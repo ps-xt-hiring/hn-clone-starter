@@ -11,12 +11,10 @@ const propsTypes = {
   feeds: PropTypes.instanceOf(Array),
   loadMore: PropTypes.func,
   pageNum: PropTypes.number,
-  feed: PropTypes.objectOf(PropTypes.object),
 };
 
 const defaultProps = {
   feeds: [],
-  feed: {},
   loadMore: noop,
   pageNum: 1,
 };
