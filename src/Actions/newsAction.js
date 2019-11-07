@@ -14,11 +14,15 @@ export const getNewsFeedAction = currentPage => dispatch => ajax
         currentPage,
       });
     } else {
-      dispatch({ type: 'NEWS_FEED_FAILURE', payload: response.data });
+      dispatch({
+        type: 'NEWS_FEED_FAILURE',
+        payload: response.data,
+        currentPage: 1,
+      });
     }
   })
   .catch((err) => {
-    dispatch({ type: 'USER_TYPE_FAILURE', payload: err });
+    dispatch({ type: 'NEWS_FEED_FAILURE', payload: err, currentPage: 1 });
   });
 
 export const toggleVoteAction = item => ({

@@ -19,7 +19,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         newsList: [],
-        currentPage: 1,
+        currentPage: action.currentPage,
       };
 
     case 'Toggle_Vote': {

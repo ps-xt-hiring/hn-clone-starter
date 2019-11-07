@@ -3,11 +3,9 @@ import {
 } from 'redux';
 
 import ReduxThunk from 'redux-thunk';
-// import axios from 'axios';
 
 import newsFeedReducer from './newsFeedReducer';
 
-// if you're also using redux-thunk, add it as a middleware
 const createStoreWithMiddleware = compose(applyMiddleware(ReduxThunk))(
   createStore,
 );
