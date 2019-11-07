@@ -25,10 +25,10 @@ const NewsTable = ({
           newsList.map(row => (
             <TableRow key={row.objectID}>
               <TableCell size="small" align="center">
-                <b>{row.num_comments ? row.num_comments : 0}</b>
+                <strong>{row.num_comments ? row.num_comments : 0}</strong>
               </TableCell>
               <TableCell size="small" className="no-padding" width={1}>
-                <b>{row.points}</b>
+                <strong>{row.points}</strong>
               </TableCell>
               <TableCell size="small" className="no-padding" width={1}>
                 <i
@@ -47,33 +47,31 @@ const NewsTable = ({
                 <Link href={row.url ? row.url : '/'} className="title">
                   {row.title ? `${row.title} ` : 'No Title Available '}
                 </Link>
-                <span className="grey sub-title">
+                <h4 className="grey sub-title">
 (
                   {getDomain(row.url)}
 )
-                </span>
-                <span className="grey sub-title"> by</span>
-                <b className="sub-title">
+                </h4>
+                <h4 className="grey sub-title"> by</h4>
+                <strong className="sub-title">
                   {' '}
                   {row.author}
                   {' '}
-                </b>
-                <span className="grey sub-title">
+                </strong>
+                <h4 className="grey sub-title">
                   {moment(row.created_at).fromNow()}
-                </span>
-                <span
+                </h4>
+                <button
                   className="sub-title pointer"
-                  role="button"
-                  tabIndex="0"
-                  onKeyPress={() => hideCurrentNews(row)}
+                  type="button"
                   onClick={() => hideCurrentNews(row)}
                 >
-                  {' '}
                   [
-                  <b>hide</b>
+                  {' '}
+                  <strong>hide</strong>
                   {' '}
 ]
-                </span>
+                </button>
               </TableCell>
             </TableRow>
           ))

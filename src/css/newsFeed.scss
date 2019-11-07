@@ -3,6 +3,8 @@
 .header {
   background-color: $burnt-orange;
   padding: 6px;
+  display: flex;
+  align-items: center;
   .header-child {
     margin-right: 4px;
   }
@@ -44,6 +46,10 @@
   }
   .sub-title {
     font-size: 10px;
+    display: inline-block;
+    margin-right: 2px;
+    border: none;
+    background: none;
   }
   .material-icons {
     vertical-align: bottom;
