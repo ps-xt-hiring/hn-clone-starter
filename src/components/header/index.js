@@ -7,11 +7,15 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header__logo">
-        <img src={logo} alt="logo" />
+        <picture>
+          <source media="(min-width: 768px)" srcset={logo} />
+          <source media="(min-width: 420px)" srcset={logo} />
+          <img src={logo} alt="Logo" />
+        </picture>
       </div>
       <div className="header__filter">
-        <Button buttontype="button" value="Top" />
-        <Button buttontype="button" value="New" />
+        <Button value="Top" />
+        <Button value="New" />
       </div>
     </header>
   );

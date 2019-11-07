@@ -3,21 +3,19 @@ import PropTypes from 'prop-types';
 import './button.scss';
 
 export default function Button(props) {
-  const { buttontype, value } = props;
+  const { value } = props;
 
   return (
-    <button type={buttontype}>
+    <button type="button">
       {value}
     </button>
   );
 }
 
 Button.propTypes = {
-  buttontype: PropTypes.string,
   value: PropTypes.string,
 };
 
 Button.defaultProps = {
-  buttontype: 'button',
   value: '',
 };
