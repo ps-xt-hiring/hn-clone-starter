@@ -14,7 +14,11 @@ const Header = () => (
   >
     <Grid item className="header-child">
       <Link href="/">
-        <img className="logo" src={logo} alt="hacker news logo" />
+        <img
+          className="logo responsive-image"
+          src={logo}
+          alt="hacker news logo"
+        />
       </Link>
     </Grid>
     <Grid item className="header-child">
