@@ -53,8 +53,7 @@ export default function Feed(props) {
   return (
     <main className="container-wrapper feed">
       {feed.length
-        ?
-        (
+        ? (
           <>
             {feed.filter(post => isHidden(post))
               .map((item, index) => (
@@ -77,8 +76,7 @@ export default function Feed(props) {
             }
           </>
         )
-        :
-        (
+        : (
           <p>
             {LOADING_TEXT}
           </p>
