@@ -8,8 +8,8 @@ export default function Header() {
     <header className="header">
       <div className="header__logo">
         <picture>
-          <source media="(min-width: 768px)" srcset={logo} />
-          <source media="(min-width: 420px)" srcset={logo} />
+          <source media="(min-width: 768px)" srcSet={logo} />
+          <source media="(min-width: 420px)" srcSet={logo} />
           <img src={logo} alt="Logo" />
         </picture>
       </div>
