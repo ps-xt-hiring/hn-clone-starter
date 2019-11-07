@@ -1,0 +1,59 @@
+$orangeColor : #ff6a00;
+$whiteColor : #ffffff;
+$feedTextColor : #555555;
+$blackColor : #000000;
+$altGreyColor : #efefef;
+$upvoteAndLinkColor: #999999;
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+*:focus {
+    outline: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: $whiteColor;
+    color: $feedTextColor;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+.clearfix {zoom: 1}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.container-wrapper {
+    max-width: 102.4rem;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn-empty {
+    border: none;
+    background-color: transparent;
+}
+
+@mixin colorShade($color, $amount) {
+  color: darken($color, $amount);
+};

@@ -1,0 +1,79 @@
+@import '../../styles/theme.scss';
+@import '../../styles/media.scss';
+
+.news-item {
+    display: flex;
+    padding: .5rem 0;
+    align-items: center;
+
+    &__comment-count, &__points {
+        flex: 2;
+        text-align: end;
+    }
+
+    &__upvote {
+        flex: 1;
+        color: $upvoteAndLinkColor;
+        font-size: 1.2rem;
+    }
+
+    &__title {
+        flex: 15;
+        margin-left: 1rem;
+        word-break: break-word;
+
+        span {
+            font-size: 1rem;
+            color: $upvoteAndLinkColor;
+
+            b {
+                color: $blackColor;
+                font-weight: normal;
+            }
+        }
+    }
+
+    &__hide {
+        font-size: 1.2rem;
+    }
+
+    &.odd {
+        background-color: $altGreyColor;
+    }
+
+    &--lightest {
+      @include colorShade($orangeColor, 0);
+    }
+
+    &--lighter {
+      @include colorShade($orangeColor, 10%);
+    }
+
+    &--light {
+      @include colorShade($orangeColor, 20%);
+    }
+
+    &--normal {
+      @include colorShade($orangeColor, 30%);
+    }
+
+    &--dark {
+      @include colorShade($orangeColor, 100%);
+    }
+}
+
+@include tablet {
+    .news-item {
+        &__comment-count, &__points { flex: 2; }
+        &__upvote { flex: 1; }
+        &__title { flex: 20; }
+    }
+}
+
+@include desktop {
+    .news-item {
+        &__comment-count, &__points { flex: 1; }
+        &__upvote { flex: 1; }
+        &__title { flex: 18; }
+    }
+}

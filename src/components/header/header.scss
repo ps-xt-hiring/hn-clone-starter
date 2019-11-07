@@ -1,0 +1,41 @@
+@import '../../styles/theme.scss';
+
+.header {
+    display: flex;
+    align-items: center;
+    background-color: $orangeColor;
+    height: 2.4rem;
+    margin-top: 1rem;;
+    
+    &__logo {
+        border: .1rem solid $whiteColor;
+        margin: .2rem;
+    }
+
+    &__title {
+        font-size: 1.2rem;
+        color: $blackColor;
+    }
+
+    &__navigation {
+        margin: 0 1rem;
+
+        &__list {
+            display: flex;
+
+            li {
+                list-style: none;
+                padding: .5rem;
+                color: $blackColor;
+            }
+
+            &--active, &--deactive {
+                font-size: 1.1rem;
+            }
+
+            &--active {
+                color: $whiteColor;
+            }
+        }
+    }
+}
