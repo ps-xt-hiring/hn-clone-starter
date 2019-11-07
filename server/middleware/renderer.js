@@ -62,8 +62,6 @@ export default store => (req, res) => {
       c => `<link rel="stylesheet" href="${c}" />`,
     );
 
-    const css = sheets.toString();
-
     // get HTML headers
     const helmet = Helmet.renderStatic();
 
@@ -72,10 +70,6 @@ export default store => (req, res) => {
       htmlData
         // write the React app
         .replace('<div id="root"></div>', `<div id="root">${html}</div>`)
-        .replace(
-          '<style id="css-server-side"></style>',
-          `<style id="css-server-side">${css}</style>`,
-        )
         // write the string version of our state
         .replace('__REDUX_STATE__={}', `__REDUX_STATE__=${reduxState}`)
         // append the extra js assets
