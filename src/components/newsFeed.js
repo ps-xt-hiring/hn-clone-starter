@@ -20,7 +20,6 @@ class NewsFeed extends React.Component {
   }
 
   componentDidMount() {
-    console.log('testtt');
     this.getNewsFeedCall();
     window.onpopstate = this.onBackButtonEvent;
   }
