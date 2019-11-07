@@ -8,7 +8,7 @@ export default function Header(props) {
   const { sortType, setSortType } = props;
 
   return (
-    <header className="header row">
+    <header className="header container-wrapper">
       <img src={logo} className="header__logo" alt="logo" />
       <h1 className="header__title">{HEADER_TITLE}</h1>
       <nav className="header__navigation">

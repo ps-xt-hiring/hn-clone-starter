@@ -1,5 +1,9 @@
 $orangeColor : #ff6a00;
-$logoBorderColor: #ffffff;
+$whiteColor : #ffffff;
+$feedTextColor : #555555;
+$blackColor : #000000;
+$altGreyColor : #efefef;
+$upvoteAndLinkColor: #999999;
 
 *,
 *::after,
@@ -18,8 +22,8 @@ html {
 }
 
 body {
-    background-color: #ffffff;
-    color: #555555;
+    background-color: $whiteColor;
+    color: $feedTextColor;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     box-sizing: border-box;
     font-weight: 300;
@@ -35,7 +39,7 @@ body {
     visibility: hidden;
 }
 
-.row {
+.container-wrapper {
     max-width: 102.4rem;
     margin: 0 auto;
 }
@@ -50,24 +54,6 @@ a {
     background-color: transparent;
 }
 
-/* shades */
-
-.lightest {
-    color: darken($color: $orangeColor, $amount: 0);
-}
-
-.lighter {
-    color: darken($color: $orangeColor , $amount: 10%);
-}
-
-.light {
-    color: darken($color: $orangeColor , $amount: 20%);
-}
-
-.normal {
-    color: darken($color: $orangeColor , $amount: 30%);
-}
-
-.dark {
-    color: darken($color: $orangeColor , $amount: 100%);
-}
+@mixin colorShade($color, $amount) {
+  color: darken($color, $amount);
+};

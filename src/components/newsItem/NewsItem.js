@@ -9,31 +9,34 @@ export default function NewsItem(props) {
     newsItem, order, hideNewsItem, upvoteNewsItem, isUpvoted,
   } = props;
   const getShade = () => {
-    if (newsItem.points > 150) {
-      return 'lightest';
+    switch (true) {
+      case newsItem.points > 150:
+        return 'lightest';
+      case newsItem.points > 100:
+        return 'lighter';
+      case newsItem.points > 75:
+        return 'light';
+      case newsItem.points > 50:
+        return 'normal';
+      default:
+        return 'dark';
     }
-    if (newsItem.points > 100) {
-      return 'lighter';
-    }
-    if (newsItem.points > 75) {
-      return 'light';
-    }
-    if (newsItem.points > 50) {
-      return 'normal';
-    }
-    return 'dark';
+  };
+  const getDomain = (url) => {
+    let arr = url.split("/");
+    return arr[2];
   };
 
   return (
     <article className={`news-item  ${(order % 2 === 0 ? 'even' : 'odd')}`}>
       <span className="news-item__comment-count">{newsItem.num_comments}</span>
-      <span className={`news-item__points ${getShade()}`}>{newsItem.points}</span>
+      <span className={`news-item__points news-item--${getShade()}`}>{newsItem.points}</span>
       <button type="button" className="btn-empty news-item__upvote" onClick={() => upvoteNewsItem(newsItem)}>{isUpvoted}</button>
       <p className="news-item__title">
         {newsItem.title}
         <span>
           (
-          <a target="_blank" rel="noopener noreferrer" href={newsItem.url}>{newsItem.url}</a>
+          {newsItem.url && <a target="_blank" rel="noopener noreferrer" href={newsItem.url}>{getDomain(newsItem.url)}</a>}
           ) by&nbsp;
           <b>{newsItem.author}</b>
           &nbsp;
@@ -56,7 +59,7 @@ NewsItem.propTypes = {
     points: PropTypes.number,
     url: PropTypes.string,
     author: PropTypes.string,
-    created_at: PropTypes.number,
+    created_at: PropTypes.string,
   }),
   order: PropTypes.number,
   hideNewsItem: PropTypes.func,
@@ -71,7 +74,7 @@ NewsItem.defaultProps = {
     points: 0,
     url: '',
     author: '',
-    created_at: 0,
+    created_at: '',
   },
   order: 0,
   hideNewsItem: () => { },

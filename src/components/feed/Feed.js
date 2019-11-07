@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import NewsItem from '../newsItem/NewsItem';
+import { useLocalStorage } from '../../utilities/localStorage';
 import { MORE_LABEL, LOADING_TEXT } from '../../constants';
 import './feed.scss';
 
 export default function Feed(props) {
-  const [upvotedList, setUpvotedList] = useState([]);
-  const [hiddenList, setHiddenList] = useState([]);
+  const [upvotedList, setUpvotedList] = useLocalStorage('upvotedNewsItems', []);
+  const [hiddenList, setHiddenList] = useLocalStorage('hiddenNewsItems', []);
   const { feed, loadMore, isMore } = props;
-
-  useEffect(() => {
-    localStorage.clear();
-    const upvotedListFromLS = JSON.parse(localStorage.getItem('upvotedNewsItems')) || [];
-    const hiddenListFromLS = JSON.parse(localStorage.getItem('hiddenNewsItems')) || [];
-    setUpvotedList(upvotedListFromLS);
-    setHiddenList(hiddenListFromLS);
-  }, []);
-
 
   const upvoteNewsItem = (newsItem) => {
     const newList = [...upvotedList];
@@ -27,7 +19,6 @@ export default function Feed(props) {
       newList.push(newsItem);
     }
 
-    localStorage.setItem('upvotedNewsItems', JSON.stringify(newList));
     setUpvotedList(newList);
   };
 
@@ -40,7 +31,6 @@ export default function Feed(props) {
       newList.push(newsItem);
     }
 
-    localStorage.setItem('hiddenNewsItems', JSON.stringify(newList));
     setHiddenList(newList);
   };
 
@@ -60,38 +50,36 @@ export default function Feed(props) {
     return true;
   };
 
-  if (feed.length) {
-    return (
-      <main className="row feed">
-        {feed.filter(post => isHidden(post))
-          .map((item, index) => (
-            <NewsItem
-              key={item.objectID}
-              newsItem={item}
-              order={index}
-              hideNewsItem={hideNewsItem}
-              upvoteNewsItem={upvoteNewsItem}
-              isUpvoted={getType(item)}
-            />
-          ))
-        }
-        {isMore
-          && (
-            <button type="button" className="btn-empty feed__more" onClick={loadMore}>
-              {MORE_LABEL}
-            </button>
-          )
-        }
-      </main>
-    );
-  }
   return (
-    <main className="row">
-      <p>
-        {LOADING_TEXT}
-      </p>
+    <main className="container-wrapper feed">
+      {feed.length ?
+        <>
+          {feed.filter(post => isHidden(post))
+            .map((item, index) => (
+              <NewsItem
+                key={item.objectID}
+                newsItem={item}
+                order={index}
+                hideNewsItem={hideNewsItem}
+                upvoteNewsItem={upvoteNewsItem}
+                isUpvoted={getType(item)}
+              />
+            ))
+          }
+          {isMore
+            && (
+              <button type="button" className="btn-empty feed__more" onClick={loadMore}>
+                {MORE_LABEL}
+              </button>
+            )
+          }
+        </> :
+        <p>
+          {LOADING_TEXT}
+        </p>
+      }
     </main>
-  );
+  )
 }
 
 Feed.propTypes = {
@@ -101,7 +89,7 @@ Feed.propTypes = {
     points: PropTypes.number,
     url: PropTypes.string,
     author: PropTypes.string,
-    created_at: PropTypes.number,
+    created_at: PropTypes.string,
   })),
   loadMore: PropTypes.func,
   isMore: PropTypes.bool,

@@ -7,53 +7,73 @@
     align-items: center;
 
     &__comment-count, &__points {
-        flex: 12%;
+        flex: 2;
         text-align: end;
     }
 
     &__upvote {
-        flex: 5%;
-        color: #999999;
-        font-size: 100%;
+        flex: 1;
+        color: $upvoteAndLinkColor;
+        font-size: 1.2rem;
     }
 
     &__title {
-        flex: 71%;
+        flex: 15;
         margin-left: 1rem;
         word-break: break-word;
 
         span {
-            font-size: 80%;
-            color: #999999;
+            font-size: 1rem;
+            color: $upvoteAndLinkColor;
 
             b {
-                color: #000000;
+                color: $blackColor;
                 font-weight: normal;
             }
         }
     }
 
     &__hide {
-        font-size: 100%;
+        font-size: 1.2rem;
     }
 
     &.odd {
-        background-color: #efefef;
+        background-color: $altGreyColor;
+    }
+
+    &--lightest {
+      @include colorShade($orangeColor, 0);
+    }
+
+    &--lighter {
+      @include colorShade($orangeColor, 10%);
+    }
+
+    &--light {
+      @include colorShade($orangeColor, 20%);
+    }
+
+    &--normal {
+      @include colorShade($orangeColor, 30%);
+    }
+
+    &--dark {
+      @include colorShade($orangeColor, 100%);
     }
 }
 
 @include tablet {
     .news-item {
-        &__comment-count, &__points { flex: 8%; }
-        &__upvote { flex: 4%; }
-        &__title { flex: 80%; }
+        &__comment-count, &__points { flex: 2; }
+        &__upvote { flex: 1; }
+        &__title { flex: 20; }
     }
 }
 
 @include desktop {
     .news-item {
-        &__comment-count, &__points { flex: 5%; }
-        &__upvote { flex: 5%; }
-        &__title { flex: 88%; }
+        &__comment-count, &__points { flex: 1; }
+        &__upvote { flex: 1; }
+        &__title { flex: 18; }
     }
 }
