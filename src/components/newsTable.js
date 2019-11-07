@@ -56,22 +56,22 @@ const NewsTable = ({
               <Link href={row.url ? row.url : '/'} className="title">
                 {row.title ? `${row.title} ` : 'No Title Available '}
               </Link>
-              <span className="grey fs10px">
+              <span className="grey sub-title">
 (
                 {getDomain(row.url)}
 )
               </span>
-              <span className="grey fs10px"> by</span>
-              <b className="fs10px">
+              <span className="grey sub-title"> by</span>
+              <b className="sub-title">
                 {' '}
                 {row.author}
                 {' '}
               </b>
-              <span className="grey fs10px">
+              <span className="grey sub-title">
                 {moment(row.created_at).fromNow()}
               </span>
               <span
-                className="fs10px pointer"
+                className="sub-title pointer"
                 role="button"
                 tabIndex="0"
                 onKeyPress={() => hideCurrentNews(row)}
