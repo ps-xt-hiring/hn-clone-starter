@@ -106,7 +106,7 @@ NewsTable.propTypes = {
       title: PropTypes.string,
       url: PropTypes.string,
       author: PropTypes.string,
-      created_at: PropTypes.instanceOf(Date),
+      created_at: PropTypes.string,
     }),
   ),
 };
