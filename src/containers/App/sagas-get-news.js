@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   takeLatest, call, put,
 } from 'redux-saga/effects';
@@ -10,21 +9,15 @@ export function* getNewsWatcherSaga() {
   yield takeLatest(types.GET_NEWS_API_CALL_REQUEST, workerSaga);
 }
 
-export function fetchData(page) {
-  const url = `${BASEURL}/`;
-  const params = { tags: 'front_page', page };
-
-  return axios.get(url, { params })
-    .then(val => val)
-    .catch(err => err);
-}
-
 export function* workerSaga({ page }) {
   try {
-    const response = yield call(fetchData, page);
-    if (response && response.status === 200) {
-      const { data } = response;
+    const url = `${BASEURL}?tags=front_page&page=${page}`;
 
+    const data = yield call(() => fetch(url)
+      .then(res => res.json())
+      .then(res => res));
+
+    if (data) {
       yield put({ type: types.GET_NEWS_API_CALL_SUCCESS, data });
     } else {
       yield put({ type: types.GET_NEWS_API_CALL_FAILURE, error: 'error occured during get news' });

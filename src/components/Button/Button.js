@@ -6,7 +6,9 @@ const Button = (props) => {
   const {
     onClick, title, variant, className,
   } = props;
-  return (<input type="button" id={variant} onClick={onClick} className={className} value={title} />);
+
+  const classes = `${variant} ${className} btn-component`;
+  return (<input type="button" onClick={onClick} className={classes} value={title} />);
 };
 
 Button.propTypes = {

@@ -50,11 +50,11 @@ ListItem.propTypes = {
   item: PropTypes.shape({
     objectID: PropTypes.string.isRequired,
     points: PropTypes.number.isRequired,
-    num_comments: PropTypes.number.isRequired,
+    num_comments: PropTypes.number,
     title: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+    url: PropTypes.string,
     author: PropTypes.string.isRequired,
-    created_at: PropTypes.number.isRequired,
+    created_at: PropTypes.string.isRequired,
   }).isRequired,
 };
 

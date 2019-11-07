@@ -1,32 +1,21 @@
-#secondary {
+.btn-component {
   background-color: transparent;
   border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  outline: 0;
+}
+
+.secondary {
   color: #000;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  outline: 0;
 }
 
-#primary {
-  background-color: transparent;
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
+.primary {
   color: #fa6602;
-  cursor: pointer;
-  outline: 0;
 }
 
-#other {
-  background-color: transparent;
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
+.other {
   color: #fff;
-  cursor: pointer;
-  outline: 0;
 }
