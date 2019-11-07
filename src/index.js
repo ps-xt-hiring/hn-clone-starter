@@ -8,13 +8,6 @@ import * as serviceWorker from './serviceWorker';
 import { store } from './store/configureStore';
 
 function AppBundle() {
-  React.useEffect(() => {
-    const cssStyles = document.querySelector('#css-server-side');
-    if (cssStyles) {
-      cssStyles.parentNode.removeChild(cssStyles);
-    }
-  }, []);
-
   return (
     <ReduxProvider store={store}>
       <BrowserRouter>

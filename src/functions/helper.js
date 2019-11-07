@@ -7,16 +7,16 @@ const getDomain = (url) => {
 };
 
 const getColor = (comments) => {
-  if (comments < 500) {
-    return 'burntOrange';
+  switch (true) {
+    case comments < 500:
+      return 'burntOrange';
+    case comments >= 500 && comments < 1000:
+      return 'grey';
+    case comments >= 1000:
+      return 'radicalRed';
+    default:
+      return 'grey';
   }
-  if (comments >= 500 && comments < 1000) {
-    return 'grey';
-  }
-  if (comments >= 1000) {
-    return 'radicalRed';
-  }
-  return 'grey';
 };
 
 export { getDomain, getColor };
