@@ -9,11 +9,11 @@ const getDomain = (url) => {
 const getColor = (comments) => {
   switch (true) {
     case comments < 500:
-      return 'burntOrange';
+      return 'burnt-orange';
     case comments >= 500 && comments < 1000:
       return 'grey';
     case comments >= 1000:
-      return 'radicalRed';
+      return 'radical-red';
     default:
       return 'grey';
   }

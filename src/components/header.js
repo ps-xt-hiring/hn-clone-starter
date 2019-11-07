@@ -10,7 +10,7 @@ const Header = () => (
     direction="row"
     alignItems="center"
   >
-    <Grid item className="headerChild">
+    <Grid item className="header-child">
       <Link href="/">
         <img
           className="logo"
@@ -19,13 +19,13 @@ const Header = () => (
         />
       </Link>
     </Grid>
-    <Grid item className="headerChild">
+    <Grid item className="header-child">
       <b className="white">Top</b>
     </Grid>
-    <Grid item className="headerChild">
+    <Grid item className="header-child">
       |
     </Grid>
-    <Grid item className="headerChild">
+    <Grid item className="header-child">
       <b>New</b>
     </Grid>
   </Grid>

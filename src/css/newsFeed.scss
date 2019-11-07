@@ -3,7 +3,7 @@
 .header {
   background-color: $burnt-orange;
   padding: 6px;
-  .headerChild {
+  .header-child {
     margin-right: 4px;
   }
   .logo {
@@ -15,30 +15,26 @@
   }
 }
 
-.newsList {
-  caption {
-    color: $burnt-orange;
-    background: $white-smoke;
-  }
+.news-list {
   tr:nth-child(odd) {
     background: $light-grey;
   }
   tr:nth-child(even) {
     background: $white-smoke;
   }
-  .noPadding {
+  .no-padding {
     padding: 0px;
   }
-  .emptyTableRow {
+  .empty-table-row {
     height: 10px;
   }
   .grey {
     color: $dark-grey;
   }
-  .radicalRed {
+  .radical-red {
     color: $radical-red;
   }
-  .burntOrange {
+  .burnt-orange {
     color: $burnt-orange;
   }
   .title {
@@ -52,4 +48,14 @@
   .material-icons {
     vertical-align: bottom;
   }
+}
+
+.pagination-button {
+  color: $burnt-orange;
+  background: $white-smoke;
+  border: none;
+  display: inline-block;
+  position: relative;
+  top: 8px;
+  left: 20px;
 }

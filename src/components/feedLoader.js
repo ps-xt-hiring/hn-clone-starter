@@ -1,24 +1,17 @@
 import React from 'react';
 import {
-  Container,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
+  Container, Table, TableBody, TableRow,
 } from '@material-ui/core/';
 import Header from './header';
+import EmptyTableCells from './emptyTableCells';
 
 const FeedLoader = () => (
   <Container maxWidth="lg">
     <Header />
-    <Table aria-label="news list table" className="newsList">
+    <Table aria-label="news list table" className="news-list">
       <TableBody>
-        <TableRow className="emptyTableRow" />
-        {[...Array(20).keys()].map(value => (
-          <TableRow key={value} height={20}>
-            <TableCell />
-          </TableRow>
-        ))}
+        <TableRow className="empty-table-row" />
+        <EmptyTableCells />
       </TableBody>
     </Table>
   </Container>
