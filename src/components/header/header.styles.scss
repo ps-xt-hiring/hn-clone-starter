@@ -1,12 +1,13 @@
+@import '../../helpers/variables.scss';
 .header-comp {
-  background: #ff6600;
+  background: $colorPrimary;
 
   a {
-    color: #000;
+    color: $colorBlack;
     text-decoration: none;
 
     &.highlight {
-      color: #fff;
+      color: $colorWhite;
     }
   }
 }

@@ -1,16 +1,17 @@
+@import '../../helpers/variables.scss';
 .feed-container {
 	.row:nth-child(odd) {
-		background-color: #e4e4e4;
+		background-color: $colorGrey;
 	}
 	.row:nth-child(even) {
-		background-color: #dad9d9;
+		background-color: $colorLightGrey;
 	}
 	.arrow {
 		cursor: pointer;
 	}
 	.more {
 		a {
-			color: #f57b22;
+			color: $colorPrimary;
 			text-decoration: underline;
 		}
 	}
@@ -18,8 +19,8 @@
 
 .button {
 	padding: 14px 28px;
-	font-size: 16px;
+	font-size: $fontSizeM;
 	cursor: pointer;
 	display: inline-block;
-	color: #f57b22;
+	color: $colorPrimary;
 }

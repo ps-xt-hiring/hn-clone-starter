@@ -55,12 +55,12 @@ const Feed = ({ title, points, author, url, objectID, ...props }) => {
             </span>
           </Col>
           <Col xs={9}>
-            {title}
-            {<a href={url}>{getDomain(url)}</a>}
+            {title && title}
+            {url && <a href={url}>{getDomain(url)}</a>}
             by
-            {author}
+            {author && author}
             <span className="font-weight-bold">
-              {Moment(createdAt).fromNow()}
+              {createdAt && Moment(createdAt).fromNow()}
             </span>
             <span
               className="hideline"
