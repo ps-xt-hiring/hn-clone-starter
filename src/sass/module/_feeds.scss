@@ -1,10 +1,6 @@
 .feeds {
     display:flex;
     
-    &:nth-child(2n) {
-        background: #ccc;
-    }
-
     .comment {
         text-align: right;
         min-width: 50px;
@@ -55,6 +51,10 @@
 
 .feedShow {
     display: block;
+
+    &:nth-child(2n) {
+        background: #E6E6DF;
+    }
 }
 
 .feedHide {
