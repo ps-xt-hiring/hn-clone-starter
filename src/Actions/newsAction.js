@@ -25,7 +25,7 @@ export const getNewsFeedAction = currentPage => dispatch => ajax
     dispatch({ type: 'NEWS_FEED_FAILURE', payload: err, currentPage: 1 });
   });
 
-export const toggleVoteAction = item => ({
+export const toggleVoteAction = newsList => ({
   type: 'Toggle_Vote',
-  payload: item,
+  payload: newsList,
 });

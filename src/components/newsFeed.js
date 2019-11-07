@@ -63,9 +63,28 @@ class NewsFeed extends React.Component {
     );
   };
 
-  handleVote = (item) => {
-    const { toggleVote } = this.props;
-    toggleVote(item);
+  handleVote = (selectedRow) => {
+    const { toggleVote, newsList } = this.props;
+    let upVotedIdArray = [];
+    const upVotedId = localStorage.getItem('upVotedId');
+    if (upVotedId) {
+      upVotedIdArray = JSON.parse(upVotedId);
+    }
+    const newsListCopy = newsList.map((item) => {
+      if (item.objectID === selectedRow.objectID) {
+        if (item.isVoted) {
+          upVotedIdArray.splice(upVotedIdArray.indexOf(item.objectID), 1);
+          delete item.isVoted;
+        } else {
+          upVotedIdArray.push(selectedRow.objectID);
+          item.isVoted = true;
+        }
+      }
+      return item;
+    });
+
+    localStorage.setItem('upVotedId', JSON.stringify(upVotedIdArray));
+    toggleVote(newsListCopy);
   };
 
   hideCurrentNews = (currentList) => {

@@ -23,28 +23,9 @@ export default (state = initialState, action) => {
       };
 
     case 'Toggle_Vote': {
-      let upVotedIdArray = [];
-      const upVotedId = localStorage.getItem('upVotedId');
-      if (upVotedId) {
-        upVotedIdArray = JSON.parse(upVotedId);
-      }
-      const newsList = state.newsList.map((item) => {
-        if (item.objectID === action.payload.objectID) {
-          if (item.isVoted) {
-            upVotedIdArray.splice(upVotedIdArray.indexOf(item.objectID), 1);
-            delete item.isVoted;
-          } else {
-            upVotedIdArray.push(action.payload.objectID);
-            item.isVoted = true;
-          }
-        }
-        return item;
-      });
-
-      localStorage.setItem('upVotedId', JSON.stringify(upVotedIdArray));
       return {
         ...state,
-        newsList: [...newsList],
+        newsList: action.payload,
       };
     }
     default:
