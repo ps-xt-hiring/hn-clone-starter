@@ -23,7 +23,7 @@ export default function NewsItem(props) {
     }
   };
   const getDomain = (url) => {
-    let arr = url.split("/");
+    const arr = url.split('/');
     return arr[2];
   };
 

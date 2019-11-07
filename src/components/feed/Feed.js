@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NewsItem from '../newsItem/NewsItem';
-import { useLocalStorage } from '../../utilities/localStorage';
+import useLocalStorage from '../../utilities/localStorage';
 import { MORE_LABEL, LOADING_TEXT } from '../../constants';
 import './feed.scss';
 
@@ -52,34 +52,40 @@ export default function Feed(props) {
 
   return (
     <main className="container-wrapper feed">
-      {feed.length ?
-        <>
-          {feed.filter(post => isHidden(post))
-            .map((item, index) => (
-              <NewsItem
-                key={item.objectID}
-                newsItem={item}
-                order={index}
-                hideNewsItem={hideNewsItem}
-                upvoteNewsItem={upvoteNewsItem}
-                isUpvoted={getType(item)}
-              />
-            ))
-          }
-          {isMore
-            && (
-              <button type="button" className="btn-empty feed__more" onClick={loadMore}>
-                {MORE_LABEL}
-              </button>
-            )
-          }
-        </> :
-        <p>
-          {LOADING_TEXT}
-        </p>
+      {feed.length
+        ?
+        (
+          <>
+            {feed.filter(post => isHidden(post))
+              .map((item, index) => (
+                <NewsItem
+                  key={item.objectID}
+                  newsItem={item}
+                  order={index}
+                  hideNewsItem={hideNewsItem}
+                  upvoteNewsItem={upvoteNewsItem}
+                  isUpvoted={getType(item)}
+                />
+              ))
+            }
+            {isMore
+              && (
+                <button type="button" className="btn-empty feed__more" onClick={loadMore}>
+                  {MORE_LABEL}
+                </button>
+              )
+            }
+          </>
+        )
+        :
+        (
+          <p>
+            {LOADING_TEXT}
+          </p>
+        )
       }
     </main>
-  )
+  );
 }
 
 Feed.propTypes = {
