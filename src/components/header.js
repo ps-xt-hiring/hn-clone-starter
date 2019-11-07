@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid, Link } from '@material-ui/core/';
 
+const logo = require('../logo.png');
+
 const Header = () => (
   <Grid
     container
@@ -12,11 +14,7 @@ const Header = () => (
   >
     <Grid item className="header-child">
       <Link href="/">
-        <img
-          className="logo"
-          src="https://news.ycombinator.com/y18.gif"
-          alt="hacker news logo"
-        />
+        <img className="logo" src={logo} alt="hacker news logo" />
       </Link>
     </Grid>
     <Grid item className="header-child">
