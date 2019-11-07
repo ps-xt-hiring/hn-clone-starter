@@ -22,15 +22,15 @@ const Feeds = (props) => {
         <span className="feeds__comment">{feed.num_comments}</span>
         <div className="feeds__upvote">
           <span className="upvote-count">{upVoteCount}</span>
-          <button type="button" className="upvotes-action" onClick={() => setUpVoteCount(upVoteCount + 1)} onKeyDown={() => setUpVoteCount(upVoteCount + 1)} />
+          <button type="button" tabIndex="0" name="upvote button" className="upvotes-action" onClick={() => setUpVoteCount(upVoteCount + 1)} onKeyDown={() => setUpVoteCount(upVoteCount + 1)} />
         </div>
         <div className="feeds__feed-content">
           <span className="feed-title">{feed.title}</span>
-          <a href={feed.url} className="feed-domain">({fetchDomainName(feed.url)})</a>
+          <a href={feed.url} tabIndex="0" className="feed-domain">({fetchDomainName(feed.url)})</a>
           <span>by</span>
           <span className="feed-author">{feed.author}</span>
           <span className="feed-time">3 years ago</span>
-          <button type="button" onClick={() => setFeedStatus()} onKeyDown={() => setFeedStatus()}>[ hide ]</button>
+          <button type="button" tabIndex="0" name="hide feed button" onClick={() => setFeedStatus()} onKeyDown={() => setFeedStatus()}>[ hide ]</button>
         </div>
       </div>
     </div>

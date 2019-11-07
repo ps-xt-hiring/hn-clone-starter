@@ -14,7 +14,7 @@ const defaultProps = {
 
 const FeedFooter = props => (
   <footer className="feed-footer">
-    <button type="button" className="feed-footer__more-btn" onClick={() => props.loadMore(props.pageNum)}>more</button>
+    <button type="button" tabIndex="0" className="feed-footer__more-btn" onClick={() => props.loadMore(props.pageNum)}>more</button>
   </footer>
 );
 

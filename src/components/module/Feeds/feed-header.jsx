@@ -4,10 +4,10 @@ const FeedHeader = () => (
   <header>
     <nav>
       <i className="header-logo">Y</i>
-      <button type="button" className="top">top</button>
+      <button type="button" tabIndex="0" name="top button" className="top">top</button>
       {' '}
       <span>|</span>
-      <button type="button" className="new">new</button>
+      <button type="button" tabIndex="0" name="new button" className="new">new</button>
     </nav>
   </header>
 );
