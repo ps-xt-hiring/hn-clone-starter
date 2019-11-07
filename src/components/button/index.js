@@ -18,6 +18,6 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  buttontype: '',
+  buttontype: 'button',
   value: '',
 };
