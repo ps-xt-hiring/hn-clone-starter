@@ -19,12 +19,12 @@ const Feeds = (props) => {
   return (
     <div className={`${feedStatus ? 'feedShow' : 'feedHide'}`}>
       <div className="feeds">
-        <span className="comment">{feed.num_comments}</span>
-        <div className="upvote">
+        <span className="feeds__comment">{feed.num_comments}</span>
+        <div className="feeds__upvote">
           <span className="upvote-count">{upVoteCount}</span>
           <button type="button" className="upvotes-action" onClick={() => setUpVoteCount(upVoteCount + 1)} onKeyDown={() => setUpVoteCount(upVoteCount + 1)} />
         </div>
-        <div className="feed-content">
+        <div className="feeds__feed-content">
           <span className="feed-title">{feed.title}</span>
           <a href={feed.url} className="feed-domain">({fetchDomainName(feed.url)})</a>
           <span>by</span>
