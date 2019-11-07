@@ -1,7 +1,3 @@
-.text-style {
-    font-size: 12px;
-}
-
 .feeds {
     display:flex;
     
@@ -56,7 +52,15 @@
         }
 
         .feed-author {
+            color: #828282;
+            word-break: break-all;
+            margin: 0 5px;
             font-weight: 700;
+        }
+
+        button {
+            background: none;
+            border: none;
         }
     }
 }

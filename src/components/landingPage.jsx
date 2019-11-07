@@ -20,7 +20,7 @@ const defaultProps = {
   pageNum: 1,
 };
 
-class LandingPage extends React.Component {
+class LandingPage extends React.PureComponent {
   componentDidMount() {
     const { pageNum, onFetchFeeds } = this.props;
     onFetchFeeds(pageNum);
