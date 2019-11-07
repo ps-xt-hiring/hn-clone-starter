@@ -98,7 +98,17 @@ NewsTable.propTypes = {
   handlePagination: PropTypes.func.isRequired,
   handleVote: PropTypes.func.isRequired,
   hideCurrentNews: PropTypes.func.isRequired,
-  newsList: PropTypes.oneOfType([PropTypes.array]),
+  newsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      num_comments: PropTypes.number,
+      points: PropTypes.number,
+      isVoted: PropTypes.boolean,
+      title: PropTypes.string,
+      url: PropTypes.string,
+      author: PropTypes.string,
+      created_at: PropTypes.instanceOf(Date),
+    }),
+  ),
 };
 
 export default NewsTable;

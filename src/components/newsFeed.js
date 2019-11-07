@@ -175,12 +175,26 @@ NewsFeed.defaultProps = {
 };
 
 NewsFeed.propTypes = {
-  location: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  history: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  location: PropTypes.shape({
+    search: PropTypes.string.isRequired,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
   currentPage: PropTypes.number.isRequired,
   getNewsFeed: PropTypes.func.isRequired,
   toggleVote: PropTypes.func.isRequired,
-  newsList: PropTypes.oneOfType([PropTypes.array]),
+  newsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      num_comments: PropTypes.number,
+      points: PropTypes.number,
+      isVoted: PropTypes.boolean,
+      title: PropTypes.string,
+      url: PropTypes.string,
+      author: PropTypes.string,
+      created_at: PropTypes.instanceOf(Date),
+    }),
+  ),
 };
 
 export default withRouter(
