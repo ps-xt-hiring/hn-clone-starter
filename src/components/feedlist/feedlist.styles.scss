@@ -1,0 +1,30 @@
+@import '../../helpers/variables.scss';
+.feed-container {
+	.row:nth-child(odd) {
+		background-color: $colorGrey;
+	}
+	.row:nth-child(even) {
+		background-color: $colorLightGrey;
+	}
+	.arrow {
+		cursor: pointer;
+	}
+	.more {
+		a {
+			color: $colorPrimary;
+			text-decoration: underline;
+		}
+	}
+}
+.load-more{
+	border-bottom:1px solid $colorGrey;
+	.button {
+		background: none;
+		border:none;
+		cursor: pointer;
+		display: inline-block;
+		color: $colorPrimary;
+	}
+}
+
+

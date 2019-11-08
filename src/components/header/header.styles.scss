@@ -1,0 +1,17 @@
+@import '../../helpers/variables.scss';
+.header-comp {
+  background: $colorPrimary;
+
+  .logo{
+    border:1px solid $colorWhite
+  }
+
+  a {
+    color: $colorBlack;
+    text-decoration: none;
+
+    &.highlight {
+      color: $colorWhite;
+    }
+  }
+}

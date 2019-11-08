@@ -1,0 +1,9 @@
+@import './helpers/variables.scss';
+body {
+  font-family: Arial ,Verdana, Helvetica, sans-serif;
+  font-size: 12px;
+  color:$colorBlack;
+}
+.main-container{
+  background: $colorLightGrey;
+}
