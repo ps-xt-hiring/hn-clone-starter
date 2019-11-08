@@ -26,7 +26,7 @@
 .list-item-link,
 .list-item-link:link {
   margin: 0 4px;
-  font-size: 8pt;
+  font-size: 8px;
   color: var(--light-grey-color);
   text-decoration: none;
 }
@@ -36,18 +36,18 @@
 }
 
 .list-item-author {
-  font-size: 8pt;
+  font-size: 8px;
   font-weight: 500;
   margin: 0 4px;
 }
 
 .list-item-by {
-  font-size: 8pt;
+  font-size: 8px;
   color: var(--light-grey-color);
 }
 
 .list-item-date {
-  font-size: 8pt;
+  font-size: 8px;
   color: var(--light-grey-color);
   margin-right: 4px;
 }
