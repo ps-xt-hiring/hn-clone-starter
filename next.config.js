@@ -10,6 +10,10 @@ if (typeof require !== 'undefined') {
 const nextConfig = {
   withImage: withImages(),
   withCss: withCSS(),
+  exportPathMap: () => ({
+    '/': { page: '/' },
+    '/news': { page: '/news' },
+  }),
   distDir: 'build',
   webpack: (config, { isServer }) => {
     if (isServer) {
