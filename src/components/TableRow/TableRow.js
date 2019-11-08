@@ -1,5 +1,5 @@
 import React from 'react';
-import './TableRow.css';
+import './TableRow.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PropTypes from 'prop-types';
 import { toBaseURL, getFormattedDate } from '../../common/utils';

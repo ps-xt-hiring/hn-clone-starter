@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './App.css';
+import './App.scss';
 import * as types from './types';
 import logo from '../../images/y18.gif';
 import Button from '../../components/Button/Button';
@@ -24,7 +24,7 @@ const handleGotoFirst = (dispatch) => {
 };
 
 const renderTableRows = (items, dispatch) => items.map((item, index) => {
-  const rowBgStyle = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
+  const rowBgStyle = index % 2 === 0 ? 'even' : 'odd';
   return (
     <TableRow
       key={item.objectID}

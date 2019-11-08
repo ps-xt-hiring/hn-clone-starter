@@ -1,12 +1,8 @@
-:root {
-  --light-grey-color: #828282;
-}
-
-.table-row-even {
+.even {
   background-color: #f6f6ef;
 }
 
-.table-row-odd {
+.odd {
   background-color: #e6e6df;
 }
 
@@ -18,7 +14,7 @@
   height: 12px;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-bottom: 5px solid var(--light-grey-color);
+  border-bottom: 5px solid #828282;
   cursor: pointer;
   outline: 0;
 }
@@ -27,7 +23,7 @@
 .table-row-link:link {
   margin: 0 4px;
   font-size: 10px;
-  color: var(--light-grey-color);
+  color: #828282;
   text-decoration: none;
 }
 
@@ -43,17 +39,17 @@
 
 .table-row-by {
   font-size: 10px;
-  color: var(--light-grey-color);
+  color: #828282;
 }
 
 .table-row-date {
   font-size: 10px;
-  color: var(--light-grey-color);
+  color: #828282;
   margin-right: 4px;
 }
 
 .table-row-hide {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .table td {
