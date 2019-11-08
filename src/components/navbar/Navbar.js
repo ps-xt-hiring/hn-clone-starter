@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Menu from './menu/Menu';
-import './Navbar.css';
+import './navbar.css';
 
 const Navbar = () => (
   <header>

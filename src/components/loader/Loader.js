@@ -2,7 +2,7 @@ import React from 'react';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 import { PropTypes } from 'prop-types';
-import loaderCss from './Loader.css';
+import loaderCss from './loader.css';
 
 class Loader extends React.Component {
   constructor(props) {

@@ -3,7 +3,7 @@ import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { getIntVal } from '../../utils/helpers';
 import List from './list/List';
-import './Newslists.css';
+import './newslists.css';
 
 class NewsLists extends Component {
   constructor(props) {
