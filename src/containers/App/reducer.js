@@ -1,5 +1,6 @@
 import * as types from './types';
 import initialState from './initialState';
+import { filteredNewsItems, updatePoints } from '../../common/utils';
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -17,19 +18,13 @@ const reducer = (state = initialState, action) => {
 
     case types.HIDE_NEWS:
       return state.updateIn(['data'], (data) => {
-        const updatedData = data.filter(newsItem => newsItem.objectID !== action.objectID);
+        const updatedData = filteredNewsItems(data, action.objectID);
         return updatedData;
       });
 
     case types.UP_VOTE:
       return state.updateIn(['data'], (data) => {
-        const updatedPoints = data.map((newsItem) => {
-          if (newsItem.objectID === action.objectID) {
-            // eslint-disable-next-line no-param-reassign
-            newsItem.points += 1;
-          }
-          return newsItem;
-        });
+        const updatedPoints = updatePoints(data, action.objectID);
         return updatedPoints;
       });
     default:
