@@ -5,14 +5,14 @@
   padding: 6px;
   display: flex;
   align-items: center;
-  .header-child {
+  &__child {
     margin-right: 4px;
   }
-  .logo {
+  &__logo {
     border: 1px $white solid;
     display: grid;
   }
-  .white {
+  &__subchild--white {
     color: $white;
   }
 }
@@ -24,35 +24,29 @@
   tr:nth-child(even) {
     background: $white-smoke;
   }
-  .no-padding {
-    padding: 0px;
-  }
-  .empty-table-row {
+  &__empty-row {
     height: 10px;
   }
-  .grey {
-    color: $dark-grey;
-  }
-  .radical-red {
-    color: $radical-red;
-  }
-  .burnt-orange {
-    color: $burnt-orange;
-  }
-  .title {
-    text-decoration: none;
-    font-weight: 600;
-    color: $black;
-  }
-  .sub-title {
-    font-size: 10px;
-    display: inline-block;
-    margin-right: 2px;
-    border: none;
-    background: none;
-  }
-  .material-icons {
-    vertical-align: bottom;
+
+  .news-row {
+    &__cell {
+      padding: 0px;
+    }
+    &__title {
+      text-decoration: none;
+      font-weight: 600;
+      color: $black;
+    }
+    &__subtitle {
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-right: 2px;
+      border: none;
+      background: none;
+    }
+    &__arrow {
+      vertical-align: bottom;
+    }
   }
 }
 

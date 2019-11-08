@@ -10,7 +10,7 @@ const FeedLoader = () => (
     <Header />
     <Table aria-label="news list table" className="news-list">
       <TableBody>
-        <TableRow className="empty-table-row" />
+        <TableRow className="news-list__empty-row" />
         <EmptyTableCells />
       </TableBody>
     </Table>

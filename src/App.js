@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
-import './css/newsFeed.scss';
 import FeedLoader from './components/feedLoader';
 import NotFound from './components/notFound';
 

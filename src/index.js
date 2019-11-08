@@ -4,6 +4,7 @@ import Loadable from 'react-loadable';
 import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import './css/newsFeed.scss';
 import * as serviceWorker from './serviceWorker';
 import { store } from './store/configureStore';
 

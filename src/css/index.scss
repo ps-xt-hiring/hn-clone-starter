@@ -17,9 +17,6 @@ body {
 :root {
   font-size: 14px;
 }
-html {
-  width: 100% !important;
-}
 
 .pointer {
   cursor: pointer;
@@ -28,4 +25,14 @@ html {
 .responsive-image {
   max-width: 100%;
   height: auto;
+}
+
+.grey {
+  color: $dark-grey;
+}
+.radical-red {
+  color: $radical-red;
+}
+.burnt-orange {
+  color: $burnt-orange;
 }
