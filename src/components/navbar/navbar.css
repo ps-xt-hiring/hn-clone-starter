@@ -6,13 +6,13 @@ header nav {
   height: 35px;
 }
 
-.navbar-dark .navbar-nav .nav-link {
-  color: black !important;
-  font-weight: 400;
+.active > .nav-link a {
+  color: white;
 }
 
-.navbar-dark .navbar-nav .active > .nav-link {
-  color: white !important;
+.nav-link.news {
+  color: black !important;
+  font-weight: 400;
 }
 
 .vline {

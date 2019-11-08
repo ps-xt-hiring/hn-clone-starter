@@ -1,15 +1,14 @@
-.row.no-margin {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-section.list-container .row.no-margin:nth-child(even) {
-  background: #e0e0e0;
-}
-
 section.list-container {
   background: #f6f6ef;
   padding-top: 10px;
+}
+
+.row.list {
+  margin: 0;
+}
+
+.no-margin {
+  margin: 0;
 }
 
 .up-arrow {
@@ -30,7 +29,7 @@ section.list-container {
 
 div.title {
   font-family: Verdana, Geneva, sans-serif;
-  font-size: 10pt;
+  font-size: 0.8em;
   color: #5d5454;
   float: left;
   font-weight: bold;
@@ -39,7 +38,7 @@ div.title {
 .newsUrl,
 .author {
   font-family: Verdana, Geneva, sans-serif;
-  font-size: 8pt;
+  font-size: 0.7em;
   color: #828282;
   padding: 8px 8px;
   padding-top: 1px;
@@ -61,14 +60,14 @@ div.title {
 
 .author span {
   color: black;
-  font-size: 11px;
+  font-size: 0.98em;
   font-weight: bold;
 }
 
 .total-comments,
 .total-votes {
   font-family: Verdana, Geneva, sans-serif;
-  font-size: 10pt;
+  font-size: 0.8em;
   font-weight: unset;
 }
 
@@ -79,18 +78,25 @@ div.title {
 .list-loader {
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .list-loader .title {
   color: rgb(255, 102, 0);
   font-family: Verdana, Geneva, sans-serif;
-  font-size: 10pt;
+  font-size: 0.8em;
   font-weight: unset;
+  padding: 10px;
 }
 
 .list-loader .title:hover {
   cursor: pointer;
   font-weight: bold;
+}
+
+.list:nth-child(even) {
+  background: #e0e0e0;
 }
 
 .loader {
@@ -109,13 +115,9 @@ div.title {
     height: auto;
   }
 
-  .list-loader .title {
-    padding: 10px;
-  }
-
   .no-padding {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .list-container .list {

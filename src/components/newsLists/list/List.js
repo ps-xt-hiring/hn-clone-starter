@@ -1,54 +1,83 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
-/* eslint-disable import/no-named-as-default */
-/* eslint-disable import/no-named-as-default-member */
 import React from 'react';
-import helpers from '../../../utils/helpers';
+import { PropTypes } from 'prop-types';
+import { getDomainByUrl, getDateFormate } from '../../../utils/helpers';
 
 const List = (props) => {
   let urlName = '';
+  const {
+    data: {
+      url, created_at: createdAt, num_comments: numComments, points, title, author,
+    }, vote, hide,
+  } = props;
 
-  // eslint-disable-next-line react/destructuring-assignment
-  if (props.data.url) urlName = helpers.getDomainByUrl(props.data.url);
+  if (url) urlName = getDomainByUrl(url);
 
-  const formatedDate = helpers.getDateFormate(props.data.created_at);
+  const formatedDate = getDateFormate(createdAt);
   return (
     <div className="row no-margin list">
       <div className="col-2 no-padding">
         <div className="row no-margin">
-          <div className="col-2 offset-md-3 total-comments">{props.data.num_comments}</div>
-          <div className="col text-left offset-md-2 total-votes" style={{ color: '#D67' }}>
-            {props.data.points}
+          <div className="col-2 offset-md-3 total-comments">{numComments}</div>
+          <div className="col text-left offset-md-2 total-votes">
+            {points}
 .
-            <span role="presentation" className="up-arrow" onClick={props.vote} />
+            <span role="presentation" className="up-arrow" onClick={vote} />
           </div>
         </div>
       </div>
       <div className="col">
         <div className="row">
           <div className="title">
-            <a href="/">{props.data.title}</a>
+            <a href="/">{title}</a>
           </div>
           <div className="newsUrl">
 (
-            <a href={props.data.url} target="_blank" rel="noopener noreferrer" className="url">{urlName}</a>
+            <a href={url} target="_blank" rel="noopener noreferrer" className="url">{urlName}</a>
 )
           </div>
           <div className="author">
                         by
             {' '}
-            <span>{props.data.author}</span>
+            <span>{author}</span>
             {' '}
             {formatedDate}
             {' '}
 [
-            <span role="presentation" className="hide-news" onClick={props.hide}>hide</span>
+            <span role="presentation" className="hide-news" onClick={hide}>hide</span>
 ]
           </div>
         </div>
       </div>
     </div>
   );
+};
+
+List.propTypes = {
+  data: PropTypes.shape(
+    {
+      url: PropTypes.string,
+      created_at: PropTypes.string,
+      num_comments: PropTypes.number,
+      points: PropTypes.number,
+      title: PropTypes.string,
+      author: PropTypes.string,
+    },
+  ),
+  vote: PropTypes.func,
+  hide: PropTypes.func,
+};
+
+List.defaultProps = {
+  data: {
+    url: '',
+    created_at: 0,
+    num_comments: 0,
+    points: '',
+    title: '',
+    author: '',
+  },
+  vote: () => {},
+  hide: () => {},
 };
 
 export default List;

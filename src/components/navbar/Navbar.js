@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import './navbar.css';
+import Menu from './menu/Menu';
+import './Navbar.css';
 
 const Navbar = () => (
   <header>
-    <nav className="navbar navbar-expand-lg navbar-dark default-color">
+    <nav className="navbar navbar-expand-lg navbar-dark default-color navbar-black-link">
       <Link href="/news"><a href="/news" className="navbar-brand"><strong>Y</strong></a></Link>
       <button
         className="navbar-toggler"
@@ -17,17 +18,7 @@ const Navbar = () => (
       >
         <span className="navbar-toggler-icon" />
       </button>
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <Link href="/"><a href="/" className="nav-link">top</a></Link>
-          </li>
-          <li className="vline" />
-          <li className="nav-item">
-            <Link href="/news"><a href="/news" className="nav-link">new</a></Link>
-          </li>
-        </ul>
-      </div>
+      <Menu />
     </nav>
   </header>
 );

@@ -1,5 +1,3 @@
-/* eslint-disable import/no-named-as-default */
-/* eslint-disable import/no-named-as-default-member */
 import React from 'react';
 import fetch from 'isomorphic-unfetch';
 import PropTypes from 'prop-types';
@@ -33,9 +31,9 @@ NewsApp.defaultProps = {
 };
 
 NewsApp.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  data: PropTypes.array,
+  data: PropTypes.arrayOf(PropTypes.object),
   page: PropTypes.number,
 };
+
 
 export default NewsApp;
