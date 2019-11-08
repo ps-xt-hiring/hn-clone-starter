@@ -1,4 +1,4 @@
-export const TEXT = {
+const TEXT = {
   BY: 'by',
   HIDE: '[hide]',
   LOAD_MORE: 'More',
@@ -6,3 +6,5 @@ export const TEXT = {
   NEW: 'new',
   HACKER_NEWS: 'HACKER NEWS'
 };
+
+export default TEXT;

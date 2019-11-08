@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, connect } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 import fetchFeed from '../../redux/feed/fetch.feed';
 import Feed from '../feed/feed.component';
 import Spinner from '../spinner/spinner.component';
-import { TEXT } from '../../helpers/constant';
+import TEXT from '../../helpers/constant';
 
 import './feedlist.styles.scss';
 
@@ -54,4 +54,4 @@ const FeedList = () => {
   );
 };
 
-export default FeedList;
+export default connect()(FeedList);

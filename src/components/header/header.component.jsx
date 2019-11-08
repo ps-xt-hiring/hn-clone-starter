@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 import Logo from '../../assets/y18.gif';
 import './header.styles.scss';
-import { TEXT } from '../../helpers/constant';
+import TEXT from '../../helpers/constant';
 
 const HeaderComponent = () => (
   <Row className="header-comp p-1">

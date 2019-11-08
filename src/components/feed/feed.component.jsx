@@ -2,11 +2,18 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import { ReactComponent as Arrowup } from '../../assets/arrow.svg';
-import { TEXT } from '../../helpers/constant';
+import TEXT from '../../helpers/constant';
 import { timeSince, getDomain } from '../../helpers/utils';
 import './feed.styles.scss';
 
-const Feed = ({ title, points, author, url, created_at, objectID }) => {
+const Feed = ({
+  title,
+  points,
+  author,
+  url,
+  objectID,
+  created_at: createdAt
+}) => {
   const [count, setCount] = useState(0);
   const [hide, setHide] = useState(false);
 
@@ -31,8 +38,6 @@ const Feed = ({ title, points, author, url, created_at, objectID }) => {
     setCount(count + 1);
     sessionStorage.setItem(`count-${objectID}`, count + 1);
   };
-
-  const createdAt = created_at;
 
   return (
     <>
