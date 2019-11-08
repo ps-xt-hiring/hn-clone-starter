@@ -1,3 +1,5 @@
+@import '../../common/colors.scss';
+
 .btn-component {
   background-color: transparent;
   border: none;
@@ -9,13 +11,13 @@
 }
 
 .secondary {
-  color: #000;
+  color: $black;
 }
 
 .primary {
-  color: #fa6602;
+  color: $orange;
 }
 
 .other {
-  color: #fff;
+  color: $white;
 }
