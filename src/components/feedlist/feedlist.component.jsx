@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector, connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 import fetchFeed from '../../redux/feed/fetch.feed';
 import Feed from '../feed/feed.component';
@@ -54,4 +54,4 @@ const FeedList = () => {
   );
 };
 
-export default connect()(FeedList);
+export default FeedList;
