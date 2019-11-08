@@ -4,7 +4,7 @@ import './App.css';
 import * as types from './types';
 import logo from '../../images/y18.gif';
 import Button from '../../components/Button/Button';
-import ListItem from '../../components/ListItem/ListItem';
+import TableRow from '../../components/TableRow/TableRow';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const hideNews = (objectID, dispatch) => {
@@ -23,10 +23,10 @@ const handleGotoFirst = (dispatch) => {
   dispatch({ type: types.GET_NEWS_API_CALL_REQUEST, page: 0 });
 };
 
-const renderListItems = (items, dispatch) => items.map((item, index) => {
-  const rowBgStyle = index % 2 === 0 ? 'list-item-even' : 'list-item-odd';
+const renderTableRows = (items, dispatch) => items.map((item, index) => {
+  const rowBgStyle = index % 2 === 0 ? 'table-row-even' : 'table-row-odd';
   return (
-    <ListItem
+    <TableRow
       key={item.objectID}
       item={item}
       handleUpVote={handleUpVote}
@@ -41,7 +41,7 @@ const renderTableData = (items, dispatch) => (
   <div className="table-responsive">
     <table className="table">
       <tbody>
-        {renderListItems(items, dispatch)}
+        {renderTableRows(items, dispatch)}
       </tbody>
     </table>
   </div>

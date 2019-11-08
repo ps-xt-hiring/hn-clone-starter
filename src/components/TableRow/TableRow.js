@@ -1,11 +1,11 @@
 import React from 'react';
-import './ListItem.css';
+import './TableRow.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PropTypes from 'prop-types';
 import { toBaseURL, getFormattedDate } from '../../common/utils';
 import Button from '../Button/Button';
 
-const ListItem = (props) => {
+const TableRow = (props) => {
   const {
     handleUpVote, hideNews, dispatch, item, rowBgStyle,
   } = props;
@@ -21,20 +21,20 @@ const ListItem = (props) => {
         <span className="arrow-up" onClick={() => handleUpVote(objectID, dispatch)} role="button" onKeyUp={() => {}} tabIndex="0" />
       </td>
       <td className="info">
-        <span className="list-item-title">{title}</span>
-        <span className="list-item-url">
-          <a href={url} className="list-item-link">
+        <span className="table-row-title">{title}</span>
+        <span className="table-row-url">
+          <a href={url} className="table-row-link">
             (
             {toBaseURL(url)}
             )
           </a>
         </span>
-        <span className="list-item-by">by</span>
-        <span className="list-item-author">{author}</span>
-        <span className="list-item-date">{getFormattedDate(createdAt)}</span>
+        <span className="table-row-by">by</span>
+        <span className="table-row-author">{author}</span>
+        <span className="table-row-date">{getFormattedDate(createdAt)}</span>
         <span>
           [
-          <Button variant="secondary" onClick={() => hideNews(objectID, dispatch)} title="hide" className="list-item-hide" />
+          <Button variant="secondary" onClick={() => hideNews(objectID, dispatch)} title="hide" className="table-row-hide" />
           ]
         </span>
       </td>
@@ -42,7 +42,7 @@ const ListItem = (props) => {
   );
 };
 
-ListItem.propTypes = {
+TableRow.propTypes = {
   handleUpVote: PropTypes.func.isRequired,
   hideNews: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
@@ -58,4 +58,4 @@ ListItem.propTypes = {
   }).isRequired,
 };
 
-export default ListItem;
+export default TableRow;

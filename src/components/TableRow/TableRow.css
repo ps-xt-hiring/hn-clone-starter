@@ -2,11 +2,11 @@
   --light-grey-color: #828282;
 }
 
-.list-item-even {
+.table-row-even {
   background-color: #f6f6ef;
 }
 
-.list-item-odd {
+.table-row-odd {
   background-color: #e6e6df;
 }
 
@@ -23,36 +23,36 @@
   outline: 0;
 }
 
-.list-item-link,
-.list-item-link:link {
+.table-row-link,
+.table-row-link:link {
   margin: 0 4px;
   font-size: 10px;
   color: var(--light-grey-color);
   text-decoration: none;
 }
 
-.list-item-link:hover {
+.table-row-link:hover {
   text-decoration: underline;
 }
 
-.list-item-author {
+.table-row-author {
   font-size: 10px;
   font-weight: 500;
   margin: 0 4px;
 }
 
-.list-item-by {
+.table-row-by {
   font-size: 10px;
   color: var(--light-grey-color);
 }
 
-.list-item-date {
+.table-row-date {
   font-size: 10px;
   color: var(--light-grey-color);
   margin-right: 4px;
 }
 
-.list-item-hide {
+.table-row-hide {
   font-size: 12px;
 }
 
