@@ -9,12 +9,7 @@ if (typeof require !== 'undefined') {
 
 const nextConfig = {
   withImage: withImages(),
-  withCss: withCSS({
-    exportPathMap: () => ({
-      '/': { page: '/' },
-      '/news': { page: '/news' },
-    }),
-  }),
+  withCss: withCSS(),
   distDir: 'build',
   webpack: (config, { isServer }) => {
     if (isServer) {
