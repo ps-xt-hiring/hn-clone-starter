@@ -1,0 +1,59 @@
+@import '../../common/colors.scss';
+
+.even {
+  background-color: $off-white;
+}
+
+.odd {
+  background-color: $light-yellow;
+}
+
+.arrow-up {
+  margin: 0 5px;
+  top: -12px;
+  position: relative;
+  width: 0;
+  height: 12px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 5px solid $grey;
+  cursor: pointer;
+  outline: 0;
+}
+
+.table-row-link,
+.table-row-link:link {
+  margin: 0 4px;
+  font-size: 10px;
+  color: $grey;
+  text-decoration: none;
+}
+
+.table-row-link:hover {
+  text-decoration: underline;
+}
+
+.table-row-author {
+  font-size: 10px;
+  font-weight: 500;
+  margin: 0 4px;
+}
+
+.table-row-by {
+  font-size: 10px;
+  color: $grey;
+}
+
+.table-row-date {
+  font-size: 10px;
+  color: $grey;
+  margin-right: 4px;
+}
+
+.table-row-hide {
+  font-size: 10px;
+}
+
+.table td {
+  padding: 5px !important;
+}
