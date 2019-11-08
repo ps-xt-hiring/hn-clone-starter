@@ -1,7 +1,23 @@
-.arrow {
-  cursor: pointer;
+@import '../../helpers/variables.scss';
+.feed-component{
+  .hideline {
+    text-decoration: underline;
+  }
+  button{
+    background:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: inline-block;
+    color:$colorBlack;
+    border:none;
+    padding: 0 5px 0 5px;
+  }
+  .origin-url{
+    color:$colorLink;
+    padding: 0 5px 0 5px;
+  }
+
 }
-.hideline {
-  cursor: pointer;
-  text-decoration: underline;
-}
+
+

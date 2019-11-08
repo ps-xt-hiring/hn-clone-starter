@@ -16,11 +16,15 @@
 		}
 	}
 }
-
-.button {
-	padding: 14px 28px;
-	font-size: $fontSizeM;
-	cursor: pointer;
-	display: inline-block;
-	color: $colorPrimary;
+.load-more{
+	border-bottom:1px solid $colorGrey;
+	.button {
+		background: none;
+		border:none;
+		cursor: pointer;
+		display: inline-block;
+		color: $colorPrimary;
+	}
 }
+
+

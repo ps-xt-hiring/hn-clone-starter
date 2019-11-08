@@ -5,7 +5,7 @@ import HomePage from './pages/homepage';
 
 function App() {
   return (
-    <Container>
+    <Container className="main-container">
       <HomePage />
     </Container>
   );

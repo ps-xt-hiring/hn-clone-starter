@@ -1,67 +1,53 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
-
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'reactstrap';
+import fetchFeed from '../../redux/feed/fetch.feed';
+import Feed from '../feed/feed.component';
+import Spinner from '../spinner/spinner.component';
+import { TEXT } from '../../helpers/constant';
 
 import './feedlist.styles.scss';
 
-const Feed = lazy(() => import('../feed/feed.component'));
-
 const FeedList = () => {
-  const [data, setData] = useState([]);
   const [pageNum, setPageNum] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
-  const currentData = data;
+  const loadedData = useSelector(feed => feed);
+
   useEffect(() => {
-    let isSubscribed = true;
-    const source = axios.CancelToken.source();
-    const fetchData = async () => {
-      setIsLoading(true);
-      const result = await axios.get(
-        `https://hn.algolia.com/api/v1/search?tags=front_page&page=${pageNum}`,
-        {
-          cancelToken: source.token
-        }
-      );
-      if (isSubscribed) {
-        const resultData = currentData.concat(result.data.hits);
-        setData(resultData);
-      }
-      setIsLoading(false);
-    };
-    fetchData();
-    return () => {
-      isSubscribed = false;
-      source.cancel();
-    };
+    dispatch(fetchFeed(pageNum));
   }, [pageNum]);
 
   const loadMore = (
-    <span
+    <button
+      type="button"
       className="button"
       onClick={() => setPageNum(pageNum + 1)}
-      onKeyUp={() => {}}
-      role="button"
-      tabIndex={0}
     >
-      Load More
-    </span>
+      {' '}
+      {TEXT.LOAD_MORE}
+    </button>
   );
 
   return (
     <>
       <Row className="mt-4">
         <Col xs={12} className="feed-container">
-          <Suspense fallback={<span>...loading</span>}>
-            {isLoading ? (
-              <div>...Loading </div>
-            ) : (
-              data.length > 0 &&
-              data.map(feed => <Feed key={feed.objectID} {...feed} />)
-            )}
-          </Suspense>
-          <span>{loadMore}</span>
+          {(loadedData && loadedData.feed.fetching) ||
+          !loadedData.feed.fetched ? (
+            <div>
+              <Spinner />
+            </div>
+          ) : (
+            loadedData &&
+            loadedData.feed.feedItems.hits.length > 0 &&
+            loadedData.feed.feedItems.hits.map(feed => (
+              <Feed key={feed.objectID} {...feed} />
+            ))
+          )}
+        </Col>
+        <Col xs={12} className="load-more">
+          <span className="pl-5">{loadMore}</span>
         </Col>
       </Row>
     </>

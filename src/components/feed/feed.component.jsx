@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import Moment from 'moment';
 import { ReactComponent as Arrowup } from '../../assets/arrow.svg';
+import { TEXT } from '../../helpers/constant';
+import { timeSince, getDomain } from '../../helpers/utils';
 import './feed.styles.scss';
 
-const Feed = ({ title, points, author, url, objectID, ...props }) => {
+const Feed = ({ title, points, author, url, created_at, objectID }) => {
   const [count, setCount] = useState(0);
   const [hide, setHide] = useState(false);
 
@@ -31,46 +32,42 @@ const Feed = ({ title, points, author, url, objectID, ...props }) => {
     sessionStorage.setItem(`count-${objectID}`, count + 1);
   };
 
-  const getDomain = getURL => {
-    const domain = new URL(getURL);
-    return domain.origin;
-  };
-
-  // eslint-disable-next-line react/destructuring-assignment
-  const createdAt = props.created_at;
+  const createdAt = created_at;
 
   return (
     <>
       {hide ? (
         ''
       ) : (
-        <Row className="p-1">
-          <Col xs={2} className="text-center">
-            {points && points}
+        <Row className="p-1 feed-component">
+          <Col xs={1} className="text-center">
+            <span>{points && points}</span>
           </Col>
           <Col xs={1}>
-            {count}
+            <span>{count}</span>
             <span>
-              <Arrowup className="arrow" onClick={setLocalStorage} />
+              <button type="button" onClick={setLocalStorage}>
+                <Arrowup className="arrow" />
+              </button>
             </span>
           </Col>
-          <Col xs={9}>
-            {title && title}
-            {url && <a href={url}>{getDomain(url)}</a>}
-            by
-            {author && author}
-            <span className="font-weight-bold">
-              {createdAt && Moment(createdAt).fromNow()}
+          <Col xs={10}>
+            <span>{title && title}</span>
+            <span>
+              {url && (
+                <a className="origin-url" href={url}>
+                  {getDomain(url)}
+                </a>
+              )}
             </span>
-            <span
-              className="hideline"
-              onKeyUp={() => {}}
-              role="button"
-              tabIndex={0}
-              onClick={hideLine}
-            >
-              [hide]
+            <span>{TEXT.BY}</span>
+            <span>{author && author}</span>
+            <span className="font-weight-bold pl-2">
+              {createdAt && timeSince(createdAt)}
             </span>
+            <button type="button" className="hideline" onClick={hideLine}>
+              {TEXT.HIDE}
+            </button>
           </Col>
         </Row>
       )}
@@ -80,7 +77,7 @@ const Feed = ({ title, points, author, url, objectID, ...props }) => {
 
 Feed.propTypes = {
   title: PropTypes.string,
-  points: PropTypes.string,
+  points: PropTypes.number,
   author: PropTypes.string,
   url: PropTypes.string,
   objectID: PropTypes.string,
@@ -89,7 +86,7 @@ Feed.propTypes = {
 
 Feed.defaultProps = {
   title: 'title',
-  points: '0',
+  points: 0,
   author: 'default',
   url: 'www.example.com',
   objectID: '0',
