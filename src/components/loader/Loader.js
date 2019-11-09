@@ -2,7 +2,7 @@ import React from 'react';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 import { PropTypes } from 'prop-types';
-import * as loaderCss from './loader.css';
+import './loader.css';
 
 class Loader extends React.Component {
   constructor(props) {
@@ -37,11 +37,7 @@ class Loader extends React.Component {
   };
 
   render() {
-    return (
-      <style jsx global>
-        {`${loaderCss}`}
-      </style>
-    );
+    return (<div />);
   }
 }
 
