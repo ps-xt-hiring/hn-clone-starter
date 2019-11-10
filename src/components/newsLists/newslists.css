@@ -105,7 +105,7 @@ div.title {
   font-size: medium;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .up-arrow {
     right: 26px;
     top: 51px;
@@ -122,5 +122,39 @@ div.title {
 
   .list-container .list {
     min-height: 88px;
+  }
+
+  nav.navbar.navbar-dark {
+    padding: 0;
+  }
+
+  .navbar-nav {
+    width: 85%;
+  }
+
+  .navbar-brand {
+    padding: 5px;
+    margin: 0;
+  }
+
+  ul.navbar-nav {
+    width: 35%;
+    display: block;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+  }
+
+  ul.navbar-nav li {
+    float: left;
+    padding: 0 10px;
+  }
+
+  ul.navbar-nav .vline {
+    padding: 0;
   }
 }

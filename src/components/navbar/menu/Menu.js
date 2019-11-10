@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 const Menu = () => (
-  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+  <div className="navbar-nav" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
         <Link href="/"><a href="/" className="nav-link">top</a></Link>
