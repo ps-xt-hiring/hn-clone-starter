@@ -19,9 +19,7 @@
   },
   "scripts": {
     "dev": "next",
-    "export": "next export",
     "start": "next build && next start",
-    "deploy": "npm run build && npm run export",
     "build": "next build",
     "test:lint:js": "eslint --ext=js --ext=jsx .",
     "test:lint:css": "stylelint \"**/*.css\"",
