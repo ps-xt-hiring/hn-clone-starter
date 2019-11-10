@@ -1,0 +1,160 @@
+section.list-container {
+  background: #f6f6ef;
+  padding-top: 10px;
+}
+
+.row.list {
+  margin: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.up-arrow {
+  position: absolute;
+  right: 22px;
+  top: 9px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #828282;
+  cursor: pointer;
+}
+
+.hide-news {
+  cursor: pointer;
+}
+
+div.title {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 0.8em;
+  color: #5d5454;
+  float: left;
+  font-weight: bold;
+}
+
+.newsUrl,
+.author {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 0.7em;
+  color: #828282;
+  padding: 8px 8px;
+  padding-top: 1px;
+}
+
+.author {
+  padding-left: 0;
+}
+
+.list-container a,
+.list-container a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.newsUrl a:link {
+  color: #828282;
+}
+
+.author span {
+  color: black;
+  font-size: 0.98em;
+  font-weight: bold;
+}
+
+.total-comments,
+.total-votes {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 0.8em;
+  font-weight: unset;
+}
+
+.total-votes {
+  color: #828282;
+}
+
+.list-loader {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.list-loader .title {
+  color: rgb(255, 102, 0);
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 0.8em;
+  font-weight: unset;
+  padding: 10px;
+}
+
+.list-loader .title:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.list:nth-child(even) {
+  background: #e0e0e0;
+}
+
+.loader {
+  text-align: center;
+  font-weight: bold;
+  font-size: medium;
+}
+
+@media (max-width: 991px) {
+  .up-arrow {
+    right: 26px;
+    top: 51px;
+  }
+
+  header nav {
+    height: auto;
+  }
+
+  .no-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .list-container .list {
+    min-height: 88px;
+  }
+
+  nav.navbar.navbar-dark {
+    padding: 0;
+  }
+
+  .navbar-nav {
+    width: 85%;
+  }
+
+  .navbar-brand {
+    padding: 5px;
+    margin: 0;
+  }
+
+  ul.navbar-nav {
+    width: 35%;
+    display: block;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+  }
+
+  ul.navbar-nav li {
+    float: left;
+    padding: 0 10px;
+  }
+
+  ul.navbar-nav .vline {
+    padding: 0;
+  }
+}

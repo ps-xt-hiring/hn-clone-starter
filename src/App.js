@@ -1,26 +1,18 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 import React from 'react';
-import logo from './logo.svg';
+import Layout from './components/layout/Layout';
+import NewsList from './components/newsLists/NewsLists';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Publicis Sapient - XT hiring challenge!!</h1>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-and save to reload. Refactor at will, but please do not
-          modify the entry point
-          {' '}
-          <code>index.js</code>
-.
-        </p>
-      </header>
-    </div>
+    <main>
+      <Layout>
+        <NewsList {...props} />
+      </Layout>
+    </main>
   );
 }
 
