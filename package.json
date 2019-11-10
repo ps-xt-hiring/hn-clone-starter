@@ -19,10 +19,11 @@
   },
   "scripts": {
     "dev": "next",
-    "export": "next export",
+    "export": "next export -o build",
     "start": "next build && next start",
     "deploy": "npm run build && npm run export",
     "build": "next build",
+    "next:help": "next export -h",
     "test:lint:js": "eslint --ext=js --ext=jsx .",
     "test:lint:css": "stylelint \"**/*.css\"",
     "test": "react-scripts test",

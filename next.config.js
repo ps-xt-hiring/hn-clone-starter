@@ -10,7 +10,7 @@ if (typeof require !== 'undefined') {
 const nextConfig = {
   withImage: withImages(),
   withCss: withCSS(),
-  distDir: 'build',
+  // distDir: 'build',
   webpack: (config, { isServer }) => {
     if (isServer) {
       const antStyles = /antd\/.*?\/style\/css.*?/;
