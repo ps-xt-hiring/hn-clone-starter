@@ -1,6 +1,6 @@
 import React from 'react';
-import fetch from 'isomorphic-unfetch';
 import PropTypes from 'prop-types';
+import { getNewsList } from '../utils/helpers';
 import Loader from '../components/loader/Loader';
 import App from '../App';
 
@@ -14,16 +14,7 @@ function ServerApp(props) {
   );
 }
 
-// eslint-disable-next-line func-names
-ServerApp.getInitialProps = async function ({ query: { page = 0 } }) {
-  const res = await fetch(`https://hn.algolia.com/api/v1/search?tags=front_page&page=${page}`);
-  const data = await res.json();
-
-  return {
-    data: data.hits,
-    page: parseInt(page, 10),
-  };
-};
+ServerApp.getInitialProps = ({ query: { page = 0 } }) => getNewsList(page);
 
 ServerApp.defaultProps = {
   data: [],

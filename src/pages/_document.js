@@ -12,9 +12,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <style>{'body { margin: 0 } /* custom! */'}</style>
-        </Head>
+        <Head />
         <body className="custom_class">
           <Main />
           <NextScript />

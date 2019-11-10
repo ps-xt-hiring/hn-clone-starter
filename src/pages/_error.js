@@ -1,5 +1,3 @@
-/* eslint-disable import/no-named-as-default */
-/* eslint-disable import/no-named-as-default-member */
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../assets/error.css';
@@ -22,8 +20,9 @@ function Error({ statusCode }) {
 }
 
 Error.getInitialProps = ({ res, err }) => {
-  // eslint-disable-next-line no-nested-ternary
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+  const { statusCode: resStatusCode } = res;
+  const { statusCode: errStatusCode = 404 } = err;
+  const statusCode = res ? resStatusCode : errStatusCode;
   return { statusCode };
 };
 
