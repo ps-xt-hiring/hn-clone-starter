@@ -20,9 +20,8 @@ function Error({ statusCode }) {
 }
 
 Error.getInitialProps = ({ res, err }) => {
-  const { statusCode: resStatusCode } = res;
-  const { statusCode: errStatusCode = 404 } = err;
-  const statusCode = res ? resStatusCode : errStatusCode;
+  // eslint-disable-next-line no-nested-ternary
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
   return { statusCode };
 };
 
