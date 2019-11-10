@@ -22,7 +22,7 @@
     "export": "next export -o build",
     "build": "next build && next export -o build",
     "deploy": "npm run build && npm run export",
-    "start": "next build && next start",
+    "start": "next build && next start", 
     "test:lint:js": "eslint --ext=js --ext=jsx .",
     "test:lint:css": "stylelint \"**/*.css\"",
     "test": "react-scripts test",
