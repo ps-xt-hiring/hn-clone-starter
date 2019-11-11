@@ -1,0 +1,20 @@
+.heading {
+  background-color: #f60;
+  color: white;
+}
+
+.heading > a > img {
+  vertical-align: middle;
+  border: 1px solid #fff;
+  display: inline-block;
+  margin: -2px 5px 2px 2px;
+  transform: scale(0.8);
+}
+
+.heading-new {
+  color: #000;
+}
+
+.heading-top {
+  display: inline-block;
+}
