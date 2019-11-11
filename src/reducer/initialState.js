@@ -1,4 +1,5 @@
-export default {
+const initialState = {
     news: []
-              
 };
+
+export default initialState;
