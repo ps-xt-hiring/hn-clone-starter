@@ -1,0 +1,51 @@
+*{
+    margin:0;
+    padding:0
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    color: #222222;
+
+}
+.container{
+    width: 85%;
+    margin:0 auto
+}
+.header{
+  background-color: #ff6600;
+  padding: 10px 10px 9px 10px;
+  display: flex;
+  align-items: center;
+
+}
+
+.image-border{
+    border: 1px solid #ffffff;
+}
+
+.top, .new{
+    font-size: 14px;
+    line-height: 12px;
+    color: #ffffff;
+    padding: 0 0px 0px 5px;
+    
+}
+.new{
+    color: #000000;
+}
+
+.listing{
+    display: flex;
+    flex: 1;
+}
+
+.listing--num-comments, .listing--linkDomain, .listing--userName, .listing--postedWhen{
+    flex-basis: 5%;
+}
+.listing--points{
+    flex-basis: 5%;
+}
+
+.listing--title{
+    flex-basis: 20%;
+}

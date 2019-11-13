@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Listing from "./listing";
 import { fetchProducts, hideItems, upWardItems } from '../../redux/action'
 import { connect } from "react-redux";
+import {  ListHeader } from "../Header/header";
 
 
 class ListingUI extends Component {
@@ -12,7 +13,7 @@ class ListingUI extends Component {
         this.props.fetchProducts(page);
     }
 
-   
+
 
     ShowMoreItems = () => {
         console.log(this.props)
@@ -27,7 +28,7 @@ class ListingUI extends Component {
 
 
     hideItem = (objId) => {
-            this.props.hideItems(objId, this.props.productReducer.items)
+        this.props.hideItems(objId, this.props.productReducer.items)
     }
 
     upWard = (objId) => {
@@ -36,15 +37,16 @@ class ListingUI extends Component {
 
 
     render() {
-       
+
         return (
 
             <React.Fragment>
+                <ListHeader />
                 <Listing
                     productData={this.props.productReducer.items}
-                    hideItems = {(item)=>this.hideItem(item)}
-                    upWard = {(item) => this.upWard(item)}
-                  
+                    hideItems={(item) => this.hideItem(item)}
+                    upWard={(item) => this.upWard(item)}
+
 
 
 
@@ -53,7 +55,7 @@ class ListingUI extends Component {
                 <span onClick={this.ShowMoreItems}>See MOre</span>
 
 
-                
+
 
             </React.Fragment>
 

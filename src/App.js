@@ -12,10 +12,13 @@ import ListingUI from "./components/Listing/ListingUI"
 
 function App() {
   return (
-   <Router>
+    <div className="container">
+       <Router>
      <Route exact path="/" component = {ListingUI} />
      <Route exact path="/news" component = {ListingUI} />
    </Router>
+    </div>
+  
   );
 }
 
