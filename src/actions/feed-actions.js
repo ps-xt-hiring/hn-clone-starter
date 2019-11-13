@@ -25,7 +25,7 @@ const getFeeds = pageNum => (dispatch) => {
     .catch((error) => {
       dispatch({
         type: ActionTypes.GET_FEED_FAILURE,
-        value: error,
+        error,
       });
     });
 };

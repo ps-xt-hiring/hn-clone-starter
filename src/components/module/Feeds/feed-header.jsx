@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FeedHeader = () => (
-  <header>
+  <header className="header-container">
     <nav>
       <i className="header-logo">Y</i>
       <button type="button" tabIndex="0" name="top button" className="top">top</button>

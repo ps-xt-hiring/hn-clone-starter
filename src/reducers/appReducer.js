@@ -19,7 +19,7 @@ export default function appReducer(state = InitialState, action = '') {
     case ActionTypes.GET_FEED_SUCCESS:
       nextState = {
         ...state,
-        feeds: [...state.feeds, ...action.value],
+        feeds: [...action.value],
         isLoading: false,
         isLanding: true,
       };
@@ -31,6 +31,7 @@ export default function appReducer(state = InitialState, action = '') {
         isPageError: true,
         isLoading: false,
         isLanding: true,
+        error: action.error
       };
       break;
 

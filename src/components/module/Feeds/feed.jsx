@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import fetchDomainName from '../../../utils/manipulate';
+import { fetchDomainName } from '../../../utils/manipulate';
 
 const propsTypes = {
   feed: PropTypes.objectOf(PropTypes.object),

@@ -1,0 +1,36 @@
+{
+    "browser": true,
+    "rootsDir": "../../src",
+    "verbose": true,
+    "testRegex": "(<rootDir>/__tests__/.*|(\\.|/)(test|spec))\\.js?$",
+    "collectCoverage": true,
+    "coverageDirectory": "dashboard/unit-testing",
+    "coverageReporters": [
+        "json",
+        "lcov",
+        "text",
+        "cobertura",
+        "text-summary"
+    ],
+    "collectCoverageFrom": [],
+    "coveragePathIgnorePatterns": [
+        "<rootDir>/utils/*.js",
+        "<rootDir>/__tests__/*.js"
+    ],
+    "coverageThreshold": {
+        "global": {
+            "branches": 100,
+            "functions": 100,
+            "lines": 100,
+            "statements": 100
+        }
+    },
+    "globals": {},
+    "moduleNameMapper": {
+    },
+    "moduleFileExtensions": [
+        "js",
+        "jsx"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
+}

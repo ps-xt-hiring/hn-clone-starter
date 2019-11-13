@@ -1,3 +1,5 @@
+import getDuration from 'moment';
+
 const fetchDomainName = (str) => {
     let domain;
     if(str && str !== null) {
@@ -7,4 +9,15 @@ const fetchDomainName = (str) => {
     return domain;
 };
 
-export default fetchDomainName;
+const getTimeDuration = (date) => {
+    let inputDate = new Date(date);
+    let time = getDuration(inputDate);
+
+    console.log(time);
+    return time;
+};
+
+export {
+    fetchDomainName,
+    getTimeDuration,
+};
