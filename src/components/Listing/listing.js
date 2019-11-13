@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import findDomain from '../../utilities';
 
-class Listing extends Component {
+class Listing extends Component{
   render() {
     const { productData } = this.props;
     return (

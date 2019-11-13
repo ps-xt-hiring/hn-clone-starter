@@ -18,8 +18,8 @@ export const fetchProducts = (pagination) => dispatch => {
     });
 };
 
-export const hideItems = (objId, item) => dispatch => {
-  const hideList = item.slice().filter(it => it.objectID !== objId);
+export const hideItems = (objId, items) => dispatch => {
+  const hideList = items.slice().filter((item) => item.objectID !== objId);
 
   return dispatch({
     type: HIDE_PRODUCTS,
@@ -28,7 +28,7 @@ export const hideItems = (objId, item) => dispatch => {
 };
 
 export const upVoteItems = (objId, items) => dispatch => {
-  const vote = items.map(item => {
+  const vote = items.map((item) => {
     if (item.objectID === objId) {
       item.points++;
     }
