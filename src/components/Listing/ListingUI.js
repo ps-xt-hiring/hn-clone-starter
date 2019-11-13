@@ -1,89 +1,64 @@
 import React, { Component } from "react";
-
-import Listing from "./listing";
-import { fetchProducts, hideItems, upWardItems } from '../../redux/action'
 import { connect } from "react-redux";
-import {  ListHeader } from "../Header/header";
-
+import { fetchProducts, hideItems, upVoteItems } from "../../redux/action";
+import Listing from "./listing";
+import { ListHeader } from "../Header/header";
 
 class ListingUI extends Component {
+  componentDidMount() {
+    let page = this.props.productReducer.pagination;
+    this.props.fetchProducts(page);
+  }
 
-    componentDidMount() {
-        let page = this.props.productReducer.pagination;
-        this.props.fetchProducts(page);
-    }
+  ShowMoreItems = () => {
+    // console.log(this.props);
+    let page = this.props.productReducer.pagination;
+    page++;
+    this.props.history.push("/news?page=" + page);
+    this.props.fetchProducts(page);
+  };
 
+  hideItem = objId => {
+    this.props.hideItems(objId, this.props.productReducer.items);
+  };
 
+  upVote = objId => {
+    this.props.upVoteItems(objId, this.props.productReducer.items);
+  };
 
-    ShowMoreItems = () => {
-        console.log(this.props)
-        let page = this.props.productReducer.pagination;
-        page++
+  render() {
+    return (
+      <React.Fragment>
+        <ListHeader />
+        <Listing
+          productData={this.props.productReducer.items}
+          hideItems={item => this.hideItem(item)}
+          upVote={item => this.upVote(item)}
+        />
 
-
-        // this.props.addMoreItems(page)
-        this.props.history.push('/news?page=' + page);
-        this.props.fetchProducts(page)
-    }
-
-
-    hideItem = (objId) => {
-        this.props.hideItems(objId, this.props.productReducer.items)
-    }
-
-    upWard = (objId) => {
-        this.props.upWardItems(objId, this.props.productReducer.items)
-    }
-
-
-    render() {
-
-        return (
-
-            <React.Fragment>
-                <ListHeader />
-                <Listing
-                    productData={this.props.productReducer.items}
-                    hideItems={(item) => this.hideItem(item)}
-                    upWard={(item) => this.upWard(item)}
-
-
-
-
-                />
-
-                <span onClick={this.ShowMoreItems}>See MOre</span>
-
-
-
-
-            </React.Fragment>
-
-        );
-    }
-
-
+        <span className="loadMoreItems" onClick={this.ShowMoreItems}>
+          More
+        </span>
+      </React.Fragment>
+    );
+  }
 }
 
 const mapStateToProps = state => {
-    return {
-        productReducer: state.productReducer,
-
-    };
+  return {
+    productReducer: state.productReducer
+  };
 };
-
 
 const mapDispatchToProps = dispatch => {
-    return {
-        fetchProducts: (page) => dispatch(fetchProducts(page)),
-        hideItems: (objId, item) => dispatch(hideItems(objId, item)),
-        upWardItems: (objId, item) => dispatch(upWardItems(objId, item)),
-
-    };
+  return {
+    fetchProducts: page => dispatch(fetchProducts(page)),
+    hideItems: (objId, item) => dispatch(hideItems(objId, item)),
+    upVoteItems: (objId, item) => dispatch(upVoteItems(objId, item))
+  };
 };
 
-
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListingUI);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListingUI);
