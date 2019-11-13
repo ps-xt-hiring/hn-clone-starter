@@ -16,12 +16,11 @@ const FeedList = props => {
   const [hide, setHide] = useState(true);
 
   return (
-    <article className={`${hide ? "feed" : "feed--hide"}`}>
+    <article className={`${hide ? "feed" : "feed-hide"}`}>
       <span className="feed__comment">{feed.num_comments}</span>
       <div className="feed__upvote">
         <span>{Count}</span>
-        <button
-          aria-label="UpVootCount"
+        <button type="button"
           onClick={() => setCount(Count + 1)}
           onKeyDown={() => setCount(Count + 1)}
           className="feed__upvote-arrow"
@@ -37,7 +36,6 @@ const FeedList = props => {
         <span>3 hours ago</span>
         <button
           type="button"
-          aria-label="HideFeed"
           onClick={() => setHide()}
           onKeyDown={() => setHide()}
           className="feed__btn feed__btn--grey"

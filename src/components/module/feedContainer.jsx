@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import noop from 'loadsh/noop';
 import FeedHeader from './feedHeader';
 import FeedList from './feedList';
 import FeedFooter from './feedFooter';
@@ -9,6 +10,7 @@ import fetchFeed from '../../redux/action/action-fetchData';
 const propsTypes = {
   isLoading: PropTypes.bool,
   feeds: PropTypes.instanceOf(Array),
+  onFetchFeeds: PropTypes.func,
   pageNum: PropTypes.number,
 };
 
@@ -16,6 +18,7 @@ const defaultProps = {
   isLoading: false,
   feeds: [],
   pageNum: 1,
+  onFetchFeeds: noop
 };
 
 class FeedContainer extends React.Component {
@@ -31,7 +34,7 @@ class FeedContainer extends React.Component {
     return isLoading ? (
       <h1>Loading...</h1>
     ) : (
-        <main id="main" aria-label="Main">
+        <main id="main">
           <FeedHeader />
           {feeds.map(feed => <FeedList feed={feed} key={feed.objectID} />)}
           <FeedFooter loadMore={onFetchFeeds} pageNum={pageNum} />
