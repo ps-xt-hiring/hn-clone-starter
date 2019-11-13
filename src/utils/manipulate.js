@@ -13,7 +13,6 @@ const getTimeDuration = (date) => {
     let inputDate = new Date(date);
     let time = getDuration(inputDate);
 
-    console.log(time);
     return time;
 };
 
