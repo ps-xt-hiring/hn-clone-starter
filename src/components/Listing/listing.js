@@ -17,26 +17,25 @@ class Listing extends Component {
               <div
                 className={
                   item.points <= 500
-                    ? "listing__points item500"
+                    ? 'listing__points item500'
                     : item.points <= 1000
-                    ? "listing__points item1000"
+                    ? 'listing__points item1000'
                     : item.points <= 1500
-                    ? "listing__points item1500"
+                    ? 'listing__points item1500'
                     : item.points <= 2000
-                    ? "listing__points item2000"
+                    ? 'listing__points item2000'
                     : item.points <= 2500
-                    ? "listing__points item2500"
+                    ? 'listing__points item2500'
                     : item.points <= 3000
-                    ? "listing__points item3000"
-                    : "listing__points"
+                    ? 'listing__points item3000'
+                    : 'listing__points'
                 }
               >
                 {item.points ? item.points : 0}
               </div>
               <div
                 className="listing__upVote"
-                onClick={() => this.props.upVote(objId)}
-              ></div>
+                onClick={() => this.props.upVote(objId)}>&nbsp;</div>
               <div className="listing__title">
                 {item.title ? item.title : "Title Not Found"}
                 <span className="listing__title__container">
@@ -45,7 +44,7 @@ class Listing extends Component {
                       ? `(${findDomain(item.url)})`
                       : 'Domain is not found'}
                   </span>
-                  by{" "}
+                  by{' '}
                   <span className="listing__title__container__userName">
                     {item.author ? item.author : null}
                   </span>
