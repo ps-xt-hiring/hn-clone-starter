@@ -5,6 +5,7 @@
   "dependencies": {
     "babel-polyfill": "6.8.0",
     "bootstrap": "3.3.6",
+    "date-fns": "^2.7.0",
     "jquery": "2.2.3",
     "moment": "^2.24.0",
     "react": "^16.6.3",
