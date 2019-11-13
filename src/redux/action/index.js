@@ -1,7 +1,7 @@
 import {
   FETCH_PRODUCTS,
-  Hide_PRODUCTS,
-  UP_VOTES
+  HIDE_PRODUCTS,
+  UP_VOTES, 
 } from '../constants/actionType';
 
 export const fetchProducts = pagination => dispatch => {
@@ -13,7 +13,7 @@ export const fetchProducts = pagination => dispatch => {
       return dispatch({
         type: FETCH_PRODUCTS,
         payload: data,
-        newItems: pagination
+        newItems: pagination, 
       });
     });
 };
@@ -22,8 +22,8 @@ export const hideItems = (objId, item) => dispatch => {
   const hideList = item.slice().filter(it => it.objectID !== objId);
 
   return dispatch({
-    type: Hide_PRODUCTS,
-    payload: hideList
+    type: HIDE_PRODUCTS,
+    payload: hideList, 
   });
 };
 
@@ -37,6 +37,6 @@ export const upVoteItems = (objId, items) => dispatch => {
 
   return dispatch({
     type: UP_VOTES,
-    payload: vote
+    payload: vote, 
   });
 };

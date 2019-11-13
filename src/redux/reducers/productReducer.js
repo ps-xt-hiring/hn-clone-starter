@@ -10,10 +10,10 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         items: action.payload.hits,
-        pagination: action.newItems
+        pagination: action.newItems,
       };
 
-    case 'Hide_PRODUCTS':
+    case 'HIDE_PRODUCTS':
       return { ...state, items: action.payload };
     case 'UP_VOTES':
       return { ...state, items: action.payload };
