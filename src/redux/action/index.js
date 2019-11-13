@@ -4,7 +4,7 @@ import {
   UP_VOTES,
 } from '../constants/actionType';
 
-export const fetchProducts = pagination => dispatch => {
+export const fetchProducts = (pagination) => dispatch => {
   fetch('https://hn.algolia.com/api/v1/search?page=' + pagination)
     .then(response => response.json())
     .then(data => {
