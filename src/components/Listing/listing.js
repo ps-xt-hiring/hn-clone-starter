@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import findDomain from '../../utilities';
 
-class Listing extends Component{
+class Listing extends Component {
   render() {
     const { productData } = this.props;
     return (
       <React.Fragment>
-        {productData.map(item => {
-          let objId = item.objectID;
+        {productData.map((item) => {
+          const objId = item.objectID;
           return (
             <div key={item.objectID} className="listing">
               <div className="listing__num-comments">
@@ -43,7 +43,7 @@ class Listing extends Component{
                   <span className="listing__title__container__linkDomain">
                     {findDomain(item.url)
                       ? `(${findDomain(item.url)})`
-                      : "Domain is not found"}
+                      : 'Domain is not found'}
                   </span>
                   by{" "}
                   <span className="listing__title__container__userName">

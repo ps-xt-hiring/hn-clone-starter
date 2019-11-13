@@ -1,6 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import ListingUI from "./components/Listing/ListingUI";
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ListingUI from './components/Listing/ListingUI';
 
 function App() {
   return (
