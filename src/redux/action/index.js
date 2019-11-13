@@ -2,10 +2,10 @@ import {
   FETCH_PRODUCTS,
   Hide_PRODUCTS,
   UP_VOTES
-} from "../constants/actionType";
+} from '../constants/actionType';
 
 export const fetchProducts = pagination => dispatch => {
-  fetch("https://hn.algolia.com/api/v1/search?page=" + pagination)
+  fetch('https://hn.algolia.com/api/v1/search?page=' + pagination)
     .then(response => response.json())
     .then(data => {
       console.log(data);

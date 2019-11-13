@@ -1,11 +1,11 @@
 const initialState = {
   items: [],
   pagination: 1,
-  hide: false
+  hide: false,
 };
-export const productReducer = (state = initialState, action) => {
+const productReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_PRODUCTS":
+    case 'FETCH_PRODUCTS':
       //  console.log(action.newItems + " " + "test......")
       return {
         ...state,
@@ -13,11 +13,13 @@ export const productReducer = (state = initialState, action) => {
         pagination: action.newItems
       };
 
-    case "Hide_PRODUCTS":
+    case 'Hide_PRODUCTS':
       return { ...state, items: action.payload };
-    case "UP_VOTES":
+    case 'UP_VOTES':
       return { ...state, items: action.payload };
     default:
       return state;
   }
 };
+
+export default productReducer;

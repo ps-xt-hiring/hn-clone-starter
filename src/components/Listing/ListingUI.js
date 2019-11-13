@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchProducts, hideItems, upVoteItems } from "../../redux/action";
-import Listing from "./listing";
-import { ListHeader } from "../Header/header";
+import React, { Component } from 'react';
+import { connect } from  'react-redux';
+import { fetchProducts, hideItems, upVoteItems } from '../../redux/action';
+import Listing from './listing';
+import { ListHeader } from '../Header/header';
 
 class ListingUI extends Component {
   componentDidMount() {
@@ -14,7 +14,7 @@ class ListingUI extends Component {
     // console.log(this.props);
     let page = this.props.productReducer.pagination;
     page++;
-    this.props.history.push("/news?page=" + page);
+    this.props.history.push('/news?page=' + page);
     this.props.fetchProducts(page);
   };
 

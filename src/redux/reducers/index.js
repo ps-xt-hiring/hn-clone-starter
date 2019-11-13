@@ -1,5 +1,5 @@
 
-import { productReducer } from './productReducer';
+import productReducer from './productReducer';
 import {combineReducers} from 'redux';
 
 

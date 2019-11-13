@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const logo = require("../../assets/images/y18.png");
+const logo = require('../../assets/images/y18.png');
 
 export const ListHeader = () => {
   return (
