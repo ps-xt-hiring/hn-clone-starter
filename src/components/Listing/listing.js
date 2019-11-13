@@ -37,7 +37,7 @@ class Listing extends Component {
                 className="listing__upVote"
                 onClick={() => this.props.upVote(objId)}>&nbsp;</div>
               <div className="listing__title">
-                {item.title ? item.title : "Title Not Found"}
+                {item.title ? item.title : 'Title Not Found'}
                 <span className="listing__title__container">
                   <span className="listing__title__container__linkDomain">
                     {findDomain(item.url)
