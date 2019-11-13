@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from  'react-redux';
 import { fetchProducts, hideItems, upVoteItems } from '../../redux/action';
 import Listing from './listing';
-import { ListHeader } from '../Header/header';
+import ListHeader from '../Header/header';
 
-class ListingUI extends Component {
-  componentDidMount() {
+class ListingUI extends Component{
+  componentDidMount(){
     let page = this.props.productReducer.pagination;
     this.props.fetchProducts(page);
   }
@@ -46,7 +46,7 @@ class ListingUI extends Component {
 
 const mapStateToProps = state => {
   return {
-    productReducer: state.productReducer
+    productReducer: state.productReducer,
   };
 };
 
@@ -54,11 +54,11 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchProducts: page => dispatch(fetchProducts(page)),
     hideItems: (objId, item) => dispatch(hideItems(objId, item)),
-    upVoteItems: (objId, item) => dispatch(upVoteItems(objId, item))
+    upVoteItems: (objId, item) => dispatch(upVoteItems(objId, item)),
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ListingUI);

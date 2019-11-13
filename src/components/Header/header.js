@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const logo = require('../../assets/images/y18.png');
 
-export const ListHeader = () => {
+const ListHeader = () => {
   return (
     <header className="header">
       <Link to="/">
@@ -15,3 +15,5 @@ export const ListHeader = () => {
     </header>
   );
 };
+
+export default ListHeader;
