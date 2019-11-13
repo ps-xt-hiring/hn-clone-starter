@@ -37,12 +37,9 @@ class HackerNewsPost extends React.Component {
   };
 
   checkHideList = objectID => {
-    console.log("objectID---", objectID);
     if (localStorage.getItem("hideStories")) {
       const objectIds = JSON.parse(localStorage.getItem("hideStories"));
-      console.log(objectIds, objectID);
       if (objectIds.indexOf(objectID) !== -1) {
-        console.log("return false hide list");
         return false;
       }
     }
@@ -95,54 +92,8 @@ class HackerNewsPost extends React.Component {
         <ul className="header">
           <li>
             <a href="/#" target="_blank" rel="noopener noreferrer">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
               logo
-                                    </a>
+            </a>
           </li>
           <li className="active">top</li>
           <li>new</li>
