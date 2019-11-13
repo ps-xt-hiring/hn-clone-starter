@@ -1,27 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import configureStore from "./redux/store/configureStore";
+import { Provider } from "react-redux";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import ConnectedLanding from "./components/module/feedContainer";
+import "./App.scss";
 
-function App() {
+const store = configureStore();
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Publicis Sapient - XT hiring challenge!!</h1>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-and save to reload. Refactor at will, but please do not
-          modify the entry point
-          {' '}
-          <code>index.js</code>
-.
-        </p>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Router>
+          <div className="wrapper">
+            <Switch>
+              <Route exact path="/" component={ConnectedLanding} />
+            </Switch>
+          </div>
+        </Router>
+      </div>
+    </Provider>
   );
-}
-
+};
 export default App;

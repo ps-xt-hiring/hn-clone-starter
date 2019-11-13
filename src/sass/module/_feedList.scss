@@ -1,0 +1,58 @@
+.feed {
+  display: flex;
+  padding: 0.4em;
+  &:nth-child(odd) {
+    background-color: $color-medium-gray;
+  }
+  &__content {
+    #{$a-tags} {
+      color: $color-dark-gray;
+      padding: 0 0.3em;
+    }
+    #{$a-tags-hover} {
+      color: $color-blue;
+    }
+  }
+  &__comment {
+    text-align: right;
+    min-width: 3.5em;
+  }
+  &-hide {
+    display: none;
+  }
+  &__upvote {
+    flex-direction: row;
+    align-items: center;
+
+    min-width: 5em;
+    padding: 0 0.5em;
+
+    text-align: right;
+    &-arrow {
+      display: inline-block;
+      color: $color-dark-gray;
+
+      cursor: pointer;
+      &:after {
+        content: " \25B2";
+      }
+    }
+  }
+
+  &__title {
+    word-break: break-all;
+    font-size: 1.4rem;
+  }
+  &__author {
+    color: $color-dark-gray;
+    padding: 0 0.3em;
+  }
+  &__btn {
+    color: $color-orange;
+    font-weight: $bold;
+    &--grey {
+      color: $color-dark-gray;
+    }
+  }
+}
+@import "../theme/helper";
