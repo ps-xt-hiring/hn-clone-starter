@@ -11,6 +11,6 @@ const ListHeader = () => (
     <span className="top">top</span>
     <span className="new">| new</span>
   </header>
-)
+);
 
 export default ListHeader;

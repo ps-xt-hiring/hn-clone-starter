@@ -4,12 +4,11 @@ import {
   UP_VOTES,
 } from '../constants/actionType';
 
-export const fetchProducts = (pagination) => dispatch => {
+export const fetchProducts = (pagination) => (dispatch) => {
   fetch('https://hn.algolia.com/api/v1/search?page=' + pagination)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
-
+      // console.log(data);
       return dispatch({
         type: FETCH_PRODUCTS,
         payload: data,
@@ -18,7 +17,7 @@ export const fetchProducts = (pagination) => dispatch => {
     });
 };
 
-export const hideItems = (objId, items) => dispatch => {
+export const hideItems = (objId, items) => (dispatch) => {
   const hideList = items.slice().filter((item) => item.objectID !== objId);
 
   return dispatch({
@@ -27,7 +26,7 @@ export const hideItems = (objId, items) => dispatch => {
   });
 };
 
-export const upVoteItems = (objId, items) => dispatch => {
+export const upVoteItems = (objId, items) => (dispatch) => {
   const vote = items.map((item) => {
     if (item.objectID === objId) {
       item.points++;
