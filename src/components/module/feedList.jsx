@@ -3,27 +3,21 @@ import getDomain from "../../utils/manipulate";
 import PropTypes from "prop-types";
 
 const propsTypes = {
-  num_comments: PropTypes.string,
-  title: PropTypes.string,
-  url: PropTypes.string,
-  author: PropTypes.string
+  feed: PropTypes.objectOf(PropTypes.object),
 };
 
 const defaultProps = {
-  num_comments: "",
-  title: "",
-  url: "",
-  author: ""
+  feed: {},
 };
 const FeedList = props => {
-  const { num_comments, title, url, author } = props.feed;
+  const { feed } = props;
 
   const [Count, setCount] = useState(0);
   const [hide, setHide] = useState(true);
 
   return (
     <article className={`${hide ? "feed" : "feed--hide"}`}>
-      <span className="feed__comment">{num_comments}</span>
+      <span className="feed__comment">{feed.num_comments}</span>
       <div className="feed__upvote">
         <span>{Count}</span>
         <button
@@ -34,12 +28,12 @@ const FeedList = props => {
         ></button>
       </div>
       <div className="feed__content">
-        <span className="feed__title">{title}</span>
-        <a rel="noopener noreferrer" target="_blank" href={url} title={url}>
-          {`(${url ? getDomain(url) : ""})`}
+        <span className="feed__title">{feed.title}</span>
+        <a rel="noopener noreferrer" target="_blank" href={feed.url} title={feed.url}>
+          {`(${feed.url ? getDomain(feed.url) : ""})`}
         </a>
         <span>by</span>
-        <span className="feed__author">{author}</span>
+        <span className="feed__author">{feed.author}</span>
         <span>3 hours ago</span>
         <button
           type="button"

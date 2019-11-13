@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 
 const propsTypes = {
   pageNum: PropTypes.number,
-  loadMore: PropTypes.func
+};
+const defaultProps = {
+  pageNum: 1,
 };
 const FeedFooter = props => {
   const { loadMore, pageNum } = props;
@@ -22,6 +24,7 @@ const FeedFooter = props => {
     </footer>
   );
 };
+FeedFooter.defaultProps = defaultProps;
 FeedFooter.propTypes = propsTypes;
 
 export default FeedFooter;
