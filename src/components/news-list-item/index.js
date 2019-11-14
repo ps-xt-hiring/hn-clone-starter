@@ -14,32 +14,35 @@ export default class NewsListItem extends Component {
         {
           (
           !item.isHidden
-          && (<li className="news-list__item">
-            <div className="news-list__item-container">
-              <Text value={item.num_comments} type="new__comments" />
-              <Upvote item={item} upvoteHandler={upvoteHandler} />
-              <div className="new__details">
-                <Text value={item.title} type="new__title" />
-                {
-                item.url
-                && (
-                <span className="new__link">
-                  (
-                  <a href={item.url}>{getDomainName(item.url)}</a>
+          &&
+          (
+            <li className="news-list__item">
+              <div className="news-list__item-container">
+                <Text value={item.num_comments} type="new__comments" />
+                <Upvote item={item} upvoteHandler={upvoteHandler} />
+                <div className="new__details">
+                  <Text value={item.title} type="new__title" />
+                  {
+                  item.url
+                  && (
+                  <span className="new__link">
+                    (
+                    <a href={item.url}>{getDomainName(item.url)}</a>
+                    )
+                  </span>
                   )
-                </span>
-                )
-                }
-                <Text value={`by ${item.author}`} type="new__author" />
-                <Text value={formatDate(item.created_at)} type="new__time" />
-                <span className="new__hide">
-                  [
-                  <button type="button" onClick={() => hideNewHandler(item.objectID)}>hide</button>
-                  ]
-                </span>
+                  }
+                  <Text value={`by ${item.author}`} type="new__author" />
+                  <Text value={formatDate(item.created_at)} type="new__time" />
+                  <span className="new__hide">
+                    [
+                    <button type="button" onClick={() => hideNewHandler(item.objectID)}>hide</button>
+                    ]
+                  </span>
+                </div>
               </div>
-            </div>
-          </li>)
+            </li>
+          )
           )
         }
       </>

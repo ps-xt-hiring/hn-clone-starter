@@ -83,7 +83,8 @@ export default class NewsList extends Component {
         isLoaded: false,
         pageNumber: state.pageNumber + 1,
       }), () => {
-      this.fetchNewsList(`${apiUrl + (this.state.pageNumber)}`);
+        const { pageNumber } = this.state;
+        this.fetchNewsList(`${apiUrl + pageNumber}`);
     });
   }
 
@@ -96,7 +97,7 @@ export default class NewsList extends Component {
     this.setState(state => ({
       newsListItems: state.newsListItems.map(
         (item) => {
-          let itemM = item;
+          const itemM = item;
           if (itemM.objectID === objectID) {
             itemM.isHidden = true;
           }
@@ -115,10 +116,10 @@ export default class NewsList extends Component {
     this.setState(state => ({
       newsListItems: state.newsListItems.map(
         (item) => {
-          let itemM = item;
+          const itemM = item;
           if (itemM.objectID === objectID) {
             itemM.isUpvoted = true;
-            itemM.points = itemM.points + 1;
+            itemM.points += 1;
           }
           return itemM;
         },
@@ -160,29 +161,23 @@ export default class NewsList extends Component {
 
   render() {
     const { error, isLoaded } = this.state;
+    let elm;
 
-    return (
-      <>
-        {
-        error ? (
-          <div>
-            Error:
-            {error.message}
-          </div>
-        ) : (
-          !isLoaded ? (
-            <div>Loading...</div>
-          ) : (
-            <>
-              <ul className="news-list">
-                {this.renderNewsList()}
-              </ul>
-              {this.renderLoadmore()}
-            </>
-          )
-        )
-        }
-      </>
-    );
+    if (error) {
+      elm = <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      elm = <div>Loading...</div>;
+    } else {
+      elm = (
+        <>
+          <ul className="New-list">
+            {this.renderNewsList()}
+          </ul>
+          {this.renderLoadmore()}
+        </>
+      );
+    }
+
+    return elm;
   }
 }

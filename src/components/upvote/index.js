@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Text from '../text';
 import Button from '../button';
 
-export default function Upvote (props) {
+export default function Upvote(props) {
   const { item: { isUpvoted, points, objectID }, upvoteHandler } = props;
 
   return (
