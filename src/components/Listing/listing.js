@@ -16,21 +16,7 @@ class Listing extends Component {
                 {item.num_comments ? item.num_comments : 0}
               </div>
               <div
-                className={
-                  item.points <= 500
-                    ? 'listing__points item500'
-                    : item.points <= 1000
-                    ? 'listing__points item1000'
-                    : item.points <= 1500
-                    ? 'listing__points item1500'
-                    : item.points <= 2000
-                    ? 'listing__points item2000'
-                    : item.points <= 2500
-                    ? 'listing__points item2500'
-                    : item.points <= 3000
-                    ? 'listing__points item3000'
-                    : 'listing__points'
-                }
+                className="listing__points"
               >
                 {item.points ? item.points : 0}
               </div>
