@@ -6,7 +6,5 @@
   },
   "rules": {
     "react/jsx-filename-extension": "off"
-  },
- "eol-last": ["error", "never"]
-
+  }
 }
