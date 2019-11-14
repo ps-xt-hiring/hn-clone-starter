@@ -1,3 +1,4 @@
-const _baseUrl = "https://hn.algolia.com/api/v1/";
+const baseUrl = 'https://hn.algolia.com/api/v1/';
 
-export const getPageUrl = currentPage => `${_baseUrl}search?page=${currentPage}`;
+export const getPageUrl = currentPage => `${baseUrl}search?page=${currentPage}`;
+export const justForNothing = () => 'Not Implemented';

@@ -7,49 +7,60 @@ import * as CONSTANTS from '../utils/constants';
 
 const { MESSAGES, SPINNER_TYPES } = CONSTANTS;
 
-function Body(props) {
+const getBody = (props) => {
+  const {
+    articles, isLoading, handleHideClick, handleUpVoteClick,
+  } = props;
 
-    const getBody = ( props ) => {
-        const { articles, isLoading, handleHideClick, handleUpVoteClick } = props;
-    
-        if( isLoading ) {
-          return ( <div className="loader">
-            <ReactSpinner 
-              type={SPINNER_TYPES.TAIL_SPIN}
-              color="#ff6600"/>
-          </div> );
-        }
-    
-        return (
-          <Table responsive striped>
-            <tbody>
-              {
-                articles.length ?
-                  articles.map((item, index) => (
-                    <ArticleList
-                      key={item.objectID}
-                      data={item}
-                      index={index}
-                      handleHideClick={handleHideClick}
-                      handleUpVoteClick={handleUpVoteClick} />
-                  )) :
-                  <tr>
-                    <td> {MESSAGES.NO_RECORDS} </td>
-                  </tr>
-              }
-            </tbody>
-          </Table>
-        );
-      };
-
+  if (isLoading) {
     return (
-        getBody( props )
-    )
-}
+      <div className="loader">
+        <ReactSpinner
+          type={SPINNER_TYPES.TAIL_SPIN}
+          color="#ff6600"
+        />
+      </div>
+    );
+  }
 
-Body.propTypes = {
-    articles: PropTypes.array,
-    isLoading: PropTypes.bool
+  return (
+    <Table responsive striped>
+      <tbody>
+        {
+              articles.length > 0
+                ? articles.map((item, index) => (
+                  <ArticleList
+                    key={item.objectID}
+                    data={item}
+                    index={index}
+                    handleHideClick={handleHideClick}
+                    handleUpVoteClick={handleUpVoteClick}
+                  />
+                ))
+                : (
+                  <tr>
+                    <td>
+                      {' '}
+                      {MESSAGES.NO_RECORDS}
+                      {' '}
+                    </td>
+                  </tr>
+                )
+            }
+      </tbody>
+    </Table>
+  );
 };
 
-export default Body; 
+function Body(props) {
+  return (
+    getBody(props)
+  );
+}
+
+Body.PropTypes = {
+  articles: PropTypes.arrayOf,
+  isLoading: PropTypes.bool,
+};
+
+export default Body;
