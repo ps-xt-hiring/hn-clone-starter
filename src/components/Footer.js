@@ -5,11 +5,17 @@ function Footer(props) {
   const { articlesLength, handleMoreClick } = props;
 
   return (
-    articlesLength ? <div className="click-more"
-      role="button"
-      onKeyUp={()=>{}}
-      onClick={handleMoreClick}>More
-      </div> : ''
+    articlesLength ? (
+      <div
+        className="click-more"
+        tabIndex="0"
+        role="button"
+        onKeyUp={() => {}}
+        onClick={handleMoreClick}
+      >
+More
+      </div>
+    ) : ''
   );
 }
 
