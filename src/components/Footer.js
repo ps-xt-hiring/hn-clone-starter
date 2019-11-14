@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Footer(props) {
-  const { articlesLength, handleMoreClick } = props;
+  const { isLoading, articlesLength, handleMoreClick } = props;
 
   return (
-    articlesLength ? (
+    ( !isLoading && articlesLength ) ? (
       <div
         className="click-more"
         tabIndex="0"
@@ -13,7 +13,7 @@ function Footer(props) {
         onKeyUp={() => {}}
         onClick={handleMoreClick}
       >
-More
+      {'More'}
       </div>
     ) : ''
   );

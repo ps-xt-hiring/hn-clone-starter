@@ -8,7 +8,7 @@ class HackerNewsComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this.fetchArticles = this.fetchArticles.bind(this);
+    this.scopeBindings();
 
     this.state = {
       articles: [],
@@ -18,7 +18,8 @@ class HackerNewsComponent extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchArticles(this.state.currentPage);
+    const { currentPage } = this.state;
+    this.fetchArticles(currentPage);
   }
 
   fetchArticles(currentPage) {
@@ -27,7 +28,7 @@ class HackerNewsComponent extends React.Component {
     fetchPageArticles(currentPage)
       .then(resp => resp.json())
       .then((data) => {
-        this.setState({ articles: data.hits, isLoading: false, currentPage: currentPage + 1 });
+        this.setState({ articles: data.hits, isLoading: false, currentPage: data.page });
       })
       .catch(() => {
         this.setState({ articles: [], isLoading: false });
@@ -35,19 +36,22 @@ class HackerNewsComponent extends React.Component {
   }
 
   handleHideClick(key) {
+    const { articles } = this.state;
     this.setState({
-      articles: this.state.articles.filter((_, i) => i !== key),
+      articles: articles.filter((_, i) => i !== key),
     });
   }
 
   handleMoreClick() {
-    this.fetchArticles(this.state.currentPage);
+    const { currentPage } = this.state;
+    this.fetchArticles(currentPage + 1);
   }
 
   handleUpVoteClick(key) {
-    const articles = Object.assign({}, this.state.articles);
-    articles[key].points += 1;
-    this.setState(articles);
+    const { articles } = this.state;
+    const articlesClone = Object.assign({}, articles);
+    articlesClone[key].points += 1;
+    this.setState(articlesClone);
   }
 
   handleHomeClick() {
@@ -57,21 +61,34 @@ class HackerNewsComponent extends React.Component {
   }
 
   render() {
+
+    const { articles, isLoading } = this.state;
+
     return (
       <div className="app-container">
         <Header handleHomeClick={this.handleHomeClick} />
         <Body
-          articles={this.state.articles}
-          isLoading={this.state.isLoading}
+          articles={articles}
+          isLoading={isLoading}
           handleHideClick={this.handleHideClick}
           handleUpVoteClick={this.handleUpVoteClick}
         />
         <Footer
-          articlesLength={this.state.articles.length}
+          isLoading={isLoading}
+          articlesLength={articles.length}
           handleMoreClick={this.handleMoreClick}
         />
       </div>
     );
   }
+
+  scopeBindings() {
+    this.fetchArticles = this.fetchArticles.bind(this);
+    this.handleHomeClick = this.handleHomeClick.bind( this );
+    this.handleUpVoteClick = this.handleUpVoteClick.bind( this );
+    this.handleMoreClick = this.handleMoreClick.bind( this );
+    this.handleHideClick = this.handleHideClick.bind( this );
+  }
 }
+
 export default HackerNewsComponent;

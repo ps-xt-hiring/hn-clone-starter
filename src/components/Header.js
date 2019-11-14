@@ -15,12 +15,12 @@ function Header(props) {
       >
         Y
       </span>
-      <span className="top-feeds">
+      <span className="top-link">
         {' '}
         {'top'}
         {' '}
       </span>
-      <span className="new-feeds">
+      <span className="new-link">
         {'| new'}
         {' '}
       </span>

@@ -14,31 +14,16 @@ function ArticleList(props) {
   return (
     <tr>
       <td className="article-comments">
-        {' '}
         {data.num_comments ? data.num_comments : 0}
-        {' '}
       </td>
-      <td className="article-votes">
-        {' '}
-        {data.points}
-        {' '}
-        {' '}
+      <td className="article-votes">{data.points}
         <Icon className="upvote-icon" onClick={() => handleUpVoteClick(index)} />
-        {' '}
       </td>
       <td className="article-info">
-        <span className="title">
-          {data.title}
-          {' '}
-        </span>
-        <span className="hostname">
-(
-          {hostname}
-)
-          {' '}
-        </span>
-        <span className="posted-by">by </span>
-        <span className="author">{data.author}</span>
+        <span className="title">{data.title}</span>
+        <span className="hostname">({hostname})</span>
+        <span className="posted-by">{' by '}</span>
+        <span className="author">{data.author}{' '}</span>
         <span className="posted-time">{postedTimeString}</span>
         <span
           className="hide-post"
@@ -46,9 +31,7 @@ function ArticleList(props) {
           tabIndex="0"
           onKeyUp={() => {}}
           onClick={() => handleHideClick(index)}
-        >
-          {' '}
-[hide]
+        >{' [hide] '}
         </span>
       </td>
     </tr>

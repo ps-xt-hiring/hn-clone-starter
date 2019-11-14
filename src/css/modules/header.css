@@ -2,3 +2,21 @@
   background-color: #f60;
   padding: 9px 9px 9px 9px;
 }
+
+.logo {
+  border: 1px solid white;
+  color: white;
+  padding: 4px;
+  outline: 0;
+  cursor: pointer;
+}
+
+.top-link {
+  padding-left: 14px;
+  color: white;
+}
+
+.new-link {
+  color: #000;
+}
+
