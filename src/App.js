@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ListingUI from './components/Listing/ListingUI';
 
-export function App() {
+function App() {
   return (
     <div className="container">
       <Router>
@@ -12,4 +12,4 @@ export function App() {
     </div>
   );
 }
-
+export default App;
