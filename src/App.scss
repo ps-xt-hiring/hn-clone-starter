@@ -1,13 +1,9 @@
 @import "./sass/index";
-html {
-  font-size: 62.5%;
-}
 body {
+  font-size: $font-size-root;
   color: $color-black;
-  font-weight: $bold;
   font-family: $primary-font;
   margin: 0;
-  font-size: 1.2rem;
 }
 button {
   border: 0;

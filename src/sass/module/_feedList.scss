@@ -1,13 +1,16 @@
 .feed {
   display: flex;
-  padding: 0.4em;
+  font-size: $font-size-xxs;
+  font-weight: $bold;
+  padding: 0.3rem;
+
   &:nth-child(odd) {
     background-color: $color-medium-gray;
   }
   &__content {
     #{$a-tags} {
       color: $color-dark-gray;
-      padding: 0 0.3em;
+      padding: 0 0.5rem;
     }
     #{$a-tags-hover} {
       color: $color-blue;
@@ -15,7 +18,7 @@
   }
   &__comment {
     text-align: right;
-    min-width: 3.5em;
+    min-width: $minwidth35;
   }
   &-hide {
     display: none;
@@ -24,9 +27,8 @@
     flex-direction: row;
     align-items: center;
 
-    min-width: 5em;
-    padding: 0 0.5em;
-
+    min-width: $minwidth35;
+ 
     text-align: right;
     &-arrow {
       display: inline-block;
@@ -38,14 +40,15 @@
       }
     }
   }
-
+  &__content {
+        word-break: break-all;
+  }
   &__title {
-    word-break: break-all;
-    font-size: 1.4rem;
+    font-size: $font-size-xxs;
   }
   &__author {
     color: $color-dark-gray;
-    padding: 0 0.3em;
+    padding: 0 0.5rem;
   }
   &__btn {
     color: $color-orange;
