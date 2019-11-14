@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import ReactSpinner from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
 import ArticleList from './ArticleList';
+import * as CONSTANTS from '../utils/constants';
+
+const { MESSAGES, SPINNER_TYPES } = CONSTANTS;
 
 function Body(props) {
 
@@ -12,13 +15,13 @@ function Body(props) {
         if( isLoading ) {
           return ( <div className="loader">
             <ReactSpinner 
-              type="TailSpin"
+              type={SPINNER_TYPES.TAIL_SPIN}
               color="#ff6600"/>
           </div> );
         }
     
         return (
-          <Table responsive striped className="table-main">
+          <Table responsive striped>
             <tbody>
               {
                 articles.length ?
@@ -31,7 +34,7 @@ function Body(props) {
                       handleUpVoteClick={handleUpVoteClick} />
                   )) :
                   <tr>
-                    <td> {'No Records Found'} </td>
+                    <td> {MESSAGES.NO_RECORDS} </td>
                   </tr>
               }
             </tbody>

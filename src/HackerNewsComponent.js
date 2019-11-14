@@ -41,10 +41,6 @@ class HackerNewsComponent extends React.Component {
 
   handleMoreClick = () => {
     this.fetchArticles(this.state.currentPage);
-
-    /*this.setState({ currentPage: this.state.currentPage + 1, isLoading: true }, () => {
-      this.fetchArticles(this.state.currentPage);
-    }) */
   }
 
   handleUpVoteClick = (key) => {
