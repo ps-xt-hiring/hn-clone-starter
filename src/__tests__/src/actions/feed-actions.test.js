@@ -91,8 +91,8 @@ describe('Feed Actions', () => {
 
           store.dispatch(SUT()).then(() => {
               const actions = store.getActions();
-
               expect(actions).toEqual(expectedActions1);
+              done();
           }).catch(error => {
             console.log("ERROR", error);
           });
@@ -115,6 +115,7 @@ describe('Feed Actions', () => {
           store.dispatch(SUT({})).then(() => {
             const actions = store.getActions();
             expect(actions).toEqual(expectedActions2);
+            done();
           }).catch(error => {
             console.log("ERROR", error);
           });
