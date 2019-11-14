@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Header(props) {
-  
-  const {handleHomeClick} = props;
+  const { handleHomeClick } = props;
 
   return (
     <div className="header">

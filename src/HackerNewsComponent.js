@@ -8,6 +8,8 @@ class HackerNewsComponent extends React.Component {
   constructor(props) {
     super(props);
 
+    this.fetchArticles = this.fetchArticles.bind(this);
+
     this.state = {
       articles: [],
       currentPage: 0,
@@ -19,7 +21,7 @@ class HackerNewsComponent extends React.Component {
     this.fetchArticles(this.state.currentPage);
   }
 
-  fetchArticles = (currentPage) => {
+  fetchArticles(currentPage) {
     this.setState({ isLoading: true });
 
     fetchPageArticles(currentPage)

@@ -4,7 +4,9 @@ import { ReactComponent as Icon } from '../images/svg/up-arrow.svg';
 import * as helpers from '../utils/helpers';
 
 function ArticleList(props) {
-  const { data, index, handleUpVoteClick, handleHideClick } = props;
+  const {
+    data, index, handleUpVoteClick, handleHideClick,
+  } = props;
 
   const hostname = helpers.getHostname(data.url);
   const postedTimeString = helpers.getPostedTimeString(data.created_at);
@@ -38,14 +40,23 @@ function ArticleList(props) {
         <span className="posted-by">by </span>
         <span className="author">{data.author}</span>
         <span className="posted-time">{postedTimeString}</span>
-        <span className="hide-post" onClick={() => handleHideClick(index)}> [hide] </span>
+        <span
+          className="hide-post"
+          role="button"
+          tabIndex="0"
+          onKeyUp={() => {}}
+          onClick={() => handleHideClick(index)}
+        >
+          {' '}
+[hide]
+        </span>
       </td>
     </tr>
   );
 }
 
 ArticleList.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.number,
   handleUpVoteClick: PropTypes.func.isRequired,
   handleHideClick: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,

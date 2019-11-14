@@ -62,7 +62,7 @@ Body.PropTypes = {
   articles: PropTypes.arrayOf,
   isLoading: PropTypes.bool,
   handleHideClick: PropTypes.func.isRequired,
-  handleUpVoteClick: PropTypes.func.isRequired
+  handleUpVoteClick: PropTypes.func.isRequired,
 };
 
 export default Body;
