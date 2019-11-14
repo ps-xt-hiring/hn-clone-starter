@@ -60,8 +60,8 @@ const Listing = (props) => {
           </div>
         );
       })}
-      </React.Fragment>
-    );
+  </React.Fragment>
+  );
 };
 export default Listing;
 
