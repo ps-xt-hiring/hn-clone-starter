@@ -17,7 +17,6 @@ const FeedFooter = props => {
       <button
         type="button"
         className="feed__btn"
-        aria-label="MoreFeedLoad"
         onClick={() => loadMore(pageNum)}
       >
         More
