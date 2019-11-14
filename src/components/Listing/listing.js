@@ -5,7 +5,7 @@ import findDomain from '../../utilities';
 
 class Listing extends Component {
   render() {
-    const { productData } = this.props;
+    const { productData, hideItems, upVote } = this.props;
     return (
       <React.Fragment>
         {productData.map((item) => {
@@ -34,7 +34,7 @@ class Listing extends Component {
               >
                 {item.points ? item.points : 0}
               </div>
-              <div className="listing__upVote" onClick={() => this.props.upVote(objId)}>&nbsp;</div>
+              <div className="listing__upVote" onClick={() => upVote(objId)}>&nbsp;</div>
               <div className="listing__title">
                 {item.title ? item.title : 'Title Not Found'}
                 <span className="listing__title__container">
@@ -55,7 +55,7 @@ class Listing extends Component {
                   </span>
                   <span
                     className="listing__title__container__hide"
-                    onClick={() => this.props.hideItems(objId)}
+                    onClick={() => hideItems(objId)}
                   >
                     [Hide]
                   </span>
@@ -68,10 +68,9 @@ class Listing extends Component {
     );
   }
 }
-
 export default Listing;
 
 
-Listing.propTypes = { 
-  productData: PropTypes.array, 
- } 
+Listing.propTypes = {
+  productData: PropTypes.array,
+ }
