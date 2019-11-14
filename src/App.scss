@@ -5,12 +5,7 @@ body {
   font-family: $primary-font;
   margin: 0;
 }
-button {
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-h1 {
+.loader {
   text-align: center;
   color: $color-orange;
 }

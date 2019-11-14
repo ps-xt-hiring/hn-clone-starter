@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import noop from 'loadsh/noop';
+import FeedButton from './feedButton';
 
 const propsTypes = {
   pageNum: PropTypes.number,
@@ -13,14 +14,13 @@ const defaultProps = {
 const FeedFooter = props => {
   const { loadMore, pageNum } = props;
   return (
+
     <footer className="footer">
-      <button
-        type="button"
+      <FeedButton
+        event={() => loadMore(pageNum)}
         className="feed__btn"
-        onClick={() => loadMore(pageNum)}
-      >
-        More
-        </button>
+        text="More"
+      />
     </footer>
   );
 };

@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import FeedButton from "./feedButton"
+import feedConstants from "../../constants/constants"
 
 const FeedHeader = () => (
   <header className="header">
@@ -8,13 +10,13 @@ const FeedHeader = () => (
         Y
         </Link>
     </span>
-    <button type="button">
-      top
-      </button>
+    <FeedButton
+      text={feedConstants.top}
+    />
     <span>|</span>
-    <button type="button">
-      new
-      </button>
+    <FeedButton
+      text={feedConstants.new}
+    />
   </header>
 );
 

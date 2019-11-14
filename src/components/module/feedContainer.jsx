@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import noop from 'loadsh/noop';
 import FeedHeader from './feedHeader';
-import FeedList from './feedList';
+import ListItem from './feedList';
 import FeedFooter from './feedFooter';
 import fetchFeed from '../../redux/action/action-fetchData';
+import feedConstants from "../../constants/constants"
 
 const propsTypes = {
   isLoading: PropTypes.bool,
@@ -32,11 +33,11 @@ class FeedContainer extends React.Component {
       feeds, pageNum, onFetchFeeds, isLoading,
     } = this.props;
     return isLoading ? (
-      <h1>Loading...</h1>
+      <h1 className="loader">{feedConstants.loading}</h1>
     ) : (
         <main id="main">
           <FeedHeader />
-          {feeds.map(feed => <FeedList feed={feed} key={feed.objectID} />)}
+          <div className="feedList">{feeds.map(feed => <ListItem feed={feed} key={feed.objectID} />)}</div>
           <FeedFooter loadMore={onFetchFeeds} pageNum={pageNum} />
         </main>
       );
@@ -56,9 +57,9 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const ConnectedLanding = connect(
+const ConnectedContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(FeedContainer);
 
-export default ConnectedLanding;
+export default ConnectedContainer;
