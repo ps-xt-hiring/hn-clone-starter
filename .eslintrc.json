@@ -5,7 +5,6 @@
     "jest": true
   },
   "rules": {
-    "react/jsx-filename-extension": "off",
-    "import/no-named-as-default": 0
+    "react/jsx-filename-extension": "off"
   }
 }
