@@ -6,6 +6,4 @@ import AllReducers from '../reducers';
 const store = createStore(AllReducers, composeWithDevTools(
   applyMiddleware(thunk),
 ));
-
-
 export default store;
