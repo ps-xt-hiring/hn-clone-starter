@@ -1,10 +1,10 @@
 const initialState = {
 
-    news: [{
-        "title": "India wins"
-    }, {
-        "title": "crude price lowers"
-    }],
+    news: [],
+    pageNumber: 1,
+    hiddenIds: [],
+    upvoteIds: [],
+    upVoteId: ''
 
 };
 
