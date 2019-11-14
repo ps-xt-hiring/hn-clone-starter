@@ -20,7 +20,8 @@ class Listing extends Component {
               >
                 {item.points ? item.points : 0}
               </div>
-              <div className="listing__upVote" onClick={() => upVote(objId)}>&nbsp;</div>
+              <div className="listing__upVote" onClick={() => upVote(objId)}
+               role="button" tabIndex="0" onKeyPress={() => upVote(objId)}>&nbsp;</div>
               <div className="listing__title">
                 {item.title ? item.title : 'Title Not Found'}
                 <span className="listing__title__container">
@@ -42,6 +43,9 @@ class Listing extends Component {
                   <span
                     className="listing__title__container__hide"
                     onClick={() => hideItems(objId)}
+                    role="button"
+                    tabIndex="0"
+                    onKeyPress={() => hideItems(objId)}
                   >
                     [Hide]
                   </span>
