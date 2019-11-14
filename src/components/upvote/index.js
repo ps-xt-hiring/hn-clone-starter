@@ -1,29 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './upvote.scss';
 import PropTypes from 'prop-types';
 import Text from '../text';
 import Button from '../button';
 
-export default class Upvote extends Component {
-  render() {
-    const { item: { isUpvoted, points, objectID }, upvoteHandler } = this.props;
+export default function Upvote (props) {
+  const { item: { isUpvoted, points, objectID }, upvoteHandler } = props;
 
-    return (
-      <div className="new__upvotes">
-        <Text value={points} type={`new__upvotes-count${isUpvoted ? ' upvoted' : ''}`} />
+  return (
+    <div className="new__upvotes">
+      <Text value={points} type={`new__upvotes-count${isUpvoted ? ' upvoted' : ''}`} />
 
-        <span className="new__upvotes-btn">
-          <Button
-            type="button"
-            className={`${isUpvoted ? 'disable' : ''}`}
-            onClick={upvoteHandler}
-            dataParam={objectID}
-            disabled={isUpvoted}
-          />
-        </span>
-      </div>
-    );
-  }
+      <span className="new__upvotes-btn">
+        <Button
+          type="button"
+          className={`${isUpvoted ? 'disable' : ''}`}
+          onClick={upvoteHandler}
+          dataParam={objectID}
+          disabled={isUpvoted}
+        />
+      </span>
+    </div>
+  );
 }
 
 Upvote.propTypes = {
@@ -41,5 +39,5 @@ Upvote.defaultProps = {
     points: 0,
     objectID: '',
   },
-  upvoteHandler: () => void(0),
+  upvoteHandler: () => {},
 };

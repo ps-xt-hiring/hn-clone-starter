@@ -7,17 +7,17 @@ import { formatDate, getDomainName } from '../../services/common';
 
 export default class NewsListItem extends Component {
   render() {
-    const { item } = this.props;
+    const { item, upvoteHandler, hideNewHandler } = this.props;
 
     return (
       <>
         {
           (
-          !item.isHidden &&
-          <li className="news-list__item">
+          !item.isHidden
+          && (<li className="news-list__item">
             <div className="news-list__item-container">
               <Text value={item.num_comments} type="new__comments" />
-              <Upvote item={item} upvoteHandler={this.props.upvoteHandler} />
+              <Upvote item={item} upvoteHandler={upvoteHandler} />
               <div className="new__details">
                 <Text value={item.title} type="new__title" />
                 {
@@ -34,12 +34,12 @@ export default class NewsListItem extends Component {
                 <Text value={formatDate(item.created_at)} type="new__time" />
                 <span className="new__hide">
                   [
-                  <button type="button" onClick={() => this.props.hideNewHandler(item.objectID)}>hide</button>
+                  <button type="button" onClick={() => hideNewHandler(item.objectID)}>hide</button>
                   ]
                 </span>
               </div>
             </div>
-          </li>
+          </li>)
           )
         }
       </>
@@ -56,6 +56,7 @@ NewsListItem.propTypes = {
     author: PropTypes.string,
     created_at: PropTypes.string,
   }),
+  upvoteHandler: PropTypes.func,
   hideNewHandler: PropTypes.func,
 };
 
@@ -68,5 +69,6 @@ NewsListItem.defaultProps = {
     author: '',
     created_at: '',
   },
-  hideNewHandler: () => void(0),
+  upvoteHandler: () => {},
+  hideNewHandler: () => {},
 };

@@ -80,21 +80,67 @@ export default class NewsList extends Component {
   loadmore() {
     this.setState(state => (
       {
-        isLoaded: false, pageNumber: state.pageNumber + 1
+        isLoaded: false,
+        pageNumber: state.pageNumber + 1,
       }), () => {
-        this.fetchNewsList(`${apiUrl + (this.state.pageNumber)}`);
-      }
-    );
+      this.fetchNewsList(`${apiUrl + (this.state.pageNumber)}`);
+    });
+  }
+
+  // Function name: hideNewHandler
+  // Arguments: none
+  // It triggers on hide button click which hides the current item and update the local storage
+  hideNewHandler(objectID) {
+    updateLocalStorage('hiddenItemsList', objectID);
+
+    this.setState(state => ({
+      newsListItems: state.newsListItems.map(
+        (item) => {
+          let itemM = item;
+          if (itemM.objectID === objectID) {
+            itemM.isHidden = true;
+          }
+          return itemM;
+        },
+      ),
+    }));
+  }
+
+  // Function name: upvoteHandler
+  // Arguments: none
+  // It triggers on upvote button click which counts a vote and update the local storage
+  upvoteHandler(objectID) {
+    updateLocalStorage('upvotedItemsList', objectID);
+
+    this.setState(state => ({
+      newsListItems: state.newsListItems.map(
+        (item) => {
+          let itemM = item;
+          if (itemM.objectID === objectID) {
+            itemM.isUpvoted = true;
+            itemM.points = itemM.points + 1;
+          }
+          return itemM;
+        },
+      ),
+    }));
   }
 
   // Function name: renderNewsList
   // Arguments: none
   // Check for previously hidden items and return items list elements to be rendered
   renderNewsList() {
-    let { newsListItems } = this.state;
+    const { newsListItems } = this.state;
 
     const itemsNew = newsListItems.map(
-      item => <NewsListItem key={item.objectID} item={item} upvoteHandler={this.upvoteHandler} hideNewHandler={this.hideNewHandler} />,
+      item => (
+        <NewsListItem
+          key={item.objectID}
+          item={item}
+          upvoteHandler={this.upvoteHandler}
+          hideNewHandler={this.hideNewHandler}
+        />
+      ),
     );
 
     return itemsNew;
@@ -112,51 +158,17 @@ export default class NewsList extends Component {
     return loadmoreElm;
   }
 
-  // Function name: hideNewHandler
-  // Arguments: none
-  // It triggers on hide button click which hides the current item and update the local storage
-  hideNewHandler(objectID) {
-    updateLocalStorage('hiddenItemsList', objectID);
-
-    this.setState(state => ({
-      newsListItems: state.newsListItems.map(
-        item => {
-          if (item.objectID === objectID) {
-            item.isHidden = true;
-          }
-          return item;
-        },
-      ),
-    }));
-  }
-
-  // Function name: upvoteHandler
-  // Arguments: none
-  // It triggers on upvote button click which counts a vote and update the local storage
-  upvoteHandler(objectID) {
-    updateLocalStorage('upvotedItemsList', objectID);
-
-    this.setState(state => ({
-      newsListItems: state.newsListItems.map(
-        item => {
-          if (item.objectID === objectID) {
-            item.isUpvoted = true;
-            item.points = item.points + 1;
-          }
-          return item;
-        },
-      ),
-    }));
-  }
-
   render() {
     const { error, isLoaded } = this.state;
 
     return (
       <>
-      {
+        {
         error ? (
-          <div> Error: {error.message} </div>
+          <div>
+            Error:
+            {error.message}
+          </div>
         ) : (
           !isLoaded ? (
             <div>Loading...</div>
@@ -169,7 +181,7 @@ export default class NewsList extends Component {
             </>
           )
         )
-      }
+        }
       </>
     );
   }
