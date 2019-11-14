@@ -8,6 +8,8 @@ import getFeeds from '../../../actions/feed-actions';
 
 const middlewares = [thunk];
 
+fetchMock.config.overwriteRoutes = true;
+
 const createStore = configureMockStore(middlewares)
 const store = createStore(initialState)
 
@@ -78,20 +80,41 @@ describe('Feed Actions', () => {
             jest.clearAllMocks();
         })
 
-        fetchMock.getOnce('https://hn.algolia.com/api/v1/search?page=1',
-                { body: { data: success }})
-
         const expectedActions = [
             { type: ActionTypes.GET_FEED, value: 1},
             { type: ActionTypes.GET_FEED_SUCCESS, value: success.data.hits}
         ];
 
         it('should dispatch GET_FEED, GET_FEED_SUCCESS', () => {
-            store.dispatch(SUT()).then(() => {
-                const actions = store.getActions();
+          fetchMock.get('https://hn.algolia.com/api/v1/search?page=1',
+          { body: { data: success }})
 
-                expect(actions).toEqual(expectedActions);
-            });
+          store.dispatch(SUT()).then(() => {
+              const actions = store.getActions();
+
+              expect(actions).toEqual(expectedActions);
+          });
+        });
+
+        it('should dispatch GET_FEED, GET_FEED_FAILURE', () => {
+          const error_response = {
+            code: 400,
+            errorMessage: 'error'
+          };
+
+          const expectedActions = [
+            { type: ActionTypes.GET_FEED, value: 1},
+            { type: ActionTypes.GET_FEED_FAILURE, error: error_response}
+          ];
+
+          fetchMock.get('https://hn.algolia.com/api/v1/search?page=1',
+                { body: { error: error_response }})
+
+          store.dispatch(SUT({})).then((response) => {
+            const actions = store.getActions();
+            expect(actions).toEqual(expectedActions);
+            done();
+          });
         });
     });
 });
