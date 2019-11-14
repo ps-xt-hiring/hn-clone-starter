@@ -11,9 +11,7 @@ class ListingUI extends Component{
   }
 
   ShowMoreItems = () => {
-    // console.log(this.props);
-    let page = this.props.productReducer.pagination;
-    page++;
+    let page = this.props.productReducer.pagination++;
     this.props.history.push('/news?page=' + page);
     this.props.fetchProducts(page);
   };
