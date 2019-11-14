@@ -58,7 +58,7 @@ export default Listing;
 
 
 Listing.propTypes = {
-  productData: PropTypes.array,
-  hideItems: PropTypes.func,
-  upVote: PropTypes.func,
+  productData: PropTypes.array.isRequired,
+  hideItems: PropTypes.func.isRequired,
+  upVote: PropTypes.func.isRequired,
 };
