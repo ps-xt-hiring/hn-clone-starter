@@ -74,5 +74,5 @@ export default Listing;
 Listing.propTypes = {
   productData: PropTypes.array,
   hideItems: PropTypes.func,
-  upVote: propTypes.func,
+  upVote: PropTypes.func,
 }
