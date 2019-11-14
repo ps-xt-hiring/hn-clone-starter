@@ -34,23 +34,23 @@ class HackerNewsComponent extends React.Component {
       });
   }
 
-  handleHideClick = (key) => {
+  handleHideClick(key) {
     this.setState({
       articles: this.state.articles.filter((_, i) => i !== key),
     });
   }
 
-  handleMoreClick = () => {
+  handleMoreClick() {
     this.fetchArticles(this.state.currentPage);
   }
 
-  handleUpVoteClick = (key) => {
+  handleUpVoteClick(key) {
     const articles = Object.assign({}, this.state.articles);
     articles[key].points += 1;
     this.setState(articles);
   }
 
-  handleHomeClick = () => {
+  handleHomeClick() {
     this.setState({ currentPage: 0 }, () => {
       this.fetchArticles(0);
     });

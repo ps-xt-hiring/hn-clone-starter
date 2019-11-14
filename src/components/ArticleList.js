@@ -56,7 +56,7 @@ function ArticleList(props) {
 }
 
 ArticleList.propTypes = {
-  data: PropTypes.number,
+  data: PropTypes.number.isRequired,
   handleUpVoteClick: PropTypes.func.isRequired,
   handleHideClick: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,

@@ -7,10 +7,10 @@ import * as CONSTANTS from '../utils/constants';
 
 const { MESSAGES, SPINNER_TYPES } = CONSTANTS;
 
-const getBody = (props) => {
+const getBody = (payload) => {
   const {
     articles, isLoading, handleHideClick, handleUpVoteClick,
-  } = props;
+  } = payload;
 
   if (isLoading) {
     return (
