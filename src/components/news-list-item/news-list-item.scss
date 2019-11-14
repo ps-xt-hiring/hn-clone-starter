@@ -1,0 +1,69 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.news-list {
+  &__item {
+    &:nth-child(even) {
+      background-color: $color-grey-lightest;
+    }
+
+    &-container {
+      line-height: 20px;
+      display: flex;
+      padding: 8px 5px;
+
+      span {
+        display: inline-block;
+        margin-right: 5px;
+      }
+
+      .new__details {
+        display: inline-block;
+      }
+
+      .new__comments {
+        min-width: 30px;
+        text-align: center;
+        font-size: 0.75rem;
+      }
+
+      .new__title {
+        width: 100%;
+      }
+
+      .new__link,
+      .new__author,
+      .new__time,
+      .new__hide {
+        font-size: 0.7rem;
+      }
+
+      .new__link,
+      .new__link a,
+      .new__time {
+        color: $color-grey-light;
+      }
+
+      .new__hide button {
+        font-size: inherit;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .news-list {
+    &__item-container {
+      line-height: 28px;
+      font-size: 0.85rem;
+
+      .new__title {
+        width: auto;
+      }
+
+      .new__comments {
+        min-width: 60px;
+      }
+    }
+  }
+}
