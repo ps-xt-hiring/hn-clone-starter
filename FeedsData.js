@@ -1,126 +1,116 @@
-import React, { Component } from "react";
-import Moment from "react-moment";
-import "./feeds.css";
-import Upvote from "./Upvote";
+import React, { Component } from 'react';
+import Moment from 'react-moment';
+import './feeds.css';
+import Upvote from './Upvote';
 
 class FeedsData extends Component {
-	constructor() {
-		super();
-		this.state = {
-			feeds: [],
-			page: 0,
-			hide: false
-		};
+  constructor() {
+    super();
+    this.state = {
+      feeds: [],
+      page: 0,
+    };
 
-		this.loadMore = this.loadMore.bind(this);
-	}
+    this.loadMore = this.loadMore.bind(this);
+  }
 
-	loadMore = () => {
-		this.setState(prev => {
-			return { visible: prev.visible + 1 };
-		});
-		this.getFeed();
-	};
+  componentDidMount() {
+    this.getFeed();
+  }
 
-	handleHideBtnClick() {
-		this.setState({ hide: true });
-	}
+  getFeed() {
+    this.setState(prevState => ({ page: prevState.page + 1 }));
 
-	componentDidMount() {
-		this.getFeed();
-	}
+    const { feedList, page } = this.state;
 
-	getFeed() {
-		this.setState({
-			page: this.state.page + 1
-		});
+    return fetch(`https://hn.algolia.com/api/v1/search?page=${page}`)
+      .then(results => results.json())
+      .then((data) => {
+        if (data.hits.length > 0) {
+          const feeds = data.hits.map((feed) => {
+            if (feed.title && feed.url) {
+              const linkDomainUrl = new URL(feed.url);
+              const linkDomain = linkDomainUrl.hostname;
+              const feedPostedDate = feed.created_at;
+              const feedObj = Object.assign({},
+                feedList);
+              const feedObjArray = Object.keys(feedObj).map(
+                i => feedObj[i],
+              );
 
-		return fetch(
-			`https://hn.algolia.com/api/v1/search?page=${this.state.page}`
-		)
-			.then(results => {
-				return results.json();
-			})
-			.then(data => {
-				if (data.hits.length > 0) {
-					let feeds = data.hits.map(feed => {
-						if (feed.title && feed.url) {
-							let linkDomainUrl = new URL(feed.url),
-								linkDomain = linkDomainUrl.hostname,
-								feedPostedDate = feed.created_at,
-								feedObj = Object.assign(
-									{},
-									...this.state.feeds
-								),
-								feedObjArray = Object.keys(feedObj).map(
-									i => feedObj[i]
-								);
+              feedObjArray.push(feed);
 
-							feedObjArray.push(feed);
+              return (
+                <div key={feed.objectID} className="feedItem">
+                  <span className="comments-num">
+                    {feed.num_comments}
+                  </span>
+                  <span className="upvote">
+                    <Upvote />
+                  </span>
+                  <span
+                    className="feed-title"
+                    data-story-title={feed.story_title}
+                  >
+                    {feed.title}
+                  </span>
+                  <span className="link-domain">
+                (
+                    <span>{linkDomain}</span>
+                )
+                  </span>
+                  <span className="by"> by</span>
+                  <span className="author">
+                    {' '}
+                    {feed.author}
+                    {' '}
+                  </span>
+                  <span className="timestamp">
+                    <Moment fromNow>
+                      {feedPostedDate}
+                    </Moment>
+                  </span>
+                  <span className="hide">
+                    [
+                    <button type="button">hide</button>
+                    ]
+                  </span>
+                </div>
+              );
+            }
+            return '';
+          });
 
-							return (
-								<div key={feed.objectID} className="feedItem">
-									<span className="comments-num">
-										{feed.num_comments}
-									</span>
-									<span className="upvote">
-										<Upvote />
-									</span>
-									<span
-										className="feed-title"
-										data-story-title={feed.story_title}
-									>
-										{feed.title}
-									</span>
-									<span className="link-domain">
-										(<span>{linkDomain}</span>)
-									</span>
-									<span className="by"> by</span>
-									<span className="author">
-										{" "}
-										{feed.author}{" "}
-									</span>
-									<span className="timestamp">
-										<Moment fromNow>
-											{feedPostedDate}
-										</Moment>
-									</span>
-									<span
-										className="hide"
-										onClick={this.handleHideBtnClick.bind(
-											this
-										)}
-									>
-										[<button>hide</button>]
-									</span>
-								</div>
-							);
-						}
-					});
+          this.setState({
+            feeds,
+          });
+          return true;
+        }
+        document.querySelectorAll('.loadMore')[0].hidden = true;
+        return false;
+      });
+  }
 
-					this.setState({
-						feeds: feeds
-					});
-				} else {
-					document.querySelectorAll(".loadMore")[0].hidden = true;
-				}
-			});
-	}
+  loadMore() {
+    this.setState(prev => ({ visible: prev.visible + 1 }));
+    this.getFeed();
+  }
 
-	render() {
-		return (
-			<div className="container">
-				<div className="feedsList" key={this.state.page}>
-					{this.state.feeds}
-				</div>
-				<div className="loadMore">
-					<button onClick={this.loadMore} className="loadMoreBtn">
-						More
-					</button>
-				</div>
-			</div>
-		);
-	}
+  render() {
+    const { feeds, page } = this.state;
+    return (
+      <div className="container">
+        <div className="feedsList" key={page}>
+          {feeds}
+        </div>
+        <div className="loadMore">
+          <button type="button" onClick={this.loadMore} className="loadMoreBtn">
+            More
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default FeedsData;

@@ -1,15 +1,19 @@
-import React, { Component } from "react";
-import FeedsData from "./FeedsData";
-// import Pagination from "./Pagination";
+import React, { Component } from 'react';
+import FeedsData from './FeedsData';
 
 class Feeds extends Component {
-	render() {
-		return (
-			<div className="feeds">
-				<FeedsData />
-			</div>
-		);
-	}
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div className="feeds">
+        <FeedsData />
+      </div>
+    );
+  }
 }
 
 export default Feeds;
