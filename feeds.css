@@ -1,0 +1,67 @@
+.feedItem:nth-child(even) {
+	background-color: #dedede;
+}
+
+.feedItem {
+	font-size: 13px;
+	color: #000;
+	font-weight: 400;
+	padding: 3px 20px;
+}
+
+.comments-num,
+.upvote-count {
+	text-align: right;
+	width: 60px;
+	display: inline-block;
+}
+
+.upvote a {
+	width: 30px;
+	display: inline-block;
+	text-align: center;
+}
+
+.link-domain,
+.by,
+.timestamp,
+.hide {
+	color: #999;
+	font-size: 11px;
+	padding: 2px;
+	vertical-align: text-bottom;
+}
+
+.loadMoreBtn {
+	text-decoration: none;
+	padding-left: 170px;
+	font-size: 13px;
+	color: orangered;
+}
+
+.hide button {
+	color: #000;
+	padding: 0 5px;
+}
+
+button {
+	text-decoration: none;
+	font-size: 11px;
+	background: none;
+	border: 0 none;
+}
+
+@media only screen and (max-width: 768px) {
+	.comments-num,
+	.upvote-count {
+		width: 30px;
+	}
+
+	.feedItem {
+		padding: 3px 10px;
+	}
+
+	.loadMoreBtn {
+		padding-left: 10px;
+	}
+}
