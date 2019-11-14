@@ -1,19 +1,19 @@
 // import initialState from './initialState';
 import * as actionTypes from '../constants/actionTypes';
 import initialState from './initialState';
-import PropTypes from 'prop-types';
-
-
-
 
 export default function newsReducer(state = initialState, action) {
-  
+    let hidden_ids;
+    let upvotedIds;
+    let upDatedNewsList;
+    let upDatedNews;
+    let newsItems;
     switch (action.type) {
         case actionTypes.FETCH_NEWS_SUCCESS:
         
-            let hidden_ids = JSON.parse(localStorage.getItem("hiddenIds"));
-            let upvotedIds = JSON.parse(localStorage.getItem("upvotedIds"));
-            let upDatedNewsList;
+             hidden_ids = JSON.parse(localStorage.getItem("hiddenIds"));
+             upvotedIds = JSON.parse(localStorage.getItem("upvotedIds"));
+           
             if (hidden_ids) {
                 upDatedNewsList = action.payload.news.filter((news) => !hidden_ids.includes(news.objectID));
 
@@ -37,13 +37,13 @@ export default function newsReducer(state = initialState, action) {
                 pageNumber: action.payload.pageNumber
             }
         case actionTypes.HIDE_NEWS:
-            let upDatedNews = state.news.filter((news) => !action.payload.hiddenIds.includes(news.objectID));
+             upDatedNews = state.news.filter((news) => !action.payload.hiddenIds.includes(news.objectID));
             return { ...state, hiddenIds: action.payload.hiddenIds, news: upDatedNews }
 
 
 
         case actionTypes.UPVOTE_NEWS:
-            let newsItems = state.news.map(newsItem => {
+             newsItems = state.news.map(newsItem => {
                 if (newsItem.objectID === action.payload.upVoteId) {
                     newsItem.points = newsItem.points + 1;
                 }
