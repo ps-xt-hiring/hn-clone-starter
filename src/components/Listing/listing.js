@@ -61,4 +61,4 @@ Listing.propTypes = {
   productData: PropTypes.array,
   hideItems: PropTypes.func,
   upVote: PropTypes.func,
-}
+};
