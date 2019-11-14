@@ -80,7 +80,7 @@ describe('Feed Actions', () => {
             jest.clearAllMocks();
         })
 
-        const expectedActions = [
+        const expectedActions1 = [
             { type: ActionTypes.GET_FEED, value: 1},
             { type: ActionTypes.GET_FEED_SUCCESS, value: success.data.hits}
         ];
@@ -92,28 +92,31 @@ describe('Feed Actions', () => {
           store.dispatch(SUT()).then(() => {
               const actions = store.getActions();
 
-              expect(actions).toEqual(expectedActions);
+              expect(actions).toEqual(expectedActions1);
+          }).catch(error => {
+            console.log("ERROR", error);
           });
         });
 
         it('should dispatch GET_FEED, GET_FEED_FAILURE', () => {
-          const error_response = {
+          const errorResponse = {
             code: 400,
             errorMessage: 'error'
           };
 
-          const expectedActions = [
+          const expectedActions2 = [
             { type: ActionTypes.GET_FEED, value: 1},
-            { type: ActionTypes.GET_FEED_FAILURE, error: error_response}
+            { type: ActionTypes.GET_FEED_FAILURE, error: errorResponse}
           ];
 
           fetchMock.get('https://hn.algolia.com/api/v1/search?page=1',
-                { body: { error: error_response }})
+                { body: { error: errorResponse }})
 
-          store.dispatch(SUT({})).then((response) => {
+          store.dispatch(SUT({})).then(() => {
             const actions = store.getActions();
-            expect(actions).toEqual(expectedActions);
-            done();
+            expect(actions).toEqual(expectedActions2);
+          }).catch(error => {
+            console.log("ERROR", error);
           });
         });
     });
