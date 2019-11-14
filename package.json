@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "react": "^16.8.0",
+    "react-bootstrap": "^1.0.0-beta.14",
+    "react-dom": "^16.8.0",
+    "react-loader-spinner": "^3.1.4",
     "react-scripts": "2.1.1"
   },
   "scripts": {
@@ -25,10 +29,14 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "babel-eslint": "9.0.0",
+    "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react": "^7.16.0",
     "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0"
   }
