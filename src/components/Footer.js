@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Footer(props) {
+
+  const { articlesLength, handleMoreClick } = props;
+
   return (
-    props.articlesLength ? <div className="click-more" onClick={props.handleMoreClick}>More</div> : ''
+    articlesLength ? <div className="click-more" onClick={handleMoreClick}>More</div> : ''
   );
 }
 

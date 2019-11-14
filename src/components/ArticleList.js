@@ -4,7 +4,7 @@ import { ReactComponent as Icon } from '../images/svg/up-arrow.svg';
 import * as helpers from '../utils/helpers';
 
 function ArticleList(props) {
-  const { data, handleUpVoteClick, handleHideClick } = props;
+  const { data, index, handleUpVoteClick, handleHideClick } = props;
 
   const hostname = helpers.getHostname(data.url);
   const postedTimeString = helpers.getPostedTimeString(data.created_at);
@@ -13,20 +13,20 @@ function ArticleList(props) {
     <tr>
       <td className="article-comments">
         {' '}
-        {props.data.num_comments ? props.data.num_comments : 0}
+        {data.num_comments ? data.num_comments : 0}
         {' '}
       </td>
       <td className="article-votes">
         {' '}
-        {props.data.points}
+        {data.points}
         {' '}
         {' '}
-        <Icon className="upvote-icon" onClick={() => handleUpVoteClick(props.index)} />
+        <Icon className="upvote-icon" onClick={() => handleUpVoteClick(index)} />
         {' '}
       </td>
       <td className="article-info">
         <span className="title">
-          {props.data.title}
+          {data.title}
           {' '}
         </span>
         <span className="hostname">
@@ -36,9 +36,9 @@ function ArticleList(props) {
           {' '}
         </span>
         <span className="posted-by">by </span>
-        <span className="author">{props.data.author}</span>
+        <span className="author">{data.author}</span>
         <span className="posted-time">{postedTimeString}</span>
-        <span className="hide-post" onClick={() => handleHideClick(props.index)}> [hide] </span>
+        <span className="hide-post" onClick={() => handleHideClick(index)}> [hide] </span>
       </td>
     </tr>
   );
