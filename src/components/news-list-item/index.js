@@ -14,8 +14,7 @@ export default class NewsListItem extends Component {
         {
           (
           !item.isHidden
-          &&
-          (
+          && (
             <li className="news-list__item">
               <div className="news-list__item-container">
                 <Text value={item.num_comments} type="new__comments" />

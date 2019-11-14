@@ -83,8 +83,8 @@ export default class NewsList extends Component {
         isLoaded: false,
         pageNumber: state.pageNumber + 1,
       }), () => {
-        const { pageNumber } = this.state;
-        this.fetchNewsList(`${apiUrl + pageNumber}`);
+      const { pageNumber } = this.state;
+      this.fetchNewsList(`${apiUrl + pageNumber}`);
     });
   }
 
@@ -164,7 +164,12 @@ export default class NewsList extends Component {
     let elm;
 
     if (error) {
-      elm = <div>Error: {error.message}</div>;
+      elm = (
+        <div>
+          Error:
+          {error.message}
+        </div>
+      );
     } else if (!isLoaded) {
       elm = <div>Loading...</div>;
     } else {
