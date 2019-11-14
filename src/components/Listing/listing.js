@@ -3,8 +3,8 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import findDomain from '../../utilities';
 
-const Listing = () => {
-  const { productData, hideItems, upVote } = this.props;
+const Listing = (props) => {
+  const { productData, hideItems, upVote } = props;
     return (
       <React.Fragment>
         {productData.map((item) => {
