@@ -1,6 +1,5 @@
 import * as actionTypes from "../constants/actionTypes";
 import * as URL from '../constants/constantValue';
-import { tr } from "date-fns/locale";
 
 export function newsFetchSuccess(news, pageNumber) {
     console.log("Received News", news, news.hits);
