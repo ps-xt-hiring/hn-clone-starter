@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import findDomain from '../../utilities';
 
 class Listing extends Component {
@@ -33,9 +34,7 @@ class Listing extends Component {
               >
                 {item.points ? item.points : 0}
               </div>
-              <div
-                className="listing__upVote"
-                onClick={() => this.props.upVote(objId)}>&nbsp;</div>
+              <div className="listing__upVote" onClick={() => this.props.upVote(objId)}>&nbsp;</div>
               <div className="listing__title">
                 {item.title ? item.title : 'Title Not Found'}
                 <span className="listing__title__container">
@@ -44,7 +43,8 @@ class Listing extends Component {
                       ? `(${findDomain(item.url)})`
                       : 'Domain is not found'}
                   </span>
-                  by{' '}
+                  by
+                  {' '}
                   <span className="listing__title__container__userName">
                     {item.author ? item.author : null}
                   </span>
@@ -70,3 +70,8 @@ class Listing extends Component {
 }
 
 export default Listing;
+
+
+Listing.propTypes = { 
+  productData: PropTypes.array, 
+ } 
