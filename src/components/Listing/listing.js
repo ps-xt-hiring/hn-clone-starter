@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import findDomain from '../../utilities';
 
-class Listing extends Component {
-  render() {
-    const { productData, hideItems, upVote } = this.props;
+const Listing = () => {
+  const { productData, hideItems, upVote } = this.props;
     return (
       <React.Fragment>
         {productData.map((item) => {
@@ -64,12 +63,11 @@ class Listing extends Component {
       </React.Fragment>
     );
   }
-}
 export default Listing;
 
 
 Listing.propTypes = {
-  productData: PropTypes.oneOfType([PropTypes.array]),
+  productData: PropTypes.oneOfType([PropTypes.array]).isRequired,
   hideItems: PropTypes.func.isRequired,
   upVote: PropTypes.func.isRequired,
 };
