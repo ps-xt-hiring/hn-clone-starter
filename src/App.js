@@ -3,6 +3,7 @@ import * as newsActions from './actions/newsActions';
 import NewsComponent from './components/NewsComponent';
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
     componentDidMount() {
@@ -93,7 +94,9 @@ class App extends React.Component {
     }
 }
 App.propTypes = {
-
+    dispatch: PropTypes.func.isRequired,
+    news: PropTypes.array.isRequired,
+    pageNumber: PropTypes.number.isRequired
 };
 
 function mapStateToProps(state) {

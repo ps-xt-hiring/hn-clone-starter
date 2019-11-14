@@ -1,6 +1,7 @@
 import React from 'react';
 import { rootUrl, daysAgo } from '../common/utils';
 import './news.css';
+import PropTypes from 'prop-types';
 
 const NewsComponent = (props) => {
   
@@ -18,4 +19,9 @@ const NewsComponent = (props) => {
     );
 }
 
+NewsComponent.propTypes = {
+    item: PropTypes.object.isRequired,
+    hideMe: PropTypes.func.isRequired,
+    handleUpVote: PropTypes.func.isRequired
+};
 export default NewsComponent;

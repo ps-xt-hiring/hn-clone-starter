@@ -1,6 +1,7 @@
 // import initialState from './initialState';
 import * as actionTypes from '../constants/actionTypes';
 import initialState from './initialState';
+import PropTypes from 'prop-types';
 
 
 
