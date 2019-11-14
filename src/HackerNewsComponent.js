@@ -17,17 +17,17 @@ class HackerNewsComponent extends React.Component {
     };
   }
 
-  scopeBindings() {
-    this.fetchArticles = this.fetchArticles.bind(this);
-    this.handleHomeClick = this.handleHomeClick.bind( this );
-    this.handleUpVoteClick = this.handleUpVoteClick.bind( this );
-    this.handleMoreClick = this.handleMoreClick.bind( this );
-    this.handleHideClick = this.handleHideClick.bind( this );
-  }
-
   componentDidMount() {
     const { currentPage } = this.state;
     this.fetchArticles(currentPage);
+  }
+
+  scopeBindings() {
+    this.fetchArticles = this.fetchArticles.bind(this);
+    this.handleHomeClick = this.handleHomeClick.bind(this);
+    this.handleUpVoteClick = this.handleUpVoteClick.bind(this);
+    this.handleMoreClick = this.handleMoreClick.bind(this);
+    this.handleHideClick = this.handleHideClick.bind(this);
   }
 
   fetchArticles(currentPage) {
@@ -69,7 +69,6 @@ class HackerNewsComponent extends React.Component {
   }
 
   render() {
-
     const { articles, isLoading } = this.state;
 
     return (
