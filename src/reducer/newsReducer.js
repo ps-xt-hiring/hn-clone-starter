@@ -1,15 +1,15 @@
 // import initialState from './initialState';
 import * as actionTypes from '../constants/actionTypes';
 import initialState from './initialState';
-import { stat } from 'fs';
 
 
-console.log("InitialState", initialState);
+
+
 export default function newsReducer(state = initialState, action) {
-    console.log("ACTION_DETAILS", state, action.type);
+  
     switch (action.type) {
         case actionTypes.FETCH_NEWS_SUCCESS:
-            console.log("State reducer", action);
+        
             let hidden_ids = JSON.parse(localStorage.getItem("hiddenIds"));
             let upvotedIds = JSON.parse(localStorage.getItem("upvotedIds"));
             let upDatedNewsList;
@@ -20,11 +20,11 @@ export default function newsReducer(state = initialState, action) {
                 upDatedNewsList = action.payload.news;
             }
             if (upvotedIds) {
-                console.log("Upvoted iDS received", upvotedIds);
+              
                 upDatedNewsList = upDatedNewsList.map(newsItem => {
-                    console.log("Upvoted ind item", newsItem);
+                  
                     if (upvotedIds.includes(newsItem.objectID)) {
-                        console.log("Yes included");
+                      
                         newsItem.points = newsItem.points + 1;
                     }
                     return newsItem;

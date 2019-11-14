@@ -1,10 +1,9 @@
-import React, { propTypes } from 'react';
-import Button from './Button';
+import React from 'react';
 import { rootUrl, daysAgo } from '../common/utils';
 import './news.css';
 
 const NewsComponent = (props) => {
-    console.log(props);
+  
     const { item, hideMe, handleUpVote } = props;
     const { title, num_comments: numberOfComments, points: votes, url, author, created_at: time, objectID } = item;
     return (

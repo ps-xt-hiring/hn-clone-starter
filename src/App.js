@@ -1,7 +1,7 @@
 import './App.css';
 import * as newsActions from './actions/newsActions';
 import NewsComponent from './components/NewsComponent';
-import React, { propTypes, Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 class App extends React.Component {
@@ -30,7 +30,7 @@ class App extends React.Component {
     }
     renderTableData = (items) => (
         <div className="table-responsive">
-            <table class="table">
+            <table className="table">
                 <tbody>
                     {this.renderTableRows(items)}
                 </tbody>
@@ -39,7 +39,7 @@ class App extends React.Component {
 
     );
     showMoreData = (pageNumber) => {
-        console.log("PageNumber_recd", pageNumber);
+       
         this.props.dispatch(newsActions.newsFetchRequest(pageNumber));
     }
     gotoFirstPage = () => {
@@ -60,7 +60,7 @@ class App extends React.Component {
         this.props.dispatch(newsActions.hideItemRequest(hide_id));
     }
     handleUpVote = (objectId) => {
-        console.log("Received Object ID", objectId);
+        
         let upvoted_news_id = [];
         let upvoteIds = JSON.parse(localStorage.getItem("upvotedIds"));
         if (upvoteIds === null) {
@@ -96,7 +96,7 @@ App.propTypes = {
 
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
     return {
         news: state.appData.news,
         pageNumber: state.appData.pageNumber
