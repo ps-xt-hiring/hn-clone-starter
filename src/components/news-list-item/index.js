@@ -3,43 +3,22 @@ import './news-list-item.scss';
 import PropTypes from 'prop-types';
 import Upvote from '../upvote';
 import Text from '../text';
-import { updateLocalStorage, formatDate, getDomainName } from '../../services/common';
+import { formatDate, getDomainName } from '../../services/common';
 
 export default class NewsListItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isHidden: false,
-    };
-
-    this.hideNewHandler = this.hideNewHandler.bind(this);
-  }
-
-  // Function name: hideNewHandler
-  // Arguments: none
-  // It triggers on hide button click which hides the current item and update the local storage
-  hideNewHandler() {
-    const { item } = this.props;
-
-    updateLocalStorage('hiddenItemsList', item.objectID);
-    this.setState({
-      isHidden: true,
-    });
-  }
-
   render() {
     const { item } = this.props;
-    const { isHidden } = this.state;
+
     return (
       <>
         {
-          !isHidden
-          && (
+          (
+          !item.isHidden &&
           <li className="news-list__item">
             <div className="news-list__item-container">
               <Text value={item.num_comments} type="new__comments" />
-              <Upvote item={item} />
-              <span className="new__details">
+              <Upvote item={item} upvoteHandler={this.props.upvoteHandler} />
+              <div className="new__details">
                 <Text value={item.title} type="new__title" />
                 {
                 item.url
@@ -55,10 +34,10 @@ export default class NewsListItem extends Component {
                 <Text value={formatDate(item.created_at)} type="new__time" />
                 <span className="new__hide">
                   [
-                  <button type="button" onClick={this.hideNewHandler}>hide</button>
+                  <button type="button" onClick={() => this.props.hideNewHandler(item.objectID)}>hide</button>
                   ]
                 </span>
-              </span>
+              </div>
             </div>
           </li>
           )
@@ -77,6 +56,7 @@ NewsListItem.propTypes = {
     author: PropTypes.string,
     created_at: PropTypes.string,
   }),
+  hideNewHandler: PropTypes.func,
 };
 
 NewsListItem.defaultProps = {
@@ -88,4 +68,5 @@ NewsListItem.defaultProps = {
     author: '',
     created_at: '',
   },
+  hideNewHandler: () => void(0),
 };

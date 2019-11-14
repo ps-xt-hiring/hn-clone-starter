@@ -14,8 +14,8 @@ export default function Header() {
         </picture>
       </div>
       <div className="header__filter">
-        <Button value="Top" />
-        <Button value="New" />
+        <Button>Top</Button>
+        <Button>New</Button>
       </div>
     </header>
   );

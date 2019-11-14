@@ -2,46 +2,26 @@ import React, { Component } from 'react';
 import './upvote.scss';
 import PropTypes from 'prop-types';
 import Text from '../text';
-import { updateLocalStorage } from '../../services/common';
+import Button from '../button';
 
 export default class Upvote extends Component {
-  constructor(props) {
-    super(props);
-    const { item: { isUpvoted, points } } = this.props;
-    this.state = {
-      isUpvoted,
-      points,
-    };
-    this.upvoteHandler = this.upvoteHandler.bind(this);
-  }
-
-  // Function name: upvoteHandler
-  // Arguments: none
-  // It triggers on upvote button click which counts a vote and update the local storage
-  upvoteHandler() {
-    const { item: { objectID } } = this.props;
-    updateLocalStorage('upvotedItemsList', objectID);
-    this.setState(state => ({
-      isUpvoted: true,
-      points: state.points + 1,
-    }));
-  }
-
   render() {
-    const { points, isUpvoted } = this.state;
+    const { item: { isUpvoted, points, objectID }, upvoteHandler } = this.props;
+
     return (
-      <span className="new__upvotes">
+      <div className="new__upvotes">
         <Text value={points} type={`new__upvotes-count${isUpvoted ? ' upvoted' : ''}`} />
 
         <span className="new__upvotes-btn">
-          <button
+          <Button
             type="button"
             className={`${isUpvoted ? 'disable' : ''}`}
-            onClick={this.upvoteHandler}
+            onClick={upvoteHandler}
+            dataParam={objectID}
             disabled={isUpvoted}
           />
         </span>
-      </span>
+      </div>
     );
   }
 }
@@ -52,6 +32,7 @@ Upvote.propTypes = {
     points: PropTypes.number,
     objectID: PropTypes.string,
   }),
+  upvoteHandler: PropTypes.func,
 };
 
 Upvote.defaultProps = {
@@ -60,4 +41,5 @@ Upvote.defaultProps = {
     points: 0,
     objectID: '',
   },
+  upvoteHandler: () => void(0),
 };
