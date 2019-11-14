@@ -25,7 +25,8 @@ class Listing extends Component {
                 onClick={() => upVote(objId)}
                 role="button"
                 tabIndex="0"
-                onKeyPress={() => upVote(objId)}>
+                onKeyPress={() => upVote(objId)}
+              >
                 &nbsp;
               </div>
               <div className="listing__title">
@@ -68,7 +69,7 @@ export default Listing;
 
 
 Listing.propTypes = {
-  productData: PropTypes.array.isRequired,
+  productData: PropTypes.oneOfType([PropTypes.array]),
   hideItems: PropTypes.func.isRequired,
   upVote: PropTypes.func.isRequired,
 };
