@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Header(props) {
+  
+  const {handleHomeClick} = props;
+
   return (
     <div className="header">
       <span
         role="button"
         tabIndex={0}
         className="logo"
-        onClick={props.handleHomeClick}
+        onClick={handleHomeClick}
         onKeyDown={() => {}}
       >
         Y

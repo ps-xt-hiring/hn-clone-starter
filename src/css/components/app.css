@@ -1,12 +1,11 @@
 .app-container {
-    width: 80%;
-    margin: auto;
-    margin-top: 20px;
-    font-family: Verdana, Geneva, sans-serif;
-  }
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  font-family: Verdana, Geneva, sans-serif;
+}
 
-    
-  .loader {
-    text-align: center;
-    padding-top: 100px;
-  }
+.loader {
+  text-align: center;
+  padding-top: 100px;
+}

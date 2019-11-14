@@ -1,11 +1,11 @@
 .logo {
-    border: 1px solid white;
-    color: white;
-    padding-left: 4px;
-    cursor: pointer;
-  }
+  border: 1px solid white;
+  color: white;
+  padding-left: 4px;
+  cursor: pointer;
+}
 
 .top-feeds {
-    padding-left: 14px;
-    color: white;
+  padding-left: 14px;
+  color: white;
 }

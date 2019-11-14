@@ -63,4 +63,11 @@ Body.PropTypes = {
   isLoading: PropTypes.bool,
 };
 
+getBody.PropTypes = {
+  articles: PropTypes.arrayOf,
+  isLoading: PropTypes.bool,
+  handleHideClick: PropTypes.func.isRequired,
+  handleUpVoteClick: PropTypes.func.isRequired
+}
+
 export default Body;
