@@ -25,8 +25,7 @@ class Listing extends Component {
                 onClick={() => upVote(objId)}
                 role="button"
                 tabIndex="0"
-                onKeyPress={() => upVote(objId)}
-               >
+                onKeyPress={() => upVote(objId)}>
                 &nbsp;
               </div>
               <div className="listing__title">
