@@ -20,10 +20,14 @@ class Listing extends Component {
               >
                 {item.points ? item.points : 0}
               </div>
-              <div className="listing__upVote"
+              <div
+                className="listing__upVote"
                 onClick={() => upVote(objId)}
-                role="button" tabIndex="0"
-                onKeyPress={() => upVote(objId)}>&nbsp;
+                role="button"
+                tabIndex="0"
+                onKeyPress={() => upVote(objId)}
+               >
+                &nbsp;
               </div>
               <div className="listing__title">
                 {item.title ? item.title : 'Title Not Found'}
