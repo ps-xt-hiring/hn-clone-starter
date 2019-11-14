@@ -22,6 +22,7 @@ function Footer(props) {
 Footer.propTypes = {
   handleMoreClick: PropTypes.func.isRequired,
   articlesLength: PropTypes.number.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
 export default Footer;
