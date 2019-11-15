@@ -2,14 +2,19 @@
 .header {
   background: $color-orange;
   padding: 0.5rem;
-  text-align: left;
-
-
-  &__logo {
-    border: 2px solid $color-white;
-    padding: 0 0.5rem;
-    color: $color-white;
-    margin-right: $margin10px;
-    font-size: $font-size-xxs
+  display: flex;
+  a {
+    color: $color-black;
+    font-size: $font-size-xxs;
+    padding: 0 0.5em
   }
+  &__nav {
+    &-logo {
+        border: 2px solid $color-white;
+        padding: 0 0.5rem;
+        color: $color-white;
+        font-size: $font-size-xxs;
+        margin-right: $margin10px;
+      }
+  } 
 }

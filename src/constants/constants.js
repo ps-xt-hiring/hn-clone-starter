@@ -5,8 +5,8 @@ const feedConstants = {
     more: 'More',
     loading: 'Loading...',
     timeDuration: '3 hours ago',
-    by: 'by'
-
+    by: 'by',
+    logoText: 'Y'
 }
 
 export default feedConstants;

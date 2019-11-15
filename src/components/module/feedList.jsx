@@ -38,7 +38,7 @@ const ListItem = props => {
         <FeedButton
           event={() => setHide()}
           className="feed__btn feed__btn--grey"
-          text={feedConstants.hide} />
+          btntext={feedConstants.hide} />
 
 
 

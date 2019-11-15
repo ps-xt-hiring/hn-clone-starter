@@ -19,7 +19,7 @@ const FeedFooter = props => {
       <FeedButton
         event={() => loadMore(pageNum)}
         className="feed__btn"
-        text="More"
+        btntext="More"
       />
     </footer>
   );

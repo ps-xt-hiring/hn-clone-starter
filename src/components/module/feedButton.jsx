@@ -1,13 +1,14 @@
 import React from "react";
 
 
-const FeedButton = (props) => (
-  <button
+const FeedButton = (props) => {
+  const { className, event, btntext } = props;
+  return <button
     type="button"
-    className={props.className}
-    onClick={props.event}
-  >{props.text}</button>
-);
+    className={className}
+    onClick={event}
+  >{btntext}</button>
+}
 
 
 export default FeedButton;
