@@ -1,16 +1,19 @@
-import React from "react";
-import "./Header.css";
+import React from 'react';
+import './Header.css';
 
-const header = () => (
-  <header className="news-header">
-    <span className="logo">Y</span>
-    <a href="/" className="topLink">
-      top
-    </a>
-    <a href="/" className="newLink">
-      new
-    </a>
-  </header>
-);
+const header = props => {
+  const { newText, topText } = { ...props };
+  return (
+    <header className="news-header">
+      <span className="logo">Y</span>
+      <a href="/" className="topLink">
+        {topText}
+      </a>
+      <a href="/" className="newLink">
+        {newText}
+      </a>
+    </header>
+  );
+};
 
 export default header;

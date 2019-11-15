@@ -1,60 +1,63 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import * as newsBuilderActions from "../../store/actions/index";
-import ListItemNews from "../ListItemNews/ListItemNews";
-import "./NewsSection.css";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import * as newsBuilderActions from '../../store/actions/index';
+import ListItemNews from '../ListItemNews/ListItemNews';
+import './NewsSection.css';
 
 class NewsSection extends Component {
   componentDidMount() {
-    this.props.onInitNewsItems();
+    const { onInitNewsItems } = this.props;
+    onInitNewsItems();
   }
 
   handleUpvoteClick = itemId => {
-    this.props.onUpvoteClick(itemId);
+    const { onUpvoteClick } = this.props;
+    onUpvoteClick(itemId);
   };
 
   render() {
+    const { onInitNewsItems, items, onHideClick, pageNumber } = this.props;
     return (
       <Fragment>
         <ul className="listItem">
-          {this.props.items && this.props.items.length ? (
-            this.props.items.map((itemsData, i) => {
+          {items && items.length ? (
+            items.map(itemsData => {
               return (
                 <ListItemNews
-                  data={itemsData}
                   upVoteClick={itemId => this.handleUpvoteClick(itemId)}
-                  hideListClick={itemId => this.props.onHideClick(itemId)}
-                  key={i}
-                ></ListItemNews>
+                  hideListClick={itemId => onHideClick(itemId)}
+                  key={itemsData.objectID}
+                  {...itemsData}
+                />
               );
             })
           ) : (
             <p className="loading">
-              {this.props.items && this.props.items.length === 0
-                ? "You have reached end of news Items. No data available further"
-                : "News Item data is loading"}
+              {items && items.length === 0
+                ? 'You have reached end of news Items. No data available further'
+                : 'News Item data is loading'}
             </p>
           )}
         </ul>
-        {this.props.items && this.props.items.length ? (
-          <button
+        {items && items.length ? (
+          <input
+            type="button"
             className="loadMore"
+            value="More"
             onClick={() => {
-              this.props.onInitNewsItems(this.props.pageNumber);
+              onInitNewsItems(pageNumber);
             }}
-          >
-            More
-          </button>
+          />
         ) : (
           <button
+            type="button"
             className="gotoFirstPage"
             onClick={() => {
-              this.props.onInitNewsItems();
+              onInitNewsItems();
             }}
           >
-            {this.props.items && this.props.items.length === 0
-              ? "Go to first Page"
-              : null}
+            {items && items.length === 0 ? 'Go to first Page' : null}
           </button>
         )}
       </Fragment>
@@ -75,6 +78,11 @@ const mapDispatchToProps = dispatch => {
     onUpvoteClick: itemId => dispatch(newsBuilderActions.upVoteClick(itemId)),
     onHideClick: itemId => dispatch(newsBuilderActions.hideListClick(itemId))
   };
+};
+
+ListItemNews.propTypes = {
+  onInitNewsItems: PropTypes.func,
+  onUpvoteClick: PropTypes.func
 };
 
 export default connect(

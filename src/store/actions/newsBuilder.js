@@ -1,5 +1,5 @@
-import * as actionTypes from "./actionTypes";
-import axios from "axios";
+import axios from 'axios';
+import * as actionTypes from './actionTypes';
 
 export const setNewsItem = (newsItems, pageNumber) => {
   return {
@@ -13,12 +13,13 @@ export const initNewsItems = pageId => {
   return dispatch => {
     axios
       .get(
-        "https://hn.algolia.com/api/v1/search?tags=front_page&page=" + pageId
+        `https://hn.algolia.com/api/v1/search?tags=front_page&page=${pageId}`
       )
       .then(res => {
         dispatch(setNewsItem(res.data, pageId));
       })
       .catch(err => {
+        // eslint-disable-next-line no-console
         console.error(err);
       });
   };

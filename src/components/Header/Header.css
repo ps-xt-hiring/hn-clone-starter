@@ -6,23 +6,23 @@
   padding: 1em;
 }
 
-.news-header .logo {
+.logo {
   border: 1px solid white;
   color: white;
   padding: 0.2em;
 }
 
-.news-header .topLink {
+.topLink {
   color: white;
   padding: 0.6em;
 }
 
-.news-header .newLink {
+.newLink {
   color: black;
   border-left: 1px solid white;
   padding-left: 0.6em;
 }
 
-.news-header a {
+a {
   text-decoration: none;
 }

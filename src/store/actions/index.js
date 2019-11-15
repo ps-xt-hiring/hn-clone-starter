@@ -1,5 +1,1 @@
-export {
-    initNewsItems,
-    upVoteClick,
-    hideListClick,
-} from './newsBuilder';
+export { initNewsItems, upVoteClick, hideListClick } from './newsBuilder';

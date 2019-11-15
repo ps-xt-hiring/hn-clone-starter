@@ -1,14 +1,10 @@
-import React, { Component, Fragment } from "react";
-import Layout from "./components/Layout/Layout";
+import React, { Fragment } from 'react';
+import Layout from './components/Layout/Layout';
 
-class App extends Component {
-  render() {
-    return (
-      <Fragment>
-        <Layout></Layout>
-      </Fragment>
-    );
-  }
-}
+const App = () => (
+  <Fragment>
+    <Layout />
+  </Fragment>
+);
 
 export default App;
