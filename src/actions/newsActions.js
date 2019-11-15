@@ -1,13 +1,16 @@
-/* eslint-disable import/no-webpack-loader-syntax,   import/first*/
-import * as actionTypes from "../constants/actionTypes";
+/* eslint-disable import/no-webpack-loader-syntax,   import/first */
+import * as actionTypes from '../constants/actionTypes';
 import * as URL from '../constants/constantValue';
 
 export function newsFetchSuccess(news, pageNumber) {
-    return { type: actionTypes.FETCH_NEWS_SUCCESS, payload: { news: news.hits, pageNumber: pageNumber + 1 } };
+  return { 
+    type: actionTypes.FETCH_NEWS_SUCCESS,
+    payload: { news: news.hits, pageNumber: pageNumber + 1 } 
+  };
 }
-export function newsFetchRequest(pageNumber=1) {
-    return function (dispatch) {
-        fetch(URL.api_url + pageNumber).then(function (response) {
+export function newsFetchRequest(pageNumber = 1) {
+  return function (dispatch) {
+    fetch(URL.api_url + pageNumber).then(function (response) {
             response.json().then(body => {
                 dispatch(newsFetchSuccess(body, pageNumber));
             })
@@ -16,11 +19,10 @@ export function newsFetchRequest(pageNumber=1) {
     }
 }
 
-export function hideItemRequest(Arr_hiddenIds){
-    return { type: actionTypes.HIDE_NEWS, payload: { hiddenIds: Arr_hiddenIds} };
-  
+export function hideItemRequest(arrHiddenIds) {
+  return { type: actionTypes.HIDE_NEWS, payload: { hiddenIds: arrHiddenIds } };
 }
 
-export function upvoteNewsItem(upvoted_news_id, upVoteId){
-    return { type: actionTypes.UPVOTE_NEWS, payload: { upvoteIds: upvoted_news_id, upVoteId: upVoteId} };
+export function upvoteNewsItem(upvotedNewsId, upVoteId) {
+  return { type: actionTypes.UPVOTE_NEWS, payload: { upvoteIds: upvotedNewsId, upVoteId } };
 }

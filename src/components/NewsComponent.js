@@ -1,10 +1,11 @@
-/* eslint-disable import/no-webpack-loader-syntax,   import/first*/
+/* eslint-disable import/no-webpack-loader-syntax,   import/first */
 
 import React from 'react';
-import { rootUrl, daysAgo } from '../common/utils';
-import "./Button.scss";
-import './news.scss';
 import PropTypes from 'prop-types';
+import { rootUrl, daysAgo } from '../common/utils';
+import './Button.scss';
+import './news.scss';
+
 
 const NewsComponent = (props) => {
   
