@@ -1,0 +1,13 @@
+.feed-footer {
+    background: #ccc;;
+    min-height: 25px;
+
+    &__more-btn {
+        color: #E96429;
+        cursor: pointer;
+        float: left;
+        margin-left: 10px;
+        border: 0;
+        background: none;    
+    }
+}

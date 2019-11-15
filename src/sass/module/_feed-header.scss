@@ -1,0 +1,38 @@
+header {
+    background: #E96429;
+    height: 30px;
+    padding: 3px;
+
+    nav {
+        float: left;
+        position: relative;
+        left: 10px;
+
+        i {
+            border: 2px solid #fff;
+            padding: 0 5px;
+            color: #fff;
+            margin-right: 10px;
+            font-weight: bold   ;
+        }
+
+        span {
+            margin: 0 10px;
+        }
+
+        button {
+            font-weight: bold;
+            border: 0;
+            background: none;
+            cursor: pointer;
+
+            .top {
+                color: #fff;
+            }
+
+            .new {
+                color: #000;
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+.feeds {
+    display:flex;
+    
+    &__comment {
+        text-align: right;
+        min-width: 50px;
+    }
+
+    &__upvote {
+        min-width: 50px;
+        margin: 0 10px;
+        text-align: right;
+        flex-direction: row;
+        align-items: center;
+
+        .upvote-count {
+            display: inline-block;
+        }
+
+        .upvotes-action {
+            display: inline-block;
+            cursor: pointer;
+            margin-left: 4px;
+            color: #828282;
+            &:after {
+                content: ' \25B2';
+            }
+        }
+    }
+
+    &__feed-content {
+        a {
+            color: #828282;
+            word-break: break-all;
+            margin: 0 5px;
+        }
+
+        .feed-author {
+            color: #828282;
+            word-break: break-all;
+            margin: 0 5px;
+            font-weight: 700;
+        }
+    }
+
+    button {
+        background: none;
+        border: none;
+    }
+}
+
+.feedShow {
+    display: block;
+
+    &:nth-child(2n) {
+        background: #E6E6DF;
+    }
+}
+
+.feedHide {
+    display: none;
+}
