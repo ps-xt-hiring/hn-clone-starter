@@ -16,7 +16,7 @@ const NewsComponent = (props) => {
             <td className="bold">{numberOfComments}</td>
             <td className= "bold">{votes} </td>
             <p className= { `arrow-up ${isLiked ? "liked" : ""}`}  role="button" onClick={()=>handleUpVote(objectID)} onKeyUp={() => {}} tabIndex="0"> </p>
-            <td><span className="bold">{title} </span> <a href={url} target="_blank">{ url ? "(" + rootUrl(url)+ ")" : ""} </a> <span className="basic-text"> by </span> <span className="bold"> {author} </span> <span className="basic-text">{daysAgo(time) }</span>
+            <td><span className="bold">{title} </span> <a href={url}  target="_blank" rel="noopener noreferrer">{ url ? "(" + rootUrl(url)+ ")" : ""} </a> <span className="basic-text"> by </span> <span className="bold"> {author} </span> <span className="basic-text">{daysAgo(time) }</span>
             <span className="tag-box">[</span><button className="link-button" onClick={()=>hideMe(objectID)}>hide</button><span className="tag-box">]</span></td>
         </tr>
 

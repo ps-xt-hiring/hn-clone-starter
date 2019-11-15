@@ -93,7 +93,6 @@ class App extends React.Component {
 
     }
     handleAlreadyVoted = (objectId) => {
-        console.log("isliked", objectId);
         let upvoteIds = JSON.parse(localStorage.getItem("upvotedIds"));
         if (upvoteIds && upvoteIds.includes(objectId)) {
 
