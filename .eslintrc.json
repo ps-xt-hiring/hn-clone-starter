@@ -5,8 +5,7 @@
         "jest": true
     },
     "rules": {
-        "react/jsx-filename-extension": "off",
-        "import/no-webpack-loader-syntax": "off"
+        "react/jsx-filename-extension": "off"
     },
     "parser": "babel-eslint"
 }
