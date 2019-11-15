@@ -92,8 +92,18 @@ class HackerNewsPost extends React.Component {
         <ul className="header">
           <li>
             <a href="/#" target="_blank" rel="noopener noreferrer">
+
+
+
+
+
+
+
+
+
+
               logo
-            </a>
+                                    </a>
           </li>
           <li className="active">top</li>
           <li>new</li>
@@ -115,10 +125,11 @@ class HackerNewsPost extends React.Component {
                       delete={() =>
                         this.deleteEvent(stories[index].objectID, index)
                       }
-                      upvoteClicked={() => this.upvoteClick.bind(this, index)}
+                      upvoteClicked={this.upvoteClick.bind(this, index)}
                     />
                   );
                 }
+                return "";
               })
             )}
           </ul>

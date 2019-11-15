@@ -1,18 +1,20 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import { getUrl, redirectUrl } from "../helpers";
 
-class News extends React.Component {
+class News extends PureComponent {
   render() {
     const {
-      num_comments: comments,
-      points: upvote,
-      title,
-      url,
-      author,
-      created_at
-    } = this.props.details;
+      details: {
+        num_comments: comments,
+        points: upvote,
+        title,
+        url,
+        author,
+        created_at: createdAt
+      }
+    } = this.props;
     let isGreater;
     if (upvote > 50 && upvote < 100) {
       isGreater = "cherry";
@@ -21,6 +23,7 @@ class News extends React.Component {
     } else {
       isGreater = "";
     }
+    const { upvoteClicked } = this.props;
 
     return (
       <li className="news-detail">
@@ -28,7 +31,13 @@ class News extends React.Component {
           <span className="comments">{comments}</span>
           <span className="upvote" id={isGreater}>
             {upvote}
-            <span className="up" onClick={this.props.upvoteClicked} />
+            <span
+              role="button"
+              tabIndex="0"
+              className="up"
+              onKeyPress={upvoteClicked}
+              onClick={() => upvoteClicked()}
+            />
           </span>
         </div>
         <div className="detail2">
@@ -38,27 +47,122 @@ class News extends React.Component {
 
 
 
+
+
+
               (
-<span>{getUrl(url)}</span>
+              <span>{getUrl(url)}</span>
+
+
+
 
 
               )
-</span>
+
+                        </span>
           </a>
           <span className="by blackClr">
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
             by
 <span className="author">{author}</span>
           </span>
-          <span className="time">{moment(created_at).fromNow()}</span>
+          <span className="time">{moment(createdAt).fromNow()}</span>
           <span onClick={this.props.delete} className="hide">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             [
-<button type="button">hide</button>
+            <button type="button">hide</button>
+
+
+
+
+
+
 
 
             ]
@@ -70,19 +174,25 @@ class News extends React.Component {
 }
 
 News.defaultProps = {
-  num_comments: `"`,
-  points: null,
-  title: `"`,
-  url: `"`,
-  author: `"`,
-  created_at: `"`
+  details: {
+    num_comments: null,
+    points: null,
+    title: "",
+    url: "",
+    author: "",
+    created_at: ""
+  },
+  upvoteClicked: () => { }
 };
 News.propTypes = {
-  num_comments: PropTypes.string,
-  points: PropTypes.number,
-  title: PropTypes.string,
-  url: PropTypes.string,
-  author: PropTypes.string,
-  created_at: PropTypes.string
+  details: PropTypes.shape({
+    num_comments: PropTypes.number,
+    points: PropTypes.number,
+    title: PropTypes.string,
+    url: PropTypes.string,
+    author: PropTypes.string,
+    created_at: PropTypes.string
+  }),
+  upvoteClicked: PropTypes.func
 };
 export default News;

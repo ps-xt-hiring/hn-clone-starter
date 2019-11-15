@@ -131,6 +131,7 @@ span.hide button {
   border: 0;
   background-color: transparent;
   cursor: pointer;
+  outline: none;
 }
 
 .detail2 {
@@ -166,6 +167,7 @@ li.news-detail span > span {
 
 li.news-detail span > span.up {
   padding-right: 15px;
+  outline: 0;
 }
 
 li.news-detail > span:last-child {
