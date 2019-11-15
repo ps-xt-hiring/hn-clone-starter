@@ -98,17 +98,16 @@ describe('Feed Actions', () => {
 
         it('should dispatch GET_FEED, GET_FEED_FAILURE', () => {
           const errorResponse = {
-            code: 400,
-            errorMessage: 'error'
+            "error": "Request failed with status code 400",
+            "type": "GET_FEED_FAILURE",
           };
 
           const expectedActions2 = [
-            { type: ActionTypes.GET_FEED, value: 1},
-            { type: ActionTypes.GET_FEED_FAILURE, error: errorResponse}
+            { type: ActionTypes.GET_FEED_FAILURE, error: 'error'}
           ];
 
           fetchMock.get('https://hn.algolia.com/api/v1/search?page=1',
-                { body: { error: errorResponse }})
+                { body: { error: 'error' }})
 
           store.dispatch(SUT({})).then(() => {
             const actions = store.getActions();
