@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 
-const header = props => {
+const header = (props) => {
   const { newText, topText } = { ...props };
   return (
     <header className="news-header">

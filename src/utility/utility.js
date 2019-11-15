@@ -1,4 +1,4 @@
-export const urlShortner = fullUrl => {
+export const urlShortner = (fullUrl) => {
   if (fullUrl) {
     let url = new URL(fullUrl);
     url = url.hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, '');
@@ -7,7 +7,7 @@ export const urlShortner = fullUrl => {
   return '--';
 };
 
-export const timeConversion = time => {
+export const timeConversion = (time) => {
   const newDate = new Date(time);
   const todaysDate = new Date();
 

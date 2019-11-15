@@ -11,27 +11,27 @@ class NewsSection extends Component {
     onInitNewsItems();
   }
 
-  handleUpvoteClick = itemId => {
+  handleUpvoteClick = (itemId) => {
     const { onUpvoteClick } = this.props;
     onUpvoteClick(itemId);
   };
 
   render() {
-    const { onInitNewsItems, items, onHideClick, pageNumber } = this.props;
+    const {
+      onInitNewsItems, items, onHideClick, pageNumber,
+    } = this.props;
     return (
       <Fragment>
         <ul className="listItem">
           {items && items.length ? (
-            items.map(itemsData => {
-              return (
-                <ListItemNews
-                  upVoteClick={itemId => this.handleUpvoteClick(itemId)}
-                  hideListClick={itemId => onHideClick(itemId)}
-                  key={itemsData.objectID}
-                  {...itemsData}
-                />
-              );
-            })
+            items.map(itemsData => (
+              <ListItemNews
+                upVoteClick={itemId => this.handleUpvoteClick(itemId)}
+                hideListClick={itemId => onHideClick(itemId)}
+                key={itemsData.objectID}
+                {...itemsData}
+              />
+            ))
           ) : (
             <p className="loading">
               {items && items.length === 0
@@ -64,28 +64,23 @@ class NewsSection extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    items: state.newsItems,
-    pageNumber: state.pageNumber
-  };
-};
+const mapStateToProps = state => ({
+  items: state.newsItems,
+  pageNumber: state.pageNumber,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onInitNewsItems: pageNumber =>
-      dispatch(newsBuilderActions.initNewsItems(pageNumber || 0)),
-    onUpvoteClick: itemId => dispatch(newsBuilderActions.upVoteClick(itemId)),
-    onHideClick: itemId => dispatch(newsBuilderActions.hideListClick(itemId))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  onInitNewsItems: pageNumber => dispatch(newsBuilderActions.initNewsItems(pageNumber || 0)),
+  onUpvoteClick: itemId => dispatch(newsBuilderActions.upVoteClick(itemId)),
+  onHideClick: itemId => dispatch(newsBuilderActions.hideListClick(itemId)),
+});
 
 ListItemNews.propTypes = {
   onInitNewsItems: PropTypes.func,
-  onUpvoteClick: PropTypes.func
+  onUpvoteClick: PropTypes.func,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(NewsSection);

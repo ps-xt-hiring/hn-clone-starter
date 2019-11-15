@@ -17,13 +17,13 @@
   width: 5%;
 }
 
-button{
+button {
   border: 0;
   background-color: transparent;
 }
 
-button:focus{
- outline: 0;
+button:focus {
+  outline: 0;
 }
 
 .arrow-up {
@@ -54,7 +54,7 @@ button:focus{
   color: grey;
 }
 
-.hide{
+.hide {
   cursor: pointer;
 }
 

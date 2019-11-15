@@ -2,10 +2,10 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   newsItems: null,
-  pageNumber: 0
+  pageNumber: 0,
 };
 
-const updateNewsPoints = (updatedState, itemId) =>
+const updateNewsPoints = (updatedState, itemId) => (
   updatedState.newsItems.map(({ objectID, points, ...newsItems }) => {
     let newsPoints = points;
     if (objectID === itemId) {
@@ -14,14 +14,13 @@ const updateNewsPoints = (updatedState, itemId) =>
     return {
       ...newsItems,
       objectID,
-      points: newsPoints
+      points: newsPoints,
     };
-  });
+  }));
 
-const hideListItem = (updatedState, itemId) =>
-  updatedState.newsItems.filter(newsItem => {
-    return newsItem.objectID !== itemId;
-  });
+const hideListItem = (updatedState, itemId) => (
+  updatedState.newsItems.filter(newsItem => newsItem.objectID !== itemId)
+);
 
 const reducer = (state = initialState, action) => {
   const id = action.itemId;
@@ -32,17 +31,17 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         newsItems: action.newsItems.hits,
-        pageNumber: action.pageNumber + 1
+        pageNumber: action.pageNumber + 1,
       };
     case actionTypes.UPVOTE_NEWSITEM:
       return {
         ...state,
-        newsItems: updateNewsPoints(state, id)
+        newsItems: updateNewsPoints(state, id),
       };
     case actionTypes.HIDE_NEWS_ITEM:
       return {
         ...state,
-        newsItems: hideListItem(updatedState, id)
+        newsItems: hideListItem(updatedState, id),
       };
     default:
       return state;
