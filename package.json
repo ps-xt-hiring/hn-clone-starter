@@ -21,6 +21,10 @@
     "redux-thunk": "^2.0.1",
     "toastr": "2.1.2"
   },
+  "type": "commonjs",
+  "engines": {
+    "node": ">=8.10.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -58,7 +62,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "1.6.1",
     "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "5.0.1",
+    "eslint-plugin-react": "^7.10.0",
     "eslint-watch": "2.1.11",
     "eventsource-polyfill": "0.9.6",
     "expect": "1.19.0",

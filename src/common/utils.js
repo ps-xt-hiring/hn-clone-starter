@@ -1,5 +1,5 @@
+/* eslint-disable import/no-webpack-loader-syntax,   import/first*/
 import { formatDistance, subDays } from 'date-fns';
-
 export const rootUrl = (url = '') => {
 
     var urlPath = url && url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];

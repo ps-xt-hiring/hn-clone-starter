@@ -1,10 +1,13 @@
-import './App.css';
+/* eslint-disable import/no-webpack-loader-syntax,   import/first*/
+import './App.scss';
 import * as newsActions from './actions/newsActions';
 import NewsComponent from './components/NewsComponent';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "./components/news.scss";
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import logo from './logo.svg';
 class App extends React.Component {
     componentDidMount() {
         this.props.dispatch(newsActions.newsFetchRequest());
@@ -15,9 +18,11 @@ class App extends React.Component {
         return (
 
             items.map((item) => {
+                let isLiked = this.handleAlreadyVoted(item.objectID);
                 return (
                     <NewsComponent
                         key={Math.random()}
+                        isLiked={isLiked ? "yes" : ''}
                         hideMe={(id) => this.hideMe(id)}
                         handleUpVote={(id) => this.handleUpVote(id)}
                         item={item} />
@@ -31,7 +36,15 @@ class App extends React.Component {
     }
     renderTableData = (items) => (
         <div className="table-responsive">
+        <div className="header-section">
+            <img src={`https://news.ycombinator.com/y18.gif`} />
+            <p className="white">top </p>
+            <p>|</p>
+            <p>new</p>
+
+            </div>
             <table className="table">
+               
                 <tbody>
                     {this.renderTableRows(items)}
                 </tbody>
@@ -40,7 +53,7 @@ class App extends React.Component {
 
     );
     showMoreData = (pageNumber) => {
-       
+
         this.props.dispatch(newsActions.newsFetchRequest(pageNumber));
     }
     gotoFirstPage = () => {
@@ -61,7 +74,7 @@ class App extends React.Component {
         this.props.dispatch(newsActions.hideItemRequest(hide_id));
     }
     handleUpVote = (objectId) => {
-        
+
         let upvoted_news_id = [];
         let upvoteIds = JSON.parse(localStorage.getItem("upvotedIds"));
         if (upvoteIds === null) {
@@ -79,17 +92,37 @@ class App extends React.Component {
         this.props.dispatch(newsActions.upvoteNewsItem(upvoted_news_id, objectId));
 
     }
+    handleAlreadyVoted = (objectId) => {
+        console.log("isliked", objectId);
+        let upvoteIds = JSON.parse(localStorage.getItem("upvotedIds"));
+        if (upvoteIds && upvoteIds.includes(objectId)) {
+
+            return true;
+        }
+
+    }
     render() {
         const { news: newsItem, pageNumber } = this.props;
         return (
-            <div className="">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-2"></div>
+                    <div className="col-md-8">
+                        <div className="main-container">
 
-                {this.renderTableData(newsItem)}
 
-                {<>
-                    <button onClick={() => this.showMoreData(pageNumber)}>More</button>
-                    {(pageNumber !== 2 ? <button onClick={() => this.gotoFirstPage(1)}>First Page</button> : '')}   </>}
+                            {this.renderTableData(newsItem)}
+
+                            {<>
+                                <button className="link-button more-link" onClick={() => this.showMoreData(pageNumber)}>More</button>
+                                {(pageNumber !== 2 ? <button className="link-button first-page-link" onClick={() => this.gotoFirstPage(1)}>First Page</button> : '')}   </>}
+                        </div>
+                    </div>
+                    <div className="col-md-2"></div>
+                </div>
+
             </div>
+
         );
     }
 }

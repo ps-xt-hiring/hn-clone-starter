@@ -1,4 +1,4 @@
-// import initialState from './initialState';
+/* eslint-disable import/no-webpack-loader-syntax,   import/first*/
 import * as actionTypes from '../constants/actionTypes';
 import initialState from './initialState';
 

@@ -1,3 +1,5 @@
+/* eslint-disable import/no-webpack-loader-syntax,   import/first*/
+
 import React from 'react';
 const Button = () => {
     return (

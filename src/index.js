@@ -1,4 +1,4 @@
-
+/* eslint-disable import/no-webpack-loader-syntax,   import/first*/
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

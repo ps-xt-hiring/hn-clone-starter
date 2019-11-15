@@ -1,3 +1,4 @@
+/* eslint-disable import/no-webpack-loader-syntax,   import/first*/
 import * as actionTypes from "../constants/actionTypes";
 import * as URL from '../constants/constantValue';
 
