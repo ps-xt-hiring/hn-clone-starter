@@ -91,11 +91,9 @@ describe('Feed Actions', () => {
 
           store.dispatch(SUT()).then(() => {
               const actions = store.getActions();
+
               expect(actions).toEqual(expectedActions1);
-              done();
-          }).catch(error => {
-            console.log("ERROR", error);
-          });
+          }).catch(e => expect(e).toMatch('error'));
         });
 
         it('should dispatch GET_FEED, GET_FEED_FAILURE', () => {
@@ -115,10 +113,7 @@ describe('Feed Actions', () => {
           store.dispatch(SUT({})).then(() => {
             const actions = store.getActions();
             expect(actions).toEqual(expectedActions2);
-            done();
-          }).catch(error => {
-            console.log("ERROR", error);
-          });
+          }).catch(e => expect(e).toMatch('error'));
         });
     });
 });
