@@ -40,9 +40,7 @@ const getBody = (payload) => {
                 : (
                   <tr>
                     <td>
-                      {' '}
                       {MESSAGES.NO_RECORDS}
-                      {' '}
                     </td>
                   </tr>
                 )
@@ -58,7 +56,7 @@ function Body(props) {
   );
 }
 
-Body.PropTypes = {
+Body.propTypes = {
   articles: PropTypes.arrayOf,
   isLoading: PropTypes.bool,
   handleHideClick: PropTypes.func.isRequired,

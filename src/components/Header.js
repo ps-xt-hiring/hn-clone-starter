@@ -16,13 +16,10 @@ function Header(props) {
         Y
       </span>
       <span className="top-link">
-        {' '}
         {'top'}
-        {' '}
       </span>
       <span className="new-link">
         {'| new'}
-        {' '}
       </span>
     </div>
   );
