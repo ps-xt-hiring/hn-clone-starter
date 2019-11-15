@@ -9,19 +9,36 @@ class FeedsData extends Component {
     this.state = {
       feeds: [],
       page: 0,
+      isHide: false,
+      hiddenFeeds:[]
     };
 
     this.loadMore = this.loadMore.bind(this);
+    this.handleHideButtonClick = this.handleHideButtonClick.bind(this);
   }
 
   componentDidMount() {
     this.getFeed();
   }
 
+  handleHideButtonClick(elemId) {
+    const deletedFeeds = this.state.feeds.filter(delFeed => delFeed.key === elemId);
+    const remainingFeeds = this.state.feeds.filter(feed => feed.key !== elemId);
+    
+    this.setState(prev => {
+      const hiddenFeeds = prev.hiddenFeeds.concat(deletedFeeds);
+      localStorage.setItem('hidden-feeds', JSON.stringify(hiddenFeeds));
+      return {
+        feeds: remainingFeeds,
+        hiddenFeeds
+      }
+    });
+  }
+
   getFeed() {
     this.setState(prevState => ({ page: prevState.page + 1 }));
 
-    const { feedList, page } = this.state;
+    const { feedList, page, isHide } = this.state;
 
     return fetch(`https://hn.algolia.com/api/v1/search?page=${page}`)
       .then(results => results.json())
@@ -41,7 +58,7 @@ class FeedsData extends Component {
               feedObjArray.push(feed);
 
               return (
-                <div key={feed.objectID} className="feedItem">
+                <div key={feed.objectID} id={feed.objectID} className="feedItem" value={isHide}>
                   <span className="comments-num">
                     {feed.num_comments}
                   </span>
@@ -72,7 +89,7 @@ class FeedsData extends Component {
                   </span>
                   <span className="hide">
                     [
-                    <button type="button">hide</button>
+                    <button type="button" id={feed.objectID} onClick={this.handleHideButtonClick.bind(this, feed.objectID)}>hide</button>
                     ]
                   </span>
                 </div>
