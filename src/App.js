@@ -7,7 +7,7 @@ import "./components/news.scss";
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import logo from './logo.svg';
+
 class App extends React.Component {
     componentDidMount() {
         this.props.dispatch(newsActions.newsFetchRequest());
@@ -37,7 +37,7 @@ class App extends React.Component {
     renderTableData = (items) => (
         <div className="table-responsive">
         <div className="header-section">
-            <img src={`https://news.ycombinator.com/y18.gif`} />
+            <img src={`https://news.ycombinator.com/y18.gif`} alt="Manideep 151295" />
             <p className="white">top </p>
             <p>|</p>
             <p>new</p>
