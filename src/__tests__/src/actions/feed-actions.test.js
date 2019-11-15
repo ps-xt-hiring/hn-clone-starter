@@ -93,16 +93,12 @@ describe('Feed Actions', () => {
               const actions = store.getActions();
 
               expect(actions).toEqual(expectedActions1);
-          }).catch(e => expect(e).toMatch('error'));
+          }).catch(e => expect(e).toMatch(e));
         });
 
         it('should dispatch GET_FEED, GET_FEED_FAILURE', () => {
-          const errorResponse = {
-            "error": "Request failed with status code 400",
-            "type": "GET_FEED_FAILURE",
-          };
-
           const expectedActions2 = [
+            { type: ActionTypes.GET_FEED, value: 1},
             { type: ActionTypes.GET_FEED_FAILURE, error: 'error'}
           ];
 
@@ -112,7 +108,7 @@ describe('Feed Actions', () => {
           store.dispatch(SUT({})).then(() => {
             const actions = store.getActions();
             expect(actions).toEqual(expectedActions2);
-          }).catch(e => expect(e).toMatch('error'));
+          }).catch(e => expect(e).toMatch(e));
         });
     });
 });
