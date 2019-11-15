@@ -1,0 +1,36 @@
+.disabled {
+  pointer-events: none;
+  color: #ff6600;
+}
+
+.up-score {
+  p {
+    display: flex;
+    margin: 0;
+
+    @media all and (min-width: 768px) {
+      justify-content: flex-end;
+    }
+  }
+
+  span {
+    width: 15px;
+    overflow: hidden;
+    text-indent: -1000px;
+    margin: 0 5px;
+    position: relative;
+    display: inline-flex;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      border-left: 6px solid transparent;
+      border-top: 2px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 10px solid grey;
+      cursor: pointer;
+    }
+  }
+}

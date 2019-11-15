@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
+    "classnames": "^2.2.6",
+    "enzyme": "^3.10.0",
+    "extract-domain": "^2.2.1",
+    "node-sass": "^4.13.0",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-dom": "^16.12.0",
+    "react-scripts": "2.1.1",
+    "react-timeago": "^4.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
