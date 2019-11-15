@@ -1,0 +1,33 @@
+.listItem {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem p {
+  padding: 20px;
+}
+
+.loadMore,
+.gotoFirstPage {
+  border: 0;
+  background-color: white;
+  color: #fa6602;
+  cursor: pointer;
+  margin: auto;
+  width: 24%;
+  font-size: 1.4em;
+  padding: 20px 0;
+  font-weight: 600;
+}
+
+.gotoFirstPage {
+  margin: auto;
+  width: auto;
+  padding: 20px;
+}
+
+.loadMore:focus,
+.gotoFirstPage:focus {
+  outline: 0;
+}
