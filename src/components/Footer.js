@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Footer(props) {
-  const { isLoading, articlesLength, handleMoreClick } = props;
+  const { handleMoreClick } = props;
 
   return (
-    ( !isLoading && articlesLength ) ? (
       <div
         className="click-more"
         tabIndex="0"
@@ -15,14 +14,11 @@ function Footer(props) {
       >
       {'More'}
       </div>
-    ) : ''
   );
 }
 
 Footer.propTypes = {
-  handleMoreClick: PropTypes.func.isRequired,
-  articlesLength: PropTypes.number.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  handleMoreClick: PropTypes.func.isRequired
 };
 
 export default Footer;

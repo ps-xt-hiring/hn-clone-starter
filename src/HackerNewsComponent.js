@@ -1,5 +1,7 @@
 import React from 'react';
+import ReactSpinner from 'react-loader-spinner';
 import { fetchPageArticles } from './services/http-services';
+import { SPINNER_TYPES } from './utils/constants';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Body from './components/Body';
@@ -71,18 +73,26 @@ class HackerNewsComponent extends React.Component {
   render() {
     const { articles, isLoading } = this.state;
 
+    if (isLoading) {
+      return (
+        <div className="loader">
+          <ReactSpinner
+            type={SPINNER_TYPES.TAIL_SPIN}
+            color="#ff6600"
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="app-container">
         <Header handleHomeClick={this.handleHomeClick} />
         <Body
           articles={articles}
-          isLoading={isLoading}
           handleHideClick={this.handleHideClick}
           handleUpVoteClick={this.handleUpVoteClick}
         />
         <Footer
-          isLoading={isLoading}
-          articlesLength={articles.length}
           handleMoreClick={this.handleMoreClick}
         />
       </div>

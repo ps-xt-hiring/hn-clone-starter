@@ -1,27 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactSpinner from 'react-loader-spinner';
 import { Table } from 'react-bootstrap';
 import ArticleList from './ArticleList';
-import * as CONSTANTS from '../utils/constants';
-
-const { MESSAGES, SPINNER_TYPES } = CONSTANTS;
+import { MESSAGES } from '../utils/constants';
 
 const getBody = (payload) => {
   const {
-    articles, isLoading, handleHideClick, handleUpVoteClick,
+    articles, handleHideClick, handleUpVoteClick,
   } = payload;
-
-  if (isLoading) {
-    return (
-      <div className="loader">
-        <ReactSpinner
-          type={SPINNER_TYPES.TAIL_SPIN}
-          color="#ff6600"
-        />
-      </div>
-    );
-  }
 
   return (
     <Table responsive striped>
