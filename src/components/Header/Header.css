@@ -1,0 +1,28 @@
+.news-header {
+  background-color: #fa6602;
+  height: 1vh;
+  display: flex;
+  align-items: center;
+  padding: 1em;
+}
+
+.logo {
+  border: 1px solid white;
+  color: white;
+  padding: 0.2em;
+}
+
+.topLink {
+  color: white;
+  padding: 0.6em;
+}
+
+.newLink {
+  color: black;
+  border-left: 1px solid white;
+  padding-left: 0.6em;
+}
+
+a {
+  text-decoration: none;
+}
