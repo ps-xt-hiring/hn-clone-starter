@@ -14,7 +14,9 @@
 
 .comments,
 .points {
-  width: 5%;
+  width: 7%;
+  text-align: right;
+  margin-right: 2em;
 }
 
 button {
@@ -61,7 +63,7 @@ button:focus {
 @media only screen and (max-width: 480px) {
   .comments,
   .points {
-    width: 12%;
+    width: 10%;
   }
 
   .details {
