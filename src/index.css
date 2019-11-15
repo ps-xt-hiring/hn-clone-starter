@@ -1,3 +1,10 @@
+@import "css/components/app.css";
+@import "css/base/base.css";
+@import "css/modules/header.css";
+@import "css/modules/body.css";
+@import "css/modules/footer.css";
+@import "css/modules/article-list.css";
+
 body {
   margin: 0;
   padding: 0;
