@@ -5,14 +5,9 @@
     "jest": true
   },
   "rules": {
-    "react/jsx-filename-extension": 0,
-    "linebreak-style": 0,
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
     "enforceDynamicLinks": 0,
-    "import/no-named-as-default": 0,
-    "import/no-named-as-default-member": 0,
-    "import/named": 0,
     "react/forbid-prop-types": [
       1,
       {

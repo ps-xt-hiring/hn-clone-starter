@@ -8,35 +8,44 @@ class App extends React.Component {
       loading: true,
       stories: [],
       page: 0,
-      more: 'more',
     };
+    this.more = 'more';
+  }
+
+  componentDidMount(){
     this.fetchStories(0);
   }
 
   // FETCH STORIES
   fetchStories = async (page) => {
-    // console.log('Loading!!!');
-    let { more } = this.state;
-    const response = await fetch(
-      `https://hn.algolia.com/api/v1/search?tags=front_page&page=${page}`,
-    );
-
-    const data = await response.json();
-    let pageNumber = page + 1;
-
-    if (!data.hits.length) {
-      pageNumber = 0;
-      more = 'Go Back';
+    let { more } = 'more';
+    try{
+      const response = await fetch(
+        `https://hn.algolia.com/api/v1/search?tags=front_page&page=${page}`,
+      );
+  
+      const data = await response.json();
+      let pageNumber = page + 1;
+  
+      if (!data.hits.length) {
+        pageNumber = 0;
+        this.more = 'Go Back';
+      }
+      else {
+        this.more = 'more';
+      }
+      this.setState({
+        stories: data.hits,
+        loading: false,
+        page: pageNumber,
+        more,
+      });
+    }catch(err){
+      console.log(err);
     }
-    this.setState({
-      stories: data.hits,
-      loading: false,
-      page: pageNumber,
-      more,
-    });
   };
 
-  checkHideList = (objectID) => {
+  validateList = (objectID) => {
     if (localStorage.getItem('hideStories')) {
       const objectIds = JSON.parse(localStorage.getItem('hideStories'));
       if (objectIds.indexOf(objectID) !== -1) {
@@ -47,8 +56,8 @@ class App extends React.Component {
     return true;
   };
 
-  // DELETE STORY
-  deleteEvent = (objectID, index) => {
+  // HIDE STORY
+  hideEvent = (objectID, index) => {
     const { stories } = this.state;
     const copyStories = [...stories];
     copyStories.splice(index, 1);
@@ -87,7 +96,7 @@ class App extends React.Component {
 
   render() {
     const {
-      loading, stories, more, page,
+      loading, stories, page,
     } = this.state;
     return (
       <Fragment>
@@ -105,14 +114,14 @@ class App extends React.Component {
               <div>...Loading</div>
             ) : (
               Object.keys(stories).map((news, index) => {
-                if (this.checkHideList(stories[index].objectID)) {
+                if (this.validateList(stories[index].objectID)) {
                   return (
                     <News
                       objectID={stories[index].objectID}
                       key={stories[index].objectID}
                       index={index}
                       details={stories[index]}
-                      delete={() => this.deleteEvent(stories[index].objectID, index)
+                      hide={() => this.hideEvent(stories[index].objectID, index)
                         }
                       upvoteClicked={() => this.upvoteClick(index)}
                     />
@@ -127,7 +136,7 @@ class App extends React.Component {
             className="more"
             onClick={this.fetchStories.bind(this, page)}
           >
-            {more}
+            {this.more}
           </button>
         </div>
       </Fragment>

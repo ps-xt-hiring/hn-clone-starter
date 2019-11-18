@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
-import moment from 'moment';
 import PropTypes from 'prop-types';
-import { getUrl, redirectUrl } from '../helpers';
+import { getUrl, redirectUrl, timeConversion } from '../helpers';
 
 class News extends PureComponent {
   render() {
@@ -23,7 +22,7 @@ class News extends PureComponent {
     } else {
       isGreater = '';
     }
-    const { upvoteClicked, delete: deleteStory } = this.props;
+    const { upvoteClicked, hide: hideStory } = this.props;
 
     return (
       <li className="news-detail">
@@ -44,26 +43,19 @@ class News extends PureComponent {
           <span className="title">{title}</span>
           <a className="url" href={redirectUrl(getUrl(url))} target="new">
             <span className="sitestr">
-
-
               (
               <span>{getUrl(url)}</span>
-
-
               )
             </span>
           </a>
           <span className="by blackClr">
-
             by
             <span className="author">{author}</span>
           </span>
-          <span className="time">{moment(createdAt).fromNow()}</span>
-          <span onClick={deleteStory} role="button" className="hide" tabIndex="0" onKeyPress={deleteStory}>
-
+          <span className="time">{timeConversion(createdAt)}</span>
+          <span onClick={hideStory} role="button" className="hide" tabIndex="0" onKeyPress={hideStory}>
             [
             <button type="button">hide</button>
-
             ]
           </span>
         </div>
@@ -82,7 +74,7 @@ News.defaultProps = {
     created_at: '',
   },
   upvoteClicked: () => { },
-  delete: () => { },
+  hide: () => { },
 };
 News.propTypes = {
   details: PropTypes.shape({
@@ -94,6 +86,6 @@ News.propTypes = {
     created_at: PropTypes.string,
   }),
   upvoteClicked: PropTypes.func,
-  delete: PropTypes.func,
+  hide: PropTypes.func,
 };
 export default News;
