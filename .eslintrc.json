@@ -5,6 +5,29 @@
     "jest": true
   },
   "rules": {
-    "react/jsx-filename-extension": "off"
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "enforceDynamicLinks": 0,
+    "react/forbid-prop-types": [
+      1,
+      {
+        "forbid": [
+          "any",
+          "array",
+          "object"
+        ],
+        "checkContextTypes": false,
+        "checkChildContextTypes": false
+      }
+    ]
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
   }
 }
