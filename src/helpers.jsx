@@ -53,31 +53,3 @@ export const timeConversion = (time) => {
     return ` ${diffDays} days `;
   }; 
 
-// FETCH STORIES
-export const fetchStories = async (page) => {
-  let response, more='';
-  try {
-    response = await fetch(
-      `https://hn.algolia.com/api/v1/search?tags=front_page&page=${page}`,
-    );
-
-    const data = await response.json();
-    let pageNumber = page + 1;
-
-    if (!data.hits.length) {
-      pageNumber = 0;
-      more = 'Go Back';
-    }
-
-    return {
-      stories: data.hits,
-      loading: false,
-      page: pageNumber,
-      more, 
-    };
-  } catch (err) {
-    console.log(err); // TypeError: failed to fetch
-  }
-
-};
-
