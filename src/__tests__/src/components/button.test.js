@@ -12,14 +12,14 @@ describe('Button Component', () => {
     beforeEach(() => {
         component = shallow(<Button />)
     })
-    it('Button Component renders', () => {
+    it('Component renders', () => {
         expect(component).toBeTruthy();
     })
-    it('Button text show', () => {
+    it('text show', () => {
         component = shallow(<Button>show</Button>)
         expect(component.props().children).toEqual('show');
     })
-    it('Button text hide', () => {
+    it('text hide', () => {
         component = shallow(<Button>hide</Button>)
         expect(component.props().children).toEqual('hide');
     })

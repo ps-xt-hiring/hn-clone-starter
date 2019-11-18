@@ -15,7 +15,7 @@ const defaultProps = {
 };
 const Button = (props) => {
   const { className, event, children } = props;
-  return <button
+  return <button type="button"
     className={className}
     onClick={event}
   >{children}</button>
