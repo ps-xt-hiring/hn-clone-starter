@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import noop from 'loadsh/noop';
-import FeedButton from './feedButton';
+import Button from './button';
+import Constants from "../../constants/constants"
 
 const propsTypes = {
   pageNum: PropTypes.number,
@@ -16,11 +17,10 @@ const FeedFooter = props => {
   return (
 
     <footer className="footer">
-      <FeedButton
+      <Button
         event={() => loadMore(pageNum)}
         className="feed__btn"
-        btntext="More"
-      />
+      >{Constants.more}</Button>
     </footer>
   );
 };

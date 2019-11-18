@@ -1,4 +1,4 @@
-const feedConstants = {
+const Constants = {
     top: 'top',
     new: 'new',
     hide: '[Hide]',
@@ -9,4 +9,4 @@ const feedConstants = {
     logoText: 'Y'
 }
 
-export default feedConstants;
+export default Constants;

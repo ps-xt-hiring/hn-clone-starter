@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import getDomain from "../../utils/manipulate";
 import PropTypes from "prop-types";
-import FeedButton from "./feedButton";
-import feedConstants from "../../constants/constants"
+import Button from "./button";
+import Constants from "../../constants/constants"
 
 const propsTypes = {
   feed: PropTypes.objectOf(PropTypes.object),
@@ -22,7 +22,7 @@ const ListItem = props => {
       <span className="feed__comment">{feed.num_comments}</span>
       <div className="feed__upvote">
         <span>{Count}</span>
-        <FeedButton
+        <Button
           event={() => setCount(Count + 1)}
           className="feed__upvote-arrow"
         />
@@ -32,16 +32,13 @@ const ListItem = props => {
         <a rel="noopener noreferrer" target="_blank" href={feed.url} title={feed.url}>
           {`(${feed.url ? getDomain(feed.url) : ""})`}
         </a>
-        <span>{feedConstants.by}</span>
+        <span>{Constants.by}</span>
         <span className="feed__author">{feed.author}</span>
-        <span>{feedConstants.timeDuration}</span>
-        <FeedButton
+        <span>{Constants.timeDuration}</span>
+        <Button
           event={() => setHide()}
           className="feed__btn feed__btn--grey"
-          btntext={feedConstants.hide} />
-
-
-
+        >{Constants.hide}</Button>
       </div>
     </article>
   );
