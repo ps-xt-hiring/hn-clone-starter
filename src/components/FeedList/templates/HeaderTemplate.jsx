@@ -9,4 +9,4 @@ export default function HeaderTemplate({data}) {
       <li className='label new-label'>{data[1]}</li>
     </ul>
   )
-} 
+}
