@@ -54,13 +54,16 @@ class News extends PureComponent {
             </span>
           </a>
           <span className="by blackClr">
+
             by
             <span className="author">{author}</span>
           </span>
           <span className="time">{moment(createdAt).fromNow()}</span>
           <span onClick={deleteStory} role="button" className="hide" tabIndex="0" onKeyPress={deleteStory}>
+
             [
             <button type="button">hide</button>
+
             ]
           </span>
         </div>

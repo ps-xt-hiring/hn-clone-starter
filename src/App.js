@@ -104,23 +104,23 @@ class App extends React.Component {
             {loading ? (
               <div>...Loading</div>
             ) : (
-                Object.keys(stories).map((news, index) => {
-                  if (this.checkHideList(stories[index].objectID)) {
-                    return (
-                      <News
-                        objectID={stories[index].objectID}
-                        key={stories[index].objectID}
-                        index={index}
-                        details={stories[index]}
-                        delete={() => this.deleteEvent(stories[index].objectID, index)
+              Object.keys(stories).map((news, index) => {
+                if (this.checkHideList(stories[index].objectID)) {
+                  return (
+                    <News
+                      objectID={stories[index].objectID}
+                      key={stories[index].objectID}
+                      index={index}
+                      details={stories[index]}
+                      delete={() => this.deleteEvent(stories[index].objectID, index)
                         }
-                        upvoteClicked={() => this.upvoteClick(index)}
-                      />
-                    );
-                  }
-                  return '';
-                })
-              )}
+                      upvoteClicked={() => this.upvoteClick(index)}
+                    />
+                  );
+                }
+                return '';
+              })
+            )}
           </ul>
           <button
             type="button"
