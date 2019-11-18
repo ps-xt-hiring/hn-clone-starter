@@ -1,24 +1,24 @@
-import React, { Fragment } from "react";
-import News from "./News";
+import React, { Fragment } from 'react';
+import News from './components/News';
 
-class HackerNewsPost extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
       stories: [],
       page: 0,
-      more: "more"
+      more: 'more',
     };
     this.fetchStories(0);
   }
 
   // FETCH STORIES
-  fetchStories = async page => {
+  fetchStories = async (page) => {
     // console.log('Loading!!!');
     let { more } = this.state;
     const response = await fetch(
-      `https://hn.algolia.com/api/v1/search?tags=front_page&page=${page}`
+      `https://hn.algolia.com/api/v1/search?tags=front_page&page=${page}`,
     );
 
     const data = await response.json();
@@ -26,19 +26,19 @@ class HackerNewsPost extends React.Component {
 
     if (!data.hits.length) {
       pageNumber = 0;
-      more = "Go Back";
+      more = 'Go Back';
     }
     this.setState({
       stories: data.hits,
       loading: false,
       page: pageNumber,
-      more
+      more,
     });
   };
 
-  checkHideList = objectID => {
-    if (localStorage.getItem("hideStories")) {
-      const objectIds = JSON.parse(localStorage.getItem("hideStories"));
+  checkHideList = (objectID) => {
+    if (localStorage.getItem('hideStories')) {
+      const objectIds = JSON.parse(localStorage.getItem('hideStories'));
       if (objectIds.indexOf(objectID) !== -1) {
         return false;
       }
@@ -53,8 +53,8 @@ class HackerNewsPost extends React.Component {
     const copyStories = [...stories];
     copyStories.splice(index, 1);
     let objectIds = [];
-    if (localStorage.getItem("hideStories")) {
-      objectIds = JSON.parse(localStorage.getItem("hideStories"));
+    if (localStorage.getItem('hideStories')) {
+      objectIds = JSON.parse(localStorage.getItem('hideStories'));
     }
 
     if (objectIds.length) {
@@ -62,14 +62,14 @@ class HackerNewsPost extends React.Component {
     } else {
       objectIds = [objectID];
     }
-    localStorage.setItem("hideStories", JSON.stringify(objectIds));
+    localStorage.setItem('hideStories', JSON.stringify(objectIds));
     this.setState({
-      stories: copyStories
+      stories: copyStories,
     });
   };
 
   // UPVOTE POINTS ON CLICK
-  upvoteClick = index => {
+  upvoteClick = (index) => {
     // 1.Copy the story
     const { stories } = this.state;
     const copyStories = [...stories];
@@ -81,29 +81,19 @@ class HackerNewsPost extends React.Component {
 
     // 3.Update State
     this.setState({
-      stories: copyStories
+      stories: copyStories,
     });
   };
 
   render() {
-    const { loading, stories, more, page } = this.state;
+    const {
+      loading, stories, more, page,
+    } = this.state;
     return (
       <Fragment>
         <ul className="header">
           <li>
-            <a href="/#" target="_blank" rel="noopener noreferrer">
-
-
-
-
-
-
-
-
-
-
-              logo
-                                    </a>
+            <a href="/#" rel="" target="_blank">logo</a>
           </li>
           <li className="active">top</li>
           <li>new</li>
@@ -114,24 +104,23 @@ class HackerNewsPost extends React.Component {
             {loading ? (
               <div>...Loading</div>
             ) : (
-              Object.keys(stories).map((news, index) => {
-                if (this.checkHideList(stories[index].objectID)) {
-                  return (
-                    <News
-                      objectID={stories[index].objectID}
-                      key={stories[index].objectID}
-                      index={index}
-                      details={stories[index]}
-                      delete={() =>
-                        this.deleteEvent(stories[index].objectID, index)
-                      }
-                      upvoteClicked={this.upvoteClick.bind(this, index)}
-                    />
-                  );
-                }
-                return "";
-              })
-            )}
+                Object.keys(stories).map((news, index) => {
+                  if (this.checkHideList(stories[index].objectID)) {
+                    return (
+                      <News
+                        objectID={stories[index].objectID}
+                        key={stories[index].objectID}
+                        index={index}
+                        details={stories[index]}
+                        delete={() => this.deleteEvent(stories[index].objectID, index)
+                        }
+                        upvoteClicked={() => this.upvoteClick(index)}
+                      />
+                    );
+                  }
+                  return '';
+                })
+              )}
           </ul>
           <button
             type="button"
@@ -145,4 +134,4 @@ class HackerNewsPost extends React.Component {
     );
   }
 }
-export default HackerNewsPost;
+export default App;

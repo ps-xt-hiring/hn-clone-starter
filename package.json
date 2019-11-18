@@ -14,6 +14,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test:lint:fix": "eslint --fix ./src/",
     "test:lint:js": "eslint --ext=js --ext=jsx .",
     "test:lint:css": "stylelint \"**/*.css\" --fix",
     "test": "react-scripts test",

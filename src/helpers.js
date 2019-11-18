@@ -2,10 +2,10 @@
 export function getUrl(string) {
   let strUrl = string;
   if (strUrl) {
-    strUrl = strUrl.split("/");
+    strUrl = strUrl.split('/');
     return strUrl[2];
   }
-  return `"NA"`;
+  return '"NA"';
 }
 
 // ADDING https:// and REMOVING PARENTHESIS from stringUrl
@@ -15,5 +15,5 @@ export function redirectUrl(strUrl) {
     redirecUrl = `https://${strUrl}`;
     return redirecUrl;
   }
-  return "NA";
+  return 'NA';
 }

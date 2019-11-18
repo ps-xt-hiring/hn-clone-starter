@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
-import moment from "moment";
-import PropTypes from "prop-types";
-import { getUrl, redirectUrl } from "../helpers";
+import React, { PureComponent } from 'react';
+import moment from 'moment';
+import PropTypes from 'prop-types';
+import { getUrl, redirectUrl } from '../helpers';
 
 class News extends PureComponent {
   render() {
@@ -12,18 +12,18 @@ class News extends PureComponent {
         title,
         url,
         author,
-        created_at: createdAt
-      }
+        created_at: createdAt,
+      },
     } = this.props;
     let isGreater;
     if (upvote > 50 && upvote < 100) {
-      isGreater = "cherry";
+      isGreater = 'cherry';
     } else if (upvote > 100) {
-      isGreater = "orange";
+      isGreater = 'orange';
     } else {
-      isGreater = "";
+      isGreater = '';
     }
-    const { upvoteClicked } = this.props;
+    const { upvoteClicked, delete: deleteStory } = this.props;
 
     return (
       <li className="news-detail">
@@ -36,7 +36,7 @@ class News extends PureComponent {
               tabIndex="0"
               className="up"
               onKeyPress={upvoteClicked}
-              onClick={() => upvoteClicked()}
+              onClick={upvoteClicked}
             />
           </span>
         </div>
@@ -46,127 +46,23 @@ class News extends PureComponent {
             <span className="sitestr">
 
 
-
-
-
-
               (
               <span>{getUrl(url)}</span>
 
 
-
-
-
               )
-
-                        </span>
+            </span>
           </a>
           <span className="by blackClr">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             by
-<span className="author">{author}</span>
+            <span className="author">{author}</span>
           </span>
           <span className="time">{moment(createdAt).fromNow()}</span>
-          <span onClick={this.props.delete} className="hide">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          <span onClick={deleteStory} role="button" className="hide" tabIndex="0" onKeyPress={deleteStory}>
             [
             <button type="button">hide</button>
-
-
-
-
-
-
-
-
             ]
-</span>
+          </span>
         </div>
       </li>
     );
@@ -177,12 +73,13 @@ News.defaultProps = {
   details: {
     num_comments: null,
     points: null,
-    title: "",
-    url: "",
-    author: "",
-    created_at: ""
+    title: '',
+    url: '',
+    author: '',
+    created_at: '',
   },
-  upvoteClicked: () => { }
+  upvoteClicked: () => { },
+  delete: () => { },
 };
 News.propTypes = {
   details: PropTypes.shape({
@@ -191,8 +88,9 @@ News.propTypes = {
     title: PropTypes.string,
     url: PropTypes.string,
     author: PropTypes.string,
-    created_at: PropTypes.string
+    created_at: PropTypes.string,
   }),
-  upvoteClicked: PropTypes.func
+  upvoteClicked: PropTypes.func,
+  delete: PropTypes.func,
 };
 export default News;
