@@ -20,7 +20,8 @@ export default function UpVote({score, id}) {
 
   return (
     <p className={classnames('up-score', {'disabled': upVote})}>
-      {points}<span onClick={() => handleUpVote(id)} >upVote</span>
+      {points}
+      <span role='button' onClick={() => handleUpVote(id)}>upVote</span>
     </p>
-  )
+  );
 }

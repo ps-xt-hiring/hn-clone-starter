@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../../../images/y18.gif';
 
-export default function HeaderTemplate({data}) {
+export default function HeaderTemplate({ data }) {
   return (
     <ul className='header'>
       <li className='logo'><img src={Logo} alt="load" /></li>

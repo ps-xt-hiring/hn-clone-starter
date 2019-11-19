@@ -16,7 +16,7 @@ export default function FetchFeeds() {
   const [state, dispatch] = useReducer(feedsReducer, {
     isLoading: false,
     isError: false,
-    data: []
+    data: [],
   });
 
   useEffect(() => {
@@ -33,13 +33,9 @@ export default function FetchFeeds() {
     e.preventDefault();
     setPage(page + 1);
     fetchFeeds(dispatch, state, page + 1);
-  }
+  };
 
-  const seeMore = () => {
-    return (
-      <button className='btn-link' onClick={handleSeeMore} >{MORE}</button>
-    )
-  }
+  const seeMore = () => <button type='button' className='btn-link' onClick={handleSeeMore}>{MORE}</button>;
 
   const handleListData = (item) => {
     const results = [];
@@ -56,7 +52,7 @@ export default function FetchFeeds() {
     });
 
     return results;
-  }
+  };
 
   return (
     <div className='feeds-wrapper'>
@@ -71,4 +67,4 @@ export default function FetchFeeds() {
       <Loader loading={state.isLoading} />
     </div>
   )
-}
+};

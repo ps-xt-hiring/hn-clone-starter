@@ -22,4 +22,4 @@ export default function FeedsReducer(state, action) {
     default:
       return 'error';
   }
-};
+}
