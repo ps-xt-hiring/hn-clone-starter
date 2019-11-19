@@ -102,7 +102,7 @@ class FeedsData extends Component {
       localStorage.setItem('hidden-feeds', JSON.stringify(hiddenFeeds));
       return {
         feeds: remainingFeeds,
-        hiddenFeeds
+        hiddenFeeds,
       };
     });
   }
