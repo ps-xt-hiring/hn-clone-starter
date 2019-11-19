@@ -4,6 +4,7 @@ import * as newsActions from './actions/newsActions';
 import NewsComponent from './components/NewsComponent';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import "./components/news.scss";
+import LoaderComponent from './components/LoaderComponents';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -35,6 +36,7 @@ class App extends React.Component {
 
     }
     renderTableData = (items) => (
+      
         <div className="table-responsive">
         <div className="header-section">
             <img src={`https://news.ycombinator.com/y18.gif`} alt="Manideep 151295" />
@@ -43,6 +45,8 @@ class App extends React.Component {
             <p>new</p>
 
             </div>
+            {this.props.loading ? <LoaderComponent /> : ""}
+          
             <table className="table">
                
                 <tbody>
@@ -81,6 +85,7 @@ class App extends React.Component {
             upvoted_news_id.push(objectId);
         }
         if (upvoteIds && upvoteIds.includes(objectId)) {
+            alert("Already Upvoted. ");
 
             return;
         }
@@ -95,6 +100,7 @@ class App extends React.Component {
     handleAlreadyVoted = (objectId) => {
         let upvoteIds = JSON.parse(localStorage.getItem("upvotedIds"));
         if (upvoteIds && upvoteIds.includes(objectId)) {
+            
 
             return true;
         }
@@ -128,13 +134,15 @@ class App extends React.Component {
 App.propTypes = {
     dispatch: PropTypes.func.isRequired,
     news: PropTypes.array.isRequired,
-    pageNumber: PropTypes.number.isRequired
+    pageNumber: PropTypes.number.isRequired,
+    loading: PropTypes.bool
 };
 
 function mapStateToProps(state) {
     return {
         news: state.appData.news,
-        pageNumber: state.appData.pageNumber
+        pageNumber: state.appData.pageNumber,
+        loading: state.appData.loading
     };
 
 }

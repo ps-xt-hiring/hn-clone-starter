@@ -9,11 +9,19 @@ export default function newsReducer(state = initialState, action) {
     let upDatedNews;
     let newsItems;
     switch (action.type) {
+        case actionTypes.FETCH_NEWS_REQUEST:
+
+            return {
+                ...state,
+                loading: action.payload.loading
+            }
+
+
         case actionTypes.FETCH_NEWS_SUCCESS:
-        
-             hidden_ids = JSON.parse(localStorage.getItem("hiddenIds"));
-             upvotedIds = JSON.parse(localStorage.getItem("upvotedIds"));
-           
+
+            hidden_ids = JSON.parse(localStorage.getItem("hiddenIds"));
+            upvotedIds = JSON.parse(localStorage.getItem("upvotedIds"));
+
             if (hidden_ids) {
                 upDatedNewsList = action.payload.news.filter((news) => !hidden_ids.includes(news.objectID));
 
@@ -21,11 +29,11 @@ export default function newsReducer(state = initialState, action) {
                 upDatedNewsList = action.payload.news;
             }
             if (upvotedIds) {
-              
+
                 upDatedNewsList = upDatedNewsList.map(newsItem => {
-                  
+
                     if (upvotedIds.includes(newsItem.objectID)) {
-                      
+
                         newsItem.points = newsItem.points + 1;
                     }
                     return newsItem;
@@ -34,16 +42,17 @@ export default function newsReducer(state = initialState, action) {
             return {
                 ...state,
                 news: upDatedNewsList,
-                pageNumber: action.payload.pageNumber
+                pageNumber: action.payload.pageNumber,
+                loading: false
             }
         case actionTypes.HIDE_NEWS:
-             upDatedNews = state.news.filter((news) => !action.payload.hiddenIds.includes(news.objectID));
+            upDatedNews = state.news.filter((news) => !action.payload.hiddenIds.includes(news.objectID));
             return { ...state, hiddenIds: action.payload.hiddenIds, news: upDatedNews }
 
 
 
         case actionTypes.UPVOTE_NEWS:
-             newsItems = state.news.map(newsItem => {
+            newsItems = state.news.map(newsItem => {
                 if (newsItem.objectID === action.payload.upVoteId) {
                     newsItem.points = newsItem.points + 1;
                 }

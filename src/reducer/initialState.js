@@ -5,8 +5,8 @@ const initialState = {
     pageNumber: 1,
     hiddenIds: [],
     upvoteIds: [],
-    upVoteId: ''
-
+    upVoteId: '',
+    loading:false
 };
 
 export default initialState;
