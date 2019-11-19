@@ -10,7 +10,7 @@ class FeedsData extends Component {
       feeds: [],
       page: 0,
       isHide: false,
-      hiddenFeeds:[]
+      hiddenFeeds: [],
     };
 
     this.loadMore = this.loadMore.bind(this);
@@ -19,20 +19,6 @@ class FeedsData extends Component {
 
   componentDidMount() {
     this.getFeed();
-  }
-
-  handleHideButtonClick(elemId) {
-    const deletedFeeds = this.state.feeds.filter(delFeed => delFeed.key === elemId);
-    const remainingFeeds = this.state.feeds.filter(feed => feed.key !== elemId);
-    
-    this.setState(prev => {
-      const hiddenFeeds = prev.hiddenFeeds.concat(deletedFeeds);
-      localStorage.setItem('hidden-feeds', JSON.stringify(hiddenFeeds));
-      return {
-        feeds: remainingFeeds,
-        hiddenFeeds
-      }
-    });
   }
 
   getFeed() {
@@ -106,6 +92,20 @@ class FeedsData extends Component {
         document.querySelectorAll('.loadMore')[0].hidden = true;
         return false;
       });
+  }
+
+  handleHideButtonClick(elemId) {
+    const deletedFeeds = this.state.feeds.filter(delFeed => delFeed.key === elemId);
+    const remainingFeeds = this.state.feeds.filter(feed => feed.key !== elemId);
+    
+    this.setState(prev => {
+      const hiddenFeeds = prev.hiddenFeeds.concat(deletedFeeds);
+      localStorage.setItem('hidden-feeds', JSON.stringify(hiddenFeeds));
+      return {
+        feeds: remainingFeeds,
+        hiddenFeeds
+      }
+    });
   }
 
   loadMore() {
