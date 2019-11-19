@@ -1,0 +1,15 @@
+@import "./sass/index";
+body {
+  font-size: $font-size-root;
+  color: $color-black;
+  font-family: $primary-font;
+  margin: 0;
+}
+.loader {
+  text-align: center;
+  color: $color-orange;
+}
+#{$a-tags} {
+  text-decoration: none;
+  color: $color-black;
+}
