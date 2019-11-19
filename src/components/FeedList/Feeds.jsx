@@ -35,36 +35,78 @@ export default function FetchFeeds() {
     fetchFeeds(dispatch, state, page + 1);
   };
 
-  const seeMore = () => <button type='button' className='btn-link' onClick={handleSeeMore}>{MORE}</button>;
+  const seeMore = () => <button type="button" className="btn-link" onClick={handleSeeMore}>{MORE}</button>;
 
   const handleListData = (item) => {
     const results = [];
 
     results.push(item.num_comments);
-    results.push(<UpVote score={item.relevancy_score} id={item.objectID} />);
-    results.push(() => {
-      const url = item.url ? item.url : '';
-      return (
-        <> 
-          {item.title} <a href={url}>({extractDomain(url)})</a><span> by</span> {item.author} {<TimeAgo date={item.created_at} />}
-        </>
-      );
-    });
+    results.push(<UpVote score={item.relevancy_score} id={Number(item.objectID)} />);
+    results.push(() => (
+      <>
+        {` ${item.title} `}
+        {item.url
+          && (
+            <a href={item.url}>
+              (
+                { extractDomain(item.url) }
+              )
+            </a>
+          )
+        }
+        <span> by</span>
+        {` ${item.author} `}
+        {<TimeAgo date={item.created_at} />}
+      </>
+    ));
 
     return results;
   };
 
+  const isActive = elem => Array.prototype.includes.call(elem, 'active');
+
+  const handleTop = (e) => {
+    if (isActive(e.target.classList)) {
+      e.target.classList.remove('active');
+    } else {
+      e.target.classList.add('active');
+    }
+
+    setResult([]);
+    fetchFeeds(dispatch, state, 0);
+  };
+
+  const handleKey = (e) => {
+    if (e.which === 30) {
+      handleTop(e);
+    }
+  };
+
   return (
-    <div className='feeds-wrapper'>
-      <HeaderTemplate data={[TOP, NEW]} />
-      {result.length !== 0 &&
-        <>
-          <List items={result.map((item) => <List items={handleListData(item)} />)} />
-          <List className='see-more' items={[seeMore]} />
-        </>
+    <div className="feeds-wrapper">
+      <HeaderTemplate
+        data={[TOP, NEW]}
+        handleTop={handleTop}
+        handleKey={handleKey}
+      />
+      { result.length !== 0
+        && (
+          <section className="listing">
+            {
+              result.map(item => (
+                <List
+                  key={Number(item.objectID)}
+                  items={handleListData(item)}
+                  hideEnable
+                />
+              ))
+            }
+            <List className="see-more" items={[' ', ' ', seeMore]} />
+          </section>
+        )
       }
 
       <Loader loading={state.isLoading} />
     </div>
-  )
-};
+  );
+}

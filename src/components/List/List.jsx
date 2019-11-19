@@ -1,16 +1,62 @@
-import React from 'react';
+import React, {
+  Fragment,
+  useState,
+  useEffect,
+  useRef,
+} from 'react';
+import PropTypes from 'prop-types';
 import './list.scss';
 
-export default function List({items=[], keys, className=''}) {
+let i = 0;
+
+export default function List({
+  items = [],
+  className = '',
+  hideEnable = false,
+}) {
+  const inputEl = useRef(null);
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    if (hideEnable) {
+      const node = document.createElement('SPAN');
+      node.innerHTML = ' [hide]';
+      node.setAttribute('role', 'button');
+      node.onclick = () => setShow(false);
+      inputEl.current.lastChild.appendChild(node);
+    }
+  }, []);
+
   return (
-    <ul className={`list-wrapper ${ className}`}>
-      {
-        items.map((itm, index) => {
-          return (
-            <li key={index} className='item'>{typeof itm === 'function' ? itm() : itm}</li>
-          )
-        })
+    <>
+      {show
+        && <>
+          <ul className={`list-wrapper ${className}`} ref={inputEl}>
+            {
+              items.map((itm) => {
+                i += 1;
+                return (
+                  <Fragment key={i}>
+                    <li className="item">
+                      { typeof itm === 'function' ? itm() : itm }
+                    </li>
+                  </Fragment>
+                );
+              })
+            }
+          </ul>
+        </>
       }
-    </ul>
-  )
+    </>
+  );
 }
+
+List.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.func,
+  ])),
+  className: PropTypes.string,
+};

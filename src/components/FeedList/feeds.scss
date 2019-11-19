@@ -2,49 +2,55 @@
   max-width: 85%;
   margin: auto;
 
-  & > .list-wrapper {
+  .listing {
     background: #f6f6ef;
 
-    & > .item {
+    .list-wrapper {
       width: 100%;
 
       &:nth-child(2n) {
         background-color: #d6d6d4;
       }
+    }
 
-      & > .list-wrapper {
-        .item {
-          &:nth-child(1), &:nth-child(2) {
-            width: 70px;
-            text-align: right;
+    .list-wrapper {
+      .item {
+        &:nth-child(1), &:nth-child(2) {
+          width: 70px;
+          text-align: right;
+        }
+
+        &:nth-child(3) {
+          width: calc(100% - 140px);
+        }
+
+        @media all and (max-width: 767px) {
+          &:nth-child(1) {
+            order: 3;
+          }
+
+          &:nth-child(2) {
+            order: 2;
           }
 
           &:nth-child(3) {
-            width: calc(100% - 140px);
-          }
-
-          @media all and (max-width: 767px) {
-            &:nth-child(1) {
-              order: 3;
-            }
-
-            &:nth-child(2) {
-              order: 2;
-            }
-
-            &:nth-child(3) {
-              order: 1;
-              width: 100%;
-            }
+            order: 1;
+            width: 100%;
           }
         }
-      }
 
-      time {
-        color: grey;
+        span[role='button'] {
+          cursor: pointer;
+        }
       }
     }
-    
+
+    time {
+      color: grey;
+    }
+  }
+
+  & > .list-wrapper {
     &.see-more {
       & > li {
         @media all and (min-width: 768px) {
@@ -64,11 +70,23 @@
   display: flex;
 
   li {
+    line-height: 12px;
+    padding: 6px;
+
     &:nth-child(2) {
-      border-right: 1px solid #000;
-      margin: 6px;
-      line-height: 12px;
-      padding: 0 10px;
+      .btn-link {
+        border-right: 1px solid #000;
+      }
+    }
+
+    &:nth-child(3) {
+      .btn-link {
+        padding-left: 0;
+      }
+    }
+
+    &.active {
+      color: #fff;
     }
   }
 
@@ -84,10 +102,9 @@
   }
 }
 
-.btn-link {
-  box-shadow: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #ff6600;
+.see-more {
+  .btn-link {
+    color: #ff6600;
+  }
 }
+
