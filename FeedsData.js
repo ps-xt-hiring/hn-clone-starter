@@ -10,7 +10,6 @@ class FeedsData extends Component {
       feeds: [],
       page: 0,
       isHide: false,
-      hiddenFeeds: [],
     };
 
     this.loadMore = this.loadMore.bind(this);
@@ -95,15 +94,15 @@ class FeedsData extends Component {
   }
 
   handleHideButtonClick(elemId) {
-    const deletedFeeds = this.state.feeds.filter(delFeed => delFeed.key === elemId);
-    const remainingFeeds = this.state.feeds.filter(feed => feed.key !== elemId);
+    const deletedFeeds = this.state.feeds.filter(delFeed => ({ delFeed.key === elemId }));
+    const remainingFeeds = this.state.feeds.filter(feed => ({ feed.key !== elemId }));
     
     this.setState(prev => {
       const hiddenFeeds = prev.hiddenFeeds.concat(deletedFeeds);
       localStorage.setItem('hidden-feeds', JSON.stringify(hiddenFeeds));
       return {
         feeds: remainingFeeds,
-        hiddenFeeds
+        hiddenFeeds,
       }
     });
   }
