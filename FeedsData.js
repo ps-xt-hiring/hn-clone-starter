@@ -94,10 +94,10 @@ class FeedsData extends Component {
   }
 
   handleHideButtonClick(elemId) {
-    const { feeds } = this.state.feeds;
+    const { feeds } = this.state;
     const deletedFeeds = feeds.filter(delFeed => delFeed.key === elemId);
     const remainingFeeds = feeds.filter(feed => feed.key !== elemId);
-    this.setState(prev => {
+    this.setState((prev) => {
       const hiddenFeeds = prev.hiddenFeeds.concat(deletedFeeds);
       localStorage.setItem('hidden-feeds', JSON.stringify(hiddenFeeds));
       return {
