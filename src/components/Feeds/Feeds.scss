@@ -1,0 +1,26 @@
+@import '../../helpers/_utils.scss';
+
+.feeds {
+
+    .feed:nth-child(odd) {
+        background-color: $colorBackgroundLight;
+    }
+
+    .feed:nth-child(even) {
+        background-color: $colorBackgroundDark;
+    }
+
+    .button, .button:focus {
+        border: none;
+        font-size: 0.8rem;
+        background-color: $colorBackgroundDark;
+        text-decoration: none;
+        outline: none;
+    }
+
+    .loadMore {
+        padding-left: 16.67%;
+        background-color: $colorBackgroundDark;
+        border-bottom: 2px solid $colorPrimary;
+    }
+}

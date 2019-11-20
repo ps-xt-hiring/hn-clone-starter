@@ -1,0 +1,15 @@
+
+.frontPage {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: .7rem;
+    
+    a {
+        text-decoration: none;
+    }
+    a:focus {
+         outline: none;
+    }
+}
