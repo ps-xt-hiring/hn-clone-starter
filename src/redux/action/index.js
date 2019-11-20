@@ -7,13 +7,11 @@ import {
 export const fetchProducts = pagination => (dispatch) => {
   fetch(`https://hn.algolia.com/api/v1/search?page=${pagination}`)
     .then(response => response.json())
-    .then(data =>
-      // console.log(data);
-      dispatch({
-        type: FETCH_PRODUCTS,
-        payload: data,
-        newItems: pagination,
-      }));
+    .then(data => dispatch({
+      type: FETCH_PRODUCTS,
+      payload: data,
+      newItems: pagination,
+    }));
 };
 
 export const hideItems = (objId, items) => (dispatch) => {

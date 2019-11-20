@@ -80,14 +80,14 @@ button:hover{
   padding-left: 20px;
 }
 
-.listing__title__container {
+.listing__title__description {
   color: #828282;
   font-size: 12px;
   line-height: 14px;
   padding: 0 5px 0px 5px;
 }
-.listing__title__container__userName,
-.listing__title__container__hide {
+.listing__title__description__userName,
+.listing__title__description__hide {
   color: $base_Color;
   padding: 0px 5px 0px 5px;
   background: none;
@@ -95,8 +95,10 @@ button:hover{
   cursor: pointer;
 }
 
-.listing__title__container__linkDomain {
+.listing__title__description__linkDomain {
   padding-right: 5px;
+  color: #828282;
+  text-decoration: none;
 }
 
 .loadMoreItems{
@@ -118,9 +120,13 @@ button:hover{
   border-bottom: 5px solid $base_Color;
 }
 
+address{
+  display: inline-block;
+}
+
 
 @media only screen and (max-width: 767px){
-    .listing__title__container{
+    .listing__title__description{
         display: block;
     }
 .container {

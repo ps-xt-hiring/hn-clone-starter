@@ -6,7 +6,9 @@
     "jest": true
   },
   "rules": {
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "linebreak-style": [2, "windows"],
+    "react/jsx-one-expression-per-line": "off"
   },
   "settings": {
     "import/resolver": {

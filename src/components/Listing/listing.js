@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import findDomain from '../../utilities';
 
 const Listing = (props) => {
@@ -10,7 +11,7 @@ const Listing = (props) => {
       {productData.map((item) => {
         const objId = item.objectID;
         return (
-          <div key={item.objectID} className="listing">
+          <article key={item.objectID} className="listing">
             <div className="listing__num-comments">
               {item.num_comments ? item.num_comments : 0}
             </div>
@@ -30,32 +31,26 @@ const Listing = (props) => {
             </div>
             <div className="listing__title">
               {item.title ? item.title : 'Title Not Found'}
-              <span className="listing__title__container">
-                <span className="listing__title__container__linkDomain">
-                  {findDomain(item.url)
-                    ? `(${findDomain(item.url)})`
-                    : 'Domain is not found'}
-                </span>
-                by
-                {' '}
-                <span className="listing__title__container__userName">
+              <span className="listing__title__description">
+                {findDomain(item.url) ? <Link to="/" className="listing__title__description__linkDomain">{findDomain(item.url)}</Link> : 'Domain is not found'} by
+                <address className="listing__title__description__userName">
                   {item.author ? item.author : null}
-                </span>
-                <span className="listing__title__container__postedWhen">
+                </address>
+                <time className="listing__title__description__postedWhen">
                   {moment(item.created_at).fromNow()
                     ? moment(item.created_at).fromNow()
                     : null}
-                </span>
+                </time>
                 <button
-                  className="listing__title__container__hide"
+                  className="listing__title__description__hide"
                   onClick={() => hideItems(objId)}
-                  type="button"  
+                  type="button"
                 >
                   [Hide]
                 </button>
               </span>
             </div>
-          </div>
+          </article>
         );
       })}
     </React.Fragment>
