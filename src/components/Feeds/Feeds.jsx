@@ -12,11 +12,15 @@ class Feeds extends Component {
     error: false
   };
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+    this._isMounted = false;
+  }
 
-    // this.setState({ loadingFeeds: true}, () => {
+  componentDidMount() {
+    this._isMounted = true;
     trackPromise(
-      axios.get(`search?query=foo&tags=story&page=${this.state.pageNum}`)
+      this._isMounted && axios.get(`search?query=foo&tags=story&page=${this.state.pageNum}`)
       .then( response => {
         let responseFeeds = response.data.hits;
         let lsFeeds = Object.keys(localStorage);
@@ -32,7 +36,7 @@ class Feeds extends Component {
             }
           }
         }
-        this.setState({
+        this._isMounted && this.setState({
           feeds: responseFeeds
         });
       })
@@ -40,9 +44,7 @@ class Feeds extends Component {
         this.setState({error: true});
       })
     )
-    
   }
-
 
   componentDidUpdate(prevProps, prevState) {
     if(prevState.pageNum >= this.state.pageNum ) {
@@ -76,6 +78,9 @@ class Feeds extends Component {
 
   }
 
+  componentWillUnmount() {
+    this._isMounted=false;
+  }
 
   loadMoreFeeds = () => {
     this.setState({pageNum: this.state.pageNum + 1});
