@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader Component Should not return any ouput on false 1`] = `null`;
+
+exports[`Loader Component Should return on true 1`] = `
+<p
+  className="loading"
+>
+  Loading...
+</p>
+`;
