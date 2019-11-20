@@ -1,0 +1,28 @@
+@import './_variables.scss';
+
+
+.greyText {
+    color: $colorLink;
+}
+
+.whiteText, .whiteText:hover{
+    color: $colorWhite;
+}
+
+.darkGreyText, .darkGreyText:hover{
+    color: $colorBlack;
+}
+
+
+.bold {
+    font-weight: bold;
+}
+
+
+.m-tb-2 {
+    margin: .2rem 0;
+}
+
+.m-lr-2 { 
+    margin: .2rem;
+}
