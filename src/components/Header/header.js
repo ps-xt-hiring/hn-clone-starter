@@ -6,10 +6,10 @@ const logo = require('../../assets/images/y18.png');
 const ListHeader = () => (
   <header className="header">
     <Link to="/">
-      <img src={logo} width="18" alt="Hacker News" className="image-border" />
+      <img src={logo} width="18" alt="Hacker News" className="header__imageBorder" />
     </Link>
-    <span className="top">top</span>
-    <span className="new">| new</span>
+    <strong className="header__top">top</strong>
+    <strong className="header__new">| new</strong>
   </header>
 );
 

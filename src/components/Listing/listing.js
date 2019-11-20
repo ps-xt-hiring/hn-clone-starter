@@ -46,15 +46,13 @@ const Listing = (props) => {
                     ? moment(item.created_at).fromNow()
                     : null}
                 </span>
-                <span
+                <button
                   className="listing__title__container__hide"
                   onClick={() => hideItems(objId)}
-                  role="button"
-                  tabIndex="0"
-                  onKeyPress={() => hideItems(objId)}
+                  type="button"  
                 >
                   [Hide]
-                </span>
+                </button>
               </span>
             </div>
           </div>

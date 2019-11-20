@@ -34,9 +34,9 @@ class ListingUI extends Component {
           upVote={item => this.upVote(item)}
         />
 
-        <span className="loadMoreItems" onClick={this.ShowMoreItems}>
+        <button type="button" className="loadMoreItems" onClick={this.ShowMoreItems}>
           More
-        </span>
+        </button>
       </React.Fragment>
     );
   }
