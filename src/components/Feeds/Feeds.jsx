@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import { Col } from 'reactstrap';
 import axios from 'axios';
 import { trackPromise } from 'react-promise-tracker';
-
 import Feed from '../Feed/Feed';
 import './Feeds.scss';
 
-
-
 class Feeds extends Component {
-
   state = {
     feeds: [],
     feedUpvoteCount: 0,
@@ -104,8 +99,6 @@ class Feeds extends Component {
 
   render () {
     let feeds;
-    const loading = this.state.loadingFeeds;
-
     if(this.state.error) {
       feeds = <h5 style={{textAlign:'center'}}>Oops! There was an error fetching your data!</h5>;
     }

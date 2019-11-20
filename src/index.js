@@ -10,19 +10,15 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://hn.algolia.com/api/v1';
 
-axios.interceptors.request.use(request => {
-   console.log('Request Made: ', request);
-   return request;
-}, error => {
-    return Promise.reject(error);
+axios.interceptors.request.use((request) => request,
+error => {
+  return Promise.reject(error);
 });
 
-axios.interceptors.response.use(response => {
-    console.log('Response received: ', response);
-    return response;
- }, error => {
-     return Promise.reject(error);
- });
+axios.interceptors.response.use((response) => response,
+error => {
+  return Promise.reject(error);
+});
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
