@@ -3,6 +3,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import findDomain from '../../utilities';
+import localized from '../../utilities/localizationData.json';
 
 const Listing = (props) => {
   const { productData, hideItems, upVote } = props;
@@ -30,9 +31,9 @@ const Listing = (props) => {
               &nbsp;
             </div>
             <div className="listing__title">
-              {item.title ? item.title : 'Title Not Found'}
+              {item.title ? item.title : `${localized.TitleText}`}
               <span className="listing__title__description">
-                {findDomain(item.url) ? <Link to="/" className="listing__title__description__linkDomain">{findDomain(item.url)}</Link> : 'Domain is not found'} by
+                {findDomain(item.url) ? <Link to="/" className="listing__title__description__linkDomain">{findDomain(item.url)}</Link> : `${localized.domainText}`} {localized.by}
                 <address className="listing__title__description__userName">
                   {item.author ? item.author : null}
                 </address>
@@ -46,7 +47,7 @@ const Listing = (props) => {
                   onClick={() => hideItems(objId)}
                   type="button"
                 >
-                  [Hide]
+                  {localized.hideText}
                 </button>
               </span>
             </div>
