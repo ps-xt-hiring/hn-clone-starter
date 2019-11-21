@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .App-logo {
@@ -14,8 +15,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 14px;
+  color: black;
 }
 
 .App-link {
@@ -29,5 +30,153 @@
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+.page-container {
+  width: 100%;
+  margin: 0 auto;
+  float: none;
+}
+
+
+
+/**
+* Header Styles Begin
+*/
+
+.list-header {
+  display: flex;
+  background: #ff6600;
+  padding: 10px;
+}
+
+.y-logo {
+  max-height: 20px;
+}
+
+.view-options {
+  margin-left: 1em;
+}
+
+.view-option {
+  cursor: pointer;
+}
+
+.view-option.active {
+  color: white;
+}
+
+
+
+/**
+* Table Styles Begin
+*/
+
+table {
+  border-spacing: 0;
+  width: 100%;
+  
+}
+
+thead > tr {
+  visibility: hidden;
+}
+
+tr {
+  text-align: left;
+  color: black;
+}
+
+td {
+  padding: 3px 10px;
+}
+
+tr:nth-of-type(odd), tr:nth-of-type(odd) td {
+  background: #f6f6f0;
+  border: 1px solid #f6f6f0;
+ 
+}
+
+tr:nth-of-type(even), tr:nth-of-type(even) td {
+  background: #e6e6e0;
+  border: 1px solid #e6e6e0;
+}
+
+.story-index {
+padding-left: 20px;
+}
+
+.upvote-icon {
+  max-height: 12px;
+}
+
+.extra-info {
+  font-size: 14px;
+}
+
+.light {
+  color: #94918d;
+}
+
+.dark {
+  color: black;
+}
+
+.lighter {
+  color: #c5c4c2;
+}
+
+.hide-link {
+  cursor: pointer;
+}
+
+.load-more-container {
+  width: 100%;
+  background: #f6f6f0;
+  color: #ff6600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.load-more-container > span {
+  padding-left: 15%;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .page-container {
+    width: 85%;
+  }
+
+  .App-header {
+    font-size: 16px;
+  }
+
+  .extra-info {
+    font-size: 12px;
+  }
+  
+
+  .story-index {
+    padding-left: 30px;
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+  .page-container {
+    width: 70%;
+  }
+
+  .App-header {
+    font-size: 18px;
+  }
+
+  .extra-info {
+    font-size: 14px;
+  }
+
+  .story-index {
+    padding-left: 50px;
   }
 }

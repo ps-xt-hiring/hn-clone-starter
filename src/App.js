@@ -2,26 +2,48 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Publicis Sapient - XT hiring challenge!!</h1>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-and save to reload. Refactor at will, but please do not
-          modify the entry point
-          {' '}
-          <code>index.js</code>
-.
-        </p>
-      </header>
-    </div>
-  );
+
+import StoryList from './StoryList';
+import ListHeader from './ListHeader';
+
+class App extends React.Component {
+
+  constructor(props, state) {
+    super(props, state);
+
+    this.state = {
+      currentView : 'top'
+    };
+
+    this.handleViewChange = this.handleViewChange.bind(this);
+  }
+
+  handleViewChange(view) {
+    this.setState({
+      currentView: view
+    });
+  }
+
+
+  render() {
+
+    const {currentView} = this.state;
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" aria-label="Sapient XT Hiring Assessment Logo" />
+
+          <div className="page-container">
+            <ListHeader onViewChange={this.handleViewChange}></ListHeader>
+            <StoryList view={currentView}></StoryList>
+          </div>
+
+
+        </header>
+      </div>
+    );
+  }
+
 }
 
 export default App;
