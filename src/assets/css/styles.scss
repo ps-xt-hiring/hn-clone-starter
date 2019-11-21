@@ -9,9 +9,9 @@ body {
   color: $base_Color;
 }
 
-button:focus{
-  outline: none;
-}
+// button:focus{
+//   outline: none;
+// }
 
 button:hover{
  color: $highlight_color;

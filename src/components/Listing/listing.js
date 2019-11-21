@@ -1,8 +1,7 @@
 import React from 'react';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import findDomain from '../../utilities';
+import { findDomain, timeSince } from '../../utilities';
 import localized from '../../utilities/localizationData.json';
 
 const Listing = (props) => {
@@ -31,23 +30,30 @@ const Listing = (props) => {
               &nbsp;
             </div>
             <div className="listing__title">
-              {item.title ? item.title : `${localized.TitleText}`}
+              {item.title ? item.title : `${localized.en.TitleText}`}
               <span className="listing__title__description">
-                {findDomain(item.url) ? <Link to="/" className="listing__title__description__linkDomain">{findDomain(item.url)}</Link> : `${localized.domainText}`} {localized.by}
+                {findDomain(item.url) ? <Link to="/" className="listing__title__description__linkDomain">{findDomain(item.url)}</Link> : `${localized.en.domainText}`} {localized.en.by}
                 <address className="listing__title__description__userName">
                   {item.author ? item.author : null}
                 </address>
                 <time className="listing__title__description__postedWhen">
-                  {moment(item.created_at).fromNow()
+                  {/* {moment(item.created_at).fromNow()
                     ? moment(item.created_at).fromNow()
-                    : null}
+                    : null} */}
+                  {timeSince(new Date(item.created_at))}
                 </time>
                 <button
                   className="listing__title__description__hide"
                   onClick={() => hideItems(objId)}
                   type="button"
+                  onKeyUp={(e) => {
+                    if (e.keyCode === '32' || e.keyCode === '13') {
+                      hideItems(objId);
+                    }
+                  }
+                  }
                 >
-                  {localized.hideText}
+                  {localized.en.hideText}
                 </button>
               </span>
             </div>
