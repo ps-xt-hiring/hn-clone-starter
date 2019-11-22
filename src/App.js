@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import moment from 'moment';
 import './App.css';
 
@@ -108,9 +108,9 @@ function App() {
             isUpvoted,
             isHidden,
           }, index) => (
-              <>
+              <Fragment key={`${created_at_i}-${index}`}>
                 {!isHidden &&
-                  <div className={`story ${isHidden && 'hidden'}`} key={`${created_at_i}-${index}`}>
+                  <div className={`story ${isHidden && 'hidden'}`}>
                     <div className="index">{index + 1 + storyCount}</div>
                     <div className="details">
                       <div className={`upvote ${isUpvoted && 'upvoted'}`} onClick={() => upvoteStory(objectID)}>{points}</div>
@@ -130,7 +130,7 @@ function App() {
                     </div>
                   </div>
                 }
-              </>
+              </Fragment>
             ))}
 
         {/* provide option to load next page stories */}
