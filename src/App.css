@@ -89,6 +89,10 @@ body {
   color: #000;
 }
 
+.details div.upvoted {
+  color: #ff6600;
+}
+
 .stories .load-more {
   color: #ff6600;
   margin-left: 104px;
@@ -105,7 +109,7 @@ body {
   margin-right: 20px;
 }
 
-.details div.upvote:hover {
+.details div.upvote:hover::after {
   cursor: pointer;
 }
 
