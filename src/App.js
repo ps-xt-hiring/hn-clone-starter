@@ -2,9 +2,10 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-
-import StoryList from './StoryList';
-import ListHeader from './ListHeader';
+import Constants from './constants';
+import StoryList from './components/StoryList';
+import ListHeader from './components/ListHeader';
+import DataEngine from './components/DataEngine';
 
 class App extends React.Component {
 
@@ -26,7 +27,6 @@ class App extends React.Component {
 
 
   render() {
-
     const {currentView} = this.state;
     return (
       <div className="App">
@@ -38,6 +38,9 @@ class App extends React.Component {
             <StoryList view={currentView}></StoryList>
           </div>
 
+          <div id="reset-cache-link" onClick={()=> DataEngine.resetCache() }>
+            <span>{Constants.Text.resetCache}</span>
+          </div>
 
         </header>
       </div>

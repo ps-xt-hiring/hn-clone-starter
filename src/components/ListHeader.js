@@ -1,4 +1,5 @@
 import React from 'react';
+import Constants from '../constants';
 
 export default class ListHeader extends React.Component {
 
@@ -26,9 +27,9 @@ export default class ListHeader extends React.Component {
         return <div className="list-header">
             <img src="https://news.ycombinator.com/y18.gif" className="y-logo" alt="Y-Combinator Logo"></img>
             <div className="view-options">
-                <span className={"view-option " + (active === 'top' ? 'active' : '') } onClick={ ()=> this.toggleView('top')} >top</span>
+                <span className={"view-option " + (active === 'top' ? 'active' : '') } onClick={ ()=> this.toggleView('top')} >{Constants.Text.top}</span>
                 <span> | </span>
-                <span className={"view-option "+ (active === 'new' ? 'active' : '') } onClick={() => this.toggleView('new') }>new</span>
+                <span className={"view-option "+ (active === 'new' ? 'active' : '') } onClick={() => this.toggleView('new') }>{Constants.Text.new}</span>
             </div>
         </div>
     }

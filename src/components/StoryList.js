@@ -30,6 +30,8 @@ export default class StoryList extends React.Component {
         this.loadInitialData = this.loadLatestStories.bind(this);
         this.loadNextPage = this.loadNextPage.bind(this);
         this.updateData = this.updateData.bind(this);
+
+        this.scrollToTop = this.scrollToTop.bind(this);
     }
 
     componentDidMount() {
@@ -45,12 +47,21 @@ export default class StoryList extends React.Component {
             }
         }
     }
+
+    scrollToTop() {
+        const c = document.documentElement.scrollTop || document.body.scrollTop;
+        if (c > 0) {
+            window.requestAnimationFrame(this.scrollToTop);
+            window.scrollTo(0, c - c / 8);
+        }
+    };
     
     updateData(data) {
         this.setState({
-        data: data
+            data: data
         });
-        console.log(data);
+
+        this.scrollToTop();
     }
     
     loadLatestStories() {
@@ -87,22 +98,26 @@ export default class StoryList extends React.Component {
         // Mocking snip behavior
         story.hidden = true;
         this.setState({ data: this.state.data })
+
+        DataEngine.hideStory(idToHide);
     }
 
     upvotePost(idtoUpvote) {
         let story = this.state.data.filter((story)=> story.id === idtoUpvote)[0];
         // Mocking upvote behavior
-        story.upvote = true;
-        story.points++;
+        story.upvoted = true;
+        story.proxyPoints++;
         this.setState({ data: this.state.data })
+
+        DataEngine.upvoteStory(idtoUpvote);
     }
 
     downvotePost(idtoDownvote) {
         let story = this.state.data.filter((story)=> story.id === idtoDownvote)[0];
 
         // Mocking downvote behavior
-        story.upvote = false;
-        story.points--;
+        story.upvoted = false;
+        story.proxyPoints--;
         this.setState({ data: this.state.data })
     }
 
