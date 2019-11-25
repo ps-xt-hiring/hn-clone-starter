@@ -1,33 +1,182 @@
-.App {
-  text-align: center;
+html {
+  font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  font-size: 0.9rem;
+  color: #777;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+body {
+  width: 84%;
+  margin: auto;
+  margin-top: 8px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.story .index,
+.details .upvote,
+.details .author span,
+.details .hide button,
+.news .options button {
+  color: #000;
+  background: transparent;
+  border: none;
+  padding: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.details .upvote {
+  cursor: auto;
+}
+
+.news {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.news .options {
+  align-self: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.news .options button.active {
+  color: #fff;
+}
 
-  to {
-    transform: rotate(360deg);
-  }
+.details div.upvote button {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.news .options button:hover {
+  cursor: pointer;
+}
+
+.news .options span:first-child {
+  margin-left: 8px;
+}
+
+.details div.upvote button::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  margin: -8px 4px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 10px solid;
+  border-bottom-color: #a3a3a3;
+}
+
+.news .options button:not(:last-child)::after {
+  content: " | ";
+  color: #000;
+}
+
+.news .header {
+  display: flex;
+  height: 32px;
+  background-color: #f60;
+}
+
+.header .logo {
+  color: #fff;
+  font-size: 1.3rem;
+  text-align: center;
+  align-self: center;
+  border: 1px solid #fff;
+  margin: 8px;
+  height: 22px;
+  width: 22px;
+}
+
+.stories {
+  display: flex;
+  flex-direction: column;
+  background-color: #e964290a;
+}
+
+.stories div.story:nth-child(even) {
+  background-color: #e3e3e3;
+}
+
+.story,
+.details {
+  display: flex;
+  padding: 4px 24px;
+}
+
+.details {
+  flex-wrap: wrap;
+}
+
+.story div {
+  margin-right: 12px;
+  align-self: center;
+}
+
+.story div.index {
+  margin-right: 0;
+}
+
+.details div.upvoted {
+  color: #f60;
+}
+
+.load-more {
+  cursor: pointer;
+}
+
+.stories .load-more {
+  color: #f60;
+  margin-left: 96px;
+  padding: 4px;
+  background: transparent;
+  border: none;
+  width: 100px;
+  outline: none;
+}
+
+.story .index {
+  text-align: right;
+  width: 2%;
+  padding: 4px;
+}
+
+.details div.upvote {
+  margin-right: 20px;
+}
+
+.details div.upvote:hover button::after {
+  cursor: pointer;
+}
+
+.details .title a {
+  color: #000;
+  font-weight: 400;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.details .url::before {
+  content: "(";
+}
+
+.details .url::after {
+  content: ")";
+}
+
+.details .hide::before {
+  content: "[ ";
+}
+
+.details .hide::after {
+  content: " ]";
+}
+
+.details .author::before {
+  content: "by ";
+}
+
+.details .url a {
+  text-decoration: none;
+  color: inherit;
 }
