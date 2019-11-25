@@ -1,4 +1,4 @@
-html{
+html {
   font-family: 'Verdana', 'Geneva', 'sans-serif';
   font-size: 0.9rem;
   color: #828282;
@@ -10,7 +10,15 @@ body {
   margin-top: 8px;
 }
 
-.news{
+.story .index,
+.details .upvote,
+.details .author span,
+.details .hide span,
+.news .options span {
+  color: #000000;
+}
+
+.news {
   display: flex;
   flex-direction: column;
 }
@@ -20,20 +28,20 @@ body {
 }
 
 .news .options span.active {
-  color: #fff;
-}
-
-.news .options span:first-child {
- margin-left: 8px;
+  color: #ffffff;
 }
 
 .news .options span:hover {
   cursor: pointer;
 }
 
+.news .options span:first-child {
+  margin-left: 8px;
+}
+
 .news .options span:not(:last-child)::after {
   content: " | ";
-  color: #000;
+  color: #000000;
 }
 
 .news .header {
@@ -43,11 +51,11 @@ body {
 }
 
 .header .logo {
-  color: #fff;
+  color: #ffffff;
   font-size: 1.3rem;
   text-align: center;
   align-self: center;
-  border: 1px solid #fff;
+  border: 1px solid #ffffff;
   margin: 8px;
   height: 22px;
   width: 22px;
@@ -63,7 +71,8 @@ body {
   background-color: #e3e3e3;
 }
 
-.story, .details {
+.story,
+.details {
   display: flex;
   padding: 4px 24px;
 }
@@ -77,29 +86,26 @@ body {
   align-self: center;
 }
 
-.story div.index{
+.story div.index {
   margin-right: 0;
-}
-
-.story .index,
-.details .upvote,
-.details .author span,
-.details .hide span,
-.news .options span {
-  color: #000;
 }
 
 .details div.upvoted {
   color: #ff6600;
 }
 
+.load-more,
+.hide {
+  cursor: pointer;
+}
+
 .stories .load-more {
   color: #ff6600;
   margin-left: 104px;
-  padding: 4px;;
+  padding: 4px;
 }
 
-.story .index{
+.story .index {
   text-align: right;
   width: 2%;
   padding: 4px;
@@ -107,10 +113,6 @@ body {
 
 .details div.upvote {
   margin-right: 20px;
-}
-
-.details div.upvote:hover::after {
-  cursor: pointer;
 }
 
 .details div.upvote::after {
@@ -125,8 +127,12 @@ body {
   border-bottom-color: #a3a3a3;
 }
 
+.details div.upvote:hover::after {
+  cursor: pointer;
+}
+
 .details .title a {
-  color: #000;
+  color: #000000;
   font-weight: 400;
   font-size: 1.2rem;
   text-decoration: none;
@@ -147,15 +153,12 @@ body {
 .details .hide::after {
   content: " ]";
 }
+
 .details .author::before {
   content: "by ";
 }
+
 .details .url a {
   text-decoration: none;
   color: inherit;
-}
-
-.load-more,
-.hide {
-  cursor: pointer;
 }
