@@ -1,5 +1,5 @@
 html {
-  font-family: "Verdana", "Geneva", "sans-serif";
+  font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
   font-size: 0.9rem;
   color: #828282;
 }
@@ -15,7 +15,7 @@ body {
 .details .author span,
 .details .hide button,
 .news .options button {
-  color: #000000;
+  color: #000;
   background: transparent;
   border: none;
   padding: 2px;
@@ -32,7 +32,13 @@ body {
 }
 
 .news .options button.active {
-  color: #ffffff;
+  color: #fff;
+}
+
+.details div.upvote button {
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 .news .options button:hover {
@@ -43,23 +49,35 @@ body {
   margin-left: 8px;
 }
 
+.details div.upvote button::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  margin: -8px 4px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 10px solid;
+  border-bottom-color: #a3a3a3;
+}
+
 .news .options button:not(:last-child)::after {
   content: " | ";
-  color: #000000;
+  color: #000;
 }
 
 .news .header {
   display: flex;
   height: 32px;
-  background-color: #ff6600;
+  background-color: #f60;
 }
 
 .header .logo {
-  color: #ffffff;
+  color: #fff;
   font-size: 1.3rem;
   text-align: center;
   align-self: center;
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   margin: 8px;
   height: 22px;
   width: 22px;
@@ -95,7 +113,7 @@ body {
 }
 
 .details div.upvoted {
-  color: #ff6600;
+  color: #f60;
 }
 
 .load-more,
@@ -104,7 +122,7 @@ body {
 }
 
 .stories .load-more {
-  color: #ff6600;
+  color: #f60;
   margin-left: 96px;
   padding: 4px;
   background: transparent;
@@ -123,30 +141,12 @@ body {
   margin-right: 20px;
 }
 
-.details div.upvote button {
-  background: transparent;
-  border: none;
-  outline: none;
-}
-
-.details div.upvote button::after {
-  content: "";
-  width: 0;
-  height: 0;
-  position: absolute;
-  margin: -8px 4px;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-bottom: 10px solid;
-  border-bottom-color: #a3a3a3;
-}
-
 .details div.upvote:hover button::after {
   cursor: pointer;
 }
 
 .details .title a {
-  color: #000000;
+  color: #000;
   font-weight: 400;
   font-size: 1.2rem;
   text-decoration: none;
