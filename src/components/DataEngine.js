@@ -1,4 +1,3 @@
-import moment from 'moment';
 import Constants from '../constants';
 
 export default class DataEngine {
@@ -39,7 +38,7 @@ export default class DataEngine {
                     id: story.objectID,
                     upvoted: story.objectID in upvotedStories,
                     shortUrl: shortUrl,
-                    age: moment(story.created_at).fromNow(),
+                    age: +(new Date(story.created_at)),
                     commentsCount: story.num_comments,
                     proxyPoints: story.points + (story.objectID in upvotedStories ? 1 : 0)
                 };

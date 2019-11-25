@@ -1,5 +1,6 @@
 import React from 'react';
 import {PropTypes} from 'prop-types';
+import ReactTimeAgo from 'react-time-ago';
 
 import Constants from '../constants';
 
@@ -7,14 +8,12 @@ export default class Post extends React.Component {
     static propTypes = {
         sequenceNumber: PropTypes.number.isRequired,
         id: PropTypes.string.isRequired,
-
         points: PropTypes.number,
-        upvote: PropTypes.bool,
+        upvoted: PropTypes.bool,
         hidden: PropTypes.bool,
         author: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         url: PropTypes.string,
-
         onHide: PropTypes.func.isRequired,
         onUpvote: PropTypes.func.isRequired
       }
@@ -23,10 +22,8 @@ export default class Post extends React.Component {
         sequenceNumber: 1,
         id: '1',
         points: 0,
-        upvote: false,
-        author: "demo author",
-        title: "demo-title",
-        url: 'www.google.com'
+        upvoted: false,
+        hidden: false,
       }
     
       constructor (props) {
@@ -65,10 +62,10 @@ export default class Post extends React.Component {
 
               <span className="extra-info">
                 {shortUrl && (<span className="light">({shortUrl})</span>)}{' '}
-                <br class="break-for-mobile"/>
-                <span class="break-for-mobile">&nbsp;</span>
+                <br className="break-for-mobile"/>
+                <span className="break-for-mobile">&nbsp;</span>
                 <span className="lighter">{Constants.Text.by}<span className="dark">{author}</span></span>{' '}
-                <span className="light"> {age}</span>{' '}
+                <span className="light">  <ReactTimeAgo date={age}/></span>{' '}
                 <span className="hide-link"onClick={this.sendHideRequest}>{Constants.Text.hide}</span>
               </span>
             </td>
