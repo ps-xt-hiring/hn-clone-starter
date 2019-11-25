@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React, { useState, useEffect, Fragment } from 'react';
 import moment from 'moment';
 import './App.css';
@@ -31,13 +32,14 @@ function App() {
             news.points = storedValue.points;
             news.isHidden = storedValue.isHidden;
           } else {
-            setLocalStorage({ storyId: news.objectID, points: news.points })
+            setLocalStorage({ storyId: news.objectID, points: news.points });
           }
         });
         setStories(validNews);
         setIsLoading(false);
       })
-      .catch(error => console.log(error));
+      // eslint-disable-next-line no-console
+      .catch(error => console.error(error));
   }, [page]);
 
   const loadTopNews = () => {
@@ -56,11 +58,15 @@ function App() {
     const updatedStories = [...stories].reduce((acc, story) => {
       const s = { ...story };
       if (s.objectID === storyId) {
-        s.points += s.points;
+        s.points += 1;
         s.isUpvoted = true;
 
         const storedValue = JSON.parse(getLocalStorage(story.objectID));
-        setLocalStorage({ storyId: story.objectID, points: s.points, isHidden: storedValue.isHidden });
+        setLocalStorage({
+          storyId: story.objectID,
+          points: s.points,
+          isHidden: storedValue.isHidden,
+        });
       }
       acc.push(s);
       return acc;
@@ -70,7 +76,7 @@ function App() {
 
   const hideStory = (storyId) => {
     const updatedStories = [...stories].reduce((acc, story) => {
-      const s = { ...story }
+      const s = { ...story };
       if (s.objectID === storyId) {
         s.isHidden = true;
 
@@ -89,8 +95,8 @@ function App() {
       <div className="header">
         <div className="logo">Y</div>
         <div className="options">
-          <span className={`${(activeHeader === 'top') && 'active'}`} role="option" onClick={loadTopNews}>top</span>
-          <span className={`${(activeHeader === 'new') && 'active'}`} role="option" onClick={loadNewestNews}>new</span>
+          <button type="button" className={`${(activeHeader === 'top') && 'active'}`} onClick={loadTopNews}>top</button>
+          <button type="button" className={`${(activeHeader === 'new') && 'active'}`} onClick={loadNewestNews}>new</button>
         </div>
       </div>
 
@@ -99,8 +105,7 @@ function App() {
         {isLoading ? <p>Loading...</p> : stories
           .map(({
             url,
-            created_at,
-            created_at_i,
+            created_at: createdAt,
             title,
             author,
             points,
@@ -108,34 +113,39 @@ function App() {
             isUpvoted,
             isHidden,
           }, index) => (
-            <Fragment key={`${created_at_i}-${index}`}>
-              {!isHidden &&
-                <div className={`story ${isHidden && 'hidden'}`}>
-                  <div className="index">{index + 1 + storyCount}</div>
-                  <div className="details">
-                    <div className={`upvote ${isUpvoted && 'upvoted'}`} onClick={() => upvoteStory(objectID)}>{points}</div>
-                    <div className="title">
-                      <a target="_blank" rel="noopener noreferrer" href={url}>{title}</a>
+            <Fragment key={objectID}>
+              {!isHidden
+                  && (
+                    <div className={`story ${isHidden && 'hidden'}`}>
+                      <div className="index">{index + 1 + storyCount}</div>
+                      <div className="details">
+                        <div className={`upvote ${isUpvoted && 'upvoted'}`}>
+                          {points}
+                          <button type="button" onClick={() => upvoteStory(objectID)} />
+                        </div>
+                        <div className="title">
+                          <a target="_blank" rel="noopener noreferrer" href={url}>{title}</a>
+                        </div>
+                        <div className="url">
+                          <a target="_blank" rel="noopener noreferrer" href={new URL(url).hostname}>{new URL(url).hostname}</a>
+                        </div>
+                        <div className="author">
+                          <span>{author}</span>
+                        </div>
+                        <div className="age">{moment(createdAt).fromNow()}</div>
+                        <div className="hide">
+                          <button type="button" onClick={() => hideStory(objectID)}>hide</button>
+                        </div>
+                      </div>
                     </div>
-                    <div className="url">
-                      <a target="_blank" rel="noopener noreferrer" href={new URL(url).hostname}>{new URL(url).hostname}</a>
-                    </div>
-                    <div className="author">
-                      <span>{author}</span>
-                    </div>
-                    <div className="age">{moment(created_at).fromNow()}</div>
-                    <div className="hide">
-                      <span onClick={() => hideStory(objectID)}>hide</span>
-                    </div>
-                  </div>
-                </div>
-              }
+                  )
+                }
             </Fragment>
           ))}
 
         {/* provide option to load next page stories */}
         {stories.length !== 0 && (
-          <span className="load-more" role="button" onClick={loadMore}>More</span>
+          <button className="load-more" type="button" onClick={loadMore}>More</button>
         )}
       </div>
     </div>

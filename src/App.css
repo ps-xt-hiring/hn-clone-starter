@@ -1,5 +1,5 @@
 html {
-  font-family: 'Verdana', 'Geneva', 'sans-serif';
+  font-family: "Verdana", "Geneva", "sans-serif";
   font-size: 0.9rem;
   color: #828282;
 }
@@ -13,9 +13,13 @@ body {
 .story .index,
 .details .upvote,
 .details .author span,
-.details .hide span,
-.news .options span {
+.details .hide button,
+.news .options button {
   color: #000000;
+  background: transparent;
+  border: none;
+  padding: 2px;
+  outline: none;
 }
 
 .news {
@@ -27,11 +31,11 @@ body {
   align-self: center;
 }
 
-.news .options span.active {
+.news .options button.active {
   color: #ffffff;
 }
 
-.news .options span:hover {
+.news .options button:hover {
   cursor: pointer;
 }
 
@@ -39,7 +43,7 @@ body {
   margin-left: 8px;
 }
 
-.news .options span:not(:last-child)::after {
+.news .options button:not(:last-child)::after {
   content: " | ";
   color: #000000;
 }
@@ -101,8 +105,12 @@ body {
 
 .stories .load-more {
   color: #ff6600;
-  margin-left: 104px;
+  margin-left: 96px;
   padding: 4px;
+  background: transparent;
+  border: none;
+  width: 100px;
+  outline: none;
 }
 
 .story .index {
@@ -115,19 +123,25 @@ body {
   margin-right: 20px;
 }
 
-.details div.upvote::after {
+.details div.upvote button {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.details div.upvote button::after {
   content: "";
   width: 0;
   height: 0;
   position: absolute;
-  margin: 2px 4px;
+  margin: -8px 4px;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-bottom: 10px solid;
   border-bottom-color: #a3a3a3;
 }
 
-.details div.upvote:hover::after {
+.details div.upvote:hover button::after {
   cursor: pointer;
 }
 
