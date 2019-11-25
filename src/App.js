@@ -95,8 +95,8 @@ function App() {
       <div className="header">
         <div className="logo">Y</div>
         <div className="options">
-          <button type="button" className={`${(activeHeader === 'top') && 'active'}`} onClick={loadTopNews}>top</button>
-          <button type="button" className={`${(activeHeader === 'new') && 'active'}`} onClick={loadNewestNews}>new</button>
+          <button type="button" title="top" className={`${(activeHeader === 'top') && 'active'}`} onClick={loadTopNews}>top</button>
+          <button type="button" title="new" className={`${(activeHeader === 'new') && 'active'}`} onClick={loadNewestNews}>new</button>
         </div>
       </div>
 
@@ -121,7 +121,7 @@ function App() {
                       <div className="details">
                         <div className={`upvote ${isUpvoted && 'upvoted'}`}>
                           {points}
-                          <button type="button" onClick={() => upvoteStory(objectID)} />
+                          <button type="button" title="upvote" onClick={() => upvoteStory(objectID)} />
                         </div>
                         <div className="title">
                           <a target="_blank" rel="noopener noreferrer" href={url}>{title}</a>
@@ -134,7 +134,7 @@ function App() {
                         </div>
                         <div className="age">{moment(createdAt).fromNow()}</div>
                         <div className="hide">
-                          <button type="button" onClick={() => hideStory(objectID)}>hide</button>
+                          <button type="button" title="hide" onClick={() => hideStory(objectID)}>hide</button>
                         </div>
                       </div>
                     </div>
@@ -145,7 +145,7 @@ function App() {
 
         {/* provide option to load next page stories */}
         {stories.length !== 0 && (
-          <button className="load-more" type="button" onClick={loadMore}>More</button>
+          <button className="load-more" type="button" title="More" onClick={loadMore}>More</button>
         )}
       </div>
     </div>
