@@ -36,7 +36,6 @@ const Header = styled.header`
 
 const NewsHeader = (props) => {
   const {sortBy} = props;
-  console.log(sortBy);
   return (
   <Header>
     <header className="newsHeader">
