@@ -1,0 +1,24 @@
+.table>thead>tr>th.header {
+    padding: 5px;
+}
+
+td {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+}
+
+.story-url {
+    font-size: 11px;
+}
+
+.table tbody th {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #828282;
+}
+
+.table tbody th i {
+    padding-top: 5px;
+    font-size: 10pt;
+    color: #828282;
+}
