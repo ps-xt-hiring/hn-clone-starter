@@ -10,7 +10,7 @@ top: 0px;
 width: 100%;
 height: 100%;
 z-index: 9999;
-background: url('assets/images/loader.gif') 
+background: url('assets/images/logo.png') 
             50% 50% no-repeat rgb(249,249,249);
 `;
 export const LoadMoreNews = styled.button`
@@ -43,7 +43,7 @@ const News = (props) => {
     <>
       {loading ? <Loader><div className="newsLoader"></div></Loader> :
         <>
-        <NewsHeader sortNews={sortNews} newsList={newsListingData} sortBy={sortBy}/>
+          <NewsHeader sortNews={sortNews} newsList={newsListingData} sortBy={sortBy} />
           <NewsList
             newsListingData={newsListingData}
             hideNews={newsId => props.hideNews(newsId, newsListingData)}

@@ -17,7 +17,7 @@ const Header = styled.h3`
   align-items: center;
   color: #fff;
   margin:0
-  header > a {
+  .newsHeader > a {
   text-decoration: none;
  }
   button{
