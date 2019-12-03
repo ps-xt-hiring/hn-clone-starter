@@ -1,86 +1,88 @@
 .feedsTable {
-    position: relative;
-    padding: 5px;
-    height: 100vh;
-    margin: 0 auto;
-    overflow: auto;
-    max-width: 900px;
+  position: relative;
+  padding: 5px;
+  height: 100vh;
+  margin: 0 auto;
+  overflow: auto;
+  max-width: 900px;
 }
 
 .loader {
-    position: relative;
-    text-align: center;
-    padding-top: 30px;
+  position: relative;
+  text-align: center;
+  padding-top: 30px;
 }
 
 table {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 tbody {
-    display: block;
-    max-height: calc(100vh - 90px);
-    overflow: auto;
+  display: block;
+  max-height: calc(100vh - 90px);
+  overflow: auto;
 }
-thead, tbody tr {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
+
+thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
 }
 
 .header {
-    height: 30px;
-    background-color: rgba(255, 102, 0);
-    font-size: 14px;
+  height: 30px;
+  background-color: rgba(255, 102, 0);
+  font-size: 14px;
 }
 
 .header span {
-    line-height: 30px;
+  line-height: 30px;
 }
 
 img {
-    height: 18px;
-    width: 18px;
-    border: 2px solid #ffffff;
-    margin: 5px;
-    float: left;
+  height: 18px;
+  width: 18px;
+  border: 2px solid #fff;
+  margin: 5px;
+  float: left;
 }
 
 .topNavLinks a {
-    color: #000000;
-    text-decoration: none;
-    padding: 0px 10px;
+  color: #000;
+  text-decoration: initial;
+  padding: 0 10px;
 }
 
 .topNavLinks a:hover {
-    color: #ffffff;
-}
-
-tbody .feedContainer:nth-child(odd) {
-    background-color: rgba(230, 230, 225);
-}
-
-tbody .feedContainer:nth-child(even) {
-    background-color: rgba(246, 246, 241);
-}
-
-tfoot .feedContainer {
-    background-color: rgba(246, 246, 241);
-    height: 35px;
+  color: #fff;
 }
 
 .feedContainer {
-    height: 25px;
-    font-size: 14px;
+  height: 25px;
+  font-size: 14px;
+}
+
+tfoot .feedContainer {
+  background-color: rgba(246, 246, 241);
+  height: 35px;
+}
+
+tbody .feedContainer:nth-child(odd) {
+  background-color: rgba(230, 230, 225);
+}
+
+tbody .feedContainer:nth-child(even) {
+  background-color: rgba(246, 246, 241);
 }
 
 .moreButton {
-    background: transparent;
-    border: 0;
-    color: rgba(255, 102, 0, 1);
-    margin-left: 120px;
-    font-weight: 700;
-    cursor: pointer;
-    text-decoration: none;
+  background: transparent;
+  border: 0;
+  color: rgba(255, 102, 0, 1);
+  margin-left: 120px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: initial;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
-import Feedview from './components/Feedview'
+import Feedview from './components/Feedview';
 
 
 function App() {

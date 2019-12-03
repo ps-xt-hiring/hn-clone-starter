@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Feedview from './components/Feedview'
+import Feedview from './components/Feedview';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Feedview />, document.getElementById('root'));
