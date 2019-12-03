@@ -1,17 +1,45 @@
 .feedsTable {
     position: relative;
-    padding: 0 30px;
+    padding: 5px;
     height: 100vh;
     margin: 0 auto;
     overflow: auto;
+    max-width: 900px;
 }
 
-.feedsTable header {
+.loader {
+    position: relative;
+    text-align: center;
+    padding-top: 30px;
+}
+
+table {
+    position: relative;
+    width: 100%;
+}
+
+tbody {
+    display: block;
+    max-height: calc(100vh - 90px);
+    overflow: auto;
+}
+thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.header {
     height: 30px;
-    background-color: rgba(255, 102, 0)
+    background-color: rgba(255, 102, 0);
+    font-size: 14px;
 }
 
-.feedsTable header img {
+.header span {
+    line-height: 30px;
+}
+
+img {
     height: 18px;
     width: 18px;
     border: 2px solid #ffffff;
@@ -19,17 +47,40 @@
     float: left;
 }
 
-.feedsTable header .topNavLinks {
-    padding-left: 10px;
-    line-height: 30px;
-}
-
-.feedsTable header .topNavLinks a {
+.topNavLinks a {
     color: #000000;
     text-decoration: none;
     padding: 0px 10px;
 }
 
-.feedsTable header .topNavLinks a:hover {
+.topNavLinks a:hover {
     color: #ffffff;
+}
+
+tbody .feedContainer:nth-child(odd) {
+    background-color: rgba(230, 230, 225);
+}
+
+tbody .feedContainer:nth-child(even) {
+    background-color: rgba(246, 246, 241);
+}
+
+tfoot .feedContainer {
+    background-color: rgba(246, 246, 241);
+    height: 35px;
+}
+
+.feedContainer {
+    height: 25px;
+    font-size: 14px;
+}
+
+.moreButton {
+    background: transparent;
+    border: 0;
+    color: rgba(255, 102, 0, 1);
+    margin-left: 120px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
 }
