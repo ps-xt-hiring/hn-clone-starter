@@ -121,9 +121,9 @@ class Feedview extends React.Component {
                               <td className="header" colSpan="3">
                                 <img alt="logo" src={logo} />
                                 <span className="topNavLinks">
-                                  <a href="/top">top</a>
+                                  <a href="/">top</a>
                                             |
-                                  <a href="/new">new</a>
+                                  <a href="/">new</a>
                                 </span>
                               </td>
                             </tr>
