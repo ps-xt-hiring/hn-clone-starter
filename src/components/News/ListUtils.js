@@ -6,7 +6,7 @@ export const NewsLisitngComments = props => (<p className="newsList__comments-cn
 
 export const NewsLisitngPoints = props => (<p className="newsList__points">{props.points || 0} </p>);
 
-export const VoteUp = props => (<button className="newList__voteUp" onClick={() => props.increaseVoteCount(props.newsId)} onKeyUp={() => props.increaseVoteCount(props.newsId)} aria-label="Up Vote"></button>);
+export const VoteUp = props => (<button className="newList__voteUp" onClick={() => props.increaseVoteCount(props.newsId)} aria-label="Up Vote"></button>);
 
 export const HideNewsButton = props => {
     const { hideNews, newsId } = props;
