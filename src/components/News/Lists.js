@@ -10,7 +10,7 @@ const Listing = (props) => {
       {newsListingData.map((news) => {
         const newsId = news.objectID;
         return (
-          <ListingStyled key={news.objectID} className="newsList">
+          <ListingStyled key={newsId} className="newsList">
             <NewsLisitngComments commentsCount={news.num_comments} />
             <NewsLisitngPoints points={news.points} />
             <VoteUp increaseVoteCount={increaseVoteCount} newsId={newsId} />

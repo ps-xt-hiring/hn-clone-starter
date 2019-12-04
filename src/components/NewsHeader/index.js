@@ -1,24 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-const Logo = styled.span`
-  cursor: pointer;
-  font-size: 16px;  
-  padding: 0.15em 0.25em!important;
-  color: #fff;
-  border: 1px solid #fff;
-`;
+import { GENERALS } from '../../utilities/genericConstants';
 
 const Header = styled.h3`
   background-color: #ff6600;
-  padding: 10px 10px 9px 10px;
+  padding: 10px 10px 0px 10px;
   display: flex;
   align-items: center;
   color: #fff;
   margin:0
   .newsHeader > a {
   text-decoration: none;
+ }
+ img{
+  width: 40px;
+  height:40px
+ }
+ a,span.header-top {
+   float:left
+ }
+ .header-top {
+   line-height: 35px
+ }
+ a {
+    float: left;
+    line-height: 35px;
  }
   button{
     font-size: 14px;
@@ -36,18 +43,20 @@ const Header = styled.h3`
   `;
 
 const NewsHeader = (props) => {
-  const {sortBy} = props;
+  const { sortBy } = props;
   return (
-  <Header>
-    <div className="newsHeader">
-      <Link to="/">
-        <Logo>Y</Logo>
-      </Link>
-      <button onClick = { () => props.sortNews(1, props.newsList) } ><span className={sortBy === 1 ? "tab-selected" : null}>top</span></button>|
-      <button onClick = { () => props.sortNews(2, props.newsList) } ><span className={sortBy === 2 ? "tab-selected" : null}>new</span></button>
-    </div>
-  </Header>
-);
+    <Header>
+      <div className="newsHeader">
+        <Link to="/">
+          <img src="assets/images/logo.png" alt="Hacker News" />
+        </Link>
+        <span className="header-top">
+          <button onClick={() => props.sortNews(1, props.newsList)} ><span className={sortBy === 1 ? "tab-selected" : null}>{GENERALS.top}</span></button>|
+          <button onClick={() => props.sortNews(2, props.newsList)} ><span className={sortBy === 2 ? "tab-selected" : null}>{GENERALS.new}</span></button>
+        </span>
+      </div>
+    </Header>
+  );
 }
 
 export default NewsHeader;

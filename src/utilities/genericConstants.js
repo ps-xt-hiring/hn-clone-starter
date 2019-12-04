@@ -4,7 +4,10 @@ export const NOT_FOUND = {
  }
 
 export const GENERALS = {
-     hide: "hide"
+     hide: "hide",
+     top: "top",
+     new: "new",
+     more: "more"
  }
 
 

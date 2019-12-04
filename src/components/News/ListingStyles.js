@@ -19,8 +19,9 @@ export const ListingStyled = styled.article`
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-bottom: 5px solid #828282;  
-    height: 0;
-    width: 0;    
+    height: 25px;
+    width: 0;
+    padding:0    
   }
   address, button {
     display: inline-block;
@@ -49,6 +50,8 @@ export const ListingStyled = styled.article`
   .newsList__text {
     flex-basis: 90%;
     padding-left: 20px;
+    align-items: center;
+    display: inline-flex;
   }
 
   .newsList__text__main {
