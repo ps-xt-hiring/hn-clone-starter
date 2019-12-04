@@ -51,7 +51,7 @@ const NewsHeader = (props) => {
           <img src="assets/images/logo.png" alt="Hacker News" />
         </Link>
         <span className="header-top">
-          <button onClick={() => props.sortNews(1, props.newsList)} ><span className={sortBy === 1 ? "tab-selected" : null}>{GENERALS.top}</span></button>|
+          <button onClick={() => props.sortNews(1, props.newsList)}><span className={sortBy === 1 ? "tab-selected" : null}>{GENERALS.top}</span></button>|
           <button onClick={() => props.sortNews(2, props.newsList)} ><span className={sortBy === 2 ? "tab-selected" : null}>{GENERALS.new}</span></button>
         </span>
       </div>
