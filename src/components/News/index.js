@@ -24,13 +24,16 @@ export const LoadMoreNews = styled.button`
 
 
 const News = (props) => {
+  const [currentPage, setPageNumber] = React.useState(props.page); //To show test case demo only
   useEffect(() => {
     const { getNews, page } = props;
+    setPageNumber(currentPage); 
     getNews(page);
   }, []);
 
-  const loadMoreNews = () => {
+  const loadMoreNews = () => {  
     const { getNews, page } = props;
+    setPageNumber(currentPage + 1);  //To show test case demo only
     getNews(page + 1);
   };
 
@@ -49,7 +52,7 @@ const News = (props) => {
             hideNews={newsId => props.hideNews(newsId, newsListingData)}
             increaseVoteCount={newsId => increaseVoteCount(newsId)}
           />
-          <LoadMoreNews type="button" className="loadMoreItems" onClick={loadMoreNews}>More
+          <LoadMoreNews type="button" id="loadMoreItems" className="loadMoreItems" onClick={loadMoreNews}>More
             </LoadMoreNews>
         </>
       }

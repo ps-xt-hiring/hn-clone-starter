@@ -23,7 +23,7 @@ export const ListBody = props => {
             {news.title ? news.title : `${NOT_FOUND.title}`}
             <p className="newsList__text__main">
                 {url && <a href={news.url} target="_blank" className="newsList__text__main__link">({url})</a>}
-                {news.author && <address className="newsList__text__description__userName">{news.author}</address>}
+                {news.author && <span className="newsList__text__description__userName">{news.author}</span>}
                 <time className="newsList__timePassedBy">{timePassedBy(new Date(news.created_at))}</time>
                 <HideNewsButton hideNews={hideNews} newsId={news.objectID} />
             </p>

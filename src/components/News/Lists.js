@@ -26,4 +26,7 @@ export default Listing;
 Listing.propTypes = {
   newsListingData: PropTypes.oneOfType([PropTypes.array]).isRequired,
   increaseVoteCount: PropTypes.func.isRequired,
-};
+}
+Listing.defaultProps = {
+  newsListingData: []
+}
