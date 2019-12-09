@@ -18,7 +18,7 @@ function Feed(props) {
   } = feed;
 
   let pointsClass = 'low';
-  if (points > 100) { pointsClass = 'medium'; } else if (points > 50) { pointsClass = 'medium'; }
+  if (points > 100) { pointsClass = 'high'; } else if (points > 50) { pointsClass = 'medium'; }
 
   const storyUrl = url ? `${url.match(/:\/\/(.[^/]+)/)[1]}` : '';
   return (
