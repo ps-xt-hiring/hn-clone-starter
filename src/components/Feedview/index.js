@@ -1,12 +1,10 @@
 import React from 'react';
 import Feed from '../Feed';
+import { getQueryStringValue } from '../../utils';
+import AppConstants from '../../app-contants';
 
-import './feedview.css';
+import './feedview.scss';
 import logo from '../../y18.gif';
-
-function getQueryStringValue(key) {
-  return decodeURIComponent(window.location.search.replace(new RegExp(`^(?:.*[&\\?]${encodeURIComponent(key).replace(/[.+*]/g, '\\$&')}(?:\\=([^&]*))?)?.*$`, 'i'), '$1'));
-}
 
 class Feedview extends React.Component {
   constructor(props) {
@@ -69,7 +67,6 @@ class Feedview extends React.Component {
       }
       feedArr.push(feedObj);
     });
-
     this.setState({
       feeds: feedArr,
       isLoad: false,
@@ -113,7 +110,7 @@ class Feedview extends React.Component {
       <div className="feedsTable">
         {
                     isLoad
-                      ? <div className="loader">Loading...</div>
+                      ? <div className="loader">{AppConstants.DATA_LOAD}</div>
                       : (
                         <table>
                           <thead>
@@ -121,9 +118,9 @@ class Feedview extends React.Component {
                               <td className="header" colSpan="3">
                                 <img alt="logo" src={logo} />
                                 <span className="topNavLinks">
-                                  <a href="/">top</a>
+                                  <a href="/">{AppConstants.TOP}</a>
                                             |
-                                  <a href="/">new</a>
+                                  <a href="/">{AppConstants.NEW}</a>
                                 </span>
                               </td>
                             </tr>
@@ -144,7 +141,7 @@ class Feedview extends React.Component {
                           <tfoot>
                             <tr className="feedContainer">
                               <td colSpan="3">
-                                {!disableMore && <a href={`?page=${parseInt(page, 10) + 1}`} className="moreButton">More</a>}
+                                {!disableMore && <a href={`?page=${parseInt(page, 10) + 1}`} className="moreButton">{AppConstants.MORE}</a>}
                               </td>
                             </tr>
                           </tfoot>

@@ -1,12 +1,12 @@
 .commentsNumber {
   width: 60px;
   text-align: center;
-  font-size: 12px;
+  font-size: 1.2rem;
 }
 
 .upvoteContainer {
   padding-right: 5px;
-  font-size: 12px;
+  font-size: 1.2rem;
   position: relative;
   width: 60px;
   text-align: right;
@@ -16,15 +16,15 @@
   padding-right: 3px;
 }
 
-span.low {
+.low {
   color: #000;
 }
 
-span.medium {
+.medium {
   color: rgba(75, 40, 19, 1);
 }
 
-span.high {
+.high {
   color: rgba(223, 119, 65, 1);
 }
 
@@ -54,18 +54,22 @@ span.high {
 
 .title {
   padding-right: 5px;
+  display: inline-block;
+  margin: 0;
+  font-weight: normal;
 }
 
 .domain {
   padding-right: 5px;
-  font-size: 10px;
+  font-size: 1rem;
   color: rgba(122, 120, 118, 1);
 }
 
 .author {
-  font-size: 10px;
+  font-size: 1rem;
   color: rgba(122, 120, 118, 1);
   padding-right: 5px;
+  display: inline-block;
 }
 
 .author span {
@@ -74,12 +78,12 @@ span.high {
 
 .time {
   padding-right: 5px;
-  font-size: 10px;
+  font-size: 1rem;
   color: rgba(122, 120, 118, 1);
 }
 
 .hideButton {
-  font-size: 10px;
+  font-size: 1rem;
   color: rgba(122, 120, 118, 1);
   background: transparent;
   border: 0;
