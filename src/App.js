@@ -8,12 +8,13 @@ import LoaderComponent from './components/LoaderComponents';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import  logo from './assets/images/y18.gif';
 
 class App extends React.Component {
     componentDidMount() {
         this.props.dispatch(newsActions.newsFetchRequest());
     }
-
+   
     renderTableRows = (items) => {
 
         return (
@@ -36,19 +37,19 @@ class App extends React.Component {
 
     }
     renderTableData = (items) => (
-      
+
         <div className="table-responsive">
-        <div className="header-section">
-            <img src={`https://news.ycombinator.com/y18.gif`} alt="Manideep 151295" />
-            <p className="white">top </p>
-            <p>|</p>
-            <p>new</p>
+            <div className="header-section">
+                <img src={logo} alt="Hacker Rank News Feeds" />
+                <p className="white">top </p>
+                <p>|</p>
+                <p>new</p>
 
             </div>
             {this.props.loading ? <LoaderComponent /> : ""}
-          
+
             <table className="table">
-               
+
                 <tbody>
                     {this.renderTableRows(items)}
                 </tbody>
@@ -100,7 +101,7 @@ class App extends React.Component {
     handleAlreadyVoted = (objectId) => {
         let upvoteIds = JSON.parse(localStorage.getItem("upvotedIds"));
         if (upvoteIds && upvoteIds.includes(objectId)) {
-            
+
 
             return true;
         }
