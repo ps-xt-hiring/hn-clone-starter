@@ -5,6 +5,7 @@ import NewsComponent from './components/NewsComponent';
 
 import "./components/news.scss";
 import LoaderComponent from './components/LoaderComponents';
+import Button from './components/Button';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -111,7 +112,7 @@ class App extends React.Component {
 
     }
     render() {
-        const { news: newsItem, pageNumber, loading } = this.props;
+        const { news: newsItem, pageNumber } = this.props;
         return (
             <div className="container">
                 <div className="row">
@@ -123,8 +124,19 @@ class App extends React.Component {
                             {this.renderTableData(newsItem)}
 
                             {<>
-                                <button className="link-button more-link" onClick={() => this.showMoreData(pageNumber)}>More</button>
-                                {(pageNumber !== 2 ? <button className="link-button first-page-link" onClick={() => this.gotoFirstPage(1)}>First Page</button> : '')}   </>}
+                            <Button
+                                 text={"More"}
+                                 className={"link-button more-link"}
+                                 pageNumber={pageNumber}
+                                 onClick={()=>this.showMoreData(pageNumber)}
+                                  />
+
+                                {(pageNumber !== 2 ?  <Button
+                                 text={"First Page"}
+                                 className={"link-button first-page-link"}
+                                 pageNumber={pageNumber}
+                                 onClick={()=>this.gotoFirstPage(1)}
+                                  /> : '')}   </>}
                         </div>
                     </div>
 

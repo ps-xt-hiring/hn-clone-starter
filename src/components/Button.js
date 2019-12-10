@@ -1,9 +1,11 @@
 /* eslint-disable import/no-webpack-loader-syntax,   import/first*/
 
 import React from 'react';
-const Button = () => {
+
+
+const Button = (props) => {
     return (
-        <p>I am Button </p>
+        <button className={props.className} onClick={props.onClick}>{props.text}</button>
     );
 }
 export default Button;
