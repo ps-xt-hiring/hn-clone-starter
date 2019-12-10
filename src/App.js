@@ -51,7 +51,7 @@ class App extends React.Component {
             <table className="table">
 
                 <tbody>
-                    {this.renderTableRows(items)}
+                    {  this.renderTableRows(items)}
                 </tbody>
             </table>
         </div>
@@ -112,8 +112,8 @@ class App extends React.Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-2"></div>
-                    <div className="col-md-8">
+
+                    <div className="col-md-8 col-md-offset-2">
                         <div className="main-container">
 
 
@@ -124,7 +124,7 @@ class App extends React.Component {
                                 {(pageNumber !== 2 ? <button className="link-button first-page-link" onClick={() => this.gotoFirstPage(1)}>First Page</button> : '')}   </>}
                         </div>
                     </div>
-                    <div className="col-md-2"></div>
+                 
                 </div>
 
             </div>
