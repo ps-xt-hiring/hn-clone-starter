@@ -1,9 +1,10 @@
 import React from 'react';
 
+import './loader.scss';
 const LoaderComponent = () => {
     return (
         <div>
-            <h1>Loading.............</h1>
+            <p className="loader">Loading.............</p>
 
         </div>
     )

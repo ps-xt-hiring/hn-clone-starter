@@ -2,19 +2,19 @@
 import './App.scss';
 import * as newsActions from './actions/newsActions';
 import NewsComponent from './components/NewsComponent';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 import "./components/news.scss";
 import LoaderComponent from './components/LoaderComponents';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import  logo from './assets/images/y18.gif';
+import logo from './assets/images/y18.gif';
 
 class App extends React.Component {
     componentDidMount() {
         this.props.dispatch(newsActions.newsFetchRequest());
     }
-   
+
     renderTableRows = (items) => {
 
         return (
@@ -36,27 +36,30 @@ class App extends React.Component {
 
 
     }
-    renderTableData = (items) => (
+    renderTableData = (items) => {
+        const { loading } = this.props;
+        return (
+            <div className="table-responsive">
+                <div className="header-section">
+                    <img src={logo} alt="Hacker Rank News Feeds" />
+                    <p className="white">top </p>
+                    <p>|</p>
+                    <p>new</p>
 
-        <div className="table-responsive">
-            <div className="header-section">
-                <img src={logo} alt="Hacker Rank News Feeds" />
-                <p className="white">top </p>
-                <p>|</p>
-                <p>new</p>
+                </div>
+              
+                { loading ? <LoaderComponent /> : null}
 
+                <table className="table">
+
+                    <tbody>
+                        {items  ? this.renderTableRows(items) : null}
+                    </tbody>
+                </table>
             </div>
-            {this.props.loading ? <LoaderComponent /> : ""}
+        );
+    }
 
-            <table className="table">
-
-                <tbody>
-                    {  this.renderTableRows(items)}
-                </tbody>
-            </table>
-        </div>
-
-    );
     showMoreData = (pageNumber) => {
 
         this.props.dispatch(newsActions.newsFetchRequest(pageNumber));
@@ -108,7 +111,7 @@ class App extends React.Component {
 
     }
     render() {
-        const { news: newsItem, pageNumber } = this.props;
+        const { news: newsItem, pageNumber, loading } = this.props;
         return (
             <div className="container">
                 <div className="row">
@@ -124,7 +127,7 @@ class App extends React.Component {
                                 {(pageNumber !== 2 ? <button className="link-button first-page-link" onClick={() => this.gotoFirstPage(1)}>First Page</button> : '')}   </>}
                         </div>
                     </div>
-                 
+
                 </div>
 
             </div>
