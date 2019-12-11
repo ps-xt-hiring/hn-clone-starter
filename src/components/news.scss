@@ -1,0 +1,53 @@
+@import '../common/variables';
+.basic-text {
+  color: $dark-grey;
+}
+.basic-black {
+  color: $black;
+}
+.bold{
+  font-weight: bold;
+}
+.arrow-up {
+  width: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid $dark-grey;
+  margin-top: 4px;
+  &.liked{
+    border-bottom: 5px solid $orange;
+  }
+}
+.tag-box {
+  margin-left: 5px;
+  color: $dark-grey;
+
+}
+.more-link {
+  text-align: center;
+  font-size: $basic-font-size;
+  margin-left: 30px;
+  color: $orange;
+}
+.main-container{
+  background-color: $light-grey;
+  table{
+    font-size: $small-font;
+    tr{
+      td{
+        &:nth-child(1){
+          padding-left: 30px; 
+        }
+      }
+      &:nth-child(2n){
+        background-color: $light-grey;
+      }
+      &:nth-child(2n + 1){
+        background-color: $light-yellow;
+    }
+    a{
+      color:  $dark-grey;
+    }
+  }
+  }
+}

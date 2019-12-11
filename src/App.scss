@@ -1,0 +1,16 @@
+@import "./common/variables";
+.header-section {
+  background-color: $orange;
+  p{
+      display: inline-block;
+      padding: 2px 6px;
+      &.white{
+          color: $white;
+      }
+  }
+  img{
+      display: inline-block;
+      border: 1px solid $white;
+      margin-left: 5px;
+  }
+}
