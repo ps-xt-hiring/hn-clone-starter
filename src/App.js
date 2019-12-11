@@ -9,6 +9,7 @@ import Button from './components/Button';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import {hideMe, handleUpVote} from './common/utils';
 import logo from './assets/images/y18.gif';
 
 class App extends React.Component {
@@ -69,36 +70,13 @@ class App extends React.Component {
         this.props.dispatch(newsActions.newsFetchRequest(1));
     }
     hideMe = (objectId) => {
-        let hide_id = [];
-        let ids = JSON.parse(localStorage.getItem("hiddenIds"));
-
-        if (ids === null) {
-            hide_id.push(objectId);
-        }
-        if (ids !== null) {
-            ids.push(objectId);
-            hide_id = ids;
-        }
-        localStorage.setItem('hiddenIds', JSON.stringify(hide_id));
+        let hide_id= hideMe(objectId)
         this.props.dispatch(newsActions.hideItemRequest(hide_id));
     }
     handleUpVote = (objectId) => {
 
-        let upvoted_news_id = [];
-        let upvoteIds = JSON.parse(localStorage.getItem("upvotedIds"));
-        if (upvoteIds === null) {
-            upvoted_news_id.push(objectId);
-        }
-        if (upvoteIds && upvoteIds.includes(objectId)) {
-            alert("Already Upvoted. ");
-
-            return;
-        }
-        if (upvoteIds !== null) {
-            upvoteIds.push(objectId);
-            upvoted_news_id = upvoteIds;
-        }
-        localStorage.setItem('upvotedIds', JSON.stringify(upvoted_news_id));
+     
+        let upvoted_news_id= handleUpVote(objectId);
         this.props.dispatch(newsActions.upvoteNewsItem(upvoted_news_id, objectId));
 
     }
