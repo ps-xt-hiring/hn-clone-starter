@@ -3,6 +3,7 @@ import Header from "./Header";
 import List from "./List";
 import { getNewStories } from "../service/hnservice";
 import { Wrapper,Page, Interactions, MoreLink } from "../styles/StoryStyles";
+import {StaticText} from '../constant/StaticText'
 
 const applyUpdateResult = result => prevState => ({
   hits: [...prevState.hits, ...result.data.hits],
@@ -64,7 +65,7 @@ class NewStories extends React.Component {
         <Interactions>
           <form type="submit" onSubmit={this.onInitialSearch}>
             <input type="text" ref={node => (this.input = node)} />
-            <button type="submit">Search</button>
+    <button type="submit">{StaticText.search}</button>
           </form>
         </Interactions>
         {this.state.hits.length > 0 ? <Header /> : null}
@@ -81,7 +82,7 @@ class NewStories extends React.Component {
           <div>
             {this.state.page !== null && (
               <MoreLink href="#" onClick={this.onPaginatedSearch}>
-                More
+                {StaticText.more}
               </MoreLink>
             )}
           </div>

@@ -61,11 +61,15 @@ export const ExternalLink = styled.a`
   max-width: 300px;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
   color:#828282;
   display:inline-block
   vertical-align:middle
 
+`;
+
+export const ByText= styled.span`
+color:#828282
+padding:0px;
 `;
 
 export const HideLink = styled.a`

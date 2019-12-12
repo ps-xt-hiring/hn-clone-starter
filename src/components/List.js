@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { Item, ExternalLink, HideLink } from "../styles/StoryStyles";
+import {getTime,getUrl} from '../utils/util'
+import { Item, ExternalLink, HideLink ,ByText} from "../styles/StoryStyles";
+import {StaticText} from '../constant/StaticText'
 
 const List = props => {
   const handleUpVote = () => {
@@ -21,13 +23,14 @@ const List = props => {
       <span>{props.item.points}</span>
       <span>{props.item.title}</span>
       <ExternalLink href={props.item.url}>
-        {props.item.url ? props.item.url : null}
+        {props.item.url ? getUrl(props.item.url) : null}
       </ExternalLink>
-      <span>by: {props.item.author}</span>
-      <span>{props.item.created_at}</span>
+      <ByText>{StaticText.by}:</ByText>
+      <span> {props.item.author}</span>
+      <span>{getTime(props.item.created_at)}</span>
       <HideLink>
         <a href="#" onClick={hideFeed}>
-          [hide]
+          [{StaticText.hide}]
         </a>
       </HideLink>
     </Item>
