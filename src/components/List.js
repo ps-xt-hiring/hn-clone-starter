@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Item, ExternalLink, HideLink } from "../styles/StoryStyles";
 
 const List = props => {
-  const handleProductUpVote = () => {
-    props.handleProductUpVote(props.objectID);
+  const handleUpVote = () => {
+    props.handleUpVote(props.objectID);
   };
   const hideFeed = () => {
     props.hideFeed(props.objectID);
@@ -13,7 +14,7 @@ const List = props => {
       <span>{props.item.num_comments}</span>
       <span>
         {" "}
-        <a href="#" onClick={handleProductUpVote}>
+        <a href="#" onClick={handleUpVote}>
           <img src="/upvote.png" width={20} alt="upvote"></img>
         </a>
       </span>
@@ -33,4 +34,11 @@ const List = props => {
   );
 };
 
+List.propTypes={
+
+    item : PropTypes.object,
+    handleProductUpVote : PropTypes.func,
+    hideFeed : PropTypes.func
+
+}
 export default List;

@@ -42,16 +42,18 @@ class NewStories extends React.Component {
       ? this.setState(applySetResult(result))
       : this.setState(applyUpdateResult(result));
 
-  handleProductUpVote = objectId => {
-    const nextFeeds = this.state.hits.map(feed => {
+    handleUpVote = objectId => {
+     const Feeds= JSON.parse(JSON.stringify(this.state.hits))
+     const nextFeeds = Feeds.map(feed => {
       return feed.objectID === objectId
         ? { ...feed, points: feed.points + 1 }
         : feed;
     });
     this.setState({ hits: nextFeeds });
   };
-  Hide = id => {
-    const list = this.state.hits.filter(el => el.objectID !== id);
+  hideFeed= id => {
+    const Feeds= JSON.parse(JSON.stringify(this.state.hits))
+    const list = Feeds.filter(el => el.objectID !== id);
 
     this.setState({ hits: list });
   }; // end of toggle
@@ -69,8 +71,8 @@ class NewStories extends React.Component {
         <Wrapper>
           {this.state.hits.map((item, index) => (
             <List
-              handleProductUpVote={this.handleProductUpVote}
-              hideFeed={this.Hide}
+              handleUpVote={this.handleUpVote}
+              hideFeed={this.hideFeed}
               objectID={item.objectID}
               isOdd={index % 2}
               item={item}
