@@ -1,0 +1,23 @@
+@import '../../common/commonColors.scss';
+
+.btn-component {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  outline: 0;
+}
+
+.secondary {
+  color: $black;
+}
+
+.primary {
+  color: $orange;
+}
+
+.other {
+  color: $white;
+}
