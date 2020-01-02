@@ -32,11 +32,7 @@ const TableRow = (props) => {
         <span className="table-row-by">by</span>
         <span className="table-row-author">{author}</span>
         <span className="table-row-date">{getFormattedDate(createdAt)}</span>
-        <span>
-          [
-          <Button variant="secondary" onClick={() => hideNews(objectID, dispatch)} title="hide" className="table-row-hide" />
-          ]
-        </span>
+          [<Button variant="secondary" onClick={() => hideNews(objectID, dispatch)} title="hide" className="table-row-hide" />]
       </td>
     </tr>
   );
