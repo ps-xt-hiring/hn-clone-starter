@@ -1,0 +1,9 @@
+@import "../../sass/abstract/variables";
+@import "../../sass/abstract/mixins";
+
+.header {
+  width: 100%;
+  @include display-flex(row);
+  background-color: $header-bg-color;
+  padding: 2px;
+}

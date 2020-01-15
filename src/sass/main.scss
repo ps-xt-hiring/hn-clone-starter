@@ -1,0 +1,19 @@
+@import "./abstract/variables";
+@import "./abstract/mixins";
+
+@import "./utility/utilities";
+
+@import "./base/base";
+@import "./base/typograpghy";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+}

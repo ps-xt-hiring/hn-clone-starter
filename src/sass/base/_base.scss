@@ -1,0 +1,15 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  max-width: 114rem;
+}
+
+@media (min-width: $medium-scale-devices) {
+  body {
+    width: 85%;
+    margin: .8rem auto;
+  }
+}
