@@ -11,7 +11,6 @@ const Constants = {
     by: ' by ',
     rankUpDescription: 'Click here to improve story\'s popularity',
     rankUpAlt: 'Rank Up icon',
-    resetCache: 'Reset Cache',
   },
   Url: {
     Base_Url: 'https://hn.algolia.com/api/v1/',

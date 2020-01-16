@@ -39,12 +39,6 @@ export default class DataEngineLayer {
         })();
     }
 
-    static resetCache() {
-        localStorage.setItem(Constants.Keys.hiddenStories, '{}');
-        localStorage.setItem(Constants.Keys.upvotedStories, '{}');
-        alert('Cache Cleared. Reloading Page Now.');
-        window.location.reload();
-    }
     static getCachedStories(storyType='hidden') {
 
         let cachedStories = null;
