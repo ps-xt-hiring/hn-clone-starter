@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Constants from './constants';
 import StoryList from './components/StoryList';
 import Header from './components/Header';
 
