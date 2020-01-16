@@ -16,7 +16,7 @@ const Constants = {
   Url: {
     Base_Url: 'https://hn.algolia.com/api/v1/',
     Gif_Url: 'https://news.ycombinator.com/y18.gif',
-    Grey_Arrow: 'https://news.ycombinator.com/grayarrow.gif',
+    Grey_Arrow_Gif: 'https://news.ycombinator.com/grayarrow.gif',
   },
 };
 

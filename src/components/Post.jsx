@@ -30,7 +30,7 @@ export default class Post extends React.Component {
     const {
       sequenceNumber, author, title, age, commentsCount, shortUrl, upvoted, proxyPoints,
     } = this.props;
-    const points = proxyPoints; // Switch to Points after Auth integration
+    const points = proxyPoints;
     return (
       <tr className="post-item" key={sequenceNumber}>
         <td className="story-index">{commentsCount}</td>

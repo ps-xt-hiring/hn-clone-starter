@@ -8,7 +8,7 @@ export default class StoryList extends React.Component {
   constructor(props, state) {
     super(props, state);
     this.state = {
-      data: [],
+      data: null,
     };
     this.renderPosts = this.renderPosts.bind(this);
     this.hidePost = this.hidePost.bind(this);
@@ -67,7 +67,6 @@ export default class StoryList extends React.Component {
   hidePost(idToHide) {
     const { data } = this.state;
     const story = data.filter(stry => stry.id === idToHide)[0];
-    // Mocking snip behavior
     story.hidden = true;
     this.setState({ data });
 
@@ -77,7 +76,6 @@ export default class StoryList extends React.Component {
   upvotePost(idtoUpvote) {
     const { data } = this.state;
     const story = data.filter(stry => stry.id === idtoUpvote)[0];
-    // Mocking upvote behavior
     story.upvoted = true;
     story.proxyPoints += 1;
     this.setState({ data });
@@ -88,8 +86,6 @@ export default class StoryList extends React.Component {
   downvotePost(idtoDownvote) {
     const { data } = this.state;
     const story = data.filter(stry => stry.id === idtoDownvote)[0];
-
-    // Mocking downvote behavior
     story.upvoted = false;
     story.proxyPoints -= 1;
     this.setState({ data });

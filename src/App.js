@@ -33,7 +33,7 @@ class App extends React.Component {
             <StoryList view={currentView} />
           </div>
 
-          <div id="reset-cache-link" onClick={() => {}} onKeyPress={this.handleKeyPress} aria-hidden>
+          <div id="reset-cache-link" onKeyPress={this.handleKeyPress} aria-hidden>
             <span>{Constants.Text.resetCache}</span>
           </div>
 
