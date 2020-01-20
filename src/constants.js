@@ -6,7 +6,7 @@ const Constants = {
   Text: {
     top: 'top',
     more: 'More',
-    new: 'new',
+    newText: 'new',
     hide: ' [ hide ] ',
     by: ' by ',
     rankUpDescription: 'Click here to improve story\'s popularity',

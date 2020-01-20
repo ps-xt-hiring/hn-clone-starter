@@ -23,14 +23,14 @@ export default class Header extends React.Component {
 
   render() {
     const { active } = this.state;
-
+    const { Text: { top, newText } } = Constants;
     return (
       <div className="list-header">
         <img src={Constants.Url.Gif_Url} className="y-logo" alt="Y-Combinator Logo" />
         <div className="view-options">
-          <span className={`view-option ${active === 'top' ? 'active' : ''}`} onClick={() => this.toggleView('top')} aria-hidden>{Constants.Text.top}</span>
+          <span className={`view-option ${active === `${top}` ? 'active' : ''}`} onClick={() => this.toggleView(`${top}`)} aria-hidden>{top}</span>
           <span> | </span>
-          <span className={`view-option ${active === 'new' ? 'active' : ''}`} onClick={() => this.toggleView('new')} aria-hidden>{Constants.Text.new}</span>
+          <span className={`view-option ${active === `${newText}` ? 'active' : ''}`} onClick={() => this.toggleView(`${newText}`)} aria-hidden>{newText}</span>
         </div>
       </div>
     );

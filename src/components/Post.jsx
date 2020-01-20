@@ -31,6 +31,7 @@ export default class Post extends React.Component {
       sequenceNumber, author, title, age, commentsCount, shortUrl, upvoted, proxyPoints,
     } = this.props;
     const points = proxyPoints;
+    const { Url: { Grey_Arrow_Gif }, Text: { rankUpAlt, rankUpDescription, by, hide } } = Constants;
     return (
       <tr className="post-item" key={sequenceNumber}>
         <td className="story-index">{commentsCount}</td>
@@ -39,7 +40,7 @@ export default class Post extends React.Component {
           <span>{points}</span>
           <span className="upvote-icon">
             {' '}
-            {!upvoted && <img onClick={this.sendUpvoteRequest} src={Constants.Url.Grey_Arrow_Gif} alt={Constants.Text.rankUpAlt} aria-label={Constants.Text.rankUpDescription} />}
+            {!upvoted && <img onClick={this.sendUpvoteRequest} src={Grey_Arrow_Gif} alt={rankUpAlt} aria-label={rankUpDescription} />}
           </span>
           {' '}
           <span className="story-title">{title}</span>
@@ -57,7 +58,7 @@ export default class Post extends React.Component {
             <br className="break-for-mobile" />
             <span className="break-for-mobile">&nbsp;</span>
             <span className="lighter">
-              {Constants.Text.by}
+              {by}
               <span className="dark">{author}</span>
             </span>
             {' '}
@@ -66,7 +67,7 @@ export default class Post extends React.Component {
               {age}
             </span>
             {' '}
-            <span className="hide-link" onClick={this.sendHideRequest} aria-hidden>{Constants.Text.hide}</span>
+            <span className="hide-link" onClick={this.sendHideRequest} aria-hidden>{hide}</span>
           </span>
         </td>
       </tr>

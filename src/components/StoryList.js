@@ -109,6 +109,7 @@ export default class StoryList extends React.Component {
 
   render() {
     const { data } = this.state;
+    const { Text: { more } } = Constants;
     return (
       <div>
         {data
@@ -127,7 +128,7 @@ export default class StoryList extends React.Component {
             </table>
             )}
         <div onClick={this.loadNextPage} className="load-more-container" aria-hidden>
-          <span>{Constants.Text.more}</span>
+          <span>{more}</span>
         </div>
       </div>);
   }
