@@ -14,7 +14,7 @@ export default class DataEngineLayer {
             const hiddenStories = this.getCachedStories('hidden');
             const upvotedStories = this.getCachedStories('upvoted');
 
-            return raw.hits.filter((story) => !(story.objectID in hiddenStories)).map((story, index) => {
+            return raw && raw.hits[0] && raw.hits.filter((story) => !(story.objectID in hiddenStories)).map((story, index) => {
                 let shortUrl = '';
 
                 if (story.url) {
