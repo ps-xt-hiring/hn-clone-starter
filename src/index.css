@@ -6,6 +6,229 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: Monaco, Consolas, 'Courier New', monospace;
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: black;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.page-container {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+/* Styling is done in this file only.
+   Styles are in vertical order of appearance on page */
+
+
+#reset-cache-link {
+  position: fixed;
+  width: auto;
+  background: yellow;
+  padding: 5px 10px;
+  top: 25%;
+  left: -4.5%;
+  border-radius: 6px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  cursor: pointer;
+  transition: all 1s;
+}
+
+#reset-cache-link:hover {
+  left: 0;
+}
+/**
+* Header Styles Begin
+*/
+
+.list-header {
+  display: flex;
+  background: #ff6600;
+  padding: 10px;
+}
+
+.y-logo {
+  max-height: 20px;
+  border: 1px solid white;
+}
+
+.view-options {
+  margin-left: 1em;
+}
+
+.view-option {
+  background-color: transparent;
+  border: 0.5px solid transparent;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.view-option.active {
+  color: white;
+}
+
+/**
+* Table Styles Begin
+*/
+
+table {
+  border-spacing: 0;
+  width: 100%;
+  
+}
+
+thead > tr {
+  visibility: hidden;
+}
+
+tr {
+  text-align: left;
+  color: black;
+}
+
+td {
+  padding: 3px 10px;
+}
+
+tr:nth-of-type(odd), tr:nth-of-type(odd) td {
+  background: #f6f6f0;
+  border: 1px solid #f6f6f0;
+ 
+}
+
+tr:nth-of-type(even), tr:nth-of-type(even) td {
+  background: #e6e6e0;
+  border: 1px solid #e6e6e0;
+}
+
+.story-index {
+padding-left: 20px;
+}
+
+.upvote-icon {
+  cursor: pointer;
+  margin-left: 5px;
+  min-width: 12px;
+  display: inline-block;
+}
+
+.upvote-icon > img {
+  height: 14px;
+}
+
+.extra-info {
+  font-size: 14px;
+}
+
+.break-for-mobile {
+  display: block;
+}
+
+span.break-for-mobile {
+  width: 50px;
+  display: inline-block;
+}
+
+.light {
+  color: #94918d;
+}
+
+.dark {
+  color: black;
+}
+
+.lighter {
+  color: #c5c4c2;
+}
+
+.hide-link {
+  cursor: pointer;
+}
+
+.load-more-container {
+  width: 100%;
+  background: #f6f6f0;
+  color: #ff6600;
+  text-align: left;
+  padding: 5px 0;
+  cursor: pointer;
+  border-radius: 0 0 5px 5px;
+}
+
+.load-more-container > span {
+  padding-left: 15%;
+}
+
+@media screen and (min-width: 768px) {
+  .break-for-mobile, span.break-for-mobile {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .page-container {
+    width: 85%;
+  }
+
+  .App-header {
+    font-size: 16px;
+  }
+
+  .extra-info {
+    font-size: 12px;
+  }
+  
+
+  .story-index {
+    padding-left: 30px;
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+  .page-container {
+    width: 70%;
+  }
+
+  .App-header {
+    font-size: 18px;
+  }
+
+  .extra-info {
+    font-size: 14px;
+  }
+
+  .story-index {
+    padding-left: 50px;
+  }
 }

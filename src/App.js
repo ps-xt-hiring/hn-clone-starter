@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import StoryList from './components/StoryList';
+import Header from './components/Header';
 
 function App() {
+
+  let [view, setView] = useState('top');
+
+  function handleViewChange(view) {
+    setView(view);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Publicis Sapient - XT hiring challenge!!</h1>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-and save to reload. Refactor at will, but please do not
-          modify the entry point
-          {' '}
-          <code>index.js</code>
-.
-        </p>
+
+        <div className="Container">
+          <Header onViewChange={handleViewChange} />
+          <StoryList view={view} />
+        </div>
+
       </header>
     </div>
   );
