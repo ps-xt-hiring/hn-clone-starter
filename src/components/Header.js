@@ -28,9 +28,9 @@ export default class Header extends React.Component {
       <div className="list-header">
         <img src={Constants.Url.Gif_Url} className="y-logo" alt="Y-Combinator Logo" />
         <div className="view-options">
-          <span className={`view-option ${active === `${top}` ? 'active' : ''}`} onClick={() => this.toggleView(`${top}`)} aria-hidden>{top}</span>
+          <button className={`view-option ${active === `${top}` ? 'active' : ''}`} onClick={() => this.toggleView(`${top}`)} aria-hidden>{top}</button>
           <span> | </span>
-          <span className={`view-option ${active === `${newText}` ? 'active' : ''}`} onClick={() => this.toggleView(`${newText}`)} aria-hidden>{newText}</span>
+          <button className={`view-option ${active === `${newText}` ? 'active' : ''}`} onClick={() => this.toggleView(`${newText}`)} aria-hidden>{newText}</button>
         </div>
       </div>
     );
