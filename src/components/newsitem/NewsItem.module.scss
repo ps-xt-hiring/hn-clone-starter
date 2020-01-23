@@ -42,6 +42,7 @@
     &_author,
     &_hide {
       color: $color-black;
+      cursor: pointer;
       a:hover {
         border-bottom: 1px solid $color-black;
       }

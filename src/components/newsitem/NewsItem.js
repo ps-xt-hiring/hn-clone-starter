@@ -78,24 +78,17 @@ const newsitem = (props) => {
             <a href={item.url}>{getHostName(item.url)}</a>
             ) by&nbsp;
             <span className={Classes.newsfeed__article_box3_author}>
-              <a
-                href="#/"
-              >
-                {item.author}
-              </a>
+              {item.author}
               &nbsp;
             </span>
             {getTimeDifference(item.created_at)}
             &nbsp;
             [
-            <span className={Classes.newsfeed__article_box3_hide}>
-              <a
+            <span className={Classes.newsfeed__article_box3_hide}
                 hidden={!item.num_comments}
-                href="#/"
                 onClick={() => props.onHideClicked(item.objectID)}
               >
                 {localeData[defaultLanguage].HIDE_BUTTON_TEXT}
-              </a>
             </span>
             ]
           </span>

@@ -5,7 +5,7 @@ import Classes from './Button.module.scss';
 
 const button = (props) => {
   const {
-    clicked,
+    clickHandler,
     disabled,
     show,
     children,
@@ -13,8 +13,8 @@ const button = (props) => {
 
   return (
     <button
-      className={[Classes.Button].join(' ')}
-      onClick={clicked}
+      className={[Classes.Button]}
+      onClick={clickHandler}
       disabled={disabled}
       hidden={show}
       type="button"
@@ -30,7 +30,7 @@ button.defaultProps = {
 };
 
 button.propTypes = {
-  clicked: PropTypes.func.isRequired,
+  clickHandler: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
   show: PropTypes.bool,
   children: PropTypes.string.isRequired,

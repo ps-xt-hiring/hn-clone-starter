@@ -130,7 +130,7 @@ class Newsfeed extends Component {
           onHideClicked={objectID => this.onHideButtonHandler(objectID)}
         />
         <Button
-          clicked={this.onMoreBtnClicked}
+          clickHandler={this.onMoreBtnClicked}
           show={btnHidden}
         >
           {localeData[defaultLanguage].BUTTON_TEXT}
