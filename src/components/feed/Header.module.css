@@ -1,0 +1,36 @@
+.feedHeader{
+    background: #ff6600;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.feedHeader ul{
+    display: flex;
+}
+.feedHeader ul li{
+    margin: 0 3px;
+    padding: 0 3px;
+    cursor: pointer;
+    position: relative;
+    color: #000000;
+}
+.feedHeader ul li.activeItem {
+    color: #fff;
+}
+.feedHeader ul li:before{
+    top: 0;
+    content: "";
+    width: 1px;
+    background: #000;
+    display: block;
+    position: absolute;
+    left: -2px;
+    height: 100%;}
+.feedHeader ul li:first-child::before{
+    display: none;
+}
+.logo{
+    border:1px solid #fff;
+}
