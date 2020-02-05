@@ -32,6 +32,7 @@
 
 .upvoteCount {
 	padding-right: 1px;
+	margin-left: 5px;
 }
 
 .upvoteCount.upvoted {
@@ -40,7 +41,10 @@
 
 .upvoteIcon {
 	margin-right: 4px;
-	cursor: pointer;
+	margin-left: 2px;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
 }
 
 .hideFeed,

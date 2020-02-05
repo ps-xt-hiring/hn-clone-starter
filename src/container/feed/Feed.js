@@ -190,13 +190,15 @@ class FeedContainer extends Component {
                       : feed.upvoted
                       ? 1
                       : 0}
-                  </span>{" "}
-                  <img
+
+<img
                     onClick={() => this.upvote(feed)}
                     className={styles.upvoteIcon}
                     src={upvoteIcon}
                     alt="upvote"
                   />
+                  </span>{" "}
+                 
                 </div>
                 <div>
                   {" "}
