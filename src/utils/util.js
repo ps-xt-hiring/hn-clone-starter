@@ -60,6 +60,6 @@ export const setLocalStorage = (storageName, id, value) => {
 
 export const getLocalStorage = (storageName) => {
     const itemValue = localStorage.getItem(storageName);
-    const itemValueObject = JSON.parse(itemValue);
+    const itemValueObject = itemValue ? JSON.parse(itemValue) : {};
     return itemValueObject;
 }
