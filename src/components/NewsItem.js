@@ -8,14 +8,14 @@ const NewsItem = (props) => {
         <div className={classes.MainInfo}>
             <div className={classes.CommentCount}>{num_comments}</div>
             <div className={classes.PointCount}>{voteCount || points}</div>
-            <span className={classes.ArrowUp} onClick={() => upVotePost(objectID, (voteCount || points))}></span>
+            <button title="up vote" className={classes.ArrowUp} onClick={() => upVotePost(objectID, (voteCount || points))}></button>
             <div className={classes.Title}>{title}</div>
         </div>
         <div className={classes.ExtraInfo}>
             <div className={classes.SpaceAround}>({getHostName(url)})</div>
             <div className={classes.SpaceAround}>by {author}</div>
             <div className={classes.SpaceAround}>{timeAgo(created_at_i)}</div>
-            <button className={`${classes.SpaceAround} ${classes.HideButton}`} onClick={() => upVotePost(objectID, (voteCount || points), true)}>[hide]</button>
+            <button title="hide" className={`${classes.SpaceAround} ${classes.HideButton}`} onClick={() => hidePost(objectID, (voteCount || points), true)}>[hide]</button>
         </div>
     </div>)};
 

@@ -27,14 +27,14 @@ class App extends Component {
     return (
     <Router>
       <div>
-        <NavBar navList={['Top', 'New']} />
+        <NavBar navList={[{name:'Top' , link:'/'}, {name:'New' , link:'/'}]} />
 
         <Switch>
           <Route path="/" exact component={NewsList} />
           <Route path="/page/:id" component={NewsList} />
         </Switch>
         <div>
-          <Link to={`/page/${this.state.nextPageId}`} onClick={this.loadMoreTriggered}>Load More</Link>
+          <Link to={`/page/${this.state.nextPageId}`} title="load more" onClick={this.loadMoreTriggered}>Load More</Link>
         </div>
       </div>
     </Router>

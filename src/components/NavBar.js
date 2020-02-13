@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import classes from './NavBar.module.css';
 
 const NavBar = (props) => (
@@ -9,7 +10,7 @@ const NavBar = (props) => (
     <ul>
         {props.navList.map((item, index) => (
             <li key={index}>
-                {item}
+                <Link to={item.link} title={item.name}>{item.name}</Link>
             </li>
         ))}
     </ul>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import NewsItem from './NewsItem';
 import apiHelper from '../utils/api_helper';
-import classes from './NewsList.module.css';
 import { setLocalStorage, getLocalStorage } from '../utils/util';
 
 class NewsList extends Component {
