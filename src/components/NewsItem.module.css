@@ -1,0 +1,68 @@
+.ListItem {
+	display: flex;
+	width: 100%;
+	padding: 5px 20px;
+}
+
+.MainInfo,
+.ExtraInfo {
+	display: flex;
+}
+
+.ListItem:nth-child(even) {
+	background-color: #CCC
+}
+.ListItem:nth-child(odd) {
+	background-color: #FFF
+}
+
+.CommentCount {
+  padding: 0 15px;
+}
+
+.PointCount {
+	padding: 0 5px 0 15px;
+}
+
+.Title {
+	padding: 0 8px 0 5px;
+}
+
+.SpaceAround {
+	padding: 0 5px;
+}
+
+.HideButton {
+	border: none;
+	background: inherit;
+}
+
+.ArrowUp {
+	width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid black;
+	border-top: 0;
+	align-self: center;
+	background: inherit;
+    padding: 0;
+}
+
+@media (max-width: 786px) {
+	.ListItem {
+		display: flex;
+		flex-direction: column;
+	}
+	.MainInfo,
+	.ExtraInfo {
+		width: 90%;
+		display: flex;
+		flex-grow: 1;
+	}
+
+	.ListItem div,
+	.ListItem span {
+		align-self: center;
+	}
+}

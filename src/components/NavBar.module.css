@@ -1,0 +1,32 @@
+.NavBarContainer {
+    background-color: #ff6600;
+    display: flex;
+}
+.Logo {
+    display:inline-block;
+    border: 1px white solid;
+    width: 18px;
+    height: 18px;
+    margin: 4px;
+}
+.Logo img {
+    width: 18px;
+    height: 18px;
+}
+.NavBarContainer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+  
+.NavBarContainer li {
+    float: left;
+    border-right:1px solid #000000;
+    padding: 0 5px;
+    margin: 5px 0;
+}
+
+.NavBarContainer li:last-child {
+    border-right: none;
+}

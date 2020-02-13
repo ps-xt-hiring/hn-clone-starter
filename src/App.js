@@ -1,27 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
+import NewsList from './components/NewsList';
+import NavBar from './components/NavBar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Publicis Sapient - XT hiring challenge!!</h1>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-and save to reload. Refactor at will, but please do not
-          modify the entry point
-          {' '}
-          <code>index.js</code>
-.
-        </p>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      nextPageId: 2
+    }
+  }
+
+  loadMoreTriggered = () => {
+    this.setState((oldState) => ({
+      nextPageId: oldState.nextPageId + 1
+    }));
+  }
+  
+  render() {
+    return (
+    <Router>
+      <div>
+        <NavBar navList={[{name:'Top' , link:'/'}, {name:'New' , link:'/'}]} />
+
+        <Switch>
+          <Route path="/" exact component={NewsList} />
+          <Route path="/page/:id" component={NewsList} />
+        </Switch>
+        <div>
+          <Link to={`/page/${this.state.nextPageId}`} title="load more" onClick={this.loadMoreTriggered}>Load More</Link>
+        </div>
+      </div>
+    </Router>
+    );
+  }
 }
 
 export default App;
