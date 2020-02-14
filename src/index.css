@@ -9,3 +9,23 @@ body {
 code {
   font-family: Monaco, Consolas, 'Courier New', monospace;
 }
+
+/* unvisited link */
+a:link {
+  color: #000000;
+}
+
+/* visited link */
+a:visited {
+  color: #406775;
+}
+
+/* mouse over link */
+a:hover {
+  color: #406775;
+}
+
+/* selected link */
+a:active {
+  color: #000000;
+}
