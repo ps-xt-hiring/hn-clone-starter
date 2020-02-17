@@ -128,12 +128,12 @@ const FeedContainer = () => {
 
   return (
     <React.Fragment>
-      {loader && <div className="loader"></div>}
+      {loader && <div data-testid="loader" className="loader"></div>}
       <FeedHeader getNewsFeeds={getNewsFeeds} categories={categories} />
-      <ul className={styles.feedListing}>
+      <ul data-testid="feedItems"  className={styles.feedListing}>
         {feedsData.length > 0 &&
           feedsData.map((feed, index) => (
-            <li key={feed.objectID}>
+            <li  key={feed.objectID}>
               <div>
                 <span className={styles.comentCount}>
                   {feed.num_comments ? feed.num_comments : 0}
@@ -156,6 +156,7 @@ const FeedContainer = () => {
                     : 0}
 
                   <img
+                   data-testid="upvoteFeed"
                     onClick={() => upvote(feed)}
                     className={styles.upvoteIcon}
                     src={upvoteIcon}
@@ -176,6 +177,7 @@ const FeedContainer = () => {
                   {feed.created_at}
                 </Moment>
                 <span
+                data-testid="hideFeed"
                   onClick={() => hideFeed(feed)}
                   className={["cursorPointer", styles.hideFeed].join(" ")}
                 >
@@ -197,13 +199,15 @@ const FeedContainer = () => {
               </div>
               <div>
                 {" "}
-                <span className="cursorPointer" onClick={loadMoreFeeds}>
+                <span data-testid="loadMoreData" className="cursorPointer" onClick={loadMoreFeeds}>
                   More
                 </span>
               </div>
             </li>
           )}
       </ul>
+ 
+     
     </React.Fragment>
   );
 };

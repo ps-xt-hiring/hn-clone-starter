@@ -7,9 +7,9 @@ export default function FeedHeader(props) {
     <header className={styles.feedHeader}>
       <img className={styles.logo} alt="logo" src={LogoIcon} />
 
-      <ul>
+      <ul data-testid="navigation">
         {categories.map((category, index) => (
-          <li tabIndex={index}
+          <li data-testid="navigationItem" tabIndex={index}
             onClick={() => getNewsFeeds(category)}
             className={category.active ? styles.activeItem : ""}
             key={category.id}
