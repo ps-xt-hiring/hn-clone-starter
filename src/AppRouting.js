@@ -1,17 +1,16 @@
-import React, { Component } from "react";
+
+import React from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
 import FeedContainer from "./container/feed/Feed";
-class AppRouting extends Component {
-  render() {
-    let routes = (
-      <Switch>
-        <Route path="/" component={FeedContainer} />
-        <Redirect to="/" />
-      </Switch>
-    );
+ const AppRouting = () => {
+  return (
+    <Switch>
+    <Route path="/" component={FeedContainer} />
+    <Redirect  from ="/" to="/" />
 
-    return <React.Fragment>{routes}</React.Fragment>;
-  }
+  </Switch> 
+  )
 }
+
 export default AppRouting;
 

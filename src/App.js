@@ -1,14 +1,12 @@
-import React, { Component } from "react";
-import AppRouting from "./AppRouting";
+import React from 'react';
 import "./App.css";
-class componentName extends Component {
-  render() {
-    return (
-      <main>
-        <AppRouting />
-      </main>
-    );
-  }
+import AppRouting from "./AppRouting";
+const App = () => {
+  return (
+    <main>
+    <AppRouting />
+  </main>
+  )
 }
 
-export default componentName;
+export default  App;
