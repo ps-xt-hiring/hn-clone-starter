@@ -1,11 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import FrontPage from './containers/Front-page';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Publicis Sapient - XT hiring challenge!!</h1>
         <p>
@@ -19,7 +20,8 @@ and save to reload. Refactor at will, but please do not
           <code>index.js</code>
 .
         </p>
-      </header>
+      </header> */}
+      <FrontPage />
     </div>
   );
 }
