@@ -12,7 +12,7 @@ class FrontPage extends Component {
 
    componentDidMount() {
      getHits().then((res) => {
-       this.setState({ hnlist: [...res] });
+       this.setState({ hnlist: res });
      });
    }
 
@@ -39,7 +39,7 @@ class FrontPage extends Component {
         <div className="hn-contents">
           <ul>
             {hnlist
-              && hnlist.map(item => <FrontPageRow key={`${Date.parse(new Date())}`} {...item} />)}
+              && hnlist.map(item => <FrontPageRow key={`${item.num_comments} + ${item.createdAt}`} {...item} />)}
             <li className="hn-footer">
               <span role="button" onClick={this.moreClickHandler} onKeyDown={this.moreClickHandler}>More</span>
             </li>
