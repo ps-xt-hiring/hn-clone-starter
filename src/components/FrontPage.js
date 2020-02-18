@@ -15,6 +15,7 @@ class FrontPage extends Component {
       this.setState({ hnlist: res });
     });
   }
+
   moreClickHandler = () => {
     let currentPageNo = parseInt(getLocalStorage('currentPage'));
     let totalPage = parseInt(getLocalStorage('totalPage'));
@@ -25,7 +26,8 @@ class FrontPage extends Component {
     } else {
       alert('No more records.');
     }
-  };
+  }
+
   render() {
     const { hnlist } = this.state;
     return (

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setLocalStorage } from './storage';
+
 axios.defaults.baseURL = 'http://hn.algolia.com';
 
 export function getHits(page = 1, hitsPerPage = 30) {
