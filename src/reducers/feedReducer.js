@@ -9,8 +9,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  const id = action.itemId;
-  const updatedState = Object.assign({}, state);
 
   switch (action.type) {
     case actionTypes.INIT_FEEDS:
