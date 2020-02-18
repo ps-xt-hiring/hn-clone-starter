@@ -39,7 +39,7 @@ class FrontPage extends Component {
         <div className="hn-contents">
           <ul>
             {hnlist
-              && hnlist.map(item => <FrontPageRow key={`${item.num_comments} + ${item.createdAt}`} {...item} />)}
+              && hnlist.map(item => <FrontPageRow key={JSON.stringify(item)} {...item} />)}
             <li className="hn-footer">
               <span role="button" onClick={this.moreClickHandler} onKeyDown={this.moreClickHandler}>More</span>
             </li>
