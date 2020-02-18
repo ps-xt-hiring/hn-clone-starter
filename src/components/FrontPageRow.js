@@ -20,6 +20,7 @@ export default function FrontPageRow({
         {vote}
         <img
           src={arrow}
+          alt="upvote"
           className="votearrow"
           onClick={() => setVote(vote + 1)}
         ></img>

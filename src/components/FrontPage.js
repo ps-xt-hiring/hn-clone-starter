@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getHits } from "./../api/services";
+import { getLocalStorage } from "./../api/storage";
 import "./FrontPage.css";
 import FrontPageRow from "./FrontPageRow";
 import hnLogo from "./../assets/y18.gif";
@@ -15,8 +16,8 @@ class FrontPage extends Component {
     });
   }
   moreClickHandler = () => {
-    let currentPageNo = parseInt(localStorage.getItem("currentPage"));
-    let totalPage = parseInt(localStorage.getItem("totalPage"));
+    let currentPageNo = parseInt(getLocalStorage("currentPage"));
+    let totalPage = parseInt(getLocalStorage("totalPage"));
     if (currentPageNo <= totalPage) {
       getHits(currentPageNo + 1).then(res => {
         this.setState({ hnlist: res });
@@ -30,7 +31,7 @@ class FrontPage extends Component {
     return (
       <div>
         <div className="hn-header">
-          <img src={hnLogo} className="hn-logo" />
+          <img src={hnLogo} alt="hn" className="hn-logo" />
           <span>top</span>
           <span>| new</span>
         </div>

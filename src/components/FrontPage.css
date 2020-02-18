@@ -8,6 +8,10 @@
   margin: 0 5px;
 }
 
+.hn-footer span {
+  cursor: pointer;
+}
+
 .hn-header span:last-child {
   color: black;
 }
@@ -22,10 +26,6 @@
   color: #f60;
   padding-left: 7%;
   margin: 5px 0;
-}
-
-.hn-footer span {
-  cursor: pointer;
 }
 
 li {
@@ -44,14 +44,14 @@ li:nth-child(even) {
 ul {
   margin-block-start: 5px;
   margin-block-end: 0;
-  padding-inline-start: 0px;
+  padding-inline-start: 0;
   font-size: 15px;
 }
 
 .votearrow {
   width: 10px;
   height: 10px;
-  border: 0px;
+  border: 0;
   margin-left: 5px;
   background: url(./../assets/grayarrow.gif) no-repeat;
   cursor: pointer;
