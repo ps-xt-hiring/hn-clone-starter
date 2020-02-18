@@ -1,5 +1,5 @@
 .hn-header {
-  background-color: #ff6600;
+  background-color: #f60;
   padding: 5px;
 }
 .hn-header span {
@@ -15,7 +15,7 @@
 }
 .hn-footer {
   background-color: rgba(90, 86, 86, 0.2);
-  color: #ff6600;
+  color: #f60;
   padding-left: 7%;
   margin: 5px 0;
 }
@@ -57,7 +57,7 @@ ul {
   font-size: 10pt;
 }
 .upvote-red {
-  color: #ff6600;
+  color: #f60;
 }
 .title {
   margin-left: 3px;
