@@ -6,26 +6,23 @@ import FrontPageRow from './FrontPageRow';
 import hnLogo from '../assets/y18.gif';
 
 class FrontPage extends Component {
-  
    state = {
-      hnlist: []
-    }
+     hnlist: [],
+   }
 
-  componentDidMount() {
-    getHits().then(res => {
-        this.setState({ hnlist: [...res] })
-    });
-  }
+   componentDidMount() {
+     getHits().then((res) => {
+       this.setState({ hnlist: [...res] });
+     });
+   }
 
   moreClickHandler = () => {
-    const currentPageNo = parseInt(getLocalStorage('currentPage'));
-    const totalPage = parseInt(getLocalStorage('totalPage'));
+    const currentPageNo = parseInt(getLocalStorage('currentPage'), 10);
+    const totalPage = parseInt(getLocalStorage('totalPage'), 10);
     if (currentPageNo <= totalPage) {
       getHits(currentPageNo + 1).then((res) => {
         this.setState({ hnlist: res });
       });
-    } else {
-      alert('No more records.');
     }
   }
 
@@ -42,11 +39,9 @@ class FrontPage extends Component {
         <div className="hn-contents">
           <ul>
             {hnlist
-              && hnlist.map((item, index) => 
-               <FrontPageRow key={index} {...item} />
-              )}
+              && hnlist.map(item => <FrontPageRow key={`${Date.parse(new Date())}`} {...item} />)}
             <li className="hn-footer">
-              <span onClick={this.moreClickHandler}>More</span>
+              <span role="button" onClick={this.moreClickHandler} onKeyDown={this.moreClickHandler}>More</span>
             </li>
           </ul>
         </div>
