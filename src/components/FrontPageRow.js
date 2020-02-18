@@ -7,8 +7,9 @@ import './FrontPage.css';
 export default class FrontPageRow extends Component {
   constructor(props) {
     super(props);
+    const { points } = this.props;
     this.state = {
-      vote: this.props.points,
+      vote: points,
       displayli: true,
     };
   }
@@ -63,11 +64,13 @@ FrontPageRow.propTypes = {
   author: PropTypes.string,
   createdAt: PropTypes.string,
   num_comments: PropTypes.number,
+  points: PropTypes.number,
 };
 FrontPageRow.defaultProps = {
   title: '',
   url: '',
   author: '',
   num_comments: 0,
+  points: 0,
   createdAt: '',
 };
