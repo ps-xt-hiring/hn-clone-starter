@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { getHits } from "./../api/services";
-import { getLocalStorage } from "./../api/storage";
-import "./FrontPage.css";
-import FrontPageRow from "./FrontPageRow";
-import hnLogo from "./../assets/y18.gif";
+import React, { Component } from 'react';
+import { getHits } from './../api/services';
+import { getLocalStorage } from './../api/storage';
+import './FrontPage.css';
+import FrontPageRow from './FrontPageRow';
+import hnLogo from './../assets/y18.gif';
 
 class FrontPage extends Component {
   state = {
@@ -11,19 +11,19 @@ class FrontPage extends Component {
   };
 
   componentDidMount() {
-    getHits().then(res => {
+    getHits().then((res) => {
       this.setState({ hnlist: res });
     });
   }
   moreClickHandler = () => {
-    let currentPageNo = parseInt(getLocalStorage("currentPage"));
-    let totalPage = parseInt(getLocalStorage("totalPage"));
+    let currentPageNo = parseInt(getLocalStorage('currentPage'));
+    let totalPage = parseInt(getLocalStorage('totalPage'));
     if (currentPageNo <= totalPage) {
-      getHits(currentPageNo + 1).then(res => {
+      getHits(currentPageNo + 1).then((res) => {
         this.setState({ hnlist: res });
       });
     } else {
-      alert("No more records.");
+      alert('No more records.');
     }
   };
   render() {

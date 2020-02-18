@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { extractHostname, timeDifference } from "./../utility/Helper";
-import arrow from "./../assets/grayarrow.gif";
-import "./FrontPage.css";
+import React, { useState } from 'react';
+import { extractHostname, timeDifference } from './../utility/Helper';
+import arrow from './../assets/grayarrow.gif';
+import './FrontPage.css';
 
 export default function FrontPageRow({
   num_comments,
@@ -14,9 +14,9 @@ export default function FrontPageRow({
   const [displayli, setDisplayli] = useState(true);
 
   return (
-    <li style={{ display: displayli || "none" }}>
-      <span className="comments">{num_comments || "-"}</span>
-      <span className={vote > 100 ? "upvote upvote-red" : "upvote"}>
+    <li style={{ display: displayli || 'none' }}>
+      <span className="comments">{num_comments || '-'}</span>
+      <span className={vote > 100 ? 'upvote upvote-red' : 'upvote'}>
         {vote}
         <img
           src={arrow}
@@ -28,9 +28,13 @@ export default function FrontPageRow({
       <span className="title">
         <strong>{title}</strong>
       </span>
-      <span className="domain">({extractHostname(url)})</span>
+      <span className="domain">(
+          {
+            extractHostname(url)
+          }
+        )</span>
       <span className="author">
-        {" "}
+        {' '}
         by <strong>{author}</strong>
       </span>
       <span className="createdat">
