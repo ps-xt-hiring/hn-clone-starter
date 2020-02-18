@@ -1,0 +1,106 @@
+.hn-header {
+  background-color: #f60;
+  padding: 5px;
+}
+
+.hn-header span {
+  color: white;
+  margin: 0 5px;
+}
+
+.hn-footer span {
+  cursor: pointer;
+}
+
+.hn-header span:last-child {
+  color: black;
+}
+
+.hn-logo {
+  border: 1px solid #f8f5f2;
+  margin-right: 10px;
+}
+
+.hn-footer {
+  background-color: rgba(90, 86, 86, 0.2);
+  color: #f60;
+  padding-left: 7%;
+  margin: 5px 0;
+}
+
+li {
+  list-style: none;
+  height: 30px;
+}
+
+li:nth-child(odd) {
+  background-color: whitesmoke;
+}
+
+li:nth-child(even) {
+  background-color: rgba(90, 86, 86, 0.2);
+}
+
+ul {
+  margin-block-start: 5px;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  font-size: 15px;
+}
+
+.votearrow {
+  width: 10px;
+  height: 10px;
+  border: 0;
+  margin-left: 5px;
+  background: url(./../assets/grayarrow.gif) no-repeat;
+  cursor: pointer;
+}
+
+.comments {
+  font-size: 10pt;
+  margin: 0 10px;
+  width: 20px;
+}
+
+.upvote {
+  margin: 0 10px;
+  font-size: 10pt;
+}
+
+.upvote-red {
+  color: #f60;
+}
+
+.title {
+  margin-left: 3px;
+  font-size: 10pt;
+  font-weight: 530;
+}
+
+.domain {
+  margin-left: 3px;
+  font-size: 8pt;
+}
+
+.author {
+  margin-left: 3px;
+  font-size: 8pt;
+}
+
+.createdat {
+  margin-left: 3px;
+  font-size: 8pt;
+}
+
+.hide {
+  margin-left: 3px;
+  font-size: 8pt;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 750px) {
+  li {
+    height: 60px;
+  }
+}
