@@ -38,16 +38,7 @@ const reducer = (state = initialState, action) => {
         hasMore: action.payload
         
       };
-    case actionTypes.UPVOTE_NEWSITEM:
-      return {
-        ...state,
-        newsItems: updateNewsPoints(state, id)
-      };
-    case actionTypes.HIDE_NEWS_ITEM:
-      return {
-        ...state,
-        newsItems: hideListItem(updatedState, id)
-      };
+    
     default:
       return state;
   }
