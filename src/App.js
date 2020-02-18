@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {  HEADER_TOP, HEADER_CATEGORY_FRONT, HEADER_CATEGORY_NEW, HEADER_NEW } from './constants';
 import Header from './components/header/Header';
 import Feed from './components/feeds/Feeds';
 import {fetchFeedsData} from './actions/feedsData';
+import { INIT_FEEDS , UPDATE_PAGE, SORT_TYPE,HAS_MORE } from './actions/actionTypes';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 
 function App() {
-	const [feed, setFeed] = useState([]);
-	const [page, setPage] = useState(0);
-	const [sortType, setSortType] = useState(HEADER_TOP);
-	const [hasMore, setHasMore] = useState(true);
+	
+	const dispatch = useDispatch();
+	const feed = useSelector(state => state.feeds);
+	const page = useSelector(state => state.page);
+	const sortType = useSelector(state => state.sortType);
+	const hasMore = useSelector(state => state.hasMore);
 
   //fetch feeds
   const fetchFeedsHandler = () => {
-	  console.log("page is ",page)
+	  
 	let order = null
 	if(sortType === HEADER_TOP) {
 		order = HEADER_CATEGORY_FRONT;
@@ -25,25 +29,31 @@ function App() {
       .then(res => {
         let result = res.hits;
 		result = result.filter(item => item.title);
-		setFeed([...feed,...result]);
+		dispatch({ type: INIT_FEEDS, payload:[...feed,...result] });
+		
       
         if (page + 1 === res.nbPages) {
-          setHasMore(false);
+			dispatch({ type: HAS_MORE, payload:false })
         }
       })
       .catch(err => {
-        setFeed([]);
-        setHasMore(null);
+		dispatch({ type: INIT_FEEDS, payload:[] });
+		
+        dispatch({ type: HAS_MORE, payload:false })
       });
   };
    const loadMore = () => {
-    setPage(page + 1);
+	dispatch({ type: UPDATE_PAGE, payload:page +1 });
+    
   };
 
 	useEffect(() => {
 		fetchFeedsHandler()
 	}, [page,sortType]);
 
+	const setSortType = () =>{
+		dispatch({ type: SORT_TYPE, payload:sortType });
+	}
 
   return (
 	<div className="App">

@@ -6,7 +6,7 @@ import './headerNav.scss';
 
 export default function HeaderNav(props) {
   const { sortType, setSortType } = props;
-
+  
   return (
     
         <ul className="header__navigation__list">

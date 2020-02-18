@@ -8,36 +8,6 @@ const initialState = {
   hasMore: true
 };
 
-
-
-const updateNewsPoints = (updatedState, itemId) =>
-  updatedState.newsItems.map(({ objectID, points, ...newsItems }) => {
-  let newsPoints = points;
-  if (objectID === itemId) {
-    newsPoints += 1;
-  }
-  return {
-    ...newsItems,
-    objectID,
-    points: newsPoints
-  };
-  });
-  
-const hideListItem = (updatedState, itemId) =>
-  updatedState.newsItems.filter(newsItem => {
-    return newsItem.objectID !== itemId;
-  });
-const setFeeds = (state, payload) => {
-    let feeds = []
-    if (state.feeds.length > 0) {
-        feeds = state.feeds.concat(...payload);
-    } else {
-        feeds = payload;
-    }
-    console.log("[state]",state)
-    return feeds
-
-}
 const reducer = (state = initialState, action) => {
   const id = action.itemId;
   const updatedState = Object.assign({}, state);
@@ -46,14 +16,26 @@ const reducer = (state = initialState, action) => {
     case actionTypes.INIT_FEEDS:
       return {
         ...state,
-        feeds: setFeeds(state,action.payload)
+        feeds: action.payload
         
       };
       case actionTypes.UPDATE_PAGE:
-          console.log("inside page",action.payload)
       return {
         ...state,
         page: action.payload
+        
+      };
+      case actionTypes.SORT_TYPE:
+          console.log("sort type",state,action)
+      return {
+        ...state,
+        sortType: action.payload
+        
+      };
+      case actionTypes.HAS_MORE:
+      return {
+        ...state,
+        hasMore: action.payload
         
       };
     case actionTypes.UPVOTE_NEWSITEM:
