@@ -1,5 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
-import { HEADER_NEW, HEADER_TOP } from "../constants";
+import {  HEADER_TOP } from "../constants";
 
 const initialState = {
   feeds:[],

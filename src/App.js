@@ -1,28 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {  HEADER_TOP, HEADER_CATEGORY_FRONT, HEADER_CATEGORY_NEW, HEADER_NEW } from './constants';
 import Header from './components/header/Header';
 import Feed from './components/feeds/Feeds';
 import {fetchFeedsData} from './actions/feedsData';
-import { INIT_FEEDS , UPDATE_PAGE, SORT_TYPE,HAS_MORE } from './actions/actionTypes';
-import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 
 function App() {
-	
-	const dispatch = useDispatch();
-	const feed = useSelector(state => state.feeds);
-	const page = useSelector(state => state.page);
-	const sortType = useSelector(state => state.sortType);
-	const hasMore = useSelector(state => state.hasMore);
+	const [feed, setFeed] = useState([]);
+	const [page, setPage] = useState(0);
+	const [sortType, setSortType] = useState(HEADER_TOP);
+	const [hasMore, setHasMore] = useState(true);
 
   //fetch feeds
-  const fetchFeedsHandler = (isSortTypeChanged) => {
+  const fetchFeedsHandler = (isSortTypeChanged,_sortType) => {
 	  
 	let order = null
-	if(sortType === HEADER_TOP) {
+	if(_sortType === HEADER_TOP) {
 		order = HEADER_CATEGORY_FRONT;
 	}
-	if (sortType === HEADER_NEW) {
+	if (_sortType === HEADER_NEW) {
 		order = HEADER_CATEGORY_NEW
 	}
     fetchFeedsData(page, order)
@@ -30,39 +26,33 @@ function App() {
         let result = res.hits;
 		result = result.filter(item => item.title);
 		if(!isSortTypeChanged) {
-			dispatch({ type: INIT_FEEDS, payload:[...feed,...result] });
+			setFeed([...feed,...result]);
 		} else {
-			dispatch({ type: INIT_FEEDS, payload:[...result] });
+			setFeed([...result]);
 		}
-		
 		
       
         if (page + 1 === res.nbPages) {
-			dispatch({ type: HAS_MORE, payload:false })
+          setHasMore(false);
         }
       })
       .catch(err => {
-		dispatch({ type: INIT_FEEDS, payload:[] });
-		
-        dispatch({ type: HAS_MORE, payload:false })
+        setFeed([]);
+        setHasMore(false);
       });
   };
    const loadMore = () => {
-	dispatch({ type: UPDATE_PAGE, payload:page +1 });
-    
+    setPage(page + 1);
   };
 
-	useEffect(() => {
-		fetchFeedsHandler(false)
-	}, [page]);
+  useEffect(() => {
+	fetchFeedsHandler(false,sortType)
+}, [page]);
 
-	useEffect(() => {
-		fetchFeedsHandler(true)
-	}, [sortType]);
+useEffect(() => {
+	fetchFeedsHandler(true,sortType)
+}, [sortType]);
 
-	const setSortType = (sortType) => {
-		dispatch({ type: SORT_TYPE, payload:sortType });
-	}
 
   return (
 	<div className="App">
