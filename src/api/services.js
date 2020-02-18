@@ -3,7 +3,7 @@ import { setLocalStorage } from './storage';
 
 axios.defaults.baseURL = 'https://hn.algolia.com';
 
-export default function getHits(page = 1, hitsPerPage = 30) {
+export default function getHits(page = 1, hitsPerPage = 20) {
   return axios
     .get(`/api/v1/search?page=${page}&hitsPerPage=${hitsPerPage}`)
     .then((res) => {

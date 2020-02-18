@@ -8,7 +8,7 @@ export default class FrontPageRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      vote: 0,
+      vote: this.props.points,
       displayli: true,
     };
   }
