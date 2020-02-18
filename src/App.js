@@ -16,7 +16,7 @@ function App() {
 	const hasMore = useSelector(state => state.hasMore);
 
   //fetch feeds
-  const fetchFeedsHandler = () => {
+  const fetchFeedsHandler = (isSortTypeChanged) => {
 	  
 	let order = null
 	if(sortType === HEADER_TOP) {
@@ -29,7 +29,12 @@ function App() {
       .then(res => {
         let result = res.hits;
 		result = result.filter(item => item.title);
-		dispatch({ type: INIT_FEEDS, payload:[...feed,...result] });
+		if(!isSortTypeChanged) {
+			dispatch({ type: INIT_FEEDS, payload:[...feed,...result] });
+		} else {
+			dispatch({ type: INIT_FEEDS, payload:[...result] });
+		}
+		
 		
       
         if (page + 1 === res.nbPages) {
@@ -48,10 +53,14 @@ function App() {
   };
 
 	useEffect(() => {
-		fetchFeedsHandler()
-	}, [page,sortType]);
+		fetchFeedsHandler(false)
+	}, [page]);
 
-	const setSortType = () =>{
+	useEffect(() => {
+		fetchFeedsHandler(true)
+	}, [sortType]);
+
+	const setSortType = (sortType) => {
 		dispatch({ type: SORT_TYPE, payload:sortType });
 	}
 

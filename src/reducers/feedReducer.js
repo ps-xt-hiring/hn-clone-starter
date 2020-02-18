@@ -1,10 +1,10 @@
 import * as actionTypes from "../actions/actionTypes";
-import { HEADER_NEW } from "../constants";
+import { HEADER_NEW, HEADER_TOP } from "../constants";
 
 const initialState = {
   feeds:[],
   page:0,
-  sortType:HEADER_NEW,
+  sortType:HEADER_TOP,
   hasMore: true
 };
 
@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
         
       };
       case actionTypes.SORT_TYPE:
-          console.log("sort type",state,action)
+          
       return {
         ...state,
         sortType: action.payload
