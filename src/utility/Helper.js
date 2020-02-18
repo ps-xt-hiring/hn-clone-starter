@@ -15,7 +15,7 @@ export function extractHostname(url) {
 }
 
 export function timeDifference(datetime) {
-  const msPerMinute = 60 * 1000;
+  const msPerMinute = 60 *1000;
   const msPerHour = msPerMinute * 60;
   const msPerDay = msPerHour * 24;
   const msPerMonth = msPerDay * 30;
