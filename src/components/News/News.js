@@ -77,23 +77,23 @@ export default class News extends React.Component {
             </span>
             <span className="upvotes">
               <strong>{news.points + " "}</strong>
-              <a href="#" onClick={this.upvote} id={news.objectID}>
+              <a href="#" aria-label="Upvote this news" onClick={this.upvote} id={news.objectID}>
                 <FontAwesomeIcon id={news.objectID} icon={faCaretUp} />
               </a>
             </span>
             <div className="description">
-              <a href={news.url}>
+              <a href={news.url} aria-label="Title of the news">
                 <strong>{news.title + " "}</strong>
               </a>
-              <a href={news.url}>
-                <strong style={{ opacity: 0.5 }}>({news.url})</strong>
+              <a href={news.url} aria-label="Link to the news">
+                <strong style={{ opacity: 0.5 }}>({news.url && news.url.split("/")[0]+"//"+news.url.split("/")[2]})</strong>
               </a>
               <small style={{ opacity: 0.4 }}>{" by "}</small>
-              <a href="#">
+              <a href="#" aria-label="Author of this news">
                 <strong>{news.author}</strong>
               </a>{" "}
               <b style={{ opacity: 0.4 }}>{this.stalenessOfNews(news)}</b>
-              <a href="#" id={news.objectID} onClick={this.hideNews}>
+              <a href="#" aria-label="Hide this news" id={news.objectID} onClick={this.hideNews}>
                 <small style={{ opacity: 0.4 }}>{"[ "}</small>
                 <strong id={news.objectID}>{" hide "}</strong>
                 <small style={{ opacity: 0.4 }}>{" ]"}</small>
@@ -102,7 +102,7 @@ export default class News extends React.Component {
           </div>
         ))}
         <footer>
-          <a href="#" onClick={this.moreNews}>
+          <a href="#" aria-label="Get more news" onClick={this.moreNews}>
             {" More "}
           </a>
         </footer>
