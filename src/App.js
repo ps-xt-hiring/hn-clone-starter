@@ -7,14 +7,16 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <nav style={{}}>
+        <nav>
           <a
             href="#"
             style={{
               borderColor: "white",
               borderWidth: "1px",
               borderStyle:'solid',
-              padding: "3px"
+              marginLeft:'5px',
+              display:'flex',
+              justifyContent:'center'
             }}
           >
             <img src={"logo.gif"} alt="Y Combinator" height="20px" width="20px"></img>
