@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FeedItem from '../feedItem/FeedItem';
-import useLocalStorage from '../../utilities/browserStorage';
+import useBrowserStorage from '../../utilities/browserStorage';
 import { MORE_LABEL, LOADING_TEXT } from '../../constants';
 import './feeds.scss';
+import { useSelector } from 'react-redux';
 
 export default function Feed(props) {
-  const [upvotedList, setUpvotedList] = useLocalStorage('upvotedFeedItems', []);
-  const [hiddenList, setHiddenList] = useLocalStorage('hiddenFeedItems', []);
-  const { feed, loadMore, hasMore } = props;
-
+  const [upvotedList, setUpvotedList] = useBrowserStorage('upvotedFeedItems', []);
+  const [hiddenList, setHiddenList] = useBrowserStorage('hiddenFeedItems', []);
+  const {  loadMore, hasMore } = props;
+  const feed = useSelector(state=>state.feeds);
+  
   const upvoteFeedItem = (feedItem) => {
     const newList = [...upvotedList];
     const index = newList.findIndex(item => item.objectID === feedItem.objectID);

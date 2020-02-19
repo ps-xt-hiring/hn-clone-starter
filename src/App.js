@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
-import {  HEADER_TOP, HEADER_CATEGORY_FRONT, HEADER_CATEGORY_NEW, HEADER_NEW } from './constants';
 import Header from './components/header/Header';
 import Feed from './components/feeds/Feeds';
-import {fetchFeedsData} from './actions/feedsData';
-import { INIT_FEEDS , UPDATE_PAGE, SORT_TYPE,HAS_MORE } from './actions/actionTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
+import { changeSortType, changeLoadMorePage, getInitialFeed } from './reducers/feedReducer';
 
 function App() {
 	
@@ -16,52 +14,21 @@ function App() {
 	const hasMore = useSelector(state => state.hasMore);
 
   //fetch feeds
-  const fetchFeedsHandler = (isSortTypeChanged,_sortType) => {
-	  
-	let order = null
-	if(_sortType === HEADER_TOP) {
-		order = HEADER_CATEGORY_FRONT;
-	}
-	if (_sortType === HEADER_NEW) {
-		order = HEADER_CATEGORY_NEW
-	}
-    fetchFeedsData(page, order)
-      .then(res => {
-        let result = res.hits;
-		result = result.filter(item => item.title);
-		if(!isSortTypeChanged) {
-			dispatch({ type: INIT_FEEDS, payload:[...feed,...result] });
-		} else {
-			dispatch({ type: INIT_FEEDS, payload:[...result] });
-		}
+	const fetchFeedsHandler = (isSortTypeChanged,_sortType) => {
+		dispatch(getInitialFeed(page,_sortType));
+	};
+	const loadMore = () => {
+		dispatch(changeLoadMorePage(page,sortType));
 		
-		
-      
-        if (page + 1 === res.nbPages) {
-			dispatch({ type: HAS_MORE, payload:false })
-        }
-      })
-      .catch(err => {
-		dispatch({ type: INIT_FEEDS, payload:[] });
-		
-        dispatch({ type: HAS_MORE, payload:false })
-      });
-  };
-   const loadMore = () => {
-	dispatch({ type: UPDATE_PAGE, payload:page +1 });
-    
-  };
+	};
 
 	useEffect(() => {
 		fetchFeedsHandler(false,sortType)
-	}, [page]);
+	},[]);
 
-	useEffect(() => {
-		fetchFeedsHandler(true,sortType)
-	}, [sortType]);
 
-	const setSortType = (sortType) => {
-		dispatch({ type: SORT_TYPE, payload:sortType });
+	const setSortType = (_sortType) => {
+		dispatch(changeSortType(page,_sortType));
 	}
 
   return (
