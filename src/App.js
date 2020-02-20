@@ -6,7 +6,7 @@ import News from "./components/News/News";
 function App() {
   return (
     <div className="app">
-      {/* <header className="app-header">
+      <header className="app-header">
         <nav>
           <a
             href="#"
@@ -22,7 +22,7 @@ function App() {
             <img src={"logo.gif"} alt="Y Combinator" height="20px" width="20px"></img>
           </a>
         </nav>
-      </header> */}
+      </header>
       <News />
       {/* <Dummy /> */}
     </div>
