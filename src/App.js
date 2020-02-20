@@ -9,7 +9,7 @@ function App() {
       <header className="app-header">
         <nav>
           <a
-            href="#"
+            href="https://news.ycombinator.com/"
             style={{
               borderColor: "white",
               borderWidth: "1px",

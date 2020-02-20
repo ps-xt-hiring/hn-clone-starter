@@ -46,7 +46,7 @@ export default class News extends React.Component {
   }
   upvote = event => {
     let hits = JSON.parse(localStorage.getItem("hits"));
-    const increaseUpvote = hits => hits.objectID == event.currentTarget.id;
+    const increaseUpvote = hits => hits.objectID === event.currentTarget.id;
     const index = hits.findIndex(increaseUpvote);
     hits[index]["points"] = hits[index]["points"] + 1;
     localStorage.setItem("hits", JSON.stringify(hits));
@@ -54,7 +54,7 @@ export default class News extends React.Component {
   };
   hideNews = event => {
     let hits = JSON.parse(localStorage.getItem("hits"));
-    const shouldBeHidden = hits => hits.objectID == event.target.id;
+    const shouldBeHidden = hits => hits.objectID === event.target.id;
     const index = hits.findIndex(shouldBeHidden);
     hits.splice(index, 1);
     localStorage.setItem("hits", JSON.stringify(hits));
@@ -82,7 +82,7 @@ export default class News extends React.Component {
   render() {
     return (
       <div className="container">
-        {this.state.hits.length == 0 ? (
+        {this.state.hits.length === 0 ? (
           <p>Loading...</p>
         ) : (
           this.state.hits.map(news => (
@@ -92,14 +92,14 @@ export default class News extends React.Component {
               </span>
               <span className="upvotes">
                 <strong>{news.points + " "}</strong>
-                <a
-                  href="#"
-                  aria-label="Upvote this news"
+                <button
+                  type="button"
+                  className="link-button"
                   onClick={this.upvote}
                   id={news.objectID}
                 >
                   <FontAwesomeIcon id={news.objectID} icon={faCaretUp} />
-                </a>
+                </button>
               </span>
               <div className="description">
                 <a href={news.url} aria-label="Title of the news">
@@ -111,28 +111,28 @@ export default class News extends React.Component {
                   </strong>
                 </a>
                 <small style={{ opacity: 0.4 }}>{" by "}</small>
-                <a href="#" aria-label="Author of this news">
+                <a href={news.url} aria-label="Author of this news">
                   <strong>{news.author}</strong>
                 </a>{" "}
                 <b style={{ opacity: 0.4 }}>{this.stalenessOfNews(news)}</b>
-                <a
-                  href="#"
-                  aria-label="Hide this news"
+                <button
+                  type="button"
+                  className="link-button"
                   id={news.objectID}
                   onClick={this.hideNews}
                 >
                   <small style={{ opacity: 0.4 }}>{"[ "}</small>
                   <strong id={news.objectID}>{" hide "}</strong>
                   <small style={{ opacity: 0.4 }}>{" ]"}</small>
-                </a>
+                </button>
               </div>
             </div>
           ))
         )}
         <footer>
-          <a href="#" aria-label="Get more news" onClick={this.moreNews}>
+          <button type="button" className="link-button" onClick={this.moreNews}>
             {" More "}
-          </a>
+          </button>
         </footer>
       </div>
     );
