@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1"
@@ -10,8 +11,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test:lint:js": "eslint --ext=js --ext=jsx .",
-    "test:lint:css": "stylelint \"**/*.css\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -25,10 +24,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1",
     "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0"
   }
