@@ -1,0 +1,89 @@
+.postViewPort {
+    position: relative;
+    padding: 5px;
+    height: 100vh;
+    margin: 0 auto;
+    overflow: auto;
+    width: 100%;
+}
+
+.postViewPort .loader {
+    position: relative;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.postViewPort table {
+    position: relative;
+    width: 100%;
+}
+
+.postViewPort table thead,
+.postViewPort table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.postViewPort table tbody {
+    display: block;
+    /* max-height: calc(100vh - 90px); */
+    overflow: auto;
+}
+
+.postViewPort table .header {
+    height: 30px;
+    background-color: #ee6f2e;
+    font-size: 1.5rem;
+}
+
+.postViewPort table .header span {
+    line-height: 30px;
+}
+
+.postViewPort table .header img {
+    height: 18px;
+    width: 18px;
+    border: 2px solid #fff;
+    margin: 5px;
+    float: left;
+}
+
+.postViewPort table .header .topNavLinks a {
+    color: #000;
+    text-decoration: initial;
+    padding: 0 10px;
+}
+
+.postViewPort table .header .topNavLinks a:hover {
+    color: #fff;
+}
+
+.postViewPort .postContainer {
+    height: 25px;
+    font-size: 1rem;
+    overflow-wrap: break-word;
+}
+
+.postViewPort tbody .postContainer:nth-child(odd) {
+    background-color: #e6e6e1;
+}
+
+.postViewPort tbody .postContainer:nth-child(even) {
+    background-color: #f6f6f1;
+}
+
+.postViewPort tfoot .postContainer {
+    background-color: #f6f6f1;
+    height: 35px;
+}
+
+.postViewPort tfoot .moreButton {
+    background: transparent;
+    border: 0;
+    color: #ee6f2e;
+    margin-left: 120px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: initial;
+}
