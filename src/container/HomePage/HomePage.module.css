@@ -1,0 +1,21 @@
+.footerDiv {
+    height: 2px;
+    background-color: #ff6600;
+}
+
+.outerDiv {
+    margin: 100px;
+    margin-top: 15px;
+    position: "relative"
+}
+
+@media screen and (max-width: 767px) {
+    .outerDiv {
+        margin: 0px;
+    }
+}
+
+.errorMessage {
+    font-size: large;
+    color: red;
+}
