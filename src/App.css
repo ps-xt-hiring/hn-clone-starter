@@ -1,5 +1,35 @@
 .App {
-  text-align: center;
+  width:1280px;
+  margin:10px auto;
+}
+
+a{
+  text-decoration: none;
+  color:inherit;
+}
+
+.logo{
+  width:40px;
+}
+.header{
+  background:#ee702e;
+  display:flex;
+  height: 40px;
+}
+.nav{
+  margin-top: 11px;
+}
+
+.nav a{
+  
+  padding: 0 10px;
+}
+.nav .selected{
+  color:#fff;
+}
+
+.nav a:first-child{
+  border-right:1px solid black;
 }
 
 .App-logo {
@@ -30,4 +60,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #e6e6e0;}
+tr:nth-child(odd) {background-color: #f6f6f0;}
+
+.upvote{
+  width: 10px;
+  padding-left: 10px;
 }
