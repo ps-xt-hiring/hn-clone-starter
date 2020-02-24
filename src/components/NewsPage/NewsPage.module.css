@@ -1,0 +1,87 @@
+.mainStyle {
+    background-color: #f9f9ef;
+}
+
+.numberList {
+    color: #868585;
+    float: left;
+}
+
+.listMargin {
+    margin: 5px;
+}
+
+.commentFont {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 8pt;
+    color: #828282;
+    margin-left: 33px;
+}
+
+.hideDiv {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 8pt;
+    color: #828282;
+    margin-left: 3px;
+}
+
+.titleURL {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 8pt;
+    color: #828282;
+}
+
+.titleFont {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    margin-bottom: -25px;
+}
+
+.hideAlign {
+    display: inline-flex;
+    margin-left: -33px;
+}
+
+.linkColor {
+    color: #828282;
+    text-decoration: none;
+}
+.seeMoreBtn{
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #828282;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 9pt;
+}
+@media screen and (max-width: 767px) {
+    .unvoteDiv {
+        position: absolute;
+        padding-left: 340px;
+        font-size: 9pt;
+        margin-top: 4px
+    }
+    .hideDiv {
+        width: 122px;
+    }
+    .mainStyle {
+        padding-left: 4px;
+    }
+    .hideAlign {
+        margin-left: 0px;
+        ;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .unvoteDiv {
+        position: absolute;
+        padding-left: 367px;
+        font-size: 8pt;
+        margin-top: -6px;
+    }
+}

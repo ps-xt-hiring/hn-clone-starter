@@ -1,0 +1,55 @@
+.mainDiv {
+    height: 24px;
+    background-color: #ff6600;
+}
+
+.headerTable {
+    border: "0";
+    width: "100%";
+    padding: 2px
+}
+
+.tableData {
+    width: 18px;
+    padding-right: 4px;
+}
+.frontPageImg{
+    width:18px;
+    height:18px;
+    border:1px white solid;
+    padding-right: 4px;
+    
+
+}
+.lifrontPageImg{
+    padding-left: 2px;
+    padding-top: 2px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    padding-bottom: 4px;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: #000000;
+    text-align: center;
+    padding: 2px 16px;
+    text-decoration: none;
+  }
+  
+  
+  .liStyle{
+    margin-left: -26px;
+  }
+  .liStylelast{
+      float: right;
+  }
