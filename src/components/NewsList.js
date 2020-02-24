@@ -34,10 +34,12 @@ class NewsList extends React.PureComponent {
      setUpVote=()=>{
         const {upvote} = this.state;
         return(
-            <td style={rowStyle}>
+          <>
+            <div style={rowStyle} className="upvotes-count" >
                 {upvote}
-                    <img src={upArrow} className="upvote" onClick={()=>{this.getUpvoteCount()}} />
-            </td>
+            </div>
+            <div role="button" tabindex="0" class="upCaret" onClick={()=>{this.getUpvoteCount()}}></div>
+          </>
         )
      }
 
@@ -70,16 +72,16 @@ class NewsList extends React.PureComponent {
         const titlehead = story_title || title;
         return (
           <>  
-            <td>
+            <div>
                 <a href={url} target='_blank'>
                     <div>{titlehead}</div>
                 </a>
-            </td>
+            </div>
             
-            <td> {this.getDomainName(url,true)} </td>
-            <td> by {author} </td>
-            <td> {this.getHours(created_at_i)} ago </td>
-            <td><button onClick={()=>this.hidePost()}>[hide]</button></td>
+            <div className="domain"> {this.getDomainName(url,true)} </div>
+            <div className="author"> {author} </div>
+            <div className="createdAt"> {this.getHours(created_at_i)} ago </div>
+            <div className="hidebtn"> <button onClick={()=>this.hidePost()}>[hide]</button></div> 
           </>
         );
       };
@@ -88,11 +90,11 @@ class NewsList extends React.PureComponent {
     const { data } = this.props;
     const {show , numComments } = this.state;
     return (
-      <tr>
-        {show && <td>{numComments}</td>}
+      <div className="row-layout">
+        {show && <div className="comments">{numComments}</div>}
         {show && this.setUpVote()}
         {show && this.titleBar(data)}
-      </tr>
+      </div>
     );
   }
 }

@@ -10,7 +10,7 @@ class Dasboard extends React.PureComponent {
       error: null,
       isLoaded: false,
       items: [],
-      page: 1,
+      page: 0,
       type : 'top'
     };
   }
@@ -37,25 +37,35 @@ class Dasboard extends React.PureComponent {
 
   componentDidMount() {
     const { page } = this.state;
-    const apiUrl = `http://hn.algolia.com/api/v1/search?tags=(comment,story,poll)&page=${page}`;
+    const apiUrl = `http://hn.algolia.com/api/v1/search?tags=front_page&page=${page}&hitsPerPage=30`;
     this.feeds(apiUrl);
     
   }
 
-  getFeed = (feedType)=>{
+
+  getFeed = (feedType,flag)=>{
     const { page, type } = this.state;
-    if(feedType===type){
+    debugger;
+    if(feedType===type && !flag){
         return false;
     }else{
         this.setState({
             type:feedType,
         })
     }
-    let apiUrl = `http://hn.algolia.com/api/v1/search?tags=(comment,story,poll)&page=${page}`;
+    let apiUrl = `http://hn.algolia.com/api/v1/search?tags=front_page&page=${page}&hitsPerPage=30`;
       if(feedType === 'new'){
-       apiUrl = `http://hn.algolia.com/api/v1/search_by_date?tags=(comment,story,poll)&page=${page}`;
+       apiUrl = `http://hn.algolia.com/api/v1/search?tags=story&page=${page}&hitsPerPage=30`;
       }
     this.feeds(apiUrl);
+  }
+
+  moreFeeds = ()=>{
+    const {type} = this.state;
+    this.setState(prevState =>({
+      page :prevState.page+1,
+    }))
+    this.getFeed(type, true);
   }
 
   render() {
@@ -71,11 +81,13 @@ class Dasboard extends React.PureComponent {
         </div>
         {!isLoaded && <div>.....LOADING FEEDS.</div>}
         {!error && (
-        <table>
-          <tbody>
+        <div className='row'>
             {isLoaded && items.map(item => <NewsList key={item.objectID} data={item} />)}
-          </tbody>
-        </table>
+            <div className="footer more-btn" onClick={()=>this.moreFeeds()}>
+              More
+            </div>
+        </div>
+
         )}
       </div>
     );
