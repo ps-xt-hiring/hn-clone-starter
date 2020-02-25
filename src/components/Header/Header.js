@@ -1,15 +1,13 @@
 import React from "react";
 import "./Header.css";
 import { labelConstants } from "../../static/constants";
+import Anchor from "../Anchor/Anchor";
+import Button from "../Button/Button";
 function Header() {
   return (
     <header className="app-header">
       <nav>
-        <a
-          aria-label="Site Main Page"
-          href="https://news.ycombinator.com/"
-          className="logo"
-        >
+        <Anchor ariaLabel="Hacker news dashboard" target="_blank">
           <img
             src="logo.gif"
             title="Y Combinator"
@@ -17,10 +15,12 @@ function Header() {
             height="20px"
             width="20px"
           />
-        </a>
-        <a href="/top">{labelConstants.TOP}</a>
+        </Anchor>
+        {/* href="https://news.ycombinator.com/" */}
+        {/* className="logo" */}
+        <Button>{labelConstants.TOP}</Button>
         <small>{labelConstants.SPLIT}</small>
-        <a href="/news">{labelConstants.NEW}</a>
+        <Button>{labelConstants.NEW}</Button>
       </nav>
     </header>
   );

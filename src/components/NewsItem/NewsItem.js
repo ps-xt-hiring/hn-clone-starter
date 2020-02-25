@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { stalenessOfNews } from "../../appUtility/utility";
 import Button from "../Button/Button";
 import Anchor from "../Anchor/Anchor";
+import { labelConstants } from "../../static/constants";
 
 function NewsItem(props) {
   const { news, upvote, hideNews } = props;
@@ -15,7 +16,7 @@ function NewsItem(props) {
       </Span>
       <Span>
         <strong>{news.points + " "}</strong>
-        <Button news={news} onClick={upvote}>
+        <Button news={news} onClick={upvote} title="Upvote">
           <FontAwesomeIcon id={news.objectID} icon={faCaretUp} />
         </Button>
       </Span>
@@ -31,17 +32,17 @@ function NewsItem(props) {
           </Anchor>
         </div>
         <div>
-          <small style={{ opacity: 0.4 }}>{" by "}</small>
+          <small>{labelConstants.BY}</small>
           <Anchor news={news} ariaLabel="Author of this news" target="_blank">
             <strong>{news.author}</strong>
           </Anchor>
-          <b style={{ opacity: 0.4 }}>{stalenessOfNews(news)}</b>
+          <b>{stalenessOfNews(news)}</b>
           <Button news={news} onClick={hideNews}>
-            <small style={{ opacity: 0.4 }}>{"[ "}</small>
+            <small>{"[ "}</small>
             <strong id={news.objectID} title="hide">
-              {" hide "}
+              {labelConstants.HIDE}
             </strong>
-            <small style={{ opacity: 0.4 }}>{" ]"}</small>
+            <small>{" ]"}</small>
           </Button>
         </div>
       </div>

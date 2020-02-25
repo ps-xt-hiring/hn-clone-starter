@@ -8,8 +8,8 @@ const labelConstants = {
   AGO: "ago",
   MORE: "More",
   LOADING: "Loading...",
-  TOP:"top",
-  NEW:"new",
-  SPLIT:"| ",
+  TOP: "top",
+  NEW: "new",
+  SPLIT: "| "
 };
-export {labelConstants};
+export { labelConstants };
