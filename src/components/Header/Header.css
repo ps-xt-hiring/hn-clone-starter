@@ -1,0 +1,32 @@
+.app-header {
+  background-color: #ff6600;
+  display: flex;
+  min-height: 6vh;
+  max-width: 85%;
+  margin: 0 auto;
+  margin-top: 0.5em;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+a:active {
+  color: #ff6600;
+}
+img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  border: white 1px solid;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+@media screen and (max-width: 520px) {
+  .app-header {
+    max-width: 100%;
+  }
+}

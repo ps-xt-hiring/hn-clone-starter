@@ -1,14 +1,9 @@
-*{
-  box-sizing: border-box;
-  font-size: 14px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
 .container{
   display: flex;
   flex-direction: column;
   width: 85vw;
   margin: 0 auto;
+  /* flex-wrap: wrap; */
 }
 .row{
   display: flex;
@@ -22,24 +17,33 @@
 .row:nth-child(even){
   background-color: #ccc;
 }
-.comments{
-  margin-left: 30px;
-  flex: 0 0 40px;
-}
-.upvotes{
-  margin-left: 20px;
-  flex: 0 0 60px;
-}
-a{
-  text-decoration: none;
-  color: black;
-}
 footer{
   background-color: #f6f6ef;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-footer > a{
-  margin-left: 155px;
-  color: #ff6600;
+.description{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width:520px){
+  *{
+    font-size: 15px;
+  }
+  .description{
+    display: flex;
+    flex-direction: column;
+  }
+  .comments, .upvotes{
+    display: flex;
+    flex: 0 0 5%;
+    margin-right: 15px;
+  }
+  .root{
+    max-width: 100%;
+  }
+  .app-header, .container{
+    width: 100%;
+  }
 }

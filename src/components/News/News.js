@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./News.css";
-import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Loading from "../Loading/Loading";
+import NewsItem from "../NewsItem/NewsItem";
+import Footer from "../Footer/Footer";
+import Button from "../Button/Button";
+import {labelConstants} from "../../static/constants";
 export default class News extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +34,7 @@ export default class News extends React.Component {
   componentDidMount() {
     fetch(
       "https://hn.algolia.com/api/v1/search_by_date?tags=story&page=" +
-        this.state.pageCount,
+        this.state.pageCount
     )
       .then(response => response.json())
       .then(data => {
@@ -60,80 +63,26 @@ export default class News extends React.Component {
     localStorage.setItem("hits", JSON.stringify(hits));
     this.setState({ hits });
   };
-  stalenessOfNews = news => {
-    let date = new Date();
-    let createdAt = new Date(news.created_at);
-    let timeDiff = date.getTime() - createdAt.getTime();
-    let seconds,
-      minutes,
-      hours,
-      days = 0;
-    seconds = Math.ceil(timeDiff / 1000);
-    if (seconds > 60) minutes = Math.ceil(seconds / 60);
-    if (minutes > 60) hours = Math.ceil(minutes / 60);
-    if (hours > 24) days = Math.ceil(hours / 24);
-    return (
-      (days && days + " days ago ") ||
-      (hours && hours + " hours ago ") ||
-      (minutes && minutes + " minutes ago ") ||
-      (seconds && seconds + " seconds ago ")
-    );
-  };
   render() {
     return (
       <div className="container">
         {this.state.hits.length === 0 ? (
-          <p>Loading...</p>
+          <Loading />
         ) : (
           this.state.hits.map(news => (
-            <div className="row" key={news.objectID}>
-              <span className="comments">
-                <strong>{news.num_comments}</strong>
-              </span>
-              <span className="upvotes">
-                <strong>{news.points + " "}</strong>
-                <button
-                  type="button"
-                  className="link-button"
-                  onClick={this.upvote}
-                  id={news.objectID}
-                >
-                  <FontAwesomeIcon id={news.objectID} icon={faCaretUp} />
-                </button>
-              </span>
-              <div className="description">
-                <a href={news.url} aria-label="Title of the news">
-                  <strong>{news.title + " "}</strong>
-                </a>
-                <a href={news.url} aria-label="Link to the news">
-                  <strong style={{ opacity: 0.5 }}>
-                    ({news.url && news.url.split("/")[2]})
-                  </strong>
-                </a>
-                <small style={{ opacity: 0.4 }}>{" by "}</small>
-                <a href={news.url} aria-label="Author of this news">
-                  <strong>{news.author}</strong>
-                </a>{" "}
-                <b style={{ opacity: 0.4 }}>{this.stalenessOfNews(news)}</b>
-                <button
-                  type="button"
-                  className="link-button"
-                  id={news.objectID}
-                  onClick={this.hideNews}
-                >
-                  <small style={{ opacity: 0.4 }}>{"[ "}</small>
-                  <strong id={news.objectID}>{" hide "}</strong>
-                  <small style={{ opacity: 0.4 }}>{" ]"}</small>
-                </button>
-              </div>
-            </div>
+            <NewsItem
+              key={news.objectID}
+              news={news}
+              hideNews={this.hideNews}
+              upvote={this.upvote}
+            />
           ))
         )}
-        <footer>
-          <button type="button" className="link-button" onClick={this.moreNews}>
-            {" More "}
-          </button>
-        </footer>
+        {this.state.hits.length > 0 ? (
+          <Footer>
+            <Button onClick={this.moreNews}>{labelConstants.MORE}</Button>
+          </Footer>
+        ) : null}
       </div>
     );
   }
