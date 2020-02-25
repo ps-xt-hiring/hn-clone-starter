@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.css";
+import "./Header.scss";
 import { labelConstants } from "../../static/constants";
 import Anchor from "../Anchor/Anchor";
 import Button from "../Button/Button";

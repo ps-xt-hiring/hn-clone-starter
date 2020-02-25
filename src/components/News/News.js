@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import "./News.css";
+import "./News.scss";
 import Loading from "../Loading/Loading";
 import NewsItem from "../NewsItem/NewsItem";
 import Footer from "../Footer/Footer";
