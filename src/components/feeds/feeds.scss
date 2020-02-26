@@ -1,0 +1,19 @@
+@import '../../styles/theme.scss';
+
+.feed {
+    padding-block: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.75rem;
+
+    &__more {
+        width: 88%;
+        display:flex;
+        padding: 1rem;
+        color: $orangeColor;
+        cursor: pointer;
+
+    }
+    .hide {
+        display: none;
+    }
+}
