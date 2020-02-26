@@ -1,45 +1,27 @@
-.container{
+@import "../../theme/theme.scss";
+.container {
   display: flex;
   flex-direction: column;
   width: 85vw;
   margin: 0 auto;
-  /* flex-wrap: wrap; */
 }
-.row{
-  display: flex;
-  flex-direction: row;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-.row:nth-child(odd){
-  background-color: #f6f6ef;
-}
-.row:nth-child(even){
-  background-color: #ccc;
-}
-
-.description{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-@media screen and (max-width:520px){
-  *{
+@media screen and (max-width: $breakPoint) {
+  * {
     font-size: 15px;
   }
-  .description{
+  .description {
     display: flex;
     flex-direction: column;
   }
-  .comments, .upvotes{
+  .comments {
     display: flex;
     flex: 0 0 5%;
     margin-right: 15px;
   }
-  .root{
+  .root {
     max-width: 100%;
   }
-  .app-header, .container{
+  .container {
     width: 100%;
   }
 }

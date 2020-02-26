@@ -1,1 +1,8 @@
-$themeColor : #ff6600
+// theme file for our apllication
+$themeColor: #ff6600;
+$breakPoint: 520px;
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

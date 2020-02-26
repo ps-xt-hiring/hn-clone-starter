@@ -1,5 +1,8 @@
+// generic utilities of application
+
 import {labelConstants} from "../static/constants";
 
+// function to calculate time delay of news
 function stalenessOfNews(news){
     let date = new Date();
     let createdAt = new Date(news.created_at);

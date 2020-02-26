@@ -1,3 +1,5 @@
+// component to show generic anchor tag
+
 import React from "react";
 import "./Anchor.scss";
 function Anchor(props) {

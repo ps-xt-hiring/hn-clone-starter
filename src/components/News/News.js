@@ -5,18 +5,17 @@ import Loading from "../Loading/Loading";
 import NewsItem from "../NewsItem/NewsItem";
 import Footer from "../Footer/Footer";
 import Button from "../Button/Button";
-import { labelConstants, urlConfilg } from "../../static/constants";
+import { labelConstants } from "../../static/constants";
+import { sendRequest } from "../../utility/serviceUtility";
 
 function News() {
   const [state, setState] = useState({ hits: [], pageCount: 1 });
   useEffect(() => {
-    fetch(urlConfilg.url + state.pageCount)
-      .then(response => response.json())
-      .then(data => {
-        setState({ hits: data.hits, pageCount: state.pageCount + 1 });
-        localStorage.setItem("hits", JSON.stringify(data.hits));
-      });
-  },state.pageCount);
+    sendRequest(state).then(data => {
+      setState({ hits: data.hits, pageCount: state.pageCount + 1 });
+      localStorage.setItem("hits", JSON.stringify(data.hits));
+    });
+  }, state.pageCount);
   const upvote = event => {
     let hits = JSON.parse(localStorage.getItem("hits"));
     const increaseUpvote = hits => hits.objectID === event.currentTarget.id;
@@ -34,12 +33,10 @@ function News() {
     setState({ ...state, hits: hits });
   };
   const moreNews = () => {
-    fetch(urlConfilg.url + state.pageCount)
-      .then(response => response.json())
-      .then(data => {
-        setState({ hits: data.hits, pageCount: state.pageCount + 1 });
-        localStorage.setItem("hits", JSON.stringify(data.hits));
-      });
+    sendRequest(state).then(data => {
+      setState({ hits: data.hits, pageCount: state.pageCount + 1 });
+      localStorage.setItem("hits", JSON.stringify(data.hits));
+    });
   };
 
   return (

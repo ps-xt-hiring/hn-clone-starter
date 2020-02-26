@@ -1,3 +1,5 @@
+// configuration file for labels
+
 const labelConstants = {
   BY: "by",
   HIDE: "hide",
