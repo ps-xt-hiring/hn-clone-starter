@@ -1,6 +1,6 @@
 {
-  "homepage": "http://ashishjain.github.io/hn-clone-starter",
-  "name": "hn-clone-starter",
+  "homepage": "http://ashishjain.github.io/hn-clone-starter-react",
+  "name": "hn-clone-starter-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
