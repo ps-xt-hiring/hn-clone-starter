@@ -1,0 +1,30 @@
+ul {
+  font-size: small;
+  color: black;
+}
+
+li {
+  list-style: none;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+li:nth-child(odd) {
+  background-color: whitesmoke;
+}
+
+li:nth-child(even) {
+  background-color: rgba(90, 86, 86, 0.2);
+}
+
+.comments {
+  font-size: 10pt;
+  flex: 1 1;
+  text-align: end;
+}
+
+.details {
+  flex: 12 1;
+  margin-left: 16px;
+}

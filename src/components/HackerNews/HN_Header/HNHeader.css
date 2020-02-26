@@ -1,0 +1,29 @@
+.hn-header {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background-color: #f60;
+}
+
+.hn-logo {
+  border: 1px solid #f8f5f2;
+}
+
+.hn-top,
+.hn-pipe,
+.hn-new {
+  margin-left: 8px;
+}
+
+.hn-top,
+.hn-new {
+  cursor: pointer;
+}
+
+.white {
+  color: white;
+}
+
+.black {
+  color: black;
+}

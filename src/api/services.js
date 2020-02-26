@@ -1,18 +1,53 @@
 import axios from 'axios';
-import { setLocalStorage } from './storage';
+import {
+  fetchHackerNewsRequest,
+  fetchHackerNewsSuccess,
+  fetchHackerNewsFailure,
+  fetchHackerNewsUpdate,
+  upvoteHackerNews,
+} from '../redux';
 
 axios.defaults.baseURL = 'https://hn.algolia.com';
 
-export default function getHits(page = 1, hitsPerPage = 20) {
-  return axios
-    .get(`/api/v1/search?page=${page}&hitsPerPage=${hitsPerPage}`)
-    .then((res) => {
-      if (res.data) {
-        setLocalStorage('currentPage', res.data.page);
-        setLocalStorage('totalPage', res.data.nbPages);
-        return res.data.hits;
+export function getHackerNewsData(pageNo = 1, hitsPerPage = 20) {
+  return (dispatch) => {
+    dispatch(fetchHackerNewsRequest());
+    axios
+      .get(`/api/v1/search?page=${pageNo}&hitsPerPage=${hitsPerPage}`)
+      .then((res) => {
+        if (res.data) {
+          const { page, nbPages, hits } = res.data;
+          dispatch(fetchHackerNewsSuccess({ page, nbPages, hits }));
+        } else {
+          dispatch(fetchHackerNewsFailure('Data is not present.'));
+        }
+      })
+      .catch((err) => {
+        dispatch(fetchHackerNewsFailure(err.message));
+      });
+  };
+}
+
+export function removeObjFromHNData(objArray, removeObjectID) {
+  return (dispatch) => {
+    const updatedObjArray = objArray.filter(
+      item => item.objectID !== removeObjectID,
+    );
+    dispatch(fetchHackerNewsUpdate(updatedObjArray));
+  };
+}
+
+export function upVoteHNews(objArray, removeObjectID) {
+  return (dispatch) => {
+    const updatedObjArray = objArray.map((item) => {
+      if (item.objectID === removeObjectID) {
+        const newItem = { ...item };
+        newItem.points += 1;
+        newItem.isUpVoted = true;
+        return { ...newItem };
       }
-      throw new Error('Data is not present.');
-    })
-    .catch((err) => { throw err; });
+      return item;
+    });
+    dispatch(upvoteHackerNews(updatedObjArray));
+  };
 }

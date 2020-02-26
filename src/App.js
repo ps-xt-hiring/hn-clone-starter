@@ -1,14 +1,18 @@
 import React from 'react';
-import FrontPage from './components/FrontPage';
+import { Provider } from 'react-redux';
+import FrontPage from './components/HackerNews/FrontPage';
 import './App.css';
+import store from './redux/store';
 
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-        <FrontPage />
+    <Provider store={store}>
+      <div className="App">
+        <div className="container">
+          <FrontPage />
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 }
 

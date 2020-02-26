@@ -1,0 +1,17 @@
+.upvote {
+  flex: 1 1;
+  text-align: end;
+  min-width: 60px;
+}
+
+.upvote-red {
+  color: #f60;
+}
+
+.upvotearrow {
+  margin-right: 4px;
+  margin-left: 2px;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+}
