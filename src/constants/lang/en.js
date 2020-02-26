@@ -6,3 +6,4 @@ export const HEADER_CATEGORY_NEW = 'story';
 export const HIDE_LABEL = 'hide';
 export const MORE_LABEL = 'more';
 export const LOADING_TEXT = 'Loading...';
+export const HN_BASE_URL = 'https://hn.algolia.com'

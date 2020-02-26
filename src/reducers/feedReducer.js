@@ -6,45 +6,57 @@ const initialState = {
   feeds:[],
   page:0,
   sortType:HEADER_TOP,
-  hasMore: true
+  hasMore: true,
+  isLoading: false
 };
 export const getInitialFeed = (page,order) => {
     return (dispatch,getState) => {
         let sortTag = order === HEADER_TOP?'front_page':'story';
-       return fetchFeedsData(page, sortTag)
+        dispatch(requestInitiated(actionTypes.GET_FEEDS_INITIATED));
+        fetchFeedsData(page, sortTag)
 		.then(res => {
 			let result = res.hits;
 			result = result.filter(item => item.title);
 				dispatch(initialiseFeeds(result,res));
 		})
 		.catch(err => {
-			dispatch(initialiseFeeds([],null));
+			dispatch({type:actionTypes.ERROR_OCCURED});
 		});
     }
 }
-export const changeSortType = (page,order) => {
+export const changeSortType = (page=0,order) => {
     let sortTag = order === HEADER_TOP?'front_page':'story';
     
     return (dispatch,getState) => {
-        return fetchFeedsData(0,sortTag).then(
+        dispatch(requestInitiated(actionTypes.UPDATE_SORT_TYPE_INITIATED));
+        fetchFeedsData(page=0,sortTag).then(
             res => dispatch(updateSortType(res,order,getState))
         )
+        .catch(err => {
+            console.log(err);
+			dispatch({type:actionTypes.ERROR_OCCURED});
+		});
     }
 }
 export const changeLoadMorePage = (page,order) => {
     let sortTag = order === HEADER_TOP?'front_page':'story';
     let newPage = page + 1;
     return (dispatch,getState) => {
-        return fetchFeedsData(newPage,sortTag).then(
+        dispatch(requestInitiated(actionTypes.LOAD_MORE_INITIATED));
+        fetchFeedsData(newPage,sortTag).then(
             res => dispatch(updatePage(res,page))
         )
+        .catch(err => {
+            console.log(err);
+			dispatch({type:actionTypes.ERROR_OCCURED});
+		});
     }
 }
 
 const updateSortType = (result,sortType,getState) => {
     const {_page} = getState();
     return {
-        type: actionTypes.SORT_TYPE,
+        type: actionTypes.UPDATE_SORT_TYPE,
         payload: {
             feeds:result,
             sortType:sortType,
@@ -75,38 +87,59 @@ const initialiseFeeds = (feeds,result,getState) => {
         }
     }
 }
-const reducer = (state = initialState, action) => {
+const requestInitiated = (actionName) => {
+    return {
+        type: actionName
+    }
+}
+const reducer = (state = initialState, {type,payload}) => {
 
-  switch (action.type) {
+  switch (type) {
     case actionTypes.INIT_FEEDS:
       return {
         ...state,
-        feeds: action.payload.feeds,
-        page: action.payload.page,
-        hasMore: action.payload.hasMore
+        feeds: payload.feeds,
+        page: payload.page,
+        hasMore: payload.hasMore,
+        isLoading: false
         
       };
       case actionTypes.UPDATE_PAGE:
       return {
         ...state,
-        feeds: [...state.feeds,...action.payload.feeds.hits.slice()],
-        page: action.payload.page,
-        hasMore: action.payload.hasMore
+        feeds: [...state.feeds,...payload.feeds.hits.slice()],
+        page: payload.page,
+        hasMore: payload.hasMore,
+        isLoading: false
         
       };
-      case actionTypes.SORT_TYPE:
+      case actionTypes.UPDATE_SORT_TYPE:
         return {
             ...state,
-            feeds: action.payload.feeds.hits.slice(),
-            sortType: action.payload.sortType,
-            hasMore: action.payload.hasMore,
-            page: action.payload.page
+            feeds: payload.feeds.hits.slice(),
+            sortType: payload.sortType,
+            hasMore: payload.hasMore,
+            page: payload.page,
+            isLoading: false
         }   
       case actionTypes.HAS_MORE:
       return {
         ...state,
-        hasMore: action.payload
+        hasMore: payload,
+        isLoading: false
         
+      };
+      case actionTypes.GET_FEEDS_INITIATED:
+      case actionTypes.UPDATE_SORT_TYPE_INITIATED:
+      return {
+        ...state,
+        isLoading: true
+      };
+      case actionTypes.ERROR_OCCURED:
+      case actionTypes.LOAD_MORE_INITIATED:
+      return {
+        ...state,
+        isLoading: false
       };
     
     default:

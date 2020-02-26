@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FeedItem from '../feedItem/FeedItem';
 import useBrowserStorage from '../../utilities/browserStorage';
-import { MORE_LABEL, LOADING_TEXT } from '../../constants';
+import { MORE_LABEL } from '../../constants';
 import './feeds.scss';
 import { useSelector } from 'react-redux';
 
@@ -11,6 +11,7 @@ export default function Feed(props) {
   const [hiddenList, setHiddenList] = useBrowserStorage('hiddenFeedItems', []);
   const {  loadMore, hasMore } = props;
   const feed = useSelector(state=>state.feeds);
+  const isLoading = useSelector(state=>state.isLoading);
   
   const upvoteFeedItem = (feedItem) => {
     const newList = [...upvotedList];
@@ -54,7 +55,8 @@ export default function Feed(props) {
 
   return (
     <main className="container-wrapper feed">
-      {feed.length
+     
+      {feed.length && !isLoading
         ? (
           <>
             {feed.filter(post => isHidden(post))
@@ -80,7 +82,9 @@ export default function Feed(props) {
         )
         : (
           <p>
-            {LOADING_TEXT}
+            <span className={isLoading?'loader':'hide'}>
+              
+            </span>
           </p>
         )
       }
@@ -89,20 +93,13 @@ export default function Feed(props) {
 }
 
 Feed.propTypes = {
-  feed: PropTypes.arrayOf(PropTypes.shape({
-    num_comments: PropTypes.number,
-    title: PropTypes.string,
-    points: PropTypes.number,
-    url: PropTypes.string,
-    author: PropTypes.string,
-    created_at: PropTypes.string,
-  })),
+  
   loadMore: PropTypes.func,
   hasMore: PropTypes.bool,
 };
 
 Feed.defaultProps = {
-  feed: [],
+  
   loadMore: () => { },
   hasMore: true,
 };
