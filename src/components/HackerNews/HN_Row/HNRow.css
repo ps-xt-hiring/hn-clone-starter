@@ -1,0 +1,16 @@
+.domain,
+.createdat,
+.font-x-small {
+  font-size: x-small;
+  color: #828282;
+}
+
+.margin-lr {
+  margin: 0 2px;
+}
+
+.hide {
+  margin-left: 3px;
+  font-size: 8pt;
+  cursor: pointer;
+}
