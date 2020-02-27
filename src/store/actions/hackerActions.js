@@ -14,6 +14,20 @@ export const loadEnd = async () => {
     }
 }
 
+export const hideMe = (objectID) => (dispatch) => {
+   dispatch({
+      type: types.HIDE_IT,
+      payload: objectID 
+   })
+}
+
+export const voteMe = (objectID) => (dispatch) => {
+    dispatch({
+       type: types.VOTED,
+       payload: objectID 
+    })
+ }
+
 export const getData = (pageNum) => (dispatch, getState) => {
 
   dispatch({

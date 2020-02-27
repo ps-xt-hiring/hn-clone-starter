@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { getData } from '../store/actions/hackerActions';
+import { getData, voteMe, hideMe } from '../store/actions/hackerActions';
 import PropTypes from 'prop-types';
 import * as moment from 'moment';
 
@@ -40,22 +40,31 @@ class HackerPage extends Component {
     return url? url.replace('http://','').replace('https://','').split(/[/?#]/)[0] : 'n/a';  
   }
 
+  upvote = (objectID) => {
+    this.props.dispatch( voteMe(objectID) );
+  }
+  hideme = (objectID) => {
+    this.props.dispatch( hideMe(objectID) );
+  }
+
   renderList = (data) =>{
      return (
        data.map( (el, iKey) =>
          <li key={iKey} className="list normal-text">
              <div className="comments-num"> {el.num_comments || 0} </div>
-             <div className="points"> {el.points || 0} </div>
+             <div className="points" style={{position: 'relative'}}> {el.points || 0} 
+               <span className="up-arrow" onClick={() =>this.upvote(el.objectID)} ></span>
+             </div>
              <div className="desc-row">
                 <div className="title-url normal-text">
                     <span>{el.title}</span>
-                    <span className="dim-text text-url no-break" href={el.url} >  ( {this.geturlText(el.url)} )  </span>
+                    <span className="dim-text text-url no-break" href={el.url} target="_blank" >  ( {this.geturlText(el.url)} )  </span>
                 </div>
                 <div className="dim-text">
                     <span className="text-gap"> by </span>
                     <span className="normal-text text-gap"> {el.author} </span>
                     <span className="no-break"> {moment(el.created_at).fromNow()} </span>
-                    <span className='dim-text no-break'>[<span className="normal-text"> Hide </span>]</span>
+                    <span className='dim-text no-break' onClick={()=>this.hideme(el.objectID)} >[<span className="normal-text" style={{cursor: 'pointer'}}> Hide </span>]</span>
                 </div>
              </div>
          </li>

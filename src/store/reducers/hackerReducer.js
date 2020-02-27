@@ -20,8 +20,28 @@ export default function hackerReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-     }; 
+     };
+    case types.HIDE_IT:
+      return {
+        ...state,
+        data: [...state.data.filter(e=> e.objectID != action.payload ) ]
+      }  
+    case types.VOTED:
+      return {
+        ...state,
+        data: [...updatePoint(state.data, action.payload)]
+      }  
     default:
       return state;
   }
+}
+
+function updatePoint(data, objectID){
+  data.map(e=> {
+     if(e.objectID == objectID && e.points){
+        e.points = parseInt(e.points)+1;
+        return e;
+     }
+  })
+  return data;
 }
