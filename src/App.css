@@ -31,3 +31,128 @@
     transform: rotate(360deg);
   }
 }
+
+/* ##### override ### */
+.nav-top{
+    position: fixed;
+    top: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: #e96429;
+    border-bottom: 1px solid rgb(216, 216, 216);
+    font-weight: bold;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    z-index: 99999;
+}
+.nav-logo{
+    border: 1px solid white;
+    font-size: 14px;
+    color: white;
+    padding: 3px 7px;
+    margin-right: 15px;
+}
+.nav-logo:hover{
+  color: #96350a;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-info span{
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0 4px;
+}
+.nav-info span:first-child, .nav-info span:last-child {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav-info span:first-child{
+  color: white;
+}
+
+
+.listData-wrapper{
+  margin-top: 32px;
+  margin-bottom: 5px;
+  padding-top: 15px;
+  padding-bottom: 20px;;
+}
+
+.dim-text{
+  opacity: 0.9;
+  color: #a1a09d;
+  font-weight: 500;
+  font-size: medium;
+}
+.normal-text{
+  color: #212632;
+  font-weight: 600;
+  font-size: initial;
+}
+.comments-num{
+  padding: 5px 10px 5px 40px;
+  display:flex;
+  flex-basis: 4vw;
+  justify-content: flex-start;
+}
+.points{
+  padding: 5px 30px 5px 20px;
+  display:flex;
+  flex-basis: 4vw;
+  justify-content: flex-start;
+}
+
+.more-btn{
+  padding-left: 15%;
+  color: #e96429;
+  cursor: pointer;
+}
+.text-gap {
+  padding-left: 2px;
+  padding-right: 6px;
+}
+.text-url:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+ul{
+  padding-inline-start: 0px;
+}
+
+ul li{
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all 0.1s ease-in-out;
+}
+ul li:nth-child(odd){
+  background-color: #e6e6df;
+}
+ul li:hover{
+  background-color:#d4d4ca;
+}
+.no-break{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.desc-row{
+  display: flex;
+  flex-direction: row;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .desc-row{
+    flex-direction: column;
+  }
+  .text-url{
+    width: 180px;
+    display: flex
+  }
+}

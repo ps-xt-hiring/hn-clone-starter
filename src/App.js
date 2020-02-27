@@ -1,27 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Publicis Sapient - XT hiring challenge!!</h1>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-and save to reload. Refactor at will, but please do not
-          modify the entry point
-          {' '}
-          <code>index.js</code>
-.
-        </p>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react';
+import { Router, Route, browserHistory } from 'react-router';
+import {createStore, applyMiddleware, compose} from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import GreetingPage from './components/GreetingPage';
+import HackerPage from './components/HackerPage';
+import Navbar from './components/common/Navbar';
+
+import rootReducer from './store/reducers';
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(thunk)
+  )
+);
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="container">
+          <Navbar/>
+          <Router history={ browserHistory } >
+            <Route path="/" component={HackerPage} />
+            <Route path="/welcome" component={GreetingPage} />
+          </Router>
+        </div>
+      </Provider>
+    );
+  }
 }
 
 export default App;
+
+
+// export default App;
+
+
+
+
