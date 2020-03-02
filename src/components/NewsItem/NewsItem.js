@@ -3,6 +3,8 @@ import ReactTimeAgo from 'react-time-ago';
 import JavascriptTimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 
+import Button from '../button/button';
+
 JavascriptTimeAgo.locale(en);
 
 const NewsItem = (props) => {
@@ -35,7 +37,8 @@ const NewsItem = (props) => {
             <div className="news-control-wrapper">
                 <span className="num-comments">{props.list.num_comments}</span>
                 <span className = {voteCounterClass}>{voteCounter}</span>
-                <button type="button" className="upVote fas fa-caret-up" onClick={() => upVote()} />
+                {/* <button type="button" className="upVote fas fa-caret-up" onClick={() => upVote()} /> */}
+                <Button className="upVote fas fa-caret-up" handleClick = {()=> upVote()} />
             </div>
             <div className="news-content-wrapper">
                 <span>{props.list.title}</span>
@@ -43,7 +46,8 @@ const NewsItem = (props) => {
                 <span className="label-by">by</span>
                 <span className="author">{props.list.author}</span>
                 <span className="created"><ReactTimeAgo date={props.list.created_at} /></span>
-                <button type="button" className="btn-hide" onClick={() => hideRecord()}>[hide]</button>
+                {/* <button type="button" className="btn-hide" onClick={() => hideRecord()}>[hide]</button> */}
+                <Button className="btn-hide" text = "here" handleClick = {()=> hideRecord()} />
             </div>
         </li>
     )
