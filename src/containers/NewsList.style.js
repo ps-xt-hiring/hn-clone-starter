@@ -1,20 +1,21 @@
 import {css} from 'styled-components';
+import * as theme from '../styles/variables.style';
 
 const styles = css`
    
     width: 80%;
     padding: 20px;
-    font-size: 12px;
+    font-size: ${theme.FONT_SIZE_12};
 
     ul{
         list-style: none;
         li {
-            background: #f8f8f4; 
+            background: ${theme.LIST_BG}; 
             padding: 5px 0;
             display: flex
         }
         li:nth-child(even) { 
-            background: #ececdf; 
+            background: ${theme.LIST_ALT_BG}; 
         }
         span {
             margin-right: 5px;
@@ -26,25 +27,25 @@ const styles = css`
             margin-right: 30px;
         }
         .low {
-            color: black;
+            color: ${theme.TEXT_BLACK};
         }
         .medium {
-            color: brown
+            color: ${theme.TEXT_BROWN};
         }
         .high {
-            color: red;
+            color: ${theme.TEXT_RED};
         }
         .domain, 
         .author, 
         .created, 
         .btn-hide,
         .label-by {
-            font-size: 11px;
+            font-size: ${theme.FONT_SIZE_11};
         }
         .domain,
         .created,
         .label-by {
-            color: #828282
+            color: ${theme.TEXT_LIGHTGREY};
         }
     }
     button {
@@ -54,7 +55,7 @@ const styles = css`
         cursor:pointer;
         overflow: hidden;
         outline:none;
-        color:red;
+        color: ${theme.TEXT_RED};
     }
     
 `
