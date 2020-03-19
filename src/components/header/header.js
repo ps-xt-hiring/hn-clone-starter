@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './../../logo.gif';
+import logo from '../../logo.gif';
 
 const Header = () => (
   <header className="App-header">
