@@ -160,6 +160,7 @@ body {
   cursor: pointer;
   border: 0;
   background: transparent;
+  width: 100%;
 }
 
 @media (min-width: 1281px) {
@@ -174,5 +175,6 @@ body {
   .load-more-btn {
     margin-left: 176px;
     text-align: left;
+    width: auto
   }
 }
