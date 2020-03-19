@@ -101,8 +101,12 @@ body {
 .news-list__item .title-wrap .carot-arrow {
   position: relative;
   width: 15px;
-  padding: 0 8px;
   cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  margin: 0 8px;
+  background: transparent;
+  border: 0;
 }
 
 .news-list__item .title-wrap .carot-arrow::before {
@@ -138,18 +142,24 @@ body {
 .news-list__item .title-wrap .hide-btn {
   font-size: 12px;
   cursor: pointer;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
 }
 
 .load-more-btn {
   padding: 10px 0;
   margin: 10px 0;
-  padding-left: 0;
+  margin-left: 0;
   text-align: center;
   font-size: 14px;
   font-family: sans-serif;
   color: var(--header-background);
   font-weight: 600;
   cursor: pointer;
+  border: 0;
+  background: transparent;
 }
 
 @media (min-width: 1281px) {
@@ -162,7 +172,7 @@ body {
   }
 
   .load-more-btn {
-    padding-left: 176px;
+    margin-left: 176px;
     text-align: left;
   }
 }

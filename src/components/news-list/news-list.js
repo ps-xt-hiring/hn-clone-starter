@@ -18,8 +18,9 @@ export default class NewsList extends React.Component {
     this.getNewsListData();
   }
 
-  getNewsListData() {
-    axios.get(`http://hn.algolia.com/api/v1/search_by_date?page=${this.state.pageNo}&numericFilters=num_comments>10,points>10`)
+  getNewsListData = () => {
+    const { pageNo } = this.state;
+    axios.get(`http://hn.algolia.com/api/v1/search_by_date?page=${pageNo}&numericFilters=num_comments>10,points>10`)
       .then((res) => {
         let result = res.data.hits;
         let hideNewsList = localStorage.getItem('hideNewsList');
@@ -27,10 +28,8 @@ export default class NewsList extends React.Component {
           hideNewsList = JSON.parse(hideNewsList);
           result = result.filter(val => hideNewsList.indexOf(val.objectID) === -1);
         }
-
         const { newsList } = this.state;
         const lastNewsList = [...newsList];
-
         const updatedNewsList = lastNewsList.concat(result);
         this.setState({
           newsList: updatedNewsList,
@@ -40,7 +39,7 @@ export default class NewsList extends React.Component {
       });
   }
 
-  loadMore() {
+  loadMore = () => {
     const { pageNo } = this.state;
     this.setState({
       pageNo: pageNo + 1,
@@ -49,8 +48,8 @@ export default class NewsList extends React.Component {
     this.getNewsListData();
   }
 
-  hideItem(data) {
-    const objectId = data.data.objectID;
+  hideItem = (data) => {
+    const objectId = data.newsData.objectID;
     let hideNewsList = localStorage.getItem('hideNewsList');
     if (hideNewsList) {
       hideNewsList = JSON.parse(hideNewsList);
@@ -73,7 +72,11 @@ export default class NewsList extends React.Component {
       <section className="news-list-wrapper">
         <ul className="news-list">
           {newsList.map(val => (
-            <NewsItem key={val.created_at_i} hideItem={$event => this.hideItem($event)} newsData={val} />
+            <NewsItem
+              key={val.created_at_i}
+              hideItem={$event => this.hideItem($event)}
+              newsData={val}
+            />
           ))}
         </ul>
         {
