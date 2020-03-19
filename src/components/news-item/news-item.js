@@ -82,7 +82,7 @@ export default class NewsItem extends React.Component {
       <li className="news-list__item">
         <div className="comment-number">{numComments}</div>
         <div className="title-wrap">
-          <div className="upvotes" style={{ color: upvoteColor, }}>{upvoteCount}</div>
+          <div className="upvotes" style={{ color: upvoteColor }}>{upvoteCount}</div>
           <button className="carot-arrow" type="button" onClick={() => this.upgradeUpvote()} />
           <div className="title">
             <span>{title}</span>
