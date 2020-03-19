@@ -18,7 +18,7 @@ export default class NewsList extends React.Component {
     this.getNewsListData();
   }
 
-  getNewsListData = () => {
+  getNewsListData() {
     const { pageNo } = this.state;
     axios.get(`http://hn.algolia.com/api/v1/search_by_date?page=${pageNo}&numericFilters=num_comments>10,points>10`)
       .then((res) => {
@@ -39,7 +39,7 @@ export default class NewsList extends React.Component {
       });
   }
 
-  loadMore = () => {
+  loadMore() {
     const { pageNo } = this.state;
     this.setState({
       pageNo: pageNo + 1,
@@ -48,7 +48,7 @@ export default class NewsList extends React.Component {
     this.getNewsListData();
   }
 
-  hideItem = (data) => {
+  hideItem(data) {
     const objectId = data.newsData.objectID;
     let hideNewsList = localStorage.getItem('hideNewsList');
     if (hideNewsList) {
