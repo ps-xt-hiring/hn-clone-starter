@@ -1,3 +1,4 @@
+import React from 'react';
 import { parseDomainFromUrl, convertToTimesAgo } from '../utils/helper';
 import NewsPoint from './NewsPoint';
 import Anchor from './shared/Anchor';
@@ -14,20 +15,21 @@ export default function NewsRow(props) {
             </div>
 
             <div className="detail-wrapper">
-                <div><label>{props.title}</label></div>
+                <div>{props.title}</div>
                 <div className="detail">
                     (<Anchor href={props.url} target="_blank" className="underline color-gray">{`${parseDomainFromUrl(props.url)}`}</Anchor>)
-                    by <label className="color-black"> {props.author} </label>
-                    <label> {convertToTimesAgo(props.created_at)} </label>
-                    [<Button onClick={(event) => {
+                    by <span className="color-black"> {props.author} </span>
+                    <span> {convertToTimesAgo(props.created_at)} </span>
+                    [<Button className="btn hide-btn" onClick={(event) => {
                         props.handleHideClick(props.objectID, props.itemIndex);
                     }}>hide</Button>]
                 </div>
             </div>
-            <style jsx>{`
+            <style jsx="true">{`
             .detail-wrapper {
                 display: flex;
-                flex-direction:row; 
+                flex-direction:row;
+                align-items: center;
             }
             .detail {
                 color: #808080;

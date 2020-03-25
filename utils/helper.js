@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 export const parseDomainFromUrl = (url) => {
     if (!url) return '';
     var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
@@ -10,9 +8,33 @@ export const parseDomainFromUrl = (url) => {
         return null;
     }
 };
-export const convertToTimesAgo = (timeStr) => {
-    if (!timeStr) return null;
-    return moment(timeStr).fromNow();
+export const convertToTimesAgo = (timestr) => {
+    if (!timestr) return null;
+
+    var seconds = Math.floor((new Date() - new Date(timestr)) / 1000);
+
+  var interval = Math.floor(seconds / 31536000);
+
+  if (interval > 1) {
+    return interval + " years";
+  }
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) {
+    return interval + " months";
+  }
+  interval = Math.floor(seconds / 86400);
+  if (interval > 1) {
+    return interval + " days";
+  }
+  interval = Math.floor(seconds / 3600);
+  if (interval > 1) {
+    return interval + " hours";
+  }
+  interval = Math.floor(seconds / 60);
+  if (interval > 1) {
+    return interval + " minutes";
+  }
+  return Math.floor(seconds) + " seconds";
 }
 export const storeActivity = (activityName, key, value) => {
     if (typeof localStorage === 'undefined') return {};

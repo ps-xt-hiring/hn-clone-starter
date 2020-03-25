@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from './shared/Button';
 export default function NewsPoint({points, upvoteActivity, objectID, itemIndex, handleVoteClick}) {
     let iconProps = {
@@ -8,12 +9,12 @@ export default function NewsPoint({points, upvoteActivity, objectID, itemIndex, 
     return (
         <span className="points">
             <label>{points}</label>
-            <style jsx>{`
+            <style jsx="true">{`
             .points {
                 float: right;
             }
             `}</style>
-            <Button className="btn" onClick={() => {
+            <Button className="btn vote-btn" onClick={() => {
                 handleVoteClick(objectID, itemIndex);
             }} aria-label={iconProps.title}><img {...iconProps} width="16" alt={iconProps.title}/></Button>
         </span>

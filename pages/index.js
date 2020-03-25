@@ -36,11 +36,11 @@ function Home({ data, page }) {
         })}
       </div>
       <footer>
-        <Link href={`?page=${parseInt(page) + 1}`}>
-          <a>{MORE}</a>
+        <Link href={`?page=${parseInt(page) + 1}`} >
+          <a className="load-more">{MORE}</a>
         </Link>
       </footer>
-      <style jsx>{`
+      <style jsx="true">{`
           .flex {
             display: flex;
           }
@@ -61,7 +61,7 @@ function Home({ data, page }) {
           }
         `}</style>
 
-      <style jsx global>{`
+      <style jsx="true" global="true">{`
           html,
           body {
             padding: 0;
@@ -73,7 +73,7 @@ function Home({ data, page }) {
             box-sizing: border-box;
           }
           .btn {
-            background-color: #00000000;
+            background-color: Transparent;
             border: 0;
             cursor: pointer;
           }
@@ -109,8 +109,11 @@ function Home({ data, page }) {
 export async function getServerSideProps({ query: { page = 0 } }) {
   // Fetch data from external API
   const res = await fetch(`http://hn.algolia.com/api/v1/search?query=&page=${page}`)
-  const data = await res.json()
-
+  const data = await res.json();
+  let filteredData = data.hits.filter((item, index) => {
+    return (item.title) ? true : false;
+  });
+  data.hits = filteredData;
   // Pass data to the page via props
   return { props: { data, page } }
 }

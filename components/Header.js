@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { TOP, NEW } from '../utils/constants';
 import Anchor from './shared/Anchor';
 export default function Header() {
@@ -10,7 +10,7 @@ export default function Header() {
         <span className="seperator">|</span>
         <Anchor href="#" className="color-black">{NEW}</Anchor>
       </nav>
-      <style jsx>{`
+      <style jsx="true">{`
             .header {
                 background: #fb683b;
                 padding: 10px;
