@@ -2,18 +2,11 @@ import React, { useReducer, useEffect, useMemo, useState } from 'react'
 import News from '../News'
 import { reducer, initialState } from './reducer'
 import FetchNews from '../../Services/APIs/FetchNews';
-import styled from 'styled-components';
 import { setNewsAsHidden, getHiddenNews } from '../../utils/helper'
-
-const ListWraper = styled.ul`
-    list-style: none;
-`;
-const LoadMore = styled.span`
-    cursor: pointer;
-`;
+import { LoadMoreBtn, ListWraper } from '../Styled';
 
 const NewsList = () => {
-    const [hiddenIds, setHiddenIds] = useState(getHiddenNews())
+    const [hiddenIds, setHiddenIds] = useState(getHiddenNews());
     const [state, dispatch] = useReducer(reducer, initialState);
     const { newsList, processing } = state
 
@@ -47,12 +40,17 @@ const NewsList = () => {
                 {newsList.map(news => !hiddenIds.includes(news.objectID) && (
                     <News key={news.objectID} news={news} hideNews={hideNews} />
                 ))}
+                <li className="paginationWrapper">
+                    <div className="left"></div>
+                    <div className="right">
+                        {
+                            processing ?
+                                <span className="loader">Loading...</span> :
+                                <LoadMoreBtn onClick={() => loadMore()}>More</LoadMoreBtn>
+                        }
+                    </div>
+                </li>
             </ListWraper>
-            {
-                processing ?
-                    <span>Loading...</span> :
-                    <LoadMore onClick={() => loadMore()}>More</LoadMore>
-            }
         </section>
     )
 }

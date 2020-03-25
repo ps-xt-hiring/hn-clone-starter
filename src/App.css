@@ -1,3 +1,14 @@
-.App {
-  text-align: center;
+body {
+  color: #F6F6EF;
+}
+li.news-row {
+  padding: 5px;
+  font-size: 14px;
+  display: block;
+}
+li.news-row:nth-child(even) {
+  background-color: #E6E6DF;
+}
+li.news-row a {
+  text-decoration: none;
 }

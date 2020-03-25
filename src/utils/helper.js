@@ -1,4 +1,28 @@
 /**
+ * Increases votes by 1, and saves into localstorage.
+ * @param {*} newsId 
+ * @param {*} totalVotes 
+ */
+const setUpVote = (newsId, totalVotes) => {
+    let votes = getVote(newsId) || totalVotes;
+
+    votes = Number(votes) + 1;
+    localStorage.setItem(`vote-${newsId}`, votes);
+}
+
+/**
+ * Fetches the votes from localstorage.
+ * @param {*} newsId 
+ */
+const getVote = (newsId) => {
+    if (!localStorage || !('length' in localStorage)) {
+        return [];
+    }
+
+    return localStorage.getItem(`vote-${newsId}`)
+}
+
+/**
  * Hides news items
  * @param {*} newsId 
  */
@@ -7,7 +31,7 @@ const setNewsAsHidden = (newsId) => {
         return;
     }
 
-    const hiddenItems = getHiddenNews();    
+    const hiddenItems = getHiddenNews();
     hiddenItems.push(newsId);
     localStorage.setItem('hnHiddenNews', hiddenItems.join(','))
 }
@@ -67,7 +91,7 @@ const getTimeDuration = (date) => {
         return `${years} years ago`;
     }
 
-    
+
     /**
      * get total months between two dates
      */
@@ -75,7 +99,7 @@ const getTimeDuration = (date) => {
     if (months >= 1) {
         return `${months} months ago`;
     }
-    
+
     /**
      * get total weeks between two dates
      */
@@ -83,7 +107,7 @@ const getTimeDuration = (date) => {
     if (weeks >= 1) {
         return `${weeks} weeks ago`;
     }
-    
+
     /**
      * get total days between two dates
      */
@@ -99,7 +123,7 @@ const getTimeDuration = (date) => {
     if (hours >= 1) {
         return `${hours} hours ago`;
     }
-    
+
     /**
      * get minutes
      */
@@ -121,5 +145,7 @@ export {
     getDomainFromUrl,
     getTimeDuration,
     setNewsAsHidden,
-    getHiddenNews
+    getHiddenNews,
+    setUpVote,
+    getVote
 }
