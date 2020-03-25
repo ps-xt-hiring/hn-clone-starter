@@ -9,8 +9,20 @@ class NewsListComponent extends Component {
         super(props);
         this.state = {
             newsList:[],
-            hiddenListArray:[]
+            hiddenListArray:[],
+            currentPage:1
         }
+    }
+    async loadMore () {
+        console.log("load more");
+        let iCurrentPage = this.state.currentPage;
+        iCurrentPage++;
+        this.setState({currentPage:iCurrentPage})
+        console.log("this.state.currentPage",this.state.currentPage)
+        const {data} = await axios.get(`https://api.myjson.com/bins/x3eng`)
+        console.log("data on oad more",data)
+        let newsList = [...this.state.newsList,...data.hits]
+        this.setState({newsList:newsList})
     }
     vote (i) {
 		console.log("index",i);
@@ -21,42 +33,38 @@ class NewsListComponent extends Component {
     hide (index,item) {
         console.log("hide row index",index);
         let newHiddenRowList = [...this.state.newsList]
-        newHiddenRowList.splice(index,1)
         this.state.hiddenListArray.push(item)
+        newHiddenRowList.splice(index,1)
         localStorage.setItem("hiddenListArray",JSON.stringify(this.state.hiddenListArray))
-        //newHiddenRowList[i].isHidden = true;
         this.setState({newsList:newHiddenRowList})
         console.log("new state",this.state.newsList);
     }
     async componentDidMount() {
         const {data} = await axios.get('https://hn.algolia.com/api/v1/search')
-        console.log("hello")
-        //data.hits.map(o => o.upvote_count = 0)
-        //data.hits.map(index => index.isHidden = false)
         let hiddenItems = JSON.parse(localStorage.getItem("hiddenListArray"))
-        var objIdsArr=[];
-        for(let i=0;i<hiddenItems.length;i++){
-            objIdsArr.push(hiddenItems[i].objectID)
+        if(hiddenItems){
+            var objIdsArr=[];
+            for(let i=0;i<hiddenItems.length;i++){
+                objIdsArr.push(hiddenItems[i].objectID)
+            }
+            var result;
+            for(var a=0;a<objIdsArr.length;a++){
+                for(var b=0;b<data.hits.length;b++){
+                    if(data.hits[b].objectID==objIdsArr[a]){
+                        data.hits.splice(b,1)
+                    }
+                    
+                }
+            }
         }
-        var result;
-        // for(let index=0;index<objIdsArr.length;index++){
-            result = data.hits.filter((item)=>{
-                return item.objectID != objIdsArr[0]; 
-                return item.objectID != objIdsArr[1]; 
-            })
-        // }
-        console.log("result",result)
-        console.log("objIdsArr",objIdsArr)
-        var index = data.hits.indexOf(hiddenItems)
+        
         var newData = data.hits;
-        // if(index>-1){
-        //     newData = data.hits.splice(index,1)
-        // }
         this.setState({newsList: newData})
         console.log("state",this.state.newsList)
     }
     
     render() {
+        
         // var cols = {
         //     num_comments: 'No of comments',
         //     upvote_count:'Upvotes',
@@ -86,7 +94,7 @@ class NewsListComponent extends Component {
                         </div>
                     )
                 }
-                <a href="#">More</a>
+                <button onClick={this.loadMore.bind(this)}>More</button>
             </div>
         );
     }
