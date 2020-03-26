@@ -14,30 +14,24 @@ class NewsListComponent extends Component {
         }
     }
     async loadMore () {
-        console.log("load more");
         let iCurrentPage = this.state.currentPage;
         iCurrentPage++;
         this.setState({currentPage:iCurrentPage})
-        console.log("this.state.currentPage",this.state.currentPage)
         const {data} = await axios.get(`https://api.myjson.com/bins/x3eng`)
-        console.log("data on oad more",data)
         let newsList = [...this.state.newsList,...data.hits]
         this.setState({newsList:newsList})
     }
     vote (i) {
-		console.log("index",i);
-        let newCountedArray = [...this.state.newsList]
+		let newCountedArray = [...this.state.newsList]
         newCountedArray[i].upvote_count++;
         this.setState({newsList:newCountedArray})
     }
     hide (index,item) {
-        console.log("hide row index",index);
         let newHiddenRowList = [...this.state.newsList]
         this.state.hiddenListArray.push(item)
         newHiddenRowList.splice(index,1)
         localStorage.setItem("hiddenListArray",JSON.stringify(this.state.hiddenListArray))
         this.setState({newsList:newHiddenRowList})
-        console.log("new state",this.state.newsList);
     }
     async componentDidMount() {
         const {data} = await axios.get('https://hn.algolia.com/api/v1/search')
@@ -61,13 +55,7 @@ class NewsListComponent extends Component {
         var newData = data.hits;
         newData.map(o => o.upvote_count = 0)
         this.setState({newsList: newData})
-        console.log("state",this.state.newsList)
     }
-    calculateDuration=(date)=>{
-        console.log("HHHHHHHHHHHHHHHW")
-        return '5 days ago'
-    }
-    
     render() {
         var cols = {
             num_comments: 'No of comments',
