@@ -15,7 +15,7 @@ const navStyle = `${styles.links} ${styles.with_split_icon}`;
  */
 class Header extends Component {
   // eslint-disable-next-line
-  static contextType = FeedContext;
+  static contextType = FeedContext; // eslint-disable-line
 
   render() {
     return (

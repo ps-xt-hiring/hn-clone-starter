@@ -13,7 +13,7 @@ import { Button } from '../../components';
  */
 class Footer extends Component {
   // eslint-disable-next-line
-  static contextType = FeedContext;
+  static contextType = FeedContext; // eslint-disable-line
 
   fetchNextFeeds = () => {
     this.context.fetchNewFeeds();

@@ -31,7 +31,7 @@ const findRange = dateTime => {
     isInSeconds: min === 0 ? Math.round((cTime - tTime) / 1000) : false,
     isInMintues: min < 60 ? min : false,
     isInHours: min > 59 && min < 1440 ? Math.round(min / 60) : false,
-    isInDays: min > 1439 ? Math.round(min / 1440) : false // // eslint-disable-line
+    isInDays: min > 1439 ? Math.round(min / 1440) : false // eslint-disable-line
   };
 };
 

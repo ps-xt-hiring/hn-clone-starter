@@ -13,7 +13,7 @@ import { Feed, Lists } from '../../components';
  */
 class Feeds extends Component {
   // eslint-disable-next-line
-  static contextType = FeedContext;
+  static contextType = FeedContext; // eslint-disable-line
 
   hideFeed = feedId => {
     this.context.hideFeedById(feedId);

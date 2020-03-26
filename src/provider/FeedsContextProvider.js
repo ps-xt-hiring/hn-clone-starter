@@ -21,7 +21,8 @@ class FeedsContextProvider extends Component {
   }
 
   // eslint-disable-next-line
-  initApi = (reset = false) => {
+  initApi = reset => {
+    // eslint-disable-line
     fetchFeeds(1, reset).then(data => {
       const vissibleFeeds = this.findVisibleFeeds(data.hits || []);
       this.setState({ feeds: vissibleFeeds });
