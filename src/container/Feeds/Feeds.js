@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import styles from "./Feeds.module.css";
+/* eslint-disable */
+import React, { Component } from 'react';
+import styles from './Feeds.module.css';
 
-import FeedContext from "../../context/FeedsContext";
-import { Feed, Lists } from "../../components";
+import FeedContext from '../../context/FeedsContext';
+import { Feed, Lists } from '../../components';
 
 /**
  * List of feeds are handled by this component

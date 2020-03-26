@@ -1,7 +1,8 @@
-import React from "react";
-import "./App.css";
+/* eslint-disable */
+import React from 'react';
+import './App.css';
 
-import { Header, Feeds, Footer } from "./container";
+import { Header, Feeds, Footer } from './container';
 
 function App() {
   return (

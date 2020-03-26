@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import FeedsContext from "../context/FeedsContext";
+/* eslint-disable */
+import React, { Component } from 'react';
+import FeedsContext from '../context/FeedsContext';
 
-import { fetchFeeds } from "../service/httpApi";
-import { localState } from "../util";
+import { fetchFeeds } from '../service/httpApi';
+import { localState } from '../util';
 
 /**
  * Provider Class to handle data of Application
@@ -14,8 +15,8 @@ import { localState } from "../util";
 class FeedsContextProvider extends Component {
   constructor(props) {
     super(props);
-    this.ls_hidden_feeds = localState.create("hidded-feeds", {});
-    this.ls_upvode_feeds = localState.create("upvoted-feeds", {});
+    this.ls_hidden_feeds = localState.create('hidded-feeds', {});
+    this.ls_upvode_feeds = localState.create('upvoted-feeds', {});
     this.state = { feeds: [] };
   }
 
@@ -34,7 +35,7 @@ class FeedsContextProvider extends Component {
       if (hiddenFeeds[cv.objectID] === false) return av;
 
       if (upVotedFeeds[cv.objectID] !== undefined)
-        cv["points"] = upVotedFeeds[cv.objectID];
+        cv['points'] = upVotedFeeds[cv.objectID];
 
       av.push(cv);
 
@@ -60,7 +61,7 @@ class FeedsContextProvider extends Component {
     this.storeUpVote(feedId, vote);
 
     const currentFeeds = [...this.state.feeds];
-    currentFeeds[index]["points"] = currentFeeds[index]["points"] + 1;
+    currentFeeds[index]['points'] = currentFeeds[index]['points'] + 1;
     this.setState({ feeds: currentFeeds });
   };
 

@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import styles from "./Footer.module.css";
+/* eslint-disable */
+import React, { Component } from 'react';
+import styles from './Footer.module.css';
 
-import FeedContext from "../../context/FeedsContext";
-import { Button } from "../../components";
+import FeedContext from '../../context/FeedsContext';
+import { Button } from '../../components';
 
 /**
  * Application Footer Component

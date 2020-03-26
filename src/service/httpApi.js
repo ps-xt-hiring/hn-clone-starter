@@ -1,3 +1,4 @@
+/* eslint-disable */
 const formURL = pageNo =>
   `http://hn.algolia.com/api/v1/search_by_date?page=${pageNo}&numericFilters=num_comments>10,points>10`;
 

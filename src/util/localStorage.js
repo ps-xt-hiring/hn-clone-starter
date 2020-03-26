@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * A factory class to handle local storage curd operations
  *

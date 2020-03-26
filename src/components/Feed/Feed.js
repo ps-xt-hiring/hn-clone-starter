@@ -1,8 +1,9 @@
-import React, { memo } from "react";
-import styles from "./Feed.module.css";
-import voteArrow from "./source/grayarrow.gif";
+/* eslint-disable */
+import React, { memo } from 'react';
+import styles from './Feed.module.css';
+import voteArrow from './source/grayarrow.gif';
 
-import { timeRange } from "../../util";
+import { timeRange } from '../../util';
 /**
  * Memoized Feed Component to show feed details
  *
@@ -33,14 +34,14 @@ export function Feed({
   upvote,
   num_comments
 }) {
-  if (!url || !url.includes("http")) url = `http://${url || "--"}`;
+  if (!url || !url.includes('http')) url = `http://${url || '--'}`;
 
-  url = url.replace(/www./i, "");
+  url = url.replace(/www./i, '');
 
   const sourceHostName = (new URL(url) || {}).hostname;
   const postedTime = timeRange(created_at);
 
-  const countStyle = `${styles.upvote} ${points > 99 ? styles.orangeTxt : ""}`;
+  const countStyle = `${styles.upvote} ${points > 99 ? styles.orangeTxt : ''}`;
 
   return (
     <article className={styles.feed}>
@@ -65,8 +66,8 @@ export function Feed({
           target="_blank"
           href={url}
         >
-          {" "}
-          {sourceHostName}{" "}
+          {' '}
+          {sourceHostName}{' '}
         </a>
         <span className={styles.auther}>
           posted by <i>{author}</i>

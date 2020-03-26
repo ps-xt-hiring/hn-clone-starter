@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable */
+import React from 'react';
 
 /**
  * React Context Implementaion

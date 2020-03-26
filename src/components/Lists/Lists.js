@@ -1,4 +1,5 @@
-import { memo } from "react";
+/* eslint-disable */
+import { memo } from 'react';
 
 /**
  * A memoized Component to render List of any Component

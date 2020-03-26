@@ -1,5 +1,6 @@
-import React from "react";
-import styles from "./Button.module.css";
+/* eslint-disable */
+import React from 'react';
+import styles from './Button.module.css';
 /**
  * Basic Button Component
  *
@@ -9,7 +10,7 @@ import styles from "./Button.module.css";
  *  type = "button"
  * }
  */
-const Button = ({ clickHandler, text, type = "button" }) => (
+const Button = ({ clickHandler, text, type = 'button' }) => (
   <button className={styles.btn} type={type} onClick={clickHandler}>
     {text}
   </button>

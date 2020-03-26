@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import styles from "./Header.module.css";
-import logo from "./source/y18.gif";
+/* eslint-disable */
+import React, { Component } from 'react';
+import styles from './Header.module.css';
+import logo from './source/y18.gif';
 
-import FeedContext from "../../context/FeedsContext";
+import FeedContext from '../../context/FeedsContext';
 
 const navStyle = `${styles.links} ${styles.with_split_icon}`;
 
