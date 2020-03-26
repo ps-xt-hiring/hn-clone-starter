@@ -1,4 +1,4 @@
-// eslint-disable-next-line
+/* eslint-disable */
 const formTimeText = inputTimeObj => {
   // eslint-disable-next-line
   const { isInSeconds, isInMintues, isInHours, isInDays } = inputTimeObj;
