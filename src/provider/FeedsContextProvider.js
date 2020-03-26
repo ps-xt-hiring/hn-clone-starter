@@ -20,6 +20,7 @@ class FeedsContextProvider extends Component {
     this.state = { feeds: [] };
   }
 
+  // eslint-disable-next-line
   initApi = (reset = false) => {
     fetchFeeds(1, reset).then(data => {
       const vissibleFeeds = this.findVisibleFeeds(data.hits || []);
