@@ -12,7 +12,6 @@ body {
     border-spacing: 0;
   }
   .responsive-table thead {
-    /* visibility: hidden; */
     background: #FF6602;
   }
   @media screen and (min-width: 600px) {
@@ -45,7 +44,6 @@ body {
       border-bottom-width: 1px;
       margin-bottom: 0;
     }
-    
   }
   .responsive-table th,
   .responsive-table td,.content {
@@ -61,6 +59,7 @@ body {
     text-align: left;
     font-size: 13px;
     border-bottom: 1px dotted #dddddd;
+    text-decoration: none;
   }
   .responsive-table td:last-child,.content:last-child {
     border-bottom: none;
@@ -101,14 +100,4 @@ body {
   }
   .NewsList .responsive-table thead tr{
     background: #FF6602;
-  }
-/* .item{
-      padding:20px;
-      border:1px solid blueviolet;
-  }
-  .content{
-      display: inline-block;
-      padding:20px;
-      border:1px solid blueviolet;
-  } */
-  
+  } 

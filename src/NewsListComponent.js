@@ -4,7 +4,6 @@ import './NewsListComponent.css';
 import ResponsiveTable from './ResponsiveTable'
 
 class NewsListComponent extends Component {
-    
     constructor(props) {
         super(props);
         this.state = {
@@ -37,27 +36,25 @@ class NewsListComponent extends Component {
         const {data} = await axios.get('https://hn.algolia.com/api/v1/search')
         let hiddenItems = JSON.parse(localStorage.getItem("hiddenListArray"))
         if(hiddenItems){
-            var objIdsArr=[];
+            let objIdsArr=[];
             for(let i=0;i<hiddenItems.length;i++){
                 objIdsArr.push(hiddenItems[i].objectID)
             }
-            var result;
-            for(var a=0;a<objIdsArr.length;a++){
-                for(var b=0;b<data.hits.length;b++){
+            let result;
+            for(let a=0;a<objIdsArr.length;a++){
+                for(let b=0;b<data.hits.length;b++){
                     if(data.hits[b].objectID==objIdsArr[a]){
                         data.hits.splice(b,1)
                     }
-                    
                 }
             }
         }
-        
-        var newData = data.hits;
+        let newData = data.hits;
         newData.map(o => o.upvote_count = 0)
         this.setState({newsList: newData})
     }
     render() {
-        var cols = {
+        let cols = {
             num_comments: 'No of comments',
             upvote_count:'Upvotes',
             upvote:'upvote',
@@ -79,7 +76,7 @@ class NewsListComponent extends Component {
                 <tbody>
                 {
                     this.state.newsList.map((item, i) => 
-                        <a key={i} className="item" href={item.url}>
+                        <div key={i} className="item">
                             <div className="content">
                                 {item.num_comments}
                             </div>
@@ -87,12 +84,12 @@ class NewsListComponent extends Component {
                                 {item.upvote_count}
                             </div>
                             <div className="content" onClick={this.vote.bind(this, i)}>^</div>
-                            <div className="content">
+                            <a className="content" href={item.url}>
                                 {item.title}
-                            </div>
-                            <div className="content">
+                            </a>
+                            <a className="content" href={item.url}>
                                 {item.url}
-                            </div>
+                            </a>
                             <div className="content">
                                 {item.author}
                             </div>
@@ -100,7 +97,7 @@ class NewsListComponent extends Component {
                                 {~~((new Date().getTime() - item.created_at_i)/(100*60*60))} hours ago
                             </div>
                             <div className="content" onClick={this.hide.bind(this, i,item)}> [ Hide ] </div>
-                        </a>
+                        </div>
                     )
                 }
                 </tbody>
