@@ -1,7 +1,9 @@
 body {
     font-family: "Gotham";
   }
-  
+  a,a:visited{
+    color: black;
+  }
   .responsive-table {
     width: 100%;
     margin: 0;
@@ -10,33 +12,42 @@ body {
     border-spacing: 0;
   }
   .responsive-table thead {
-    visibility: hidden;
-    background: #fafafa;
+    /* visibility: hidden; */
+    background: #FF6602;
   }
   @media screen and (min-width: 600px) {
     .responsive-table thead {
       visibility: visible;
     }
+    .responsive-table tr,.item{
+      border: none;
+    }
   }
-  .responsive-table tr {
+  .responsive-table tr,.item {
     border: 1px solid #dddddd;
     border-bottom: 2px solid #dddddd;
     padding: 5px;
     margin-bottom: 10px;
     display: block;
+    text-align: left;
   }
   @media screen and (min-width: 600px) {
-    .responsive-table tr {
-      display: table-row;
+    .responsive-table tr,.item {
+      display: block;
       border-bottom-width: 1px;
       margin-bottom: 0;
     }
-    .responsive-table tr:nth-child(even) {
-      background: #fafafa;
+    .responsive-table tr:nth-child(even),.item:nth-child(even) {
+      background: #F6F6EF;
+      border: none;
+    }
+    .responsive-table tr:nth-child(odd),.item:nth-child(odd) {
+      background: #9ca5ad;
+      border: none;
     }
   }
   .responsive-table th,
-  .responsive-table td {
+  .responsive-table td,.content {
     padding: 10px;
     text-align: left;
   }
@@ -44,36 +55,53 @@ body {
     text-transform: uppercase;
     font-size: 11px;
   }
-  .responsive-table td {
+  .responsive-table td,.content {
     display: block;
-    text-align: right;
+    text-align: left;
     font-size: 13px;
     border-bottom: 1px dotted #dddddd;
   }
-  .responsive-table td:last-child {
+  .responsive-table td:last-child,.content:last-child {
     border-bottom: none;
   }
   @media screen and (min-width: 600px) {
-    .responsive-table td {
-      display: table-cell;
+    .responsive-table td,.content {
+      display: inline-block;
       text-align: left;
       font-size: 14px;
       border-bottom: none;
     }
   }
-  .responsive-table td:before {
+  .responsive-table td:before,.content:before {
     content: attr(data-label);
     float: left;
     text-transform: uppercase;
     font-weight: bold;
   }
   @media screen and (min-width: 600px) {
-    .responsive-table td:before {
+    .responsive-table td:before,.content:before {
       content: "";
       display: none;
     }
   }
-.item{
+  .btnContainer{
+    background-color: transparent;
+    text-align: left;
+    padding-left: 40px;
+    padding-top: 10px;
+    cursor: pointer;
+  }
+  .btnContainer button{
+    border: none;
+    background: transparent;
+    color: #FF6602;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .NewsList .responsive-table thead tr{
+    background: #FF6602;
+  }
+/* .item{
       padding:20px;
       border:1px solid blueviolet;
   }
@@ -81,5 +109,5 @@ body {
       display: inline-block;
       padding:20px;
       border:1px solid blueviolet;
-  }
+  } */
   

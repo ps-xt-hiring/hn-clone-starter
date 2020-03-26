@@ -59,27 +59,39 @@ class NewsListComponent extends Component {
         }
         
         var newData = data.hits;
+        newData.map(o => o.upvote_count = 0)
         this.setState({newsList: newData})
         console.log("state",this.state.newsList)
     }
+    calculateDuration=(date)=>{
+        console.log("HHHHHHHHHHHHHHHW")
+        return '5 days ago'
+    }
     
     render() {
-        
-        // var cols = {
-        //     num_comments: 'No of comments',
-        //     upvote_count:'Upvotes',
-        //     upvote:'upvote',
-        //     title: 'Title',
-        //     url: 'URL',
-        //     author: 'Author',
-        //     created_at_i:'Created at'
-        // }
+        var cols = {
+            num_comments: 'No of comments',
+            upvote_count:'Upvotes',
+            upvote:'upvote',
+            title: 'Title',
+            url: 'URL',
+            author: 'Author',
+            created_at_i:'Created at'
+        }
         return (
             <div className="NewsList">
                 {/* <ResponsiveTable columns={cols} rows={this.state.newsList} /> */}
+                <table className="responsive-table">
+                <thead>
+                    <tr>
+                        <th>top</th>
+                        <th>New</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {
                     this.state.newsList.map((item, i) => 
-                        <div key={i} className="item">
+                        <a key={i} className="item" href={item.url}>
                             <div className="content">
                                 {item.num_comments}
                             </div>
@@ -90,11 +102,24 @@ class NewsListComponent extends Component {
                             <div className="content">
                                 {item.title}
                             </div>
-                            <div className="content" onClick={this.hide.bind(this, i,item)}>Hide</div>
-                        </div>
+                            <div className="content">
+                                {item.url}
+                            </div>
+                            <div className="content">
+                                {item.author}
+                            </div>
+                            <div className="content">
+                                {~~((new Date().getTime() - item.created_at_i)/(100*60*60))} hours ago
+                            </div>
+                            <div className="content" onClick={this.hide.bind(this, i,item)}> [ Hide ] </div>
+                        </a>
                     )
                 }
-                <button onClick={this.loadMore.bind(this)}>More</button>
+                </tbody>
+                </table>
+                <div className="btnContainer">
+                    <button onClick={this.loadMore.bind(this)}>More</button>
+                </div>
             </div>
         );
     }
