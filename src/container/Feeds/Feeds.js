@@ -12,13 +12,19 @@ import { Feed, Lists } from '../../components';
  * @extends {Component}
  */
 class Feeds extends Component {
-  hideFeed = feedId => {
-    this.context.hideFeedById(feedId);
-  };
+  constructor(props) {
+    super(props);
+    this.hideFeed = this.hideFeed.bind(this);
+    this.upvoteFeed = this.upvoteFeed.bind(this);
+  }
 
-  upvoteFeed = (feedId, index, vote) => {
+  hideFeed(feedId) {
+    this.context.hideFeedById(feedId);
+  }
+
+  upvoteFeed(feedId, index, vote) {
     this.context.upvoteFeedById(feedId, index, vote);
-  };
+  }
 
   render() {
     return (
