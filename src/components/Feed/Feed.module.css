@@ -1,0 +1,104 @@
+.feed {
+  -webkit-box-shadow: 0 1px 3px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 1px 3px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 1px 3px -2px rgba(0, 0, 0, 0.75);
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: 40px 40px 40px auto;
+  grid-template-rows: auto;
+  justify-items: start;
+  align-items: center;
+  grid-template-areas:
+    "feed-comment feed-upvote feed-upvote-icon ."
+    "feed-title feed-title feed-title feed-title"
+    "feed-details feed-details feed-details feed-details";
+}
+
+@media only screen and (min-width: 992px) {
+  .feed {
+    justify-items: center;
+    grid-template-columns: 40px 40px 40px auto 410px;
+    grid-template-areas: "feed-comment feed-upvote feed-upvote-icon feed-title feed-details";
+  }
+}
+
+.comment {
+  grid-area: feed-comment;
+  font-size: 0.83rem;
+}
+
+.upvote {
+  grid-area: feed-upvote;
+  font-size: 0.83rem;
+}
+
+.orangeTxt {
+  color: #ff742b;
+  font-weight: 700;
+}
+
+.upvoteIcon {
+  grid-area: feed-upvote-icon;
+  cursor: pointer;
+}
+
+.title {
+  grid-area: feed-title;
+  margin: 8px 0;
+  justify-self: start;
+  font-size: 1rem;
+}
+
+.details {
+  grid-area: feed-details;
+  font-size: 0.76rem;
+  color: #828282;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+  grid-template-areas:
+    "feed-source feed-source feed-auther feed-auther"
+    "feed-time feed-time feed-hide feed-hide";
+  justify-items: start;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+
+@media only screen and (min-width: 992px) {
+  .details {
+    height: auto;
+    grid-template-columns: 150px 150px 80px 30px;
+    grid-template-areas: "feed-source feed-auther feed-time feed-hide";
+  }
+}
+
+.source {
+  grid-area: feed-source;
+  color: #828282;
+  padding-right: 5px;
+}
+
+.source:hover {
+  grid-area: feed-source;
+  color: rgb(0, 0, 238);
+}
+
+.auther {
+  grid-area: feed-auther;
+}
+
+.time {
+  grid-area: feed-time;
+}
+
+.time::before {
+  font-weight: normal;
+  color: #000;
+  content: "\0000a0\002022\0000a0";
+}
+
+.hide {
+  grid-area: feed-hide;
+}
