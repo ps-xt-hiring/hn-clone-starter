@@ -21,6 +21,9 @@ class FeedsContextProvider extends Component {
     this.initApi = this.initApi.bind(this);
     this.removeFeed = this.removeFeed.bind(this);
     this.upvoteFeed = this.upvoteFeed.bind(this);
+    this.findVisibleFeeds = this.findVisibleFeeds.bind(this);
+    this.storeHiddenFeeds = this.storeHiddenFeeds.bind(this);
+    this.storeUpVote = this.storeUpVote.bind(this);
   }
 
   initApi(reset) {
@@ -30,7 +33,7 @@ class FeedsContextProvider extends Component {
     });
   }
 
-  findVisibleFeeds = feeds => {
+  findVisibleFeeds(feeds) {
     const hiddenFeeds = this.ls_hidden_feeds.fetch();
     const upVotedFeeds = this.ls_upvode_feeds.fetch();
 
@@ -44,7 +47,7 @@ class FeedsContextProvider extends Component {
 
       return av;
     }, []);
-  };
+  }
 
   removeFeed(feedId) {
     this.storeHiddenFeeds(feedId);
@@ -54,11 +57,11 @@ class FeedsContextProvider extends Component {
     this.setState({ feeds: updatedFeed });
   }
 
-  storeHiddenFeeds = feedId => {
+  storeHiddenFeeds(feedId) {
     const parsedVal = this.ls_hidden_feeds.fetch();
     parsedVal[feedId] = false;
     this.ls_hidden_feeds.update(parsedVal);
-  };
+  }
 
   upvoteFeed(feedId, index, vote) {
     this.storeUpVote(feedId, vote);
@@ -68,11 +71,11 @@ class FeedsContextProvider extends Component {
     this.setState({ feeds: currentFeeds });
   }
 
-  storeUpVote = (feedId, vote) => {
+  storeUpVote(feedId, vote) {
     const parsedVal = this.ls_upvode_feeds.fetch();
     parsedVal[feedId] = vote + 1;
     this.ls_upvode_feeds.update(parsedVal);
-  };
+  }
 
   render() {
     return (
