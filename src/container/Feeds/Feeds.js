@@ -12,9 +12,6 @@ import { Feed, Lists } from '../../components';
  * @extends {Component}
  */
 class Feeds extends Component {
-  // eslint-disable-next-line
-  static contextType = FeedContext; // eslint-disable-line
-
   hideFeed = feedId => {
     this.context.hideFeedById(feedId);
   };
@@ -43,5 +40,7 @@ class Feeds extends Component {
     );
   }
 }
+
+Feeds.contextType = FeedContext;
 
 export default Feeds;

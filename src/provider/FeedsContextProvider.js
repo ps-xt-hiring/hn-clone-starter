@@ -20,16 +20,14 @@ class FeedsContextProvider extends Component {
     this.state = { feeds: [] };
   }
 
-  // eslint-disable-next-line
   initApi = reset => {
-    // eslint-disable-line
     fetchFeeds(1, reset).then(data => {
       const vissibleFeeds = this.findVisibleFeeds(data.hits || []);
       this.setState({ feeds: vissibleFeeds });
     });
   };
 
-  findVisibleFeeds(feeds) {
+  findVisibleFeeds = feeds => {
     const hiddenFeeds = this.ls_hidden_feeds.fetch();
     const upVotedFeeds = this.ls_upvode_feeds.fetch();
 
@@ -43,7 +41,7 @@ class FeedsContextProvider extends Component {
 
       return av;
     }, []);
-  }
+  };
 
   removeFeed = feedId => {
     this.storeHiddenFeeds(feedId);
