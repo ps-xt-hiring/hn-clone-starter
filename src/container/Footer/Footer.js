@@ -12,10 +12,14 @@ import { Button } from '../../components';
  * @extends {Component}
  */
 class Footer extends Component {
-  // eslint-disable-next-line
-  fetchNextFeeds = () => {
+  constructor(props) {
+    super(props);
+    this.fetchNextFeeds = this.fetchNextFeeds.bind(this);
+  }
+
+  fetchNextFeeds() {
     this.context.fetchNewFeeds();
-  };
+  }
 
   render() {
     return (
