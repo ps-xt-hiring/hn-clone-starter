@@ -14,9 +14,6 @@ const navStyle = `${styles.links} ${styles.with_split_icon}`;
  * @extends {Component}
  */
 class Header extends Component {
-  /* eslint-disable */
-  static contextType = FeedContext; // eslint-disable-line
-
   render() {
     return (
       <header className={styles.header}>
@@ -36,6 +33,7 @@ class Header extends Component {
   }
 }
 
-Header;
+// Due to lint move out of class
+Header.contextType = FeedContext;
 
 export default Header;
