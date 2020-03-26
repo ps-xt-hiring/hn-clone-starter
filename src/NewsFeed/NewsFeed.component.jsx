@@ -15,7 +15,7 @@ export function NewsFeed(props) {
         <p>{title}</p>
         <section className='text-small'>
           <p className='text-muted d-inline'>
-            ({domain ? new URL(domain).hostname : domain}) by <span className='text-dark'>{username}</span> {postedTime}
+            (<a className="text-muted" href={domain}>{domain ? new URL(domain).hostname : domain})</a> by <span className='text-dark'>{username}</span> {postedTime}
           </p>
           <button className='feed-hide-cta' onClick={hideClick}>
             [hide]
