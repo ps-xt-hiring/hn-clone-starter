@@ -1,0 +1,67 @@
+@import '~bootstrap/scss/bootstrap.scss';
+.feed-list {
+  margin-top: 24px;
+  border: 1px solid;
+  @include media-breakpoint-up(md) {
+    margin-top: 32px;
+  }
+}
+.feed-item {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+
+  &:nth-child(odd) {
+    background-color: #c7c4cb;
+  }
+  &:nth-child(even) {
+    background-color: #ecebed;
+  }
+
+  p {
+    margin: 0;
+    display: inline;
+    text-align: left;
+  }
+
+  @include media-breakpoint-up(md) {
+    padding: 0 15px;
+  }
+}
+.feed-comment-count {
+  flex: 0 0 20%;
+  @include media-breakpoint-up(md) {
+    flex: 0 0 10%;
+  }
+}
+.feed-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 0 0 80%;
+  @include media-breakpoint-up(md) {
+    flex: 0 0 90%;
+  }
+  section {
+    text-align: left;
+  }
+}
+
+.feed-hide-cta {
+  background: none;
+  border: none;
+}
+
+.upvote-cta {
+  width: 0;
+  height: 0;
+  margin: 8px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+
+  border-bottom: 10px solid #6c757d;
+}
+
+.text-small {
+  font-size: 0.75rem;
+}
