@@ -7,14 +7,13 @@ import NewsFeed from './NewsFeed/NewsFeed.container';
 function App() {
   const [pageNo, setPageNo] = useState(0);
   return (
-    <div className='App'>
+    <div className="App">
       <Header />
       <NewsFeed pageNo={pageNo} />
       <button
-        className='btn btn-secondary m-2'
-        type='button'
+        className="btn btn-secondary m-2"
+        type="button"
         onClick={() => {
-          console.log('tanya');
           setPageNo(pn => pn + 1);
         }}
       >
