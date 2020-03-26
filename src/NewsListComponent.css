@@ -31,20 +31,21 @@ body {
     display: block;
     text-align: left;
   }
+  .responsive-table tr:nth-child(even),.item:nth-child(even) {
+    background: #F6F6EF;
+    border: none;
+  }
+  .responsive-table tr:nth-child(odd),.item:nth-child(odd) {
+    background: #9ca5ad;
+    border: none;
+  }
   @media screen and (min-width: 600px) {
     .responsive-table tr,.item {
       display: block;
       border-bottom-width: 1px;
       margin-bottom: 0;
     }
-    .responsive-table tr:nth-child(even),.item:nth-child(even) {
-      background: #F6F6EF;
-      border: none;
-    }
-    .responsive-table tr:nth-child(odd),.item:nth-child(odd) {
-      background: #9ca5ad;
-      border: none;
-    }
+    
   }
   .responsive-table th,
   .responsive-table td,.content {
