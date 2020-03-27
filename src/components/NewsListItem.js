@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 
 class NewsListItem extends React.Component {
@@ -33,7 +34,7 @@ class NewsListItem extends React.Component {
     });
   }
 
-  getDomainForDisplay(){
+  getDomainForDisplay = () => {
     const { domain } = this.state;
     return domain ? (
       <a
