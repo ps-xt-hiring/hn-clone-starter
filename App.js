@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 
-import "./App.css";
-import NewsFeed from "./components/NewsFeed";
+import './src/App.css';
+import NewsFeed from './src/components/NewsFeed';
 
 function App() {
   return (
