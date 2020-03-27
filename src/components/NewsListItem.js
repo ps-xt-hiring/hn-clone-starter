@@ -81,7 +81,7 @@ class NewsListItem extends React.Component {
     return finalDate;
   }
 
-  getUpvotedNews = () => {
+  getUpvotedNews(){
     let upvotedNews = localStorage.getItem("upvotedNews");
     return upvotedNews ? JSON.parse(upvotedNews) : [];
   };
@@ -100,7 +100,7 @@ class NewsListItem extends React.Component {
     localStorage.setItem("upvotedNews", JSON.stringify(upvotedNews));
   }
 
-  removeVote = event => {
+  removeVote = (event) => {
     let { vote } = this.state;
     const { objectID } = this.props.newsData;
     let upvotedNews;
@@ -120,7 +120,7 @@ class NewsListItem extends React.Component {
     });
   };
 
-  isVoteGiven = () => {
+  isVoteGiven(){
     const { objectID } = this.props.newsData;
     let upvotedNews = localStorage.getItem("upvotedNews");
     if (upvotedNews) {
