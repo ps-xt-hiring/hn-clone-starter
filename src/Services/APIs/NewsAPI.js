@@ -1,20 +1,15 @@
 import actionTypes from "../../components/NewsList/actionTypes";
 import axios from "axios";
 
-class FetchNews {
-    
+class NewsAPI {
+
     NEWS_PER_PAGE = 10;
     CURRENT_PAGE = 1;
-    
-    BASE_API_URL = 'https://hn.algolia.com/api/v1/search';
-    COMPLETE_URL = ''
 
-    constructor(dispatch) {
-        /**
-         * Set dispatch method to make it available in the class.
-         */
-        this.dispatch = dispatch
-        
+    BASE_API_URL = 'https://hn.algolia.com/api/v1/search';
+    COMPLETE_URL = '';
+
+    constructor() {
         /**
          * Build initial `API URl`
          */
@@ -34,18 +29,25 @@ class FetchNews {
     loadMore = () => {
         this.CURRENT_PAGE += 1;
         this.buildUrl();
-        this.fetchNews();
+        this.fetch();
     }
 
     /**
      * Fetches the news list from the `API`.
      */
-    fetchNews = () => {
+    fetch = (dispatch = '') => {
+        if (dispatch) {
+            /**
+             * Set dispatch method to make it available in the class.
+             */
+            this.dispatch = dispatch
+        }
+
         /**
          * Set processing.
          */
         this.dispatch({ type: actionTypes.fetch })
-        
+
         /**
          * Fetch news as per given `URL`.
          */
@@ -64,4 +66,4 @@ class FetchNews {
 
 }
 
-export default FetchNews
+export default NewsAPI;
