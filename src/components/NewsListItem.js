@@ -67,7 +67,6 @@ class NewsListItem extends React.Component {
 
     hours -= days * 24;
     minutes = minutes - days * 24 * 60 - hours * 60;
-    seconds = seconds - days * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
     let finalDate = "";
     if (years) {
       finalDate = `${years} year`;
