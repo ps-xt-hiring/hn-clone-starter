@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import { NewsFeed as NewsFeedComponent } from './NewsFeed.component';
+import NewsFeedComponent from './NewsFeed.component';
 
-class NewsFeed extends PureComponent {
+export default class NewsFeed extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -192,11 +192,9 @@ class NewsFeed extends PureComponent {
       );
     });
     return (
-      <div className='container'>
-        <div className='feed-list'>{feedList}</div>
+      <div className="container">
+        <div className="feed-list">{feedList}</div>
       </div>
     );
   }
 }
-
-export default NewsFeed;
