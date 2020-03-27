@@ -55,7 +55,7 @@ class NewsFeed extends React.Component {
   /**
    * get visisible news
    */
-  getVisibleNews = (hits) => {
+  getVisibleNews(hits){
     let hiddenItems = localStorage.getItem("hiddenItems");
     if (hiddenItems) {
       hiddenItems = JSON.parse(hiddenItems);

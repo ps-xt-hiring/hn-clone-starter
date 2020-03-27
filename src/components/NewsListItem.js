@@ -100,7 +100,7 @@ class NewsListItem extends React.Component {
     localStorage.setItem("upvotedNews", JSON.stringify(upvotedNews));
   }
 
-  removeVote = (event) => {
+  removeVote(event){
     let { vote } = this.state;
     const { objectID } = this.props.newsData;
     let upvotedNews;
