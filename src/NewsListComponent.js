@@ -1,113 +1,117 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable no-param-reassign */
+/* eslint-disable max-len */
 import React, { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import './NewsListComponent.css';
-import ResponsiveTable from './ResponsiveTable'
+
+const baseQueryUrl = 'https://hn.algolia.com/api/v1/search';
 
 class NewsListComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            newsList:[],
-            hiddenListArray:[],
-            currentPage:1
+  constructor(props) {
+    super(props);
+    this.state = {
+      newsList: [],
+      hiddenListArray: [],
+      currentPage: 1,
+    };
+  }
+
+  async componentDidMount() {
+    const { data } = await axios.get(baseQueryUrl);
+    const hiddenItems = JSON.parse(localStorage.getItem('hiddenListArray'));
+    if (hiddenItems) {
+      const objIdsArr = [];
+      for (let i = 0; i < hiddenItems.length; i += 1) {
+        objIdsArr.push(hiddenItems[i].objectID);
+      }
+      for (let a = 0; a < objIdsArr.length; a += 1) {
+        for (let b = 0; b < data.hits.length; b += 1) {
+          if (data.hits[b].objectID === objIdsArr[a]) {
+            data.hits.splice(b, 1);
+          }
         }
+      }
     }
-    async loadMore () {
-        let iCurrentPage = this.state.currentPage;
-        iCurrentPage++;
-        this.setState({currentPage:iCurrentPage})
-        const {data} = await axios.get(`https://api.myjson.com/bins/x3eng`)
-        let newsList = [...this.state.newsList,...data.hits]
-        this.setState({newsList:newsList})
-    }
-    vote (i) {
-		let newCountedArray = [...this.state.newsList]
-        newCountedArray[i].upvote_count++;
-        this.setState({newsList:newCountedArray})
-    }
-    hide (index,item) {
-        let newHiddenRowList = [...this.state.newsList]
-        this.state.hiddenListArray.push(item)
-        newHiddenRowList.splice(index,1)
-        localStorage.setItem("hiddenListArray",JSON.stringify(this.state.hiddenListArray))
-        this.setState({newsList:newHiddenRowList})
-    }
-    async componentDidMount() {
-        const {data} = await axios.get('https://hn.algolia.com/api/v1/search')
-        let hiddenItems = JSON.parse(localStorage.getItem("hiddenListArray"))
-        if(hiddenItems){
-            let objIdsArr=[];
-            for(let i=0;i<hiddenItems.length;i++){
-                objIdsArr.push(hiddenItems[i].objectID)
-            }
-            let result;
-            for(let a=0;a<objIdsArr.length;a++){
-                for(let b=0;b<data.hits.length;b++){
-                    if(data.hits[b].objectID==objIdsArr[a]){
-                        data.hits.splice(b,1)
-                    }
-                }
-            }
-        }
-        let newData = data.hits;
-        newData.map(o => o.upvote_count = 0)
-        this.setState({newsList: newData})
-    }
-    render() {
-        let cols = {
-            num_comments: 'No of comments',
-            upvote_count:'Upvotes',
-            upvote:'upvote',
-            title: 'Title',
-            url: 'URL',
-            author: 'Author',
-            created_at_i:'Created at'
-        }
-        return (
-            <div className="NewsList">
-                {/* <ResponsiveTable columns={cols} rows={this.state.newsList} /> */}
-                <table className="responsive-table">
-                <thead>
-                    <tr>
-                        <th>top</th>
-                        <th>New</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {
-                    this.state.newsList.map((item, i) => 
-                        <div key={i} className="item">
-                            <div className="content">
-                                {item.num_comments}
-                            </div>
-                            <div className="content">
-                                {item.upvote_count}
-                            </div>
-                            <div className="content" onClick={this.vote.bind(this, i)}>^</div>
-                            <a className="content" href={item.url}>
-                                {item.title}
-                            </a>
-                            <a className="content" href={item.url}>
-                                {item.url}
-                            </a>
-                            <div className="content">
-                                {item.author}
-                            </div>
-                            <div className="content">
-                                {~~((new Date().getTime() - item.created_at_i)/(100*60*60))} hours ago
-                            </div>
-                            <div className="content" onClick={this.hide.bind(this, i,item)}> [ Hide ] </div>
-                        </div>
-                    )
-                }
-                </tbody>
-                </table>
-                <div className="btnContainer">
-                    <button onClick={this.loadMore.bind(this)}>More</button>
+    const newData = data.hits;
+    newData.map(o => (o.upvote_count = 0));
+    this.setState({ newsList: newData });
+  }
+
+  async loadMore() {
+    let { currentPage } = this.state;
+    const { newsList } = this.state;
+    currentPage += 1;
+    this.setState({ currentPage });
+    const { data } = await axios.get(`${baseQueryUrl}?query=page=${currentPage}`);
+    const updatedNewsList = [...newsList, ...data.hits];
+    this.setState({ newsList: updatedNewsList });
+  }
+
+  vote(i) {
+    const { newsList } = this.state;
+    const newCountedArray = [...newsList];
+    newCountedArray[i].upvote_count += 1;
+    this.setState({ newsList: newCountedArray });
+  }
+
+  hide(index, item) {
+    const { hiddenListArray, newsList } = this.state;
+    const newHiddenRowList = [...newsList];
+    hiddenListArray.push(item);
+    newHiddenRowList.splice(index, 1);
+    localStorage.setItem('hiddenListArray', JSON.stringify(hiddenListArray));
+    this.setState({ newsList: newHiddenRowList });
+  }
+
+  render() {
+    const { newsList } = this.state;
+    return (
+      <div className="NewsList">
+        <table className="responsive-table">
+          <thead>
+            <tr>
+              <th>top</th>
+              <th>New</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              newsList.map((item, i) => (
+                <div key={item.objectID} className="item">
+                  <div className="content">
+                    {item.num_comments}
+                  </div>
+                  <div className="content">
+                    {item.upvote_count}
+                  </div>
+                  <div role="button" tabIndex="0" className="content clickable" onClick={this.vote.bind(this, i)} onKeyDown={this.vote.bind(this, i)}>^</div>
+                  <a className="content" href={item.url}>
+                    {item.title}
+                  </a>
+                  <a className="content" href={item.url}>
+                    {item.url}
+                  </a>
+                  <div className="content">
+                    {item.author}
+                  </div>
+                  <div className="content">
+                    {(((new Date().getTime() - new Date(item.created_at)) / (1000 * 60 * 60))).toFixed(0)}
+                    {' '}
+                    hours ago
+                  </div>
+                  <div role="button" tabIndex="0" className="content clickable" onClick={this.hide.bind(this, i, item)} onKeyDown={this.vote.bind(this, i)}> [ Hide ] </div>
                 </div>
-            </div>
-        );
-    }
+              ))
+            }
+          </tbody>
+        </table>
+        <div className="btnContainer">
+          <button type="button" onClick={this.loadMore.bind(this)}>More</button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default NewsListComponent;

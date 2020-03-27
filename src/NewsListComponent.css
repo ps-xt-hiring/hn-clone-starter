@@ -1,103 +1,129 @@
-body {
-    font-family: "Gotham";
-  }
-  a,a:visited{
-    color: black;
-  }
-  .responsive-table {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
+a,
+a:visited {
+  color: black;
+}
+
+.responsive-table {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.responsive-table thead {
+  background: #ff6602;
+}
+
+@media screen and (min-width: 600px) {
   .responsive-table thead {
-    background: #FF6602;
+    visibility: visible;
   }
-  @media screen and (min-width: 600px) {
-    .responsive-table thead {
-      visibility: visible;
-    }
-    .responsive-table tr,.item{
-      border: none;
-    }
-  }
-  .responsive-table tr,.item {
-    border: 1px solid #dddddd;
-    border-bottom: 2px solid #dddddd;
-    padding: 5px;
-    margin-bottom: 10px;
+}
+
+.responsive-table tr,
+.item {
+  border: 1px solid #ddd;
+  border-bottom: 2px solid #ddd;
+  padding: 5px;
+  margin-bottom: 10px;
+  display: block;
+  text-align: left;
+}
+
+.responsive-table tr:nth-child(even),
+.item:nth-child(even) {
+  background: #f6f6ef;
+  border: none;
+}
+
+.responsive-table tr:nth-child(odd),
+.item:nth-child(odd) {
+  background: #9ca5ad;
+  border: none;
+}
+
+@media screen and (min-width: 600px) {
+  .responsive-table tr,
+  .item {
     display: block;
+    border-bottom-width: 1px;
+    margin-bottom: 0;
+  }
+}
+
+.responsive-table th,
+.responsive-table td,
+.content {
+  padding: 10px;
+  text-align: left;
+}
+
+.responsive-table .content.clickable {
+  cursor: pointer;
+}
+
+.responsive-table th {
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.responsive-table td,
+.content {
+  display: block;
+  text-align: left;
+  font-size: 13px;
+  border-bottom: 1px dotted #ddd;
+  text-decoration: none;
+}
+
+.responsive-table td:last-child,
+.content:last-child {
+  border-bottom: none;
+}
+
+@media screen and (min-width: 600px) {
+  .responsive-table td,
+  .content {
+    display: inline-block;
     text-align: left;
-  }
-  .responsive-table tr:nth-child(even),.item:nth-child(even) {
-    background: #F6F6EF;
-    border: none;
-  }
-  .responsive-table tr:nth-child(odd),.item:nth-child(odd) {
-    background: #9ca5ad;
-    border: none;
-  }
-  @media screen and (min-width: 600px) {
-    .responsive-table tr,.item {
-      display: block;
-      border-bottom-width: 1px;
-      margin-bottom: 0;
-    }
-  }
-  .responsive-table th,
-  .responsive-table td,.content {
-    padding: 10px;
-    text-align: left;
-  }
-  .responsive-table th {
-    text-transform: uppercase;
-    font-size: 11px;
-  }
-  .responsive-table td,.content {
-    display: block;
-    text-align: left;
-    font-size: 13px;
-    border-bottom: 1px dotted #dddddd;
-    text-decoration: none;
-  }
-  .responsive-table td:last-child,.content:last-child {
+    font-size: 14px;
     border-bottom: none;
   }
-  @media screen and (min-width: 600px) {
-    .responsive-table td,.content {
-      display: inline-block;
-      text-align: left;
-      font-size: 14px;
-      border-bottom: none;
-    }
+}
+
+.responsive-table td::before,
+.content::before {
+  content: attr(data-label);
+  float: left;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 600px) {
+  .responsive-table td::before,
+  .content::before {
+    content: "";
+    display: none;
   }
-  .responsive-table td:before,.content:before {
-    content: attr(data-label);
-    float: left;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-  @media screen and (min-width: 600px) {
-    .responsive-table td:before,.content:before {
-      content: "";
-      display: none;
-    }
-  }
-  .btnContainer{
-    background-color: transparent;
-    text-align: left;
-    padding-left: 40px;
-    padding-top: 10px;
-    cursor: pointer;
-  }
-  .btnContainer button{
-    border: none;
-    background: transparent;
-    color: #FF6602;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .NewsList .responsive-table thead tr{
-    background: #FF6602;
-  } 
+}
+
+.btnContainer {
+  background-color: transparent;
+  text-align: left;
+  padding-left: 40px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.btnContainer button {
+  border: none;
+  background: transparent;
+  color: #ff6602;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.NewsList .responsive-table thead tr {
+  background: #ff6602;
+}
