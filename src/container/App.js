@@ -17,7 +17,7 @@ const updateIndex=(index)=>{
     <div className="App">
       <Header/>
       <IdeaFeeds urlfetch={ajaxObj} pageIndex={currentPageIndex}/>
-      <Pagination updateIndex={updateIndex} interval={3} showList={false} />
+      <Pagination updateIndex={updateIndex} interval={3} showList={true} />
   </div>
   );
 }
