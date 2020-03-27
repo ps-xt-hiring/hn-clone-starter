@@ -31,7 +31,7 @@ class NewsFeed extends React.Component {
   /**
    * returning hidden posts from local storage
    */
-  getHiddenPost = () => {
+  getHiddenPost(){
     let hiddenItems = localStorage.getItem("hiddenItems");
     return hiddenItems ? JSON.parse(hiddenItems) : [];
   };
