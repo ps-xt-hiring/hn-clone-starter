@@ -31,6 +31,20 @@
   margin-top: 20px;
 }
 
+.feed-news__item {
+  padding: 10px;
+  display: flex;
+}
+
+.feed-news__item:nth-child(even) {
+  background-color: whitesmoke;
+}
+
+.item-row {
+  width: calc(100% - 80px);
+  display: flex;
+}
+
 .feed-news__item .item-row .arrow {
   position: relative;
   cursor: pointer;
@@ -62,20 +76,6 @@
   padding-right: 20px;
   width: 50px;
   text-align: right;
-}
-
-.feed-news__item:nth-child(even) {
-  background-color: whitesmoke;
-}
-
-.feed-news__item {
-  padding: 10px;
-  display: flex;
-}
-
-.item-row {
-  width: calc(100% - 80px);
-  display: flex;
 }
 
 .black-color {
