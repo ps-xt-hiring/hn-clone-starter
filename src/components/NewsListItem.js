@@ -33,7 +33,7 @@ class NewsListItem extends React.Component {
     });
   }
 
-  getDomainForDisplay = () => {
+  getDomainForDisplay(){
     const { domain } = this.state;
     return domain ? (
       <a
