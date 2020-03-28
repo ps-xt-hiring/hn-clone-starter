@@ -11,12 +11,14 @@ a:visited {
   border-spacing: 0;
 }
 
-.responsive-table thead {
+.responsive-table thead,
+.thead {
   background: #ff6602;
 }
 
 @media screen and (min-width: 600px) {
-  .responsive-table thead {
+  .responsive-table thead,
+  .thead {
     visibility: visible;
   }
 }
@@ -52,7 +54,7 @@ a:visited {
   }
 }
 
-.responsive-table th,
+.responsive-table .head,
 .responsive-table td,
 .content {
   padding: 10px;
@@ -63,9 +65,16 @@ a:visited {
   cursor: pointer;
 }
 
-.responsive-table th {
+.responsive-table .content .carat {
+  vertical-align: middle;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.responsive-table .head {
   text-transform: uppercase;
   font-size: 11px;
+  display: inline-block;
 }
 
 .responsive-table td,
@@ -124,6 +133,7 @@ a:visited {
   cursor: pointer;
 }
 
-.NewsList .responsive-table thead tr {
+.NewsList .responsive-table .thead .row {
   background: #ff6602;
+  text-align: left;
 }
