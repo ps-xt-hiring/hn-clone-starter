@@ -36,7 +36,7 @@ const News = ({ news = {}, hideNews }) => {
               {' '}
               {votes || 0}
             </Votes>
-            <UpVoteBtn className="upvote" title="Click to upvote" onClick={upVote} />
+            <UpVoteBtn className="excludeBorder" title="Click to upvote" onClick={upVote} />
           </VotesWrapper>
         </div>
         <div aria-label="Main Information" className="mainInfo">

@@ -7,7 +7,7 @@ const Header = () => (
     <Logo src={logoSrc} alt="Logo" />
     <nav>
       <button className="active">top</button>
-      <button>new</button>
+      <button className="excludeBorder">new</button>
     </nav>
   </HeaderSection>
 );
