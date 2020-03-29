@@ -42,13 +42,13 @@ const NewsList = () => {
         {newsList.map(news => !hiddenIds.includes(news.objectID) && (
           <News key={news.objectID} news={news} hideNews={hideNews} />
         ))}
-        <li className="paginationWrapper">
+        <li className="paginationWrapper" id="testli">
           <div className="left" />
-          <div className="right">
+          <div className="right" id="rightdiv">
             {
               processing
                 ? <span className="loader">Loading...</span>
-                : <LoadMoreBtn onClick={() => NewsApi.loadMore()}>More</LoadMoreBtn>
+                : <LoadMoreBtn aria-labelledby="rightdiv testli" onClick={() => NewsApi.loadMore()}>More</LoadMoreBtn>
             }
           </div>
         </li>

@@ -4,10 +4,10 @@ import logoSrc from '../../Assets/y18.gif';
 
 const Header = () => (
   <HeaderSection className="App-header">
-    <Logo src={logoSrc} />
+    <Logo src={logoSrc} alt="Logo" />
     <nav>
-      <span className="active">top</span>
-      <span>new</span>
+      <button className="active">top</button>
+      <button>new</button>
     </nav>
   </HeaderSection>
 );

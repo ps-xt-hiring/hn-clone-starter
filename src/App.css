@@ -12,3 +12,8 @@ li.news-row:nth-child(even) {
 li.news-row a {
   text-decoration: none;
 }
+button:not(.upvote):hover,
+button {
+  background-color: transparent;
+  border: none;
+}

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 const colors = {
-  titleNComment: '#111111',
-  vote: '#AA4B04',
-  textOrange: '#FD8228',
-  domainNPostedAt: '#888382',
-  dullBrown: '#BEBBB8',
-  authorNHide: '#111111',
-  activeNav: '#FEFFFF',
+    titleNComment: '#111111',
+    vote: '#AA4B04',
+    textOrange: '#FD8228',
+    domainNPostedAt: '#888382',
+    dullBrown: '#BEBBB8',
+    authorNHide: '#111111',
+    activeNav: '#FEFFFF',
 };
 
 const HeaderSection = styled.header`
@@ -24,15 +24,16 @@ const HeaderSection = styled.header`
         padding: 0 10px;
         color: ${colors.titleNComment};
     }
-    nav span:nth-child(1) {
+    nav button:nth-child(1) {
         border-left: none;
     }
-    nav span.active {
+    nav button.active {
         color: ${colors.activeNav};
     }
-    nav span {
+    nav button {
         padding: 0 10px;
         border-left: 2px solid #000000;
+        cursor: pointer;
     }
 `;
 
@@ -67,7 +68,7 @@ const ListWraper = styled.ul`
         }
     }
 `;
-const LoadMoreBtn = styled.span`
+const LoadMoreBtn = styled.button`
     cursor: pointer;
     color: ${colors.textOrange};
 `;
@@ -115,7 +116,7 @@ const Votes = styled.span`
     margin: 0 5px;
     color: ${colors.vote};
 `;
-const UpVoteBtn = styled.span`
+const UpVoteBtn = styled.button`
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
     border-bottom: 8px solid #999999;
@@ -123,6 +124,9 @@ const UpVoteBtn = styled.span`
     height: 0;
     cursor: pointer;
     display: inline-block;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
 `;
 const Title = styled.a`
     color: ${colors.titleNComment};
@@ -147,24 +151,24 @@ const HideBtnWrapper = styled.span`
     color: ${colors.domainNPostedAt};
     cursor: pointer;
 `;
-const HideBtn = styled.span`
+const HideBtn = styled.button`
     color: ${colors.authorNHide};
 `;
 
 export {
-  HeaderSection,
-  Logo,
-  CommentCount,
-  Votes,
-  UpVoteBtn,
-  Title,
-  Author,
-  Domain,
-  Duration,
-  HideBtnWrapper,
-  HideBtn,
-  ListWraper,
-  LoadMoreBtn,
-  VotesWrapper,
-  Article,
+    HeaderSection,
+    Logo,
+    CommentCount,
+    Votes,
+    UpVoteBtn,
+    Title,
+    Author,
+    Domain,
+    Duration,
+    HideBtnWrapper,
+    HideBtn,
+    ListWraper,
+    LoadMoreBtn,
+    VotesWrapper,
+    Article,
 };
