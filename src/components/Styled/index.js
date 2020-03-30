@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 const colors = {
-    titleNComment: '#111111',
-    vote: '#AA4B04',
-    textOrange: '#FD8228',
-    domainNPostedAt: '#888382',
-    dullBrown: '#BEBBB8',
-    authorNHide: '#111111',
-    activeNav: '#FEFFFF',
+  titleNComment: '#111111',
+  vote: '#AA4B04',
+  textOrange: '#FD8228',
+  domainNPostedAt: '#888382',
+  dullBrown: '#BEBBB8',
+  authorNHide: '#111111',
+  activeNav: '#FEFFFF',
 };
 
 const HeaderSection = styled.header`
@@ -156,19 +156,19 @@ const HideBtn = styled.button`
 `;
 
 export {
-    HeaderSection,
-    Logo,
-    CommentCount,
-    Votes,
-    UpVoteBtn,
-    Title,
-    Author,
-    Domain,
-    Duration,
-    HideBtnWrapper,
-    HideBtn,
-    ListWraper,
-    LoadMoreBtn,
-    VotesWrapper,
-    Article,
+  HeaderSection,
+  Logo,
+  CommentCount,
+  Votes,
+  UpVoteBtn,
+  Title,
+  Author,
+  Domain,
+  Duration,
+  HideBtnWrapper,
+  HideBtn,
+  ListWraper,
+  LoadMoreBtn,
+  VotesWrapper,
+  Article,
 };

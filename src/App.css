@@ -1,19 +1,23 @@
 body {
-  color: #F6F6EF;
+  color: #f6f6ef;
 }
+
 li.news-row {
   padding: 5px;
   font-size: 14px;
   display: block;
 }
+
 li.news-row:nth-child(even) {
-  background-color: #E6E6DF;
+  background-color: #e6e6df;
 }
+
 li.news-row a {
   text-decoration: none;
 }
-button:not(.excludeBorder):hover,
-button {
+
+button,
+button:not(.excludeBorder):hover {
   background-color: transparent;
   border: none;
   cursor: pointer;

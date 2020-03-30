@@ -6,8 +6,8 @@ const Header = () => (
   <HeaderSection className="App-header">
     <Logo src={logoSrc} alt="Logo" />
     <nav>
-      <button className="active">top</button>
-      <button className="excludeBorder">new</button>
+      <button type="button" className="active">top</button>
+      <button type="button" className="excludeBorder">new</button>
     </nav>
   </HeaderSection>
 );
