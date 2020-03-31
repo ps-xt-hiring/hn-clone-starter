@@ -7,20 +7,20 @@ import rootReducer from './store/Reducer';
 import Header from './Components/Header';
 import HackerNewsPage from './Components/HackerNews';
 
-import * as S from './App.style';
+import Container from './App.style';
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunk)
+  applyMiddleware(thunk),
 );
 
 function App() {
   return (
     <Provider store={store}>
-      <S.Container>
+      <Container>
         <Header />
         <HackerNewsPage />
-      </S.Container>
+      </Container>
     </Provider>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getHitsData, upVote, hideFeed } from '../../store/Actions/actions';
 import * as S from './HackerNews.style';
@@ -30,19 +30,17 @@ const HackerNews = () => {
 
   const upVoteFeed = (feedId) => {
     dispatch(upVote(feedId));
-  }
+  };
 
   const hideFeedFromView = (feedId) => {
-    console.log(`Vote ${feedId}`);
     dispatch(hideFeed(feedId));
-  }
+  };
 
   const showMoreFeed = () => {
     numOfPage += 1;
-    dispatch(getHitsData(apiRequestType, numOfPage))
-  }
+    dispatch(getHitsData(apiRequestType, numOfPage));
+  };
 
-  console.log(hits);
   showMore = numOfPage < totalPages;
 
   return (
@@ -50,16 +48,16 @@ const HackerNews = () => {
       {!loading ? (
         <div>
           <S.StyledUl>
-          {hits && hits.length && (
-            hits.map((feed) => {
-              return <Feed
+            {hits && hits.length && (
+              hits.map(feed => (
+                <Feed
                   feed={feed}
                   key={feed.objectID}
                   upVoteFeed={upVoteFeed}
                   hideFeed={hideFeedFromView}
                 />
-            })
-          )}
+              ))
+            )}
           </S.StyledUl>
           {showMore && (
             <S.ShowMore onClick={() => showMoreFeed()}>More</S.ShowMore>
@@ -70,7 +68,7 @@ const HackerNews = () => {
       )}
     </Fragment>
   );
-}
+};
 
 HackerNews.propTypes = {
   feedData: PropTypes.shape({
@@ -78,7 +76,7 @@ HackerNews.propTypes = {
     totalPages: PropTypes.number,
     apiRequestType: PropTypes.string,
     loading: PropTypes.bool,
-  })
+  }).isRequired,
 };
 
 export default HackerNews;

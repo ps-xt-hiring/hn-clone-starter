@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Colors } from '../../constants/theme';
+import Colors from '../../constants/theme';
 
 export const StyledLi = styled.li`
   list-style: none;

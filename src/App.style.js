@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Colors } from './constants/theme';
+import Colors from './constants/theme';
 
-export const Container = styled.div`
+const Container = styled.div`
   margin: 20px;
   font-size: 14px;
   background-color: ${Colors.list};
@@ -11,3 +11,5 @@ export const Container = styled.div`
     margin: 20px auto;
   }
 `;
+
+export default Container;

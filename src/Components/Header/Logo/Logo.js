@@ -1,8 +1,8 @@
 import React from 'react';
-import * as S from './Logo.style';
+import StyledLogo from './Logo.style';
 
 const Logo = () => (
-  <S.Logo>Y</S.Logo>
+  <StyledLogo>Y</StyledLogo>
 );
 
 export default Logo;

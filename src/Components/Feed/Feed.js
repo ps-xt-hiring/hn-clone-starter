@@ -24,10 +24,12 @@ const Feed = ({
           <S.Title>{`${feed.title} `}</S.Title>
           <S.StyledLink
             href={feed.url}
-            target='_blank'
+            target="_blank"
             rel="noopener noreferrer"
           >
-            ({displayUrl})
+            (
+            {displayUrl}
+            )
           </S.StyledLink>
         </S.TitleDetails>
         <S.AuthorTimeDetails>
@@ -37,7 +39,7 @@ const Feed = ({
         </S.AuthorTimeDetails>
         <S.Hide onClick={() => hideFeed(feed.objectID)}>
           [
-            <span>hide</span>
+          <span>hide</span>
           ]
         </S.Hide>
       </S.FeedDetails>
@@ -46,9 +48,23 @@ const Feed = ({
 };
 
 Feed.propTypes = {
-  feed: PropTypes.shape({}),
+  feed: PropTypes.shape({
+    created_at: PropTypes.string,
+    url: PropTypes.string,
+    num_comments: PropTypes.number,
+    points: PropTypes.number,
+    objectID: PropTypes.string,
+    title: PropTypes.string,
+    author: PropTypes.string,
+  }),
   upVoteFeed: PropTypes.func,
   hideFeed: PropTypes.func,
-}
+};
+
+Feed.defaultProps = {
+  feed: {},
+  upVoteFeed: () => {},
+  hideFeed: () => {},
+};
 
 export default Feed;

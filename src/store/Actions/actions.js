@@ -10,28 +10,28 @@ export const getHitsData = (apiType, pageNumber) => (dispatch) => {
   const apiCall = apiType === 'new' ? newHitsApiCall : topHitsApiCall;
   const request = apiCall(pageNumber);
   request.then((response) => {
-    console.log(response);
     dispatch({
       type: actionTypes.LOAD_SUCCESS,
-      data: {res: response, page: pageNumber}
+      data: { res: response, page: pageNumber },
     });
-  }).catch(error => {
+  }).catch((error) => {
     dispatch({
-      type: actionTypes.LOAD_FAILURE
+      type: actionTypes.LOAD_FAILURE,
+      data: error,
     });
   });
 };
 
-export const upVote = (feedId) => (dispatch) => {
+export const upVote = feedId => (dispatch) => {
   dispatch({
     type: actionTypes.UP_VOTE_FEED,
-    data: feedId
-  })
+    data: feedId,
+  });
 };
 
-export const hideFeed = (feedId) => (dispatch) => {
+export const hideFeed = feedId => (dispatch) => {
   dispatch({
     type: actionTypes.HIDE_FEED,
-    data: feedId
-  })
+    data: feedId,
+  });
 };
