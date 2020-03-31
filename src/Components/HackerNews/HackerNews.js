@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { getHitsData, upVote, hideFeed } from '../../store/Actions/actions';
 import * as S from './HackerNews.style';
 
-import Feed from '../Feed/Feed';
+import Feed from '../Feed';
 
 const HackerNews = () => {
   const feedData = useSelector(state => state.reducer);

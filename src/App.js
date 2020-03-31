@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import rootReducer from './store/Reducer';
-import Header from './Components/Header/Header';
-import HackerNewsPage from './Components/HackerNews/HackerNews';
+import Header from './Components/Header';
+import HackerNewsPage from './Components/HackerNews';
 
 import * as S from './App.style';
 
