@@ -1,3 +1,4 @@
+/* eslint-disable */
 import styled from 'styled-components';
 import Colors from '../../../constants/theme';
 
@@ -13,7 +14,7 @@ const StyledNavBar = styled.div`
     &:hover {
       outline: none;
     }
-    
+
     &.active {
       color: ${Colors.white};
       outline: none;

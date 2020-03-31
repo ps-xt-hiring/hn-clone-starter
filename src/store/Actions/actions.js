@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as actionTypes from '../ActionType/actionTypes';
 import topHitsApiCall from '../../helper/topHitsApi';
 import newHitsApiCall from '../../helper/newHitsApi';

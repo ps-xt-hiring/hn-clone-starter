@@ -1,3 +1,4 @@
+/* eslint-disable */
 const Colors = {
   headerBackground: '#FF732C',
   white: '#FFFFFF',

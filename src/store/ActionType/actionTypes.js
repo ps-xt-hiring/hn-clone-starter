@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const START_LOAD = 'START_LOAD';
 export const LOAD_SUCCESS = 'LOAD_SUCCESS';
 export const LOAD_FAILURE = 'LOAD_FAILURE';
