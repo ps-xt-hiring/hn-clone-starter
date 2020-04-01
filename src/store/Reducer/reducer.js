@@ -12,9 +12,7 @@ const intitalState = {
 const updatePoints = (feedData, feedId) => {
   feedData.map((feed) => {
     if (feed.objectID === feedId) {
-      const feedObj = { ...feed };
-      feedObj.points = feedObj.points ? parseInt(feedObj.points, 10) + 1 : 1;
-      return feedObj;
+      feed.points = feed.points ? parseInt(feed.points, 10) + 1 : 1;
     }
     return feed;
   });
