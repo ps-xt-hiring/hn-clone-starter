@@ -21,6 +21,9 @@ const HackerNews = () => {
   } = feedData;
   let showMore = false;
 
+  const hiddenFeeds = localStorage.getItem('hiddenFeeds')
+    ? JSON.parse(localStorage.getItem('hiddenFeeds')) : [];
+
   const getInitialData = () => (
     dispatch(getHitsData('top', numOfPage))
   );
@@ -42,6 +45,12 @@ const HackerNews = () => {
     dispatch(getHitsData(apiRequestType, numOfPage));
   };
 
+  if (hits && hits.length) {
+    hits.map((feed) => {
+      feed.isHidden = hiddenFeeds.length && hiddenFeeds.indexOf(feed.objectID) > -1;
+    });
+  }
+
   showMore = numOfPage < totalPages;
 
   return (
@@ -50,14 +59,18 @@ const HackerNews = () => {
         <div>
           <S.StyledUl>
             {hits && hits.length && (
-              hits.map(feed => (
-                <Feed
-                  feed={feed}
-                  key={feed.objectID}
-                  upVoteFeed={upVoteFeed}
-                  hideFeed={hideFeedFromView}
-                />
-              ))
+              hits.map((feed) => {
+                return (
+                  !feed.isHidden && (
+                    <Feed
+                      feed={feed}
+                      key={feed.objectID}
+                      upVoteFeed={upVoteFeed}
+                      hideFeed={hideFeedFromView}
+                    />
+                  )
+                )
+              })
             )}
           </S.StyledUl>
           {showMore && (
@@ -77,7 +90,11 @@ HackerNews.propTypes = {
     totalPages: PropTypes.number,
     apiRequestType: PropTypes.string,
     loading: PropTypes.bool,
-  }).isRequired,
+  }),
+};
+
+HackerNews.defaultProps = {
+  feedData: {},
 };
 
 export default HackerNews;

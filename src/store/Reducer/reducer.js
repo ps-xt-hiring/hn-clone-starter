@@ -9,15 +9,46 @@ const intitalState = {
   data: [],
 };
 
+const saveFeedDetailsInLocalStorage = (feed) => {
+  const feedDetails = localStorage.getItem('feedDetails')
+    ? JSON.parse(localStorage.getItem('feedDetails')) : [];
+  let feedFound = false;
+  if (feedDetails.length) {
+    feedDetails.filter((feedDetail) => {
+      if (feedDetail.id === feed.objectID) {
+        feedDetail.points = feed.points;
+        feedFound = true;
+        return feedDetail;
+      }
+    });
+  }
+  if (!feedDetails.length || !feedFound) {
+    feedDetails.push({
+      'id': feed.objectID,
+      'points': feed.points,
+    });
+  }
+  localStorage.setItem('feedDetails', JSON.stringify(feedDetails));
+};
+
 const updatePoints = (feedData, feedId) => {
   feedData.map((feed) => {
     if (feed.objectID === feedId) {
       feed.points = feed.points ? parseInt(feed.points, 10) + 1 : 1;
+      saveFeedDetailsInLocalStorage(feed);
     }
     return feed;
   });
   return feedData;
 };
+
+const hideFeed = (feedData, feedId) => {
+  const hiddenFeeds = localStorage.getItem('hiddenFeeds')
+    ? JSON.parse(localStorage.getItem('hiddenFeeds')) : [];
+  hiddenFeeds.push(feedId);
+  localStorage.setItem('hiddenFeeds', JSON.stringify(hiddenFeeds));
+  return feedData.filter(feed => feed.objectID !== feedId);
+}
 
 const reducer = (state = intitalState, action) => {
   switch (action.type) {
@@ -48,7 +79,7 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.HIDE_FEED:
       return {
         ...state,
-        data: [...state.data.filter(feed => feed.objectID !== action.data)],
+        data: [...hideFeed(state.data, action.data)],
       };
     default:
       return state;

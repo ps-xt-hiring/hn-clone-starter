@@ -13,6 +13,17 @@ const Feed = ({
   const publishTime = moment(feed.created_at).fromNow();
   const displayUrl = feed.url ? feed.url.split('/')[2] : '';
 
+  const feedDetails = localStorage.getItem('feedDetails') ?
+    JSON.parse(localStorage.getItem('feedDetails')) : [];
+  if (feedDetails && feedDetails.length) {
+    feedDetails.filter((feedDetail, key) => {
+      if(feedDetail.id === feed.objectID) {
+        return feed.points = feedDetail.points;
+      }
+      return feed.points;
+    })
+  }
+
   return (
     <S.StyledLi>
       <S.Comments>{feed.num_comments || 0}</S.Comments>
