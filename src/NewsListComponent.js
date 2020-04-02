@@ -1,7 +1,4 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-return-assign */
-/* eslint-disable no-param-reassign */
-/* eslint-disable max-len */
+/* eslint-disable */
 import React, { Component } from 'react';
 import axios from 'axios';
 import './NewsListComponent.css';
