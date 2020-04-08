@@ -1,0 +1,24 @@
+.ListItem {
+  padding: 6px 12px;
+}
+
+.ListItem:nth-child(even) { background: #d6d5d5; }
+
+div {
+  font-size: 14px;
+  color: #848886;
+}
+
+a {
+  color: #848886;
+
+  &:visited {
+    color: #848886;
+ }
+}
+
+span {
+  color: #848886;
+  font-size: 12px;
+}
+
