@@ -3,6 +3,7 @@ import {
   FETCH_HACKER_NEWS,
   FETCH_HACKER_NEWS_SUCCESS,
   FETCH_HACKER_NEWS_ERROR,
+  UPDATE_HACKER_NEWS_VOTES,
 } from './constants';
 
 export const fetchHackerNews = (pageNo) => ({
@@ -36,3 +37,8 @@ export const fetchNewsIds = (pageNo) => {
       .catch(err => dispatch(fetchHackerNewsError(err)));
   };
 };
+
+export const updateVotesAction = (id) => ({
+  type: UPDATE_HACKER_NEWS_VOTES,
+  id
+});

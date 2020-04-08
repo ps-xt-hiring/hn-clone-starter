@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {fetchNewsIds} from './actions';
+import {fetchNewsIds, updateVotesAction} from './actions';
 import HackerNews from './HackerNews';
 
 const mapStateToProps = state => ({
@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchNewsForFirstPage: pageNo => dispatch(fetchNewsIds(pageNo)),
+  updateVotesAction: id => dispatch(updateVotesAction(id)),
 });
 
 export default connect(

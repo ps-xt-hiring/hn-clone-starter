@@ -2,6 +2,7 @@ import {
   FETCH_HACKER_NEWS,
   FETCH_HACKER_NEWS_SUCCESS,
   FETCH_HACKER_NEWS_ERROR,
+  UPDATE_HACKER_NEWS_VOTES
 } from './constants';
 //used selector to concat the news otherwise remove the selector and simply replace news with newsData.newsData
 import {newsDataSelector} from './selector'
@@ -11,9 +12,11 @@ const initialState = () => ({
   pageNo: 0,
   isFetching: true,
   error: null,
+  votes: ''
 });
 
-const app = (state = initialState(), { type, newsData, error, pageNo }) => {
+const app = (state = initialState(), { type, newsData, error, pageNo,id }) => {
+  const currentNews = newsDataSelector(state);
   switch (type) {
     case FETCH_HACKER_NEWS:
       return {
@@ -22,7 +25,6 @@ const app = (state = initialState(), { type, newsData, error, pageNo }) => {
         error: null,
       };
     case FETCH_HACKER_NEWS_SUCCESS:
-    const currentNews = newsDataSelector(state);
       return {
         ...state,
         news: currentNews.concat(newsData),
@@ -35,6 +37,14 @@ const app = (state = initialState(), { type, newsData, error, pageNo }) => {
         error,
         isFetching: false,
       };
+      case UPDATE_HACKER_NEWS_VOTES:
+      let newsList = currentNews.slice(0).map(item=>Object.assign({},item));
+      let updatedNews = newsList[id];
+      updatedNews.points = updatedNews.points+1;
+      return{
+        ...state,
+        news:newsList,
+      }
     default:
       return state;
   }

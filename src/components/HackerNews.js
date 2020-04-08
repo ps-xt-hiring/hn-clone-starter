@@ -15,6 +15,7 @@ class HackerNews extends Component {
     newsIds: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
     fetchNewsForFirstPage: PropTypes.func.isRequired,
+    updateVotesAction: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -23,7 +24,7 @@ class HackerNews extends Component {
   }
 
  render() {
-    const { error, isFetching, news,pageNo, fetchNewsForFirstPage } = this.props;
+    const { error, isFetching, news,pageNo, fetchNewsForFirstPage, updateVotesAction } = this.props;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (isFetching) {
@@ -32,7 +33,7 @@ class HackerNews extends Component {
       return (
         <div className="HackerNewsWrapper">
         <h1>Hacker News</h1>
-        <ListWrapper news={news} isFetching={isFetching} pageNo={pageNo} fetchNewsForFirstPage={fetchNewsForFirstPage}/>
+        <ListWrapper {...this.props}/>
         </div>
       );
     }

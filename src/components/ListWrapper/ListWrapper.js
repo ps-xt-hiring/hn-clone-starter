@@ -10,6 +10,7 @@ class ListWrapper extends Component {
     pageNo: PropTypes.number.isRequired,
     isFetching: PropTypes.bool.isRequired,
     fetchNewsForFirstPage: PropTypes.func.isRequired,
+    updateVotesAction:PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -27,11 +28,11 @@ class ListWrapper extends Component {
   }
 
   render() {
-    const { news } = this.props;
+    const { news, updateVotesAction } = this.props;
     return (
       <ul className="ListWrapper">
-        {news.map(item => (
-          <ListItem key={item.id} {...item} />
+        {news.map((item, index) => (
+          <ListItem index={index} item={item} updateVotesAction={updateVotesAction}/>
         ))}
         <button onClick={this.fetchMoreNews}> More </button>
       </ul>
