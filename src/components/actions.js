@@ -29,7 +29,7 @@ export const fetchNewsIds = (pageNo) => {
       .then(news => {
         const newsData = news.hits;
         const pageNo = news.page;
-        dispatch(fetchHackerNewsSuccess({ newsData, pageNo }));
+        dispatch(fetchHackerNewsSuccess( newsData, pageNo ));
        // dispatch(fetchNews({ newsIds, page: 0 }));
         return newsData;
       })
