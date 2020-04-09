@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {fetchNewsIds, updateVotesAction} from './actions';
+import { fetchNewsIds, updateVotesAction } from './actions';
 import HackerNews from './HackerNews';
 
 const mapStateToProps = state => ({
@@ -14,7 +14,4 @@ const mapDispatchToProps = dispatch => ({
   updateVotesAction: id => dispatch(updateVotesAction(id)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(HackerNews);
+export default connect(mapStateToProps, mapDispatchToProps)(HackerNews);

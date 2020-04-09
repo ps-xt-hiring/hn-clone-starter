@@ -6,7 +6,7 @@ import {
   UPDATE_HACKER_NEWS_VOTES,
 } from './constants';
 
-export const fetchHackerNews = (pageNo) => ({
+export const fetchHackerNews = pageNo => ({
   type: FETCH_HACKER_NEWS,
   pageNo,
 });
@@ -22,7 +22,7 @@ export const fetchHackerNewsError = error => ({
   error,
 });
 
-export const fetchNewsIds = (pageNo) => {
+export const fetchNewsIds = pageNo => {
   return dispatch => {
     dispatch(fetchHackerNews(pageNo));
     return hackerNewsApi
@@ -30,15 +30,14 @@ export const fetchNewsIds = (pageNo) => {
       .then(news => {
         const newsData = news.hits;
         const pageNo = news.page;
-        dispatch(fetchHackerNewsSuccess( newsData, pageNo ));
-       // dispatch(fetchNews({ newsIds, page: 0 }));
+        dispatch(fetchHackerNewsSuccess(newsData, pageNo));
         return newsData;
       })
       .catch(err => dispatch(fetchHackerNewsError(err)));
   };
 };
 
-export const updateVotesAction = (id) => ({
+export const updateVotesAction = id => ({
   type: UPDATE_HACKER_NEWS_VOTES,
-  id
+  id,
 });
