@@ -1,0 +1,20 @@
+
+.HackerNewsWrapper {
+  background: #f6f6ef;
+  width: 85%;
+  margin: 0 auto;
+}
+
+@media only screen and  (max-width: 768px) {
+  .HackerNewsWrapper {
+    width: 96%;
+  }
+}
+
+.HackerNewsWrapper h1 {
+  font-size: 20px;
+  font-weight: 300;
+  color: #222;
+  background: #f60;
+}
+
