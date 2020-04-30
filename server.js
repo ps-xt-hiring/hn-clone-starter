@@ -27747,12 +27747,10 @@ module.exports = server_node;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__logo_svg__ = __webpack_require__(151);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__logo_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__logo_svg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_css__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__App_css__);
 var _jsxFileName = '/Users/pranjul_mishra/Documents/hn-clone-starter-react/src/shared/App.js';
 
 
-
+// import './App.css';
 
 function App() {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -27836,12 +27834,6 @@ function App() {
 /***/ (function(module, exports) {
 
 module.exports = "/media/logo.svg";
-
-/***/ }),
-/* 152 */
-/***/ (function(module, exports) {
-
-
 
 /***/ })
 /******/ ]);
