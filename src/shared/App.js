@@ -17,7 +17,6 @@ and save to reload. Refactor at will, but please do not
           modify the entry point
           {' '}
           <code>index.js</code>
-.
         </p>
       </header>
     </div>
