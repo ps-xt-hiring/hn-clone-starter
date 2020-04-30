@@ -3,7 +3,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 
 const browserConfig = {
-  entry: "./src/browser/index.js",
+  entry: "./src/index.js",
   output: {
     path: __dirname,
     filename: "./public/bundle.js"

@@ -7858,10 +7858,10 @@ var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 app.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static("public"));
 
 app.get("*", function (req, res) {
-  res.send("\n    <!DOCTYPE html lang=\"en\">\n      <head>\n        <meta charset=\"utf-8\">\n        <link rel=\"shortcut icon\" href=\"%PUBLIC_URL%/favicon.ico\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n        <meta name=\"theme-color\" content=\"#000000\">\n        <link rel=\"manifest\" href=\"%PUBLIC_URL%/manifest.json\">\n        <title>React App</title>\n      </head>\n      <body>\n        <noscript>\n          You need to enable JavaScript to run this app.\n        </noscript>\n        <div id=\"root\">" + Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__shared_App__["a" /* default */], {
+  res.send("\n    <!DOCTYPE html lang=\"en\">\n      <head>\n        <meta charset=\"utf-8\">\n        <link rel=\"shortcut icon\" href=\"./favicon.ico\">\n        <link rel=\"stylesheet\" href=\"/css/main.css\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n        <meta name=\"theme-color\" content=\"#000000\">\n        <link rel=\"manifest\" href=\"./manifest.json\">\n        <title>React App</title>\n      </head>\n      <body>\n        <noscript>\n          You need to enable JavaScript to run this app.\n        </noscript>\n        <div id=\"root\">" + Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__shared_App__["a" /* default */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 26
     },
     __self: _this
   })) + "</div>\n        </body>\n    </html>\n  ");
@@ -27747,10 +27747,12 @@ module.exports = server_node;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__logo_svg__ = __webpack_require__(151);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__logo_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__logo_svg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_css__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__App_css__);
 var _jsxFileName = '/Users/pranjul_mishra/Documents/hn-clone-starter-react/src/shared/App.js';
 
 
-// import './App.css';
+
 
 function App() {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -27834,6 +27836,12 @@ function App() {
 /***/ (function(module, exports) {
 
 module.exports = "/media/logo.svg";
+
+/***/ }),
+/* 152 */
+/***/ (function(module, exports) {
+
+
 
 /***/ })
 /******/ ]);
