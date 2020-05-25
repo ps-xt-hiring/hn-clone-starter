@@ -1,19 +1,21 @@
+@import "./theme/theme.scss";
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
   padding: 0;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 14px;
+  font-size: $fontSize;
   overflow-x: hidden;
+  font-family: $fontFamily;
 }
 a {
   text-decoration: none;
   color: black;
 }
-small, b {
+small,
+b {
   opacity: 0.4;
 }

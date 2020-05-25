@@ -1,0 +1,11 @@
+.inputBox{
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+}
+input::-webkit-inner-spin-button ,
+::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+}
