@@ -1,0 +1,21 @@
+@import "./theme/theme.scss";
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: $fontSize;
+  overflow-x: hidden;
+  font-family: $fontFamily;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+small,
+b {
+  opacity: 0.4;
+}

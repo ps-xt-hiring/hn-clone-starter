@@ -1,0 +1,6 @@
+@import "../../theme/theme.scss";
+.comments {
+  margin-left: 30px;
+  flex: 0 0 40px;
+  @include flex;
+}

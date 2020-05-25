@@ -1,0 +1,10 @@
+// theme file for our apllication
+$themeColor: #ff6600;
+$breakPoint: 520px;
+$fontFamily: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+$fontSize: 14px;
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

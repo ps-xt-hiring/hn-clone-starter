@@ -1,0 +1,15 @@
+.row {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.row:nth-child(odd) {
+  background-color: #f6f6ef;
+}
+.row:nth-child(even) {
+  background-color: #ccc;
+}
+.description {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,27 @@
+@import "../../theme/theme.scss";
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 85vw;
+  margin: 0 auto;
+}
+@media screen and (max-width: $breakPoint) {
+  * {
+    font-size: 15px;
+  }
+  .description {
+    display: flex;
+    flex-direction: column;
+  }
+  .comments {
+    display: flex;
+    flex: 0 0 5%;
+    margin-right: 15px;
+  }
+  .root {
+    max-width: 100%;
+  }
+  .container {
+    width: 100%;
+  }
+}

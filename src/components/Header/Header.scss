@@ -1,0 +1,28 @@
+@import '../../theme/theme.scss';
+
+.app-header {
+  background-color: $themeColor;
+  display: flex;
+  min-height: 6vh;
+  max-width: 85%;
+  margin: 0 auto;
+  margin-top: 0.5em;
+}
+nav {
+  @include flex;
+  flex-wrap: wrap;
+}
+a:active {
+  color: white;
+}
+img {
+  @include flex;
+  border: white 1px solid;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+@media screen and (max-width: $breakPoint) {
+  .app-header {
+    max-width: 100%;
+  }
+}
